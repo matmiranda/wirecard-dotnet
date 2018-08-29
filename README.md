@@ -1,4 +1,4 @@
-<img src="https://gist.githubusercontent.com/joaolucasl/00f53024cecf16410d5c3212aae92c17/raw/1789a2131ee389aeb44e3a9d5333f59cfeebc089/moip-icon.png" align="right" />
+<img src="//c.fastcdn.co/t/e8fd2484/17b5d193/1532696645-27913757-794x343x805x440x6x49-moip-rgb-positivo-gr.png" align="right" />
 
 # Moip v2 .NET SDK
 > O jeito mais simples e rápido de integrar o Moip a sua aplicação .NET
@@ -77,10 +77,11 @@
 
 ## Instalação
 
-Execute o comando para instalar via NuGet:
+
+Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-dotnet add package Moip --version 1.0.1
+PM> Install-Package MoipCSharp -Version 1.0.8
 ```
 
 Package:

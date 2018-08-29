@@ -1,4 +1,4 @@
-<img src="//c.fastcdn.co/t/e8fd2484/17b5d193/1532696645-27913757-794x343x805x440x6x49-moip-rgb-positivo-gr.png" align="right" />
+<img src="https://www.linknacional.com.br/wp-content/uploads/2016/03/moip-boleto-pagamento-whmcs.png" width=150 align="right" />
 
 # Moip v2 .NET SDK
 > O jeito mais simples e rápido de integrar o Moip a sua aplicação .NET

@@ -81,131 +81,57 @@
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 1.0.8
+PM> Install-Package MoipCSharp -Version 1.0.9
 ```
-
-Package:
-
-https://www.nuget.org/packages/Moip/
 
 ## Autenticando e configurando o ambiente
 Para gerar o client, informe seu token oAuth e em qual environment você quer executar suas ações:
 ```C#
-Client client = new Client("TOKEN_OAUTH", Configuration.Environments.SANDBOX);
+using MoipCSharp;
+using MoipCSharp.Models;
+using static MoipCSharp.Configuration;
+private HttpClient client = SetClient("a52919ecca554be6a975c256a180a90f_v2", BaseAddress.SANDBOX);
 ```
 
-## Pedidos
-### Criação
+# Pedidos
+### Criar Pedido
 ```C#
-
-TaxDocument taxDocument = new TaxDocument
+CriarPedidoRequest criarPedido = new CriarPedidoRequest
 {
-    Type = "CPF",
-    Number = "22222222222"
+    //informe os campos aqui
 };
-
-Phone phone = new Phone
-{
-    CountryCode = "55",
-    AreaCode = "11",
-    Number = "66778899"
-};
-
-ShippingAddress shippingAddress = new ShippingAddress
-{
-    Street = "Rua test",
-    StreetNumber = "123",
-    Complement = "Ap test",
-    District = "Bairro test",
-    City = "TestCity",
-    State = "SP",
-    Country = "BRA",
-    ZipCode = "01234000"
-};
-
-CustomerRequest customerRequest = new CustomerRequest
-{
-    Fullname = "Fulano de Tal",
-    OwnId = "OFulanoDeTal",
-    BirthDate = "1990-01-01",
-    Email = "fulano@detal.com.br",
-    Phone = phone,
-    ShippingAddress = shippingAddress,
-    TaxDocument = taxDocument
-};
-
-SubtotalsRequest subtotalsRequest = new SubtotalsRequest
-{
-    Shipping = 1500,
-    Addition = 20,
-    Discount = 10
-};
-
-AmountOrderRequest amountRequest = new AmountOrderRequest
-{
-    Currency = "BRL"
-    Subtotals = subtotalsRequest
-};
-
-Item itemsRequest = new Item
-{
-    Product = "Bicicleta Specialized Tarmac 26 Shimano Alivio",
-    Quantity = 1,
-    Detail = "uma linda bicicleta",
-    Price = 2000
-};
-
-List<Item> itemsRequestList = new List<Item>
-{
-    itemsRequest
-};
-
-OrderRequest orderRequest = new OrderRequest
-{
-    OwnId = "my_own_id",
-    Amount = amountRequest,
-    Items = itemsRequestList,
-    Customer = customerRequest,
-};
-
-OrderResponse createdOrder = client.Orders.CreateOrder(orderRequest);
-
+CriarPedidoResponse clienteResponse = await Pedidos.CriarPedidoAsync(criarPedido);
 ```
 
-### Consulta
-#### Pedido Específico
+### Consultar Pedido
 ```C#
-string orderId = "ORD-HPMZSOM611M2";
-Order order = client.Orders.GetOrder(orderId);
+ConsultarPedidoResponse clienteResponse = await Pedidos.ConsultarPedidoAsync("ORD-XXXXXXXXXXXX");
 ```
 
-#### Todos os Pedidos
-##### Sem Filtro
+#### Listar Todos os Pedidos - Sem Filtros
 ```C#
-OrderListResponse orderResponseList = client.Orders.ListOrders();
-
-List<OrderResponse> orderList = orderResponseList.Orders;
+ListarTodosOsPedidosResponse clienteResponse = await Pedidos.ListarTodosOsPedidosAsync();
 ```
 
-##### Com Filtros
+##### Listar Todos os Pedidos - Com Filtros
 ```C#
-TODO
+CSharpando...
 ```
 
 ##### Com Paginação
 ```C#
-TODO
+CSharpando...
 ```
 
 ##### Consulta Valor Específico
 ```C#
-TODO
+CSharpando...
 ```
 
 > Também é possível usar paginação, filtros e consulta de valor específico juntos
 
 ```C#
-TODO
+CSharpando...
 ```
 
 ## Pagamentos

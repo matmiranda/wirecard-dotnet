@@ -90,7 +90,8 @@ Para gerar o client, informe seu token oAuth e em qual environment você quer ex
 using MoipCSharp;
 using MoipCSharp.Models;
 using static MoipCSharp.Configuration;
-private HttpClient client = SetClient("a52919ecca554be6a975c256a180a90f_v2", BaseAddress.SANDBOX);
+
+private HttpClient client = SetClient("a52919ecca554be6a975c256a180a90f_v2", BaseAddress.SANDBOX); //PRODUCTION == PRODUÇÃO
 ```
 
 # Pedidos
@@ -108,22 +109,22 @@ CriarPedidoResponse clienteResponse = await Pedidos.CriarPedidoAsync(criarPedido
 ConsultarPedidoResponse clienteResponse = await Pedidos.ConsultarPedidoAsync("ORD-XXXXXXXXXXXX");
 ```
 
-#### Listar Todos os Pedidos - Sem Filtros
+### Listar Todos os Pedidos - Sem Filtros
 ```C#
 ListarTodosOsPedidosResponse clienteResponse = await Pedidos.ListarTodosOsPedidosAsync();
 ```
 
-##### Listar Todos os Pedidos - Com Filtros
+### Listar Todos os Pedidos - Com Filtros
 ```C#
 CSharpando...
 ```
 
-##### Com Paginação
+### Com Paginação
 ```C#
 CSharpando...
 ```
 
-##### Consulta Valor Específico
+### Consulta Valor Específico
 ```C#
 CSharpando...
 ```

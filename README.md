@@ -91,7 +91,7 @@ using MoipCSharp;
 using MoipCSharp.Models;
 using static MoipCSharp.Configuration;
 
-private HttpClient client = SetClient("a52919ecca554be6a975c256a180a90f_v2", BaseAddress.SANDBOX); //PRODUCTION == PRODUÇÃO
+private HttpClient client = SetClient("XXXXXXXXXXXXXXXXXXXXX_v2", BaseAddress.SANDBOX); //PRODUCTION == PRODUÇÃO
 ```
 
 # Pedidos

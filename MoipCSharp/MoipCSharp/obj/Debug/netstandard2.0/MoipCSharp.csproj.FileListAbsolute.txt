@@ -1,0 +1,6 @@
+C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\bin\Debug\netstandard2.0\MoipCSharp.deps.json
+C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\bin\Debug\netstandard2.0\MoipCSharp.dll
+C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Debug\netstandard2.0\MoipCSharp.csprojAssemblyReference.cache
+C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Debug\netstandard2.0\MoipCSharp.csproj.CoreCompileInputs.cache
+C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Debug\netstandard2.0\MoipCSharp.AssemblyInfoInputs.cache
+C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Debug\netstandard2.0\MoipCSharp.AssemblyInfo.cs

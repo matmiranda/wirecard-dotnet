@@ -425,6 +425,19 @@ var result = await Conciliacao.ObterArquivoFinanceiroAsync("2018-08-29"); // Dat
 | in(x,y…z)  | string | Em - “IN” |
 | q  |  | Consulta um valor em específico |
 
+Exemplo:
+
+> Fazendo uma busca com os seguintes requisitos:
+Transações de valores entre 5000 e 10000 (em centavos);
+Formas de pagamento: Cartão de Crédito e Boleto;
+Cliente com o nome jose silva;
+Retornando 3 resultados.
+GET https: //sandbox.moip.com.br/v2/orders?q=jose silva
+&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)
+|value::bt(5000,10000)&limit=3&offset=0
+Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
+GET https: //sandbox.moip.com.br/v2/orders?filters=createdAt::bt(2017-10-10T13:07:00Z,2017-10-25T13:08:00Z)
+
 ## Licença
 
 [The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)

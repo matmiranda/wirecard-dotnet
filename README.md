@@ -411,6 +411,20 @@ var result = await Conciliacao.ObterArquivoDeVendasAsync("20180829"); // Data no
 var result = await Conciliacao.ObterArquivoFinanceiroAsync("2018-08-29"); // Data no formato YYYY-MM-DD
 ```
 
+## Tabela - Filtros de busca
+
+| Nome  | Tipo | Descrição |
+| ------------- | ------------- | ------------- |
+| limit  | int  | Quantidade de registros por busca (página). O valor default é 20 |
+| offset  | int | Registro a partir do qual a busca vai retornar. O valor default é 0 |
+| gt(x)  | number or date | Maior que - “Greater Than” |
+| ge(x)  | number or date | Maior ou igual - “Greater than or Equal” |
+| lt(x)  | number or date | Menor que - “Less Than” |
+| le(x)  | number or date | Menor ou igual - “Less than or Equal” |
+| bt(x,y)  | string | Entre - “Between” |
+| in(x,y…z)  | string | Em - “IN” |
+| q  |  | Consulta um valor em específico |
+
 ## Licença
 
 [The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)

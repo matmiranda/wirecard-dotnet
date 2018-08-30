@@ -205,6 +205,49 @@ var result = await Pagamentos.ConsultarPagamentoAsync("PAY-XXXXXXXXXXXX");
 CSharpando...
 ```
 
+## Multipedidos
+#### Criar Multipedido
+```C#
+var body = new CriarMultiPedidoRequest
+{
+    //informe os campos aqui
+};            
+var result = await MultiPedidos.CriarMultiPedidoAsync(body);
+```
+
+#### Consultar Multipedido
+```C#
+var result = await MultiPedidos.ConsultarMultiPedidoAsync("MOR-XXXXXXXXXXXX");
+```
+
+## Multipagamentos
+#### Criar Multipagamento
+```C#
+var body = new CriarMultiPagamentoRequest
+{
+    //informe os campos aqui
+};            
+var result = await MultiPagamentos.CriarMultiPagamentoAsync(body, "MOR-XXXXXXXXXXXX");
+```
+#### Consultar Multipagamento
+```C#
+var result = await MultiPagamentos.ConsultarMultiPagamentoAsync("MPY-XXXXXXXXXXXX");
+```
+#### Capturar Multipagamento Pré-autorizado
+```C#
+var result = await MultiPagamentos.CapturarMultiPagamentoPreAutorizadoAsync("MPY-XXXXXXXXXXXX");
+```
+#### Cancelar Multipagamento Pré-autorizado
+```C#
+var result = await MultiPagamentos.CancelarMultiPagamentoPreAutorizadoAsync("MPY-XXXXXXXXXXXX");
+```
+#### Liberação de Custódia
+```C#
+var result = await MultiPagamentos.LiberarCustodiaAsync("ECW-XXXXXXXXXXXX");
+```
+
+## Notificações
+
 ## Licença
 
 [The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)

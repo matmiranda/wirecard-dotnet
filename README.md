@@ -282,7 +282,7 @@ var result = await Notificacoes.RemoverPreferenciaDeNotificacaoAsync("NPR-XXXXXX
 
 #### Consultar Webhook Enviado
 ```C#
-//Não implementado 
+var result = await Notificacoes.ConsultarWebhookEnviadoAsync("PAY-XXXXXXXXXXXX"); 
 ```
 
 #### Listar Todos os Webhooks Enviados

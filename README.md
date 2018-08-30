@@ -247,6 +247,48 @@ var result = await MultiPagamentos.LiberarCustodiaAsync("ECW-XXXXXXXXXXXX");
 ```
 
 ## Notificações
+#### Criar Preferência de Notificação para Conta Moip
+```C#
+var body = new CriarPreferenciaDeNotificacaoParaContaMoipRequest
+{
+    //informe os campos aqui
+};            
+var result = await Notificacoes.CriarPreferenciaDeNotificacaoParaContaMoipAsync(body);
+```
+
+#### Criar Preferência de Notificação para App
+```C#
+var body = new CriarPreferenciaDeNotificacaoParaAppRequest
+{
+    //informe os campos aqui
+};            
+var result = await Notificacoes.CriarPreferenciaDeNotificacaoParaAppAsync(body, "APP-XXXXXXXXXXXX");
+```
+
+#### Consultar Preferência de Notificação
+```C#
+var result = await Notificacoes.ConsultarPreferenciaDeNotificacaoAsync("NPR-XXXXXXXXXXXX");
+```
+
+#### Listar Todas as Preferências de Notificação
+```C#
+var result = await Notificacoes.ListarTodasAsPreferenciasDeNotificacaoAsync();
+```
+
+#### Remover Preferência de Notificação
+```C#
+var result = await Notificacoes.RemoverPreferenciaDeNotificacaoAsync("NPR-XXXXXXXXXXXX");
+```
+
+#### Consultar Webhook Enviado
+```C#
+CSharpando
+```
+
+#### Listar Todos os Webhooks Enviados
+```C#
+var result = await Notificacoes.ListarTodosOsWebhooksEnviadosAsync();
+```
 
 ## Licença
 

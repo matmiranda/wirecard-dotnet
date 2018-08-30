@@ -24,7 +24,7 @@
 - [Multipedidos](#multipedidos)
 - [Multipagamentos](#multipagamentos)
 - [Notificações](#notificações)
-- [Contas Bancárias](#conta-bancárias)
+- [Contas Bancárias](#contas-bancárias)
 - [Saldo Moip](#saldo-moip)
 - [Lançamentos](#lançamentos)
 - [Transferências](#transferências)

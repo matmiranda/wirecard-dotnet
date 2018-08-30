@@ -8,5 +8,6 @@ namespace MoipCSharp.Models
         public Taxdocument taxDocument { get; set; }
         public Phone phone { get; set; }
         public Billingaddress billingAddress { get; set; }
+        public bool thirdParty { get; set; }
     }
 }

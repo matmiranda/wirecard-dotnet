@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MoipCSharp.Controllers
+namespace MoipCSharp
 {
     public static class SaldoMoip
     {

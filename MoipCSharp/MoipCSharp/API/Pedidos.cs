@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoipCSharp.Controllers
+namespace MoipCSharp
 {
     public static class Pedidos
     {
@@ -49,6 +49,23 @@ namespace MoipCSharp.Controllers
         {
             HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders");
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<ListarTodosOsPedidosResponse>(await response.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error message: " + ex.Message);
+            }
+        }
+        public static async Task<ListarTodosOsPedidosResponse> ListarTodosOsPedidosFiltrosAsync(string filtros)
+        {
+            HttpClient httpClient = Configuration.HttpClient();
+            HttpResponseMessage response = await httpClient.GetAsync($"v2/orders?{filtros}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");

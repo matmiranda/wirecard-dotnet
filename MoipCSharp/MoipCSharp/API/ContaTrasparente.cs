@@ -6,11 +6,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoipCSharp.Controllers
+namespace MoipCSharp
 {
     public static class ContaTrasparente
     {
-        public static async Task<CriarContaMoipClassicaResponse> CriarContaMoipTransparenteAsync(CriarContaMoipClassicaRequest body)
+        public static async Task<CriarContaMoipTransparenteResponse> CriarContaMoipTransparenteAsync(CriarContaMoipTransparenteRequest body)
         {
             HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -21,7 +21,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarContaMoipClassicaResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<CriarContaMoipTransparenteResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

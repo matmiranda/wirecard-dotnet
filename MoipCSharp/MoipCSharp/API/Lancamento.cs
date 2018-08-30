@@ -5,11 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MoipCSharp.Controllers
+namespace MoipCSharp
 {
     public static class Lancamento
     {
-        public static async Task<CriarPedidoResponse> ConsultarLancamentoAsync(CriarPedidoRequest body, string entry_id)
+        public static async Task<ConsultarLancamentoResponse> ConsultarLancamentoAsync(string entry_id)
         {
             HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/entries/{entry_id}");
@@ -19,7 +19,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarPedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ConsultarLancamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

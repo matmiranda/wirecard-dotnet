@@ -15,11 +15,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Biblioteca para integração dos meios de pagamento do MOIP - Versão mais atualizad" +
     "a")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.8.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.8")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.5.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.5")]
 [assembly: System.Reflection.AssemblyProductAttribute("MoipCSharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MoipCSharp")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.8.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.1.5.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
 

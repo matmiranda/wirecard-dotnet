@@ -218,7 +218,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.8",
+    "version": "1.1.5",
     "restore": {
       "projectUniqueName": "C:\\Users\\Matheus Miranda\\source\\repos\\MoipCSharp\\MoipCSharp\\MoipCSharp.csproj",
       "projectName": "MoipCSharp",

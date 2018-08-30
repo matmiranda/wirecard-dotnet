@@ -1,12 +1,13 @@
 ﻿using MoipCSharp.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoipCSharp.Controllers
+namespace MoipCSharp
 {
     public static class ContasBancarias
     {
@@ -45,7 +46,7 @@ namespace MoipCSharp.Controllers
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodasContasBancariasResponse> ListarTodasContasBancariasAsync(string account_id)
+        public static async Task<ListarTodasContasBancariasResponse[]> ListarTodasContasBancariasAsync(string account_id)
         {
             HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}/bankaccounts");
@@ -55,7 +56,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodasContasBancariasResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ListarTodasContasBancariasResponse[]>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

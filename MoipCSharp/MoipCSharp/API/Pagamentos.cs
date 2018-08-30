@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoipCSharp.Controllers
+namespace MoipCSharp
 {
     public static class Pagamentos
     {
@@ -95,6 +95,17 @@ namespace MoipCSharp.Controllers
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
+        }
+        public static async Task<HttpStatusCode> SimularPagamentosAsync(string payment_id, int valor)
+        {
+            HttpClient httpClient = Configuration.HttpClient();
+            httpClient.BaseAddress = new Uri("https://sandbox.moip.com.br/");
+            HttpResponseMessage response = await httpClient.GetAsync($"simulador/authorize?payment_id={payment_id}&amount={valor}");
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+            }
+            return response.StatusCode;
         }
     }
 }

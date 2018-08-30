@@ -445,7 +445,7 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 
 ## Exceção
 #### Obter erros
-Você pode recuperar os atributos `code`, `path`, `description` e `message`, mais informações aqui:
+Você pode recuperar os atributos `code`, `path`, `description` e `message`, veja no exemplo abaixo, que o valor `0` não existe, então vai gerar um exceção:
 ```C#
  try
  {

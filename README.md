@@ -290,6 +290,82 @@ CSharpando
 var result = await Notificacoes.ListarTodosOsWebhooksEnviadosAsync();
 ```
 
+## Contas Bancárias
+#### Criar Conta Bancária
+```C#
+var body = new CriarContaBancariaRequest
+{
+    //informe os campos aqui
+};            
+var result = await ContasBancarias.CriarContaBancariaAsync(body, "MPA-XXXXXXXXXXXX");
+```
+
+#### Consultar Conta Bancária
+```C#
+var result = await ContasBancarias.ConsultarContaBancariaAsync("BKA-XXXXXXXXXXXX");
+```
+
+#### Listar Todas Contas Bancárias
+```C#
+var result = await ContasBancarias.ListarTodasContasBancariasAsync("MPA-XXXXXXXXXXXX");
+```
+
+#### Deletar Conta Bancária
+```C#
+var result = await ContasBancarias.DeletarContaBancariaAsync("BKA-XXXXXXXXXXXX");
+```
+
+#### Atualizar Conta Bancária
+```C#
+var body = new AtualizarContaBancariaRequest
+{
+    //informe os campos aqui
+};            
+var result = await ContasBancarias.AtualizarContaBancariaAsync(body, "BKA-XXXXXXXXXXXX");
+```
+
+## Saldo Moip
+#### Consultar Saldos
+```C#
+var result = await SaldoMoip.ConsultarSaldosAsync();
+```
+
+## Lançamentos
+#### Consultar Lançamento
+```C#
+var result = await Lancamento.ConsultarLancamentoAsync("ENT-XXXXXXXXXXXX");
+```
+
+#### Listar Todos Lançamentos
+```C#
+var result = await Lancamento.ListarTodosLancamentosAsync();
+```
+
+## Transferências
+#### Criar Transferência
+```C#
+var body = new CriarTransferenciaRequest
+{
+    //informe os campos aqui
+};            
+var result = await Transferencias.CriarTransferenciaAsync(body);
+```
+
+#### Reverter Transferência
+```C#
+var result = await Transferencias.ReverterTransferenciaAsync("TRA-XXXXXXXXXXXX");
+```
+
+#### Consultar Transferência
+```C#
+var result = await Transferencias.ConsultarTransferenciaAsync("TRA-XXXXXXXXXXXX");
+```
+
+#### Listar Todas Transferências
+```C#
+var result = await Transferencias.ListarTodasTransferenciasAsync();
+```
+
 ## Licença
 
 [The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)

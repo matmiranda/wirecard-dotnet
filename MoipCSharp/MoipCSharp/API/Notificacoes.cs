@@ -17,6 +17,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync("v2/preferences/notifications", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -35,6 +36,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -52,6 +54,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync($"v2/preferences/notifications/{notification_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -69,6 +72,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync("v2/preferences/notifications");
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -86,6 +90,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.DeleteAsync($"v2/preferences/notifications/{notification_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             return response.StatusCode;
@@ -96,6 +101,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync($"v2/webhooks?resourceId={payment_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -113,6 +119,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync("v2/webhooks");
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try

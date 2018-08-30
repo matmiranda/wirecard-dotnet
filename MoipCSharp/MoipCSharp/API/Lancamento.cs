@@ -15,6 +15,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync($"v2/entries/{entry_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -32,6 +33,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync("v2/entries");
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try

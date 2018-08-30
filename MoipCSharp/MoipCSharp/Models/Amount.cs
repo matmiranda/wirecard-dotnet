@@ -6,7 +6,8 @@ namespace MoipCSharp.Models
     {
         public string currency { get; set; }
         public Subtotals subtotals { get; set; }
-        public int _fixed { get; set; }
+        public int @fixed { get; set; }
+        public int percentual { get; set; }
         public int paid { get; set; }
         public int total { get; set; }
         public int fees { get; set; }

@@ -17,6 +17,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync($"v2/multiorders/{multiorder_id}/multipayments", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -34,6 +35,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync($"v2/multipayments/{multiorder_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -51,6 +53,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync($"v2/multipayments/{multipayment_id}/capture", null);
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -68,6 +71,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync($"v2/multipayments/{multipayment_id}/void", null);
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try
@@ -85,6 +89,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync($"v2/escrows/{escrow_id}/release", null);
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try

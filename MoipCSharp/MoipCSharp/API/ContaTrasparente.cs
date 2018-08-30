@@ -17,6 +17,7 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync("v2/accounts", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
                 throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
             }
             try

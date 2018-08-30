@@ -30,6 +30,7 @@
 - [Transferências]()
 - [Reembolsos]()
 - [Conciliação]()
+- [Tabela - Filtros de busca]()
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):

@@ -202,7 +202,7 @@ var result = await Pagamentos.ConsultarPagamentoAsync("PAY-XXXXXXXXXXXX");
 
 #### Simular Pagamentos (sandbox)
 ```C#
-CSharpando...
+var result = await Pagamentos.SimularPagamentosAsync("PAY-XXXXXXXXXXXX", 26500);
 ```
 
 ## Multipedidos

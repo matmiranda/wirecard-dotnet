@@ -444,8 +444,8 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 > GET https: //sandbox.moip.com.br/v2/orders?filters=createdAt::bt(2017-10-10T13:07:00Z,2017-10-25T13:08:00Z)
 
 ## Exceção
-#### Obter erros:
-Você pode recuperar os atributos code, path, description e message:
+#### Obter erros
+Você pode recuperar os atributos `code`, `path`, `description` e `message`, mais informações aqui:
 ```C#
  try
  {
@@ -456,6 +456,15 @@ Você pode recuperar os atributos code, path, description e message:
      var erros = MoipException;
  }
 ```
+
+#### Tabela de erros
+
+| Nome  | Descrição | Detalhe |
+| ------------- | ------------- | ------------- |
+| code  | Código identificador do erro  | string |
+| path  | Parâmetro relacionado ao erro | string |
+| description  | Descrição do erro | string |
+| message  | Mensagem do retorno Moip  | string |
 
 
 

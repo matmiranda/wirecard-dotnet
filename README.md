@@ -50,8 +50,45 @@ using static MoipCSharp.Configuration;
 private HttpClient client = SetClient("XXXXXXXXXXXXXXXXXXXXX_v2", BaseAddress.SANDBOX); //PRODUCTION == PRODUÇÃO
 ```
 
+## Conta Clássica
+#### Verificar se usuário já possui Conta Moip
+```C#
+var result = await ContaClassica.VerificarSeUsuarioJaPossuiContaMoipAsync("meu_email@email.com");
+```
 
+#### Criar Conta Moip Clássica
+```C#
+var body = new CriarContaMoipClassicaRequest
+{
+    //informe os campos aqui
+};
+var result = await ContaClassica.CriarContaMoipClassicaAsync(body);
+```
 
+#### Consultar Conta Moip
+```C#
+var result = await ContaClassica.ConsultarContaMoipAsync("MPA-XXXXXXXXXXXX");
+```
+
+#### Solicitar Permissões de Acesso ao Usuário
+```C#
+var result = await ContaClassica.SolicitarPermissoesDeAcessoUsuarioAsync(/*informe o valor de cada parâmetro*/);
+```
+
+#### Gerar Access Token
+```C#
+var result = await ContaClassica.GerarAccessTokenAsync(/*informe o valor de cada parâmetro*/);
+```
+
+#### Atualizar accessToken
+```C#
+var result = await ContaClassica.AtualizarAccessTokenAsync(/*informe o valor de cada parâmetro*/);
+```
+
+#### Obter chave pública de uma Conta Moip
+```C#
+var result = await ContaClassica.ObterChavePublicaContaMoipAsync();
+```
 
 ## Licença
 

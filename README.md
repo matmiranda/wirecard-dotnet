@@ -453,7 +453,7 @@ Você pode recuperar os atributos code, path, description e message:
  }
  catch (Exception)
  {
-     var erros =  MoipException;
+     var erros = MoipException;
  }
 ```
 

@@ -443,6 +443,22 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 
 > GET https: //sandbox.moip.com.br/v2/orders?filters=createdAt::bt(2017-10-10T13:07:00Z,2017-10-25T13:08:00Z)
 
+## Exceção
+#### Obter erros:
+Você pode recuperar os atributos code, path, description e message:
+```C#
+ try
+ {
+     var result = await Pedidos.ConsultarPedidoAsync("0");
+ }
+ catch (Exception)
+ {
+     var erros =  MoipException;
+ }
+```
+
+
+
 ## Licença
 
 [The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)

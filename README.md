@@ -30,7 +30,8 @@
 - [Transferências]()
 - [Reembolsos]()
 - [Conciliação]()
-- [Tabela - Filtros de busca]()
+- [Tabela - Filtros de busca](#tabela---filtros-de-busca
+)
 - [Licença]()
 
 ## Instalação
@@ -168,7 +169,7 @@ var result = await Pedidos.ListarTodosOsPedidosAsync();
 string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0";
 var result = await Pedidos.ListarTodosOsPedidosFiltrosAsync(filtros);
 ```
- Veja a tabela filtros de busca [aqui]().
+ Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
  
  ## Pagamentos
  #### Criar Pagamento

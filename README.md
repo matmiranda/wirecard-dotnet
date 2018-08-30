@@ -55,7 +55,7 @@ private HttpClient client = SetClient("XXXXXXXXXXXXXXXXXXXXX_v2", BaseAddress.SA
 
 ## Licença
 
-[The MIT License](https://github.com/moip/moip-sdk-dotnet/blob/master/LICENSE)
+[The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)
 
 Tem dúvidas? Fale com a gente no [Slack](https://slackin-cqtchmfquq.now.sh/)!
 Algum problema ? Abre issues!

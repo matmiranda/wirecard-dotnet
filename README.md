@@ -5,18 +5,11 @@
   <p align="center">
     O jeito mais simples e rápido de integrar o Moip a sua aplicação .NET
     <br>
-    <a href="https://dev.moip.com.br/v2.0/docs"><strong>Documentação »</strong></a>
-    <br>
-    <br>
+    <a href="https://dev.moip.com.br/v2.0/docs">Documentação</a>
+    .
     <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Referência API</a>
     ·
-    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Request feature</a>
-    ·
-    <a href="https://themes.getbootstrap.com/">Themes</a>
-    ·
-    <a href="https://jobs.getbootstrap.com/">Jobs</a>
-    ·
-    <a href="https://blog.getbootstrap.com/">Blog</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Slack</a>
   </p>
 </p>
 

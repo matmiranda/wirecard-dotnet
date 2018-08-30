@@ -7,7 +7,7 @@
     <br>
     <a href="https://dev.moip.com.br/v2.0/docs">Documentação</a>
     .
-    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Referência API</a>
+    <a href="https://dev.moip.com.br/v2.0/reference">Referência API</a>
     ·
     <a href="https://slackin-cqtchmfquq.now.sh/">Slack</a>
   </p>

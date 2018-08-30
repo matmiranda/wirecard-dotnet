@@ -31,13 +31,14 @@
 - [Reembolsos](#reembolsos)
 - [Conciliação](#conciliação)
 - [Tabela - Filtros de busca](#tabela---filtros-de-busca)
+- [Exceção](#exceção)
 - [Licença](#licença)
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 1.1.5
+PM> Install-Package MoipCSharp -Version 1.1.7
 ```
 
 ## Autenticando e configurando o ambiente
@@ -441,6 +442,32 @@ var result = await Conciliacao.ObterArquivoFinanceiroAsync("2018-08-29"); // Dat
 Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 
 > GET https: //sandbox.moip.com.br/v2/orders?filters=createdAt::bt(2017-10-10T13:07:00Z,2017-10-25T13:08:00Z)
+
+## Exceção
+#### Obter erros
+Você pode recuperar os atributos `code`, `path`, `description` e `message`, veja no exemplo abaixo:
+```C#
+try
+{
+    var result = await Pedidos.CriarPedidoAsync(new CriarPedidoRequest());
+}
+catch (Exception ex)
+{
+    var ex_message = ex.Message;
+    var erros =  MoipException;
+}
+```
+
+#### Tabela de erros
+
+| Nome  | Descrição | Detalhe |
+| ------------- | ------------- | ------------- |
+| code  | Código identificador do erro  | string |
+| path  | Parâmetro relacionado ao erro | string |
+| description  | Descrição do erro | string |
+| message  | Mensagem do retorno Moip  | string |
+
+
 
 ## Licença
 

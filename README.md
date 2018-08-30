@@ -31,6 +31,7 @@
 - [Reembolsos]()
 - [Conciliação]()
 - [Tabela - Filtros de busca]()
+- [Licença]()
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
@@ -48,6 +49,8 @@ using static MoipCSharp.Configuration;
 
 private HttpClient client = SetClient("XXXXXXXXXXXXXXXXXXXXX_v2", BaseAddress.SANDBOX); //PRODUCTION == PRODUÇÃO
 ```
+
+
 
 
 ## Licença

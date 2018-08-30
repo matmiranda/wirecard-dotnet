@@ -90,6 +90,59 @@ var result = await ContaClassica.AtualizarAccessTokenAsync(/*informe o valor de 
 var result = await ContaClassica.ObterChavePublicaContaMoipAsync();
 ```
 
+## Conta Transparente
+#### Criar Conta Moip Transparente
+```C#
+var body = new CriarContaMoipTransparenteRequest
+{
+    //informe os campos aqui
+};
+var result = await ContaTrasparente.CriarContaMoipTransparenteAsync(body);
+```
+
+## Clientes
+#### Criar Cliente
+```C#
+var body = new ClienteRequest
+{
+    //informe os campos aqui
+};
+var result = await Clientes.CriarClienteAsync(body);
+```
+
+#### Adicionar Cartão de Crédito
+```C#
+var body = new CartaoDeCreditoRequest
+{
+    //informe os campos aqui
+};
+var result = await Clientes.AdicionarCartaoDeCreditoAsync(body, "CUS-XXXXXXXXXXXX");
+```
+
+#### Atualizar Cliente
+```C#
+var body = new AtualizarClienteRequest
+{
+    //informe os campos aqui
+};
+var result = await Clientes.AtualizarClienteAsync(body);
+```
+
+#### Deletar Cartão de Crédito
+```C#
+var result = await Clientes.DeletarCartaoDeCreditoAsync("CRC-XXXXXXXXXXXX");
+```
+
+#### Consultar Cliente
+```C#
+var result = await Clientes.ConsultarClienteAsync("CUS-XXXXXXXXXXXX");
+```
+
+#### Listar Todos os Clientes
+```C#
+var result = await Clientes.ListarTodosOsClientes();
+```
+
 ## Licença
 
 [The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)

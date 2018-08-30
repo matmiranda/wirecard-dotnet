@@ -143,6 +143,33 @@ var result = await Clientes.ConsultarClienteAsync("CUS-XXXXXXXXXXXX");
 var result = await Clientes.ListarTodosOsClientes();
 ```
 
+## Pedidos
+#### Criar Pedido
+```C#
+var body = new CriarPedidoRequest
+{
+    //informe os campos aqui
+};
+var result = await Pedidos.CriarPedidoAsync(body);
+```
+
+#### Consultar Pedido
+```C#
+var result = await Pedidos.ConsultarPedidoAsync("ORD-XXXXXXXXXXXX");
+```
+
+#### Listar Todos os Pedidos - Sem Filtros
+```C#
+var result = await Pedidos.ListarTodosOsPedidosAsync();
+```
+
+#### Listar Todos os Pedidos - Com Filtros
+```C#
+string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0";
+var result = await Pedidos.ListarTodosOsPedidosFiltrosAsync(filtros);
+```
+ Veja a tabela filtros de busca [aqui]().
+
 ## Licença
 
 [The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)

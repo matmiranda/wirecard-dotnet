@@ -169,6 +169,41 @@ string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in
 var result = await Pedidos.ListarTodosOsPedidosFiltrosAsync(filtros);
 ```
  Veja a tabela filtros de busca [aqui]().
+ 
+ ## Pagamentos
+ #### Criar Pagamento
+ ```C#
+var body = new CriarPagamentoRequest
+{
+    //informe os campos aqui
+};            
+var result = await Pagamentos.CriarPagamentoAsync(body, "ORD-XXXXXXXXXXXX");
+```
+
+#### Liberação de Custódia
+```C#
+var result = await Pagamentos.LiberacaoDeCustodiaAsync("ECW-XXXXXXXXXXXX");
+```
+
+#### Capturar Pagamento Pré-autorizado
+```C#
+var result = await Pagamentos.CapturarPagamentoPreAutorizadoAsync("PAY-XXXXXXXXXXXX");
+```
+
+#### Cancelar Pagamento Pré-autorizado
+```C#
+var result = await Pagamentos.CancelarPagamentoPreAutorizadoAsync("PAY-XXXXXXXXXXXX");
+```
+
+#### Consultar Pagamento
+```C#
+var result = await Pagamentos.ConsultarPagamentoAsync("PAY-XXXXXXXXXXXX");
+```
+
+#### Simular Pagamentos (sandbox)
+```C#
+CSharpando...
+```
 
 ## Licença
 

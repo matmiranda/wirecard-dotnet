@@ -1,9 +1,26 @@
-<img src="https://www.linknacional.com.br/wp-content/uploads/2016/03/moip-boleto-pagamento-whmcs.png" width=150 align="right" />
+<p align="center">
+  <a href="https://getbootstrap.com/">
+    <img src="https://www.linknacional.com.br/wp-content/uploads/2016/03/moip-boleto-pagamento-whmcs.png" alt="Moip logo" width=150>
+  </a>
+  <p align="center">
+    O jeito mais simples e rápido de integrar o Moip a sua aplicação .NET
+    <br>
+    <a href="https://dev.moip.com.br/v2.0/docs"><strong>Documentação »</strong></a>
+    <br>
+    <br>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Referência API</a>
+    ·
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Request feature</a>
+    ·
+    <a href="https://themes.getbootstrap.com/">Themes</a>
+    ·
+    <a href="https://jobs.getbootstrap.com/">Jobs</a>
+    ·
+    <a href="https://blog.getbootstrap.com/">Blog</a>
+  </p>
+</p>
 
-# Moip v2 .NET SDK
-> O jeito mais simples e rápido de integrar o Moip a sua aplicação .NET
-
-**Índice**
+## Índice
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Exemplos de Uso](#clientes):

@@ -366,6 +366,51 @@ var result = await Transferencias.ConsultarTransferenciaAsync("TRA-XXXXXXXXXXXX"
 var result = await Transferencias.ListarTodasTransferenciasAsync();
 ```
 
+## Reembolsos
+#### Reembolsar Pagamento
+```C#
+var body = new ReembolsarPagamentoRequest
+{
+    //informe os campos aqui
+};            
+var result = await Reembolsos.ReembolsarPagamentoAsync(body, "PAY-XXXXXXXXXXXX");
+```
+
+#### Reembolsar Pedido via Cartão de Crédito
+```C#
+var body = new ReembolsarPedidoViaCartaoDeCreditoRequest
+{
+    //informe os campos aqui
+};            
+var result = await Reembolsos.ReembolsarPedidoViaCartaoDeCreditoAsync(body, "ORD-XXXXXXXXXXXX");
+```
+
+#### Consultar Reembolso
+```C#
+var result = await Reembolsos.ConsultarReembolsoAsync("REF-XXXXXXXXXXXX");
+```
+
+#### Listar Reembolsos do Pagamento
+```C#
+var result = await Reembolsos.ListarReembolsosDoPagamentoAsync("PAY-XXXXXXXXXXXX");
+```
+
+#### Listar Reembolsos do Pedido
+```C#
+var result = await Reembolsos.ListarReembolsosDoPedidoAsync("ORD-XXXXXXXXXXXX");
+```
+
+## Conciliação
+#### Obter Arquivo de Vendas
+```C#
+var result = await Conciliacao.ObterArquivoDeVendasAsync("20180829"); // Data no formato YYYYMMDD
+```
+
+#### Obter Arquivo Financeiro
+```C#
+var result = await Conciliacao.ObterArquivoFinanceiroAsync("2018-08-29"); // Data no formato YYYY-MM-DD
+```
+
 ## Licença
 
 [The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)

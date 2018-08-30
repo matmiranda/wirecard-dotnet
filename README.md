@@ -445,16 +445,17 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 
 ## Exceção
 #### Obter erros
-Você pode recuperar os atributos `code`, `path`, `description` e `message`, veja no exemplo abaixo, que o valor `"0"` não existe, então vai gerar um exceção:
+Você pode recuperar os atributos `code`, `path`, `description` e `message`, veja no exemplo abaixo:
 ```C#
- try
- {
-     var result = await Pedidos.ConsultarPedidoAsync("0");
- }
- catch (Exception)
- {
-     var erros = MoipException;
- }
+try
+{
+    var result = await Pedidos.CriarPedidoAsync(new CriarPedidoRequest());
+}
+catch (Exception ex)
+{
+    var ex_message = ex.Message;
+    var erros =  MoipException;
+}
 ```
 
 #### Tabela de erros

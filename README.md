@@ -31,6 +31,7 @@
 - [Reembolsos](#reembolsos)
 - [Conciliação](#conciliação)
 - [Tabela - Filtros de busca](#tabela---filtros-de-busca)
+- [Exceção](#exceção)
 - [Licença](#licença)
 
 ## Instalação

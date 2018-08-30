@@ -9,7 +9,7 @@
     .
     <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Referência API</a>
     ·
-    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Slack</a>
+    <a href="https://slackin-cqtchmfquq.now.sh/">Slack</a>
   </p>
 </p>
 

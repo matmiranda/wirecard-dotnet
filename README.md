@@ -428,10 +428,11 @@ var result = await Conciliacao.ObterArquivoFinanceiroAsync("2018-08-29"); // Dat
 Exemplo:
 
 > Fazendo uma busca com os seguintes requisitos:
-Transações de valores entre 5000 e 10000 (em centavos);
-Formas de pagamento: Cartão de Crédito e Boleto;
-Cliente com o nome jose silva;
-Retornando 3 resultados.
+
+ - Transações de valores entre 5000 e 10000 (em centavos);
+ - Formas de pagamento: Cartão de Crédito e Boleto;
+ - Cliente com o nome jose silva;
+ - Retornando 3 resultados.
 GET https: //sandbox.moip.com.br/v2/orders?q=jose silva
 &filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)
 |value::bt(5000,10000)&limit=3&offset=0

@@ -294,7 +294,7 @@ var result = await Notificacoes.ConsultarPreferenciaNotificacao(HttpClient, "NPR
 
 #### Listar Todas as Preferências de Notificação
 ```C#
-var result = await Notificacoes.ListarTodasPreferenciasNotificacaoAsync(HttpClient);
+var result = await Notificacoes.ListarTodasPreferenciasNotificacao(HttpClient);
 ```
 
 #### Remover Preferência de Notificação

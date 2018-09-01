@@ -42,7 +42,7 @@ Essa biblioteca usa a classe [HttpClient](https://docs.microsoft.com/pt-br/dotne
 [HttpClient](https://docs.microsoft.com/pt-br/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client#create-and-initialize-httpclient) destina-se a ser instanciada uma vez e reutilizada durante a vida útil de um aplicativo. 
 
 As condições a seguir podem resultar em [SocketException](https://msdn.microsoft.com/pt-br/library/system.net.sockets.socketexception(v=vs.110).aspx) erros:
-- Criando uma nova instâncoa **HttpClient** por solicitação.
+- Criando uma nova instância **HttpClient** por solicitação.
 - Servidor sob carga pesada.
 
 Criando uma nova instância **HttpClient** por solicitação, podendo esgotar os soquetes disponíveis.

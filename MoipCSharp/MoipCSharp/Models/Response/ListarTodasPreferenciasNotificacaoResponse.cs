@@ -2,7 +2,12 @@
 
 namespace MoipCSharp.Models
 {
-    public class CriarPreferenciaDeNotificacaoParaContaMoipResponse
+    public class ListarTodasPreferenciasNotificacaoResponse
+    {
+        public Listas[] Listas { get; set; }
+    }
+
+    public class Listas
     {
         public string[] events { get; set; }
         public string target { get; set; }

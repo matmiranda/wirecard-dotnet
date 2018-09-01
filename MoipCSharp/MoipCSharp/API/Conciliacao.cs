@@ -9,32 +9,28 @@ namespace MoipCSharp
 {
     public static class Conciliacao
     {
-        public static async Task<ObterArquivoDeVendasResponse> ObterArquivoDeVendasAsync(string date)
+        public static async Task<ObterArquivoVendasResponse> ObterArquivoVendas(HttpClient httpClient, string date)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/reconciliations/sales/{date}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<ObterArquivoDeVendasResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ObterArquivoVendasResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<string> ObterArquivoFinanceiroAsync(string eventsCreatedAt)
+        public static async Task<string> ObterArquivoFinanceiro(HttpClient httpClient, string eventsCreatedAt)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/reconciliations/financials?eventsCreatedAt={eventsCreatedAt}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             return await response.Content.ReadAsStringAsync();
         }

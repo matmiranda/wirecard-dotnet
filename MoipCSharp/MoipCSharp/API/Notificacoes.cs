@@ -10,52 +10,46 @@ namespace MoipCSharp
 {
     public static class Notificacoes
     {
-        public static async Task<CriarPreferenciaDeNotificacaoParaContaMoipResponse> CriarPreferenciaDeNotificacaoParaContaMoipAsync(CriarPreferenciaDeNotificacaoParaContaMoipRequest body)
+        public static async Task<CriarPreferenciaNotificacaoContaMoipResponse> CriarPreferenciaNotificacaoContaMoip(HttpClient httpClient, CriarPreferenciaNotificacaoContaMoipRequest body)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("v2/preferences/notifications", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarPreferenciaDeNotificacaoParaContaMoipResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<CriarPreferenciaNotificacaoContaMoipResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<CriarPreferenciaDeNotificacaoParaAppResponse> CriarPreferenciaDeNotificacaoParaAppAsync(CriarPreferenciaDeNotificacaoParaAppRequest body, string app_id)
+        public static async Task<CriarPreferenciaNotificacaoAppResponse> CriarPreferenciaNotificacaoApp(HttpClient httpClient, CriarPreferenciaNotificacaoAppRequest body, string app_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarPreferenciaDeNotificacaoParaAppResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<CriarPreferenciaNotificacaoAppResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarPreferenciaDeNotificacaoResponse> ConsultarPreferenciaDeNotificacaoAsync(string notification_id)
+        public static async Task<ConsultarPreferenciaDeNotificacaoResponse> ConsultarPreferenciaNotificacao(HttpClient httpClient, string notification_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/preferences/notifications/{notification_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -66,43 +60,37 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodasAsPreferenciasDeNotificacaoResponse> ListarTodasAsPreferenciasDeNotificacaoAsync()
+        public static async Task<ListarTodasPreferenciasNotificacaoResponse> ListarTodasPreferenciasNotificacao(HttpClient httpClient)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync("v2/preferences/notifications");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodasAsPreferenciasDeNotificacaoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ListarTodasPreferenciasNotificacaoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<HttpStatusCode> RemoverPreferenciaDeNotificacaoAsync(string notification_id)
+        public static async Task<HttpStatusCode> RemoverPreferenciaNotificacao(HttpClient httpClient, string notification_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.DeleteAsync($"v2/preferences/notifications/{notification_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             return response.StatusCode;
         }
-        public static async Task<ConsultarWebhookEnviadoResponse> ConsultarWebhookEnviadoAsync(string payment_id)
+        public static async Task<ConsultarWebhookEnviadoResponse> ConsultarWebhookEnviado(HttpClient httpClient, string payment_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/webhooks?resourceId={payment_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -113,14 +101,12 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosOsWebhooksEnviadosResponse> ListarTodosOsWebhooksEnviadosAsync()
+        public static async Task<ListarTodosOsWebhooksEnviadosResponse> ListarTodosWebhooksEnviados(HttpClient httpClient)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync("v2/webhooks");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {

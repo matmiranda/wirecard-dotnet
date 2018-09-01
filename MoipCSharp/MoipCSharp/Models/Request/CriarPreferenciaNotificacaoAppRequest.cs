@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class CriarPreferenciaDeNotificacaoParaAppRequest
+    public class CriarPreferenciaNotificacaoAppRequest
     {
         public string[] events { get; set; }
         public string target { get; set; }

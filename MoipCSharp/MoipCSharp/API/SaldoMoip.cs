@@ -9,14 +9,12 @@ namespace MoipCSharp
 {
     public static class SaldoMoip
     {
-        public static async Task<ConsultarSaldosResponse> ConsultarSaldosAsync()
+        public static async Task<ConsultarSaldosResponse> ConsultarSaldos(HttpClient httpClient)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync("v2/balances");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {

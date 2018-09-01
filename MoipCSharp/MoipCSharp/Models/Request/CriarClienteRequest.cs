@@ -1,7 +1,7 @@
 namespace MoipCSharp.Models
 {
 #pragma warning disable IDE1006
-    public class ClienteRequest
+    public class CriarClienteRequest
     {
         public string ownId { get; set; }
         public string fullname { get; set; }

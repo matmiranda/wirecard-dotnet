@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class ObterArquivoDeVendasResponse
+    public class ObterArquivoVendasResponse
     {
         public string id { get; set; }
         public string date { get; set; }

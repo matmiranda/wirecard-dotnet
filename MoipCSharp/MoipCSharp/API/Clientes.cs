@@ -10,15 +10,13 @@ namespace MoipCSharp
 {
     public static class Clientes
     {
-        public static async Task<ClienteResponse> CriarClienteAsync(ClienteRequest body)
+        public static async Task<ClienteResponse> CriarCliente(HttpClient httpClient, CriarClienteRequest body)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/customers", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -29,34 +27,30 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<CartaoDeCreditoResponse> AdicionarCartaoDeCreditoAsync(CartaoDeCreditoRequest body, string customer_id)
+        public static async Task<CriarCartaoCreditoResponse> AdicionarCartaoCredito(HttpClient httpClient, AdicionarCartaoCreditoRequest body, string customer_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/customers/{customer_id}/fundinginstruments", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<CartaoDeCreditoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<CriarCartaoCreditoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<AtualizarClienteResponse> AtualizarClienteAsync(AtualizarClienteRequest body)
+        public static async Task<AtualizarClienteResponse> AtualizarCliente(HttpClient httpClient, AtualizarClienteRequest body)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -67,20 +61,17 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<HttpStatusCode> DeletarCartaoDeCreditoAsync(string creditcard_id)
+        public static async Task<HttpStatusCode> DeletarCartaoCredito(HttpClient httpClient, string creditcard_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.DeleteAsync($"v2/fundinginstruments/{creditcard_id}");
             return response.StatusCode;
         }
-        public static async Task<ClienteResponse> ConsultarClienteAsync(string customer_id)
+        public static async Task<ClienteResponse> ConsultarCliente(HttpClient httpClient, string customer_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/customers/{customer_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -91,18 +82,16 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosOsClientesResponse> ListarTodosOsClientes()
+        public static async Task<ListarTodosClientesResponse> ListarTodosClientes(HttpClient httpClient)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/customers/");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodosOsClientesResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ListarTodosClientesResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿#pragma warning disable IDE1006
 
 namespace MoipCSharp.Models
 {
-    public class ReembolsarPedidoViaCartaoDeCreditoRequest
+    public class ReembolsarPedidoCartaoCreditoRequest
     {
         public string amount { get; set; }
         public Refundinginstrument refundingInstrument { get; set; }

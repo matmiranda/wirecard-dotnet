@@ -10,15 +10,13 @@ namespace MoipCSharp
 {
     public static class Pedidos
     {
-        public static async Task<CriarPedidoResponse> CriarPedidoAsync(CriarPedidoRequest body)
+        public static async Task<CriarPedidoResponse> CriarPedido(HttpClient httpClient, CriarPedidoRequest body)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -29,14 +27,12 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarPedidoResponse> ConsultarPedidoAsync(string order_id)
+        public static async Task<ConsultarPedidoResponse> ConsultarPedido(HttpClient httpClient, string order_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders/{order_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -47,36 +43,32 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosOsPedidosResponse> ListarTodosOsPedidosAsync()
+        public static async Task<ListarTodosPedidosResponse> ListarTodosPedidos(HttpClient httpClient)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodosOsPedidosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ListarTodosPedidosResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosOsPedidosResponse> ListarTodosOsPedidosFiltrosAsync(string filtros)
+        public static async Task<ListarTodosPedidosResponse> ListarTodosPedidosFiltros(HttpClient httpClient, string filtros)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders?{filtros}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodosOsPedidosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ListarTodosPedidosResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

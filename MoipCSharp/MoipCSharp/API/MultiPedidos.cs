@@ -10,15 +10,13 @@ namespace MoipCSharp
 {
     public static class MultiPedidos
     {
-        public static async Task<CriarMultiPedidoResponse> CriarMultiPedidoAsync(CriarMultiPedidoRequest body)
+        public static async Task<CriarMultiPedidoResponse> CriarMultiPedido(HttpClient httpClient, CriarMultiPedidoRequest body)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("v2/multiorders", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -29,14 +27,12 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarMultipedidoResponse> ConsultarMultiPedidoAsync(string multiorder_id)
+        public static async Task<ConsultarMultipedidoResponse> ConsultarMultiPedido(HttpClient httpClient, string multiorder_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/multiorders/{multiorder_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {

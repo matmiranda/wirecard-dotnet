@@ -1,7 +1,7 @@
 ﻿#pragma warning disable IDE1006
 namespace MoipCSharp.Models
 {
-    public class CartaoDeCreditoResponse
+    public class CriarCartaoCreditoResponse
     {
         public Creditcard creditCard { get; set; }
         public Card card { get; set; }

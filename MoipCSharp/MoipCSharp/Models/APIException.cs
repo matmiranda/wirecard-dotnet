@@ -1,10 +1,10 @@
 ﻿#pragma warning disable IDE1006
-
 namespace MoipCSharp.Exceptions
 {
-    public class APIException
+    public class MoipException
     {
         public Error[] errors { get; set; }
+        public string error { get; set; }
     }
 
     public class Error
@@ -14,5 +14,4 @@ namespace MoipCSharp.Exceptions
         public string description { get; set; }
         public string message { get; set; }
     }
-
 }

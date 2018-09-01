@@ -10,15 +10,13 @@ namespace MoipCSharp
 {
     public static class Reembolsos
     {
-        public static async Task<ReembolsarPagamentoResponse> ReembolsarPagamentoAsync(ReembolsarPagamentoRequest body, string payment_id)
+        public static async Task<ReembolsarPagamentoResponse> ReembolsarPagamento(HttpClient httpClient, ReembolsarPagamentoRequest body, string payment_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/refunds", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -29,33 +27,29 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ReembolsarPedidoViaCartaoDeCreditoResponse> ReembolsarPedidoViaCartaoDeCreditoAsync(ReembolsarPedidoViaCartaoDeCreditoRequest body, string order_id)
+        public static async Task<ReembolsarPedidoCartaoCreditoResponse> ReembolsarPedidoCartaoCredito(HttpClient httpClient, ReembolsarPedidoCartaoCreditoRequest body, string order_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/{order_id}/refunds", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<ReembolsarPedidoViaCartaoDeCreditoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ReembolsarPedidoCartaoCreditoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarReembolsoResponse> ConsultarReembolsoAsync(string refund_id)
+        public static async Task<ConsultarReembolsoResponse> ConsultarReembolso(HttpClient httpClient, string refund_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/refunds/{refund_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -66,36 +60,32 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarReembolsosDoPagamentoResponse> ListarReembolsosDoPagamentoAsync(string payment_id)
+        public static async Task<ListarReembolsosPagamentoResponse> ListarReembolsosPagamento(HttpClient httpClient, string payment_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/payments/{payment_id}/refunds");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarReembolsosDoPagamentoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ListarReembolsosPagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarReembolsosDoPedidoResponse> ListarReembolsosDoPedidoAsync(string orders_id)
+        public static async Task<ListarReembolsosPedidoResponse> ListarReembolsosPedido(HttpClient httpClient, string orders_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders/{orders_id}/refunds");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarReembolsosDoPedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ListarReembolsosPedidoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

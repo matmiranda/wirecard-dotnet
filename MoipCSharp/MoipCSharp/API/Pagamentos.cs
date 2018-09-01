@@ -10,15 +10,13 @@ namespace MoipCSharp
 {
     public static class Pagamentos
     {
-        public static async Task<CriarPedidoResponse> CriarPagamentoAsync(CriarPagamentoRequest body, string order_id)
+        public static async Task<CriarPedidoResponse> CriarPagamento(HttpClient httpClient, CriarPagamentoRequest body, string order_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/{order_id}/payments", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -29,32 +27,28 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<LiberacaoDeCustodiaResponse> LiberacaoDeCustodiaAsync(string escrow_id)
-        {
-            HttpClient httpClient = Configuration.HttpClient();            
+        public static async Task<LiberarCustodiaResponse> LiberarCustodia(HttpClient httpClient, string escrow_id)
+        {          
             HttpResponseMessage response = await httpClient.PostAsync($"escrows/{escrow_id}/release", null);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
-                return JsonConvert.DeserializeObject<LiberacaoDeCustodiaResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<LiberarCustodiaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<CapturarPagamentoPreAutorizadoResponse> CapturarPagamentoPreAutorizadoAsync(string payment_id)
-        {
-            HttpClient httpClient = Configuration.HttpClient();            
+        public static async Task<CapturarPagamentoPreAutorizadoResponse> CapturarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
+        {           
             HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/capture", null);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -65,14 +59,12 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<CancelarPagamentoPreAutorizadoResponse> CancelarPagamentoPreAutorizadoAsync(string payment_id)
+        public static async Task<CancelarPagamentoPreAutorizadoResponse> CancelarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/void", null);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -83,14 +75,12 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarPagamentoResponse> ConsultarPagamentoAsync(string payment_id)
+        public static async Task<ConsultarPagamentoResponse> ConsultarPagamento(HttpClient httpClient, string payment_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/payments/{payment_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -101,15 +91,13 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<HttpStatusCode> SimularPagamentosAsync(string payment_id, int valor)
+        public static async Task<HttpStatusCode> SimularPagamentos(HttpClient httpClient, string payment_id, int valor)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             httpClient.BaseAddress = new Uri("https://sandbox.moip.com.br/");
             HttpResponseMessage response = await httpClient.GetAsync($"simulador/authorize?payment_id={payment_id}&amount={valor}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             return response.StatusCode;
         }

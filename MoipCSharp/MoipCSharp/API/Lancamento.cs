@@ -9,14 +9,12 @@ namespace MoipCSharp
 {
     public static class Lancamento
     {
-        public static async Task<ConsultarLancamentoResponse> ConsultarLancamentoAsync(string entry_id)
+        public static async Task<ConsultarLancamentoResponse> ConsultarLancamento(HttpClient httpClient, string entry_id)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync($"v2/entries/{entry_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {
@@ -27,14 +25,12 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosLancamentosResponse> ListarTodosLancamentosAsync()
+        public static async Task<ListarTodosLancamentosResponse> ListarTodosLancamentos(HttpClient httpClient)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             HttpResponseMessage response = await httpClient.GetAsync("v2/entries");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {

@@ -10,15 +10,13 @@ namespace MoipCSharp
 {
     public static class ContaTrasparente
     {
-        public static async Task<CriarContaMoipTransparenteResponse> CriarContaMoipTransparenteAsync(CriarContaMoipTransparenteRequest body)
+        public static async Task<CriarContaMoipTransparenteResponse> CriarContaMoipTransparente(HttpClient httpClient, CriarContaMoipTransparenteRequest body)
         {
-            HttpClient httpClient = Configuration.HttpClient();
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("v2/accounts", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
-            {
-                Configuration.DeserializeObject(await response.Content.ReadAsStringAsync());
-                throw new ArgumentException($"Error code: {(int)response.StatusCode} - {response.StatusCode}");
+            {                
+                throw new ArgumentException(await response.Content.ReadAsStringAsync());
             }
             try
             {

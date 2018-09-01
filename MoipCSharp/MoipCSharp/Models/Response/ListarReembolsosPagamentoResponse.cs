@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class ListarReembolsosDoPagamentoResponse
+    public class ListarReembolsosPagamentoResponse
     {
         public Refund[] refunds { get; set; }
     }

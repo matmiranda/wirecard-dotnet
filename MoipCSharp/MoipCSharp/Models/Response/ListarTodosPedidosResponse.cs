@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class ListarTodosOsPedidosResponse
+    public class ListarTodosPedidosResponse
     {
         public _Links _links { get; set; }
         public Summary summary { get; set; }

@@ -3,7 +3,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class ReembolsarPedidoViaCartaoDeCreditoResponse
+    public class ReembolsarPedidoCartaoCreditoResponse
     {
         public string id { get; set; }
         public string status { get; set; }

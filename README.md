@@ -14,6 +14,7 @@
 </p>
 
 ## Índice
+- [Informação](#informação)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Conta Clássica](#conta-clássica)
@@ -34,27 +35,39 @@
 - [Exceção](#exceção)
 - [Licença](#licença)
 
+## Informação
+
+Essa biblioteca usa a classe [HttpClient](https://docs.microsoft.com/pt-br/dotnet/api/system.net.http.httpclient?view=netframework-4.7.2) e disponibiliza os principais métodos (GET, POST, PUT, DELETE).
+
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 1.1.7
+PM> Install-Package MoipCSharp -Version 2.0.1
 ```
 
 ## Autenticando e configurando o ambiente
-Para gerar o client, informe seu token oAuth e em qual environment você quer executar suas ações:
+Para gerar o HttpClient, informe seu token oAuth e em qual environment você quer executar suas ações:
 ```C#
 using MoipCSharp;
 using MoipCSharp.Models;
-using static MoipCSharp.Configuration;
 
-private HttpClient client = SetClient("XXXXXXXXXXXXXXXXXXXXX_v2", BaseAddress.SANDBOX); //PRODUCTION == PRODUÇÃO
+private static HttpClient HttpClient = new HttpClient();
+
+Uri uri = new Uri(BaseAddress.SANDBOX);
+HttpClient.BaseAddress = uri;
+HttpClient.DefaultRequestHeaders.Clear();
+HttpClient.DefaultRequestHeaders.ConnectionClose = false;
+HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+ServicePointManager.FindServicePoint(uri).ConnectionLeaseTimeout = 60 * 1000; //1 minuto
+ServicePointManager.DnsRefreshTimeout = 60 * 1000; //1 minuto
+HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "xxxxxxxxxxxxxxxxxxxxxxxxxxx_v2");
 ```
 
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Moip
 ```C#
-var result = await ContaClassica.VerificarSeUsuarioJaPossuiContaMoipAsync("meu_email@email.com");
+var result = await ContaClassica.VerificarSeUsuarioJaPossuiContaMoip(HttpClient, "meu_email@email.com");
 ```
 
 #### Criar Conta Moip Clássica
@@ -63,32 +76,32 @@ var body = new CriarContaMoipClassicaRequest
 {
     //informe os campos aqui
 };
-var result = await ContaClassica.CriarContaMoipClassicaAsync(body);
+var result = await ContaClassica.CriarContaMoipClassica(HttpClient, body);
 ```
 
 #### Consultar Conta Moip
 ```C#
-var result = await ContaClassica.ConsultarContaMoipAsync("MPA-XXXXXXXXXXXX");
+var result = await ContaClassica.ConsultarContaMoip(HttpClient, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Solicitar Permissões de Acesso ao Usuário
 ```C#
-var result = await ContaClassica.SolicitarPermissoesDeAcessoUsuarioAsync(/*informe o valor de cada parâmetro*/);
+var result = await ContaClassica.SolicitarPermissoesAcessoUsuario(HttpClient, /*informe o valor de cada parâmetro*/);
 ```
 
 #### Gerar Access Token
 ```C#
-var result = await ContaClassica.GerarAccessTokenAsync(/*informe o valor de cada parâmetro*/);
+var result = await ContaClassica.GerarAccessToken(HttpClient, /*informe o valor de cada parâmetro*/);
 ```
 
 #### Atualizar accessToken
 ```C#
-var result = await ContaClassica.AtualizarAccessTokenAsync(/*informe o valor de cada parâmetro*/);
+var result = await ContaClassica.AtualizarAccessToken(HttpClient, /*informe o valor de cada parâmetro*/);
 ```
 
 #### Obter chave pública de uma Conta Moip
 ```C#
-var result = await ContaClassica.ObterChavePublicaContaMoipAsync();
+var result = await ContaClassica.ObterChavePublicaContaMoip(HttpClient);
 ```
 
 ## Conta Transparente
@@ -98,7 +111,7 @@ var body = new CriarContaMoipTransparenteRequest
 {
     //informe os campos aqui
 };
-var result = await ContaTrasparente.CriarContaMoipTransparenteAsync(body);
+var result = await ContaTrasparente.CriarContaMoipTransparente(HttpClient, body);
 ```
 
 ## Clientes
@@ -108,7 +121,7 @@ var body = new ClienteRequest
 {
     //informe os campos aqui
 };
-var result = await Clientes.CriarClienteAsync(body);
+var result = await Clientes.CriarCliente(body);
 ```
 
 #### Adicionar Cartão de Crédito
@@ -117,7 +130,7 @@ var body = new CartaoDeCreditoRequest
 {
     //informe os campos aqui
 };
-var result = await Clientes.AdicionarCartaoDeCreditoAsync(body, "CUS-XXXXXXXXXXXX");
+var result = await Clientes.AdicionarCartaoDeCredito(HttpClient, body, "CUS-XXXXXXXXXXXX");
 ```
 
 #### Atualizar Cliente
@@ -126,22 +139,22 @@ var body = new AtualizarClienteRequest
 {
     //informe os campos aqui
 };
-var result = await Clientes.AtualizarClienteAsync(body);
+var result = await Clientes.AtualizarCliente(HttpClient, body);
 ```
 
 #### Deletar Cartão de Crédito
 ```C#
-var result = await Clientes.DeletarCartaoDeCreditoAsync("CRC-XXXXXXXXXXXX");
+var result = await Clientes.DeletarCartaoCredito(HttpClient, "CRC-XXXXXXXXXXXX");
 ```
 
 #### Consultar Cliente
 ```C#
-var result = await Clientes.ConsultarClienteAsync("CUS-XXXXXXXXXXXX");
+var result = await Clientes.ConsultarCliente(HttpClient, "CUS-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Clientes
 ```C#
-var result = await Clientes.ListarTodosOsClientes();
+var result = await Clientes.ListarTodosClientes(HttpClient);
 ```
 
 ## Pedidos
@@ -151,23 +164,23 @@ var body = new CriarPedidoRequest
 {
     //informe os campos aqui
 };
-var result = await Pedidos.CriarPedidoAsync(body);
+var result = await Pedidos.CriarPedido(HttpClient, body);
 ```
 
 #### Consultar Pedido
 ```C#
-var result = await Pedidos.ConsultarPedidoAsync("ORD-XXXXXXXXXXXX");
+var result = await Pedidos.ConsultarPedido(HttpClient, "ORD-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Pedidos - Sem Filtros
 ```C#
-var result = await Pedidos.ListarTodosOsPedidosAsync();
+var result = await Pedidos.ListarTodosPedidos(HttpClient);
 ```
 
 #### Listar Todos os Pedidos - Com Filtros
 ```C#
 string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0";
-var result = await Pedidos.ListarTodosOsPedidosFiltrosAsync(filtros);
+var result = await Pedidos.ListarTodosPedidosFiltros(HttpClient, filtros);
 ```
  Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
  
@@ -178,32 +191,32 @@ var body = new CriarPagamentoRequest
 {
     //informe os campos aqui
 };            
-var result = await Pagamentos.CriarPagamentoAsync(body, "ORD-XXXXXXXXXXXX");
+var result = await Pagamentos.CriarPagamento(HttpClient, body, "ORD-XXXXXXXXXXXX");
 ```
 
 #### Liberação de Custódia
 ```C#
-var result = await Pagamentos.LiberacaoDeCustodiaAsync("ECW-XXXXXXXXXXXX");
+var result = await Pagamentos.LiberarCustodia(HttpClient, "ECW-XXXXXXXXXXXX");
 ```
 
 #### Capturar Pagamento Pré-autorizado
 ```C#
-var result = await Pagamentos.CapturarPagamentoPreAutorizadoAsync("PAY-XXXXXXXXXXXX");
+var result = await Pagamentos.CapturarPagamentoPreAutorizado(HttpClient, "PAY-XXXXXXXXXXXX");
 ```
 
 #### Cancelar Pagamento Pré-autorizado
 ```C#
-var result = await Pagamentos.CancelarPagamentoPreAutorizadoAsync("PAY-XXXXXXXXXXXX");
+var result = await Pagamentos.CancelarPagamentoPreAutorizado(HttpClient, "PAY-XXXXXXXXXXXX");
 ```
 
 #### Consultar Pagamento
 ```C#
-var result = await Pagamentos.ConsultarPagamentoAsync("PAY-XXXXXXXXXXXX");
+var result = await Pagamentos.ConsultarPagamento(HttpClient, "PAY-XXXXXXXXXXXX");
 ```
 
 #### Simular Pagamentos (sandbox)
 ```C#
-var result = await Pagamentos.SimularPagamentosAsync("PAY-XXXXXXXXXXXX", 26500);
+var result = await Pagamentos.SimularPagamentos(HttpClient, "PAY-XXXXXXXXXXXX", 26500);
 ```
 
 ## Multipedidos
@@ -213,12 +226,12 @@ var body = new CriarMultiPedidoRequest
 {
     //informe os campos aqui
 };            
-var result = await MultiPedidos.CriarMultiPedidoAsync(body);
+var result = await MultiPedidos.CriarMultiPedido(HttpClient, body);
 ```
 
 #### Consultar Multipedido
 ```C#
-var result = await MultiPedidos.ConsultarMultiPedidoAsync("MOR-XXXXXXXXXXXX");
+var result = await MultiPedidos.ConsultarMultiPedido(HttpClient, "MOR-XXXXXXXXXXXX");
 ```
 
 ## Multipagamentos
@@ -228,67 +241,67 @@ var body = new CriarMultiPagamentoRequest
 {
     //informe os campos aqui
 };            
-var result = await MultiPagamentos.CriarMultiPagamentoAsync(body, "MOR-XXXXXXXXXXXX");
+var result = await MultiPagamentos.CriarMultiPagamento(HttpClient, body, "MOR-XXXXXXXXXXXX");
 ```
 #### Consultar Multipagamento
 ```C#
-var result = await MultiPagamentos.ConsultarMultiPagamentoAsync("MPY-XXXXXXXXXXXX");
+var result = await MultiPagamentos.ConsultarMultiPagamento(HttpClient, "MPY-XXXXXXXXXXXX");
 ```
 #### Capturar Multipagamento Pré-autorizado
 ```C#
-var result = await MultiPagamentos.CapturarMultiPagamentoPreAutorizadoAsync("MPY-XXXXXXXXXXXX");
+var result = await MultiPagamentos.CapturarMultiPagamentoPreAutorizado(HttpClient, "MPY-XXXXXXXXXXXX");
 ```
 #### Cancelar Multipagamento Pré-autorizado
 ```C#
-var result = await MultiPagamentos.CancelarMultiPagamentoPreAutorizadoAsync("MPY-XXXXXXXXXXXX");
+var result = await MultiPagamentos.CancelarMultiPagamentoPreAutorizado(HttpClient, "MPY-XXXXXXXXXXXX");
 ```
 #### Liberação de Custódia
 ```C#
-var result = await MultiPagamentos.LiberarCustodiaAsync("ECW-XXXXXXXXXXXX");
+var result = await MultiPagamentos.LiberarCustodia(HttpClient, "ECW-XXXXXXXXXXXX");
 ```
 
 ## Notificações
 #### Criar Preferência de Notificação para Conta Moip
 ```C#
-var body = new CriarPreferenciaDeNotificacaoParaContaMoipRequest
+var body = new CriarPreferenciaNotificacaoContaMoipRequest
 {
     //informe os campos aqui
 };            
-var result = await Notificacoes.CriarPreferenciaDeNotificacaoParaContaMoipAsync(body);
+var result = await Notificacoes.CriarPreferenciaNotificacaoContaMoip(HttpClient, body);
 ```
 
 #### Criar Preferência de Notificação para App
 ```C#
-var body = new CriarPreferenciaDeNotificacaoParaAppRequest
+var body = new CriarPreferenciaNotificacaoAppRequest
 {
     //informe os campos aqui
 };            
-var result = await Notificacoes.CriarPreferenciaDeNotificacaoParaAppAsync(body, "APP-XXXXXXXXXXXX");
+var result = await Notificacoes.CriarPreferenciaNotificacaoApp(HttpClient, body, "APP-XXXXXXXXXXXX");
 ```
 
 #### Consultar Preferência de Notificação
 ```C#
-var result = await Notificacoes.ConsultarPreferenciaDeNotificacaoAsync("NPR-XXXXXXXXXXXX");
+var result = await Notificacoes.ConsultarPreferenciaNotificacao(HttpClient, "NPR-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas as Preferências de Notificação
 ```C#
-var result = await Notificacoes.ListarTodasAsPreferenciasDeNotificacaoAsync();
+var result = await Notificacoes.ListarTodasPreferenciasNotificacaoAsync(HttpClient);
 ```
 
 #### Remover Preferência de Notificação
 ```C#
-var result = await Notificacoes.RemoverPreferenciaDeNotificacaoAsync("NPR-XXXXXXXXXXXX");
+var result = await Notificacoes.RemoverPreferenciaNotificacao(HttpClient, "NPR-XXXXXXXXXXXX");
 ```
 
 #### Consultar Webhook Enviado
 ```C#
-var result = await Notificacoes.ConsultarWebhookEnviadoAsync("PAY-XXXXXXXXXXXX"); 
+var result = await Notificacoes.ConsultarWebhookEnviado(HttpClient, "PAY-XXXXXXXXXXXX"); 
 ```
 
 #### Listar Todos os Webhooks Enviados
 ```C#
-var result = await Notificacoes.ListarTodosOsWebhooksEnviadosAsync();
+var result = await Notificacoes.ListarTodosWebhooksEnviados(HttpClient);
 ```
 
 ## Contas Bancárias
@@ -298,22 +311,22 @@ var body = new CriarContaBancariaRequest
 {
     //informe os campos aqui
 };            
-var result = await ContasBancarias.CriarContaBancariaAsync(body, "MPA-XXXXXXXXXXXX");
+var result = await ContasBancarias.CriarContaBancaria(HttpClient, body, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Consultar Conta Bancária
 ```C#
-var result = await ContasBancarias.ConsultarContaBancariaAsync("BKA-XXXXXXXXXXXX");
+var result = await ContasBancarias.ConsultarContaBancaria(HttpClient, "BKA-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas Contas Bancárias
 ```C#
-var result = await ContasBancarias.ListarTodasContasBancariasAsync("MPA-XXXXXXXXXXXX");
+var result = await ContasBancarias.ListarTodasContasBancarias(HttpClient, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Deletar Conta Bancária
 ```C#
-var result = await ContasBancarias.DeletarContaBancariaAsync("BKA-XXXXXXXXXXXX");
+var result = await ContasBancarias.DeletarContaBancaria(HttpClient, "BKA-XXXXXXXXXXXX");
 ```
 
 #### Atualizar Conta Bancária
@@ -322,24 +335,24 @@ var body = new AtualizarContaBancariaRequest
 {
     //informe os campos aqui
 };            
-var result = await ContasBancarias.AtualizarContaBancariaAsync(body, "BKA-XXXXXXXXXXXX");
+var result = await ContasBancarias.AtualizarContaBancaria(HttpClient, body, "BKA-XXXXXXXXXXXX");
 ```
 
 ## Saldo Moip
 #### Consultar Saldos
 ```C#
-var result = await SaldoMoip.ConsultarSaldosAsync();
+var result = await SaldoMoip.ConsultarSaldos();
 ```
 
 ## Lançamentos
 #### Consultar Lançamento
 ```C#
-var result = await Lancamento.ConsultarLancamentoAsync("ENT-XXXXXXXXXXXX");
+var result = await Lancamento.ConsultarLancamento(HttpClient, "ENT-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos Lançamentos
 ```C#
-var result = await Lancamento.ListarTodosLancamentosAsync();
+var result = await Lancamento.ListarTodosLancamentos(HttpClient);
 ```
 
 ## Transferências
@@ -349,22 +362,22 @@ var body = new CriarTransferenciaRequest
 {
     //informe os campos aqui
 };            
-var result = await Transferencias.CriarTransferenciaAsync(body);
+var result = await Transferencias.CriarTransferencia(HttpClient, body);
 ```
 
 #### Reverter Transferência
 ```C#
-var result = await Transferencias.ReverterTransferenciaAsync("TRA-XXXXXXXXXXXX");
+var result = await Transferencias.ReverterTransferencia(HttpClient, "TRA-XXXXXXXXXXXX");
 ```
 
 #### Consultar Transferência
 ```C#
-var result = await Transferencias.ConsultarTransferenciaAsync("TRA-XXXXXXXXXXXX");
+var result = await Transferencias.ConsultarTransferencia(HttpClient, "TRA-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas Transferências
 ```C#
-var result = await Transferencias.ListarTodasTransferenciasAsync();
+var result = await Transferencias.ListarTodasTransferencias(HttpClient);
 ```
 
 ## Reembolsos
@@ -374,42 +387,42 @@ var body = new ReembolsarPagamentoRequest
 {
     //informe os campos aqui
 };            
-var result = await Reembolsos.ReembolsarPagamentoAsync(body, "PAY-XXXXXXXXXXXX");
+var result = await Reembolsos.ReembolsarPagamento(HttpClient, body, "PAY-XXXXXXXXXXXX");
 ```
 
 #### Reembolsar Pedido via Cartão de Crédito
 ```C#
-var body = new ReembolsarPedidoViaCartaoDeCreditoRequest
+var body = new ReembolsarPedidoCartaoCreditoRequest
 {
     //informe os campos aqui
 };            
-var result = await Reembolsos.ReembolsarPedidoViaCartaoDeCreditoAsync(body, "ORD-XXXXXXXXXXXX");
+var result = await Reembolsos.ReembolsarPedidoCartaoCredito(HttpClient, body, "ORD-XXXXXXXXXXXX");
 ```
 
 #### Consultar Reembolso
 ```C#
-var result = await Reembolsos.ConsultarReembolsoAsync("REF-XXXXXXXXXXXX");
+var result = await Reembolsos.ConsultarReembolso(HttpClient, "REF-XXXXXXXXXXXX");
 ```
 
 #### Listar Reembolsos do Pagamento
 ```C#
-var result = await Reembolsos.ListarReembolsosDoPagamentoAsync("PAY-XXXXXXXXXXXX");
+var result = await Reembolsos.ListarReembolsosPagamento(HttpClient, "PAY-XXXXXXXXXXXX");
 ```
 
 #### Listar Reembolsos do Pedido
 ```C#
-var result = await Reembolsos.ListarReembolsosDoPedidoAsync("ORD-XXXXXXXXXXXX");
+var result = await Reembolsos.ListarReembolsosPedido(HttpClient, "ORD-XXXXXXXXXXXX");
 ```
 
 ## Conciliação
 #### Obter Arquivo de Vendas
 ```C#
-var result = await Conciliacao.ObterArquivoDeVendasAsync("20180829"); // Data no formato YYYYMMDD
+var result = await Conciliacao.ObterArquivoVendas(HttpClient, "20180829"); // Data no formato YYYYMMDD
 ```
 
 #### Obter Arquivo Financeiro
 ```C#
-var result = await Conciliacao.ObterArquivoFinanceiroAsync("2018-08-29"); // Data no formato YYYY-MM-DD
+var result = await Conciliacao.ObterArquivoFinanceiro(HttpClient, "2018-08-29"); // Data no formato YYYY-MM-DD
 ```
 
 ## Tabela - Filtros de busca
@@ -447,14 +460,15 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 #### Obter erros
 Você pode recuperar os atributos `code`, `path`, `description` e `message`, veja no exemplo abaixo:
 ```C#
+using MoipCSharp.Exceptions;
+
 try
 {
-    var result = await Pedidos.CriarPedidoAsync(new CriarPedidoRequest());
+    var result = await Clientes.CriarCliente(HttpClient, new CriarClienteRequest());
 }
-catch (Exception ex)
+catch (Exception moip)
 {
-    var ex_message = ex.Message;
-    var erros =  MoipException;
+    var erros = JsonConvert.DeserializeObject<MoipException>(moip.Message);
 }
 ```
 

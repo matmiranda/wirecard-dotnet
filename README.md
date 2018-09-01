@@ -55,7 +55,15 @@ PM> Install-Package MoipCSharp -Version 2.0.1
 ```
 
 ## Autenticando e configurando o ambiente
-Para gerar o HttpClient, informe seu token oAuth e em qual environment você quer executar suas ações:
+Para gerar o HttpClient, informe seu token `Authorization` e em qual "meio ambiente" você quer executar suas ações:
+
+Meio ambiente, valores possíveis:
+
+```C#
+BaseAddress.SANDBOX // ambiente de teste
+BaseAddress.PRODUCTION // ambiente de produção
+```
+
 ```C#
 using MoipCSharp;
 using MoipCSharp.Models;

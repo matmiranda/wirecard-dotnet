@@ -42,10 +42,10 @@ Essa biblioteca usa a classe [HttpClient](https://docs.microsoft.com/pt-br/dotne
 [HttpClient](https://docs.microsoft.com/pt-br/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client#create-and-initialize-httpclient) destina-se a ser instanciada uma vez e reutilizada durante a vida útil de um aplicativo. 
 
 As condições a seguir podem resultar em [SocketException](https://msdn.microsoft.com/pt-br/library/system.net.sockets.socketexception(v=vs.110).aspx) erros:
-- Criando um novo HttpClient instância por solicitação.
+- Criando uma nova instâncoa **HttpClient** por solicitação.
 - Servidor sob carga pesada.
 
-Criando um novo **HttpClient** instância por solicitação pode esgotar os soquetes disponíveis.
+Criando uma nova instância **HttpClient** por solicitação, podendo esgotar os soquetes disponíveis.
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):

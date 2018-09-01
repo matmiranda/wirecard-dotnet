@@ -39,7 +39,9 @@
 
 Essa biblioteca usa a classe [HttpClient](https://docs.microsoft.com/pt-br/dotnet/api/system.net.http.httpclient?view=netframework-4.7.2) e disponibiliza os principais métodos (GET, POST, PUT, DELETE).
 
-[HttpClient](https://docs.microsoft.com/pt-br/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client#create-and-initialize-httpclient) é se destina a ser instanciado uma vez e reutilizado durante a vida útil de um aplicativo. As condições a seguir podem resultar em SocketException erros:
+[HttpClient](https://docs.microsoft.com/pt-br/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client#create-and-initialize-httpclient) é se destina a ser instanciado uma vez e reutilizado durante a vida útil de um aplicativo. 
+
+As condições a seguir podem resultar em SocketException erros:
 - Criando um novo HttpClient instância por solicitação.
 - Servidor sob carga pesada.
 

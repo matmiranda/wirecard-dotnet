@@ -9,7 +9,7 @@ namespace MoipCSharp
 {
     public static class Conciliacao
     {
-        public static async Task<ObterArquivoVendasResponse> ObterArquivoVendas(HttpClient httpClient, string date)
+        public static async Task<ArquivoVendasResponse> ObterArquivoVendas(HttpClient httpClient, string date)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/reconciliations/sales/{date}");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -18,7 +18,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ObterArquivoVendasResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ArquivoVendasResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

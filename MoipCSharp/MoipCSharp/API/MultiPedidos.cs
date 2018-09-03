@@ -10,7 +10,7 @@ namespace MoipCSharp
 {
     public static class MultiPedidos
     {
-        public static async Task<CriarMultiPedidoResponse> CriarMultiPedido(HttpClient httpClient, CriarMultiPedidoRequest body)
+        public static async Task<MultiPedidoResponse> CriarMultiPedido(HttpClient httpClient, CriarMultiPedidoRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("v2/multiorders", stringContent);
@@ -20,14 +20,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarMultiPedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<MultiPedidoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarMultipedidoResponse> ConsultarMultiPedido(HttpClient httpClient, string multiorder_id)
+        public static async Task<MultiPedidoResponse> ConsultarMultiPedido(HttpClient httpClient, string multiorder_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/multiorders/{multiorder_id}");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -36,7 +36,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ConsultarMultipedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<MultiPedidoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

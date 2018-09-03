@@ -10,7 +10,7 @@ namespace MoipCSharp
 {
     public static class Pagamentos
     {
-        public static async Task<CriarPedidoResponse> CriarPagamento(HttpClient httpClient, CriarPagamentoRequest body, string order_id)
+        public static async Task<PedidoResponse> CriarPagamento(HttpClient httpClient, CriarPagamentoRequest body, string order_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/{order_id}/payments", stringContent);
@@ -20,14 +20,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarPedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PedidoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<LiberarCustodiaResponse> LiberarCustodia(HttpClient httpClient, string escrow_id)
+        public static async Task<CustodiaResponse> LiberarCustodia(HttpClient httpClient, string escrow_id)
         {          
             HttpResponseMessage response = await httpClient.PostAsync($"escrows/{escrow_id}/release", null);
             if (response.StatusCode != HttpStatusCode.OK)
@@ -36,14 +36,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<LiberarCustodiaResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<CustodiaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<CapturarPagamentoPreAutorizadoResponse> CapturarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
+        public static async Task<PagamentoPreAutorizadoResponse> CapturarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
         {           
             HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/capture", null);
             if (response.StatusCode != HttpStatusCode.OK)
@@ -52,14 +52,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CapturarPagamentoPreAutorizadoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PagamentoPreAutorizadoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<CancelarPagamentoPreAutorizadoResponse> CancelarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
+        public static async Task<PagamentoPreAutorizadoResponse> CancelarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
         {
             HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/void", null);
             if (response.StatusCode != HttpStatusCode.OK)
@@ -68,14 +68,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CancelarPagamentoPreAutorizadoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PagamentoPreAutorizadoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarPagamentoResponse> ConsultarPagamento(HttpClient httpClient, string payment_id)
+        public static async Task<PagamentoResponse> ConsultarPagamento(HttpClient httpClient, string payment_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/payments/{payment_id}");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -84,7 +84,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ConsultarPagamentoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

@@ -27,7 +27,7 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<CriarCartaoCreditoResponse> AdicionarCartaoCredito(HttpClient httpClient, AdicionarCartaoCreditoRequest body, string customer_id)
+        public static async Task<CartaoCreditoResponse> AdicionarCartaoCredito(HttpClient httpClient, AdicionarCartaoCreditoRequest body, string customer_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/customers/{customer_id}/fundinginstruments", stringContent);
@@ -37,7 +37,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarCartaoCreditoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<CartaoCreditoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosClientesResponse> ListarTodosClientes(HttpClient httpClient)
+        public static async Task<ClientesResponse> ListarTodosClientes(HttpClient httpClient)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/customers/");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -91,7 +91,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodosClientesResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ClientesResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

@@ -10,7 +10,7 @@ namespace MoipCSharp
 {
     public static class Notificacoes
     {
-        public static async Task<CriarPreferenciaNotificacaoContaMoipResponse> CriarPreferenciaNotificacaoContaMoip(HttpClient httpClient, CriarPreferenciaNotificacaoContaMoipRequest body)
+        public static async Task<PreferenciaNotificacaoContaMoipResponse> CriarPreferenciaNotificacaoContaMoip(HttpClient httpClient, CriarPreferenciaNotificacaoContaMoipRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("v2/preferences/notifications", stringContent);
@@ -20,14 +20,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarPreferenciaNotificacaoContaMoipResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PreferenciaNotificacaoContaMoipResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<CriarPreferenciaNotificacaoAppResponse> CriarPreferenciaNotificacaoApp(HttpClient httpClient, CriarPreferenciaNotificacaoAppRequest body, string app_id)
+        public static async Task<PreferenciaNotificacaoAppResponse> CriarPreferenciaNotificacaoApp(HttpClient httpClient, CriarPreferenciaNotificacaoAppRequest body, string app_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
@@ -37,14 +37,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarPreferenciaNotificacaoAppResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PreferenciaNotificacaoAppResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarPreferenciaDeNotificacaoResponse> ConsultarPreferenciaNotificacao(HttpClient httpClient, string notification_id)
+        public static async Task<PreferenciaNotificacaoResponse> ConsultarPreferenciaNotificacao(HttpClient httpClient, string notification_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/preferences/notifications/{notification_id}");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -53,14 +53,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ConsultarPreferenciaDeNotificacaoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PreferenciaNotificacaoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodasPreferenciasNotificacaoResponse> ListarTodasPreferenciasNotificacao(HttpClient httpClient)
+        public static async Task<PreferenciasNotificacaoResponse> ListarTodasPreferenciasNotificacao(HttpClient httpClient)
         {
             HttpResponseMessage response = await httpClient.GetAsync("v2/preferences/notifications");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -69,7 +69,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodasPreferenciasNotificacaoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PreferenciasNotificacaoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace MoipCSharp
             }
             return response.StatusCode;
         }
-        public static async Task<ConsultarWebhookEnviadoResponse> ConsultarWebhookEnviado(HttpClient httpClient, string payment_id)
+        public static async Task<WebhookEnviadoResponse> ConsultarWebhookEnviado(HttpClient httpClient, string payment_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/webhooks?resourceId={payment_id}");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -94,14 +94,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ConsultarWebhookEnviadoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<WebhookEnviadoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosOsWebhooksEnviadosResponse> ListarTodosWebhooksEnviados(HttpClient httpClient)
+        public static async Task<WebhooksEnviadosResponse> ListarTodosWebhooksEnviados(HttpClient httpClient)
         {
             HttpResponseMessage response = await httpClient.GetAsync("v2/webhooks");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -110,7 +110,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodosOsWebhooksEnviadosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<WebhooksEnviadosResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

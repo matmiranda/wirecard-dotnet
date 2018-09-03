@@ -9,7 +9,7 @@ namespace MoipCSharp
 {
     public static class SaldoMoip
     {
-        public static async Task<ConsultarSaldosResponse> ConsultarSaldos(HttpClient httpClient)
+        public static async Task<SaldosResponse> ConsultarSaldos(HttpClient httpClient)
         {
             HttpResponseMessage response = await httpClient.GetAsync("v2/balances");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -18,7 +18,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ConsultarSaldosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<SaldosResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

@@ -10,7 +10,7 @@ namespace MoipCSharp
 {
     public static class Pedidos
     {
-        public static async Task<CriarPedidoResponse> CriarPedido(HttpClient httpClient, CriarPedidoRequest body)
+        public static async Task<PedidoResponse> CriarPedido(HttpClient httpClient, CriarPedidoRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders", stringContent);
@@ -20,14 +20,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarPedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PedidoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarPedidoResponse> ConsultarPedido(HttpClient httpClient, string order_id)
+        public static async Task<PedidoResponse> ConsultarPedido(HttpClient httpClient, string order_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders/{order_id}");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -36,14 +36,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ConsultarPedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PedidoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosPedidosResponse> ListarTodosPedidos(HttpClient httpClient)
+        public static async Task<PedidosResponse> ListarTodosPedidos(HttpClient httpClient)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -52,14 +52,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodosPedidosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PedidosResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodosPedidosResponse> ListarTodosPedidosFiltros(HttpClient httpClient, string filtros)
+        public static async Task<PedidosResponse> ListarTodosPedidosFiltros(HttpClient httpClient, string filtros)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders?{filtros}");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -68,7 +68,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodosPedidosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PedidosResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

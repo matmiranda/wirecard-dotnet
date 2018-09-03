@@ -3,7 +3,7 @@ using System;
 namespace MoipCSharp.Models
 {
     #pragma warning disable IDE1006
-    public class CriarClienteResponse
+    public class ClienteResponse
     {
         public string id { get; set; }
         public string ownId { get; set; }

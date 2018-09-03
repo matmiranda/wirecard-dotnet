@@ -10,7 +10,7 @@ namespace MoipCSharp
 {
     public static class Transferencias
     {
-        public static async Task<CriarTransferenciaResponse> CriarTransferencia(HttpClient httpClient, CriarTransferenciaRequest body)
+        public static async Task<TransferenciaResponse> CriarTransferencia(HttpClient httpClient, CriarTransferenciaRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("v2/transfers", stringContent);
@@ -20,7 +20,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CriarTransferenciaResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<TransferenciaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
@@ -43,7 +43,7 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ConsultarTransferenciaResponse> ConsultarTransferencia(HttpClient httpClient, string transfer_id)
+        public static async Task<TransferenciaResponse> ConsultarTransferencia(HttpClient httpClient, string transfer_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/transfers/{transfer_id}");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -52,14 +52,14 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ConsultarTransferenciaResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<TransferenciaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<ListarTodasTransferenciasResponse> ListarTodasTransferencias(HttpClient httpClient)
+        public static async Task<TransferenciasResponse> ListarTodasTransferencias(HttpClient httpClient)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders");
             if (response.StatusCode != HttpStatusCode.OK)
@@ -68,7 +68,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ListarTodasTransferenciasResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<TransferenciasResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

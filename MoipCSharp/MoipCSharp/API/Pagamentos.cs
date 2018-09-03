@@ -10,7 +10,7 @@ namespace MoipCSharp
 {
     public static class Pagamentos
     {
-        public static async Task<PedidoResponse> CriarPagamento(HttpClient httpClient, CriarPagamentoRequest body, string order_id)
+        public static async Task<PagamentoResponse> CriarPagamento(HttpClient httpClient, CriarPagamentoRequest body, string order_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/{order_id}/payments", stringContent);
@@ -20,7 +20,7 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<PedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (Exception ex)
             {

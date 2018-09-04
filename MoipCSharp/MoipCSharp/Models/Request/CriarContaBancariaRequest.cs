@@ -9,7 +9,7 @@ namespace MoipCSharp.Models
         public string agencyCheckNumber { get; set; }
         public string accountNumber { get; set; }
         public string accountCheckNumber { get; set; }
-        public string type { get; set; }
+        public string @type { get; set; }
         public Holder holder { get; set; }
     }
 }

@@ -13,11 +13,11 @@ namespace MoipCSharp
         public static async Task<ArquivoVendasResponse> ObterArquivoVendas(HttpClient httpClient, string date)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/reconciliations/sales/{date}");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -31,11 +31,11 @@ namespace MoipCSharp
         public static async Task<string> ObterArquivoFinanceiro(HttpClient httpClient, string eventsCreatedAt)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/reconciliations/financials?eventsCreatedAt={eventsCreatedAt}");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             return await response.Content.ReadAsStringAsync();
         }

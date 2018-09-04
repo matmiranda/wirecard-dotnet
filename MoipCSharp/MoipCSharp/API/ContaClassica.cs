@@ -13,22 +13,22 @@ namespace MoipCSharp
         public static async Task<HttpStatusCode> VerificarSeUsuarioJaPossuiContaMoip(HttpClient httpClient, string email)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/exists?email={email}");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             return response.StatusCode;
         }
         public static async Task<ContaMoipClassicaResponse> CriarContaMoipClassica(HttpClient httpClient, CriarContaMoipClassicaRequest body)
         {         
             HttpResponseMessage response = await httpClient.PostAsync("v2/accounts", null);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -42,11 +42,11 @@ namespace MoipCSharp
         public static async Task<ContaMoipResponse> ConsultarContaMoip(HttpClient httpClient, string account_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -61,11 +61,11 @@ namespace MoipCSharp
         {
             httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
             HttpResponseMessage response = await httpClient.GetAsync($"oauth/authorize?response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -80,11 +80,11 @@ namespace MoipCSharp
         {
             httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
             HttpResponseMessage response = await httpClient.PostAsync($"oauth/token?client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type{grant_type}&code={code}", null);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -99,11 +99,11 @@ namespace MoipCSharp
         {
             httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
             HttpResponseMessage response = await httpClient.PostAsync($"oauth/token?grant_type={grant_type}&refresh_token={refresh_token}", null);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -117,11 +117,11 @@ namespace MoipCSharp
         public static async Task<ChavePublicaContaMoipResponse> ObterChavePublicaContaMoip(HttpClient httpClient)
         {
             HttpResponseMessage response = await httpClient.GetAsync("v2/keys");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {

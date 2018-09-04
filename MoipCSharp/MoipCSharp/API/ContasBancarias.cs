@@ -15,11 +15,11 @@ namespace MoipCSharp
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/accounts/{account_id}/bankaccounts", stringContent);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -39,11 +39,11 @@ namespace MoipCSharp
         public static async Task<ContaBancariaResponse> ConsultarContaBancaria(HttpClient httpClient, string bank_account_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/bankaccounts/{bank_account_id}");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -57,11 +57,11 @@ namespace MoipCSharp
         public static async Task<ContasBancariasResponse[]> ListarTodasContasBancarias(HttpClient httpClient, string account_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}/bankaccounts");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -75,11 +75,11 @@ namespace MoipCSharp
         public static async Task<HttpStatusCode> DeletarContaBancaria(HttpClient httpClient, string account_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}/bankaccounts");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             return response.StatusCode;
         }
@@ -87,11 +87,11 @@ namespace MoipCSharp
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PutAsync($"v2/bankaccounts/{bankaccount_id}", stringContent);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {

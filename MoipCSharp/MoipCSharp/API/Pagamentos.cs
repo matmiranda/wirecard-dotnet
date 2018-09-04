@@ -15,11 +15,11 @@ namespace MoipCSharp
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/{order_id}/payments", stringContent);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -33,11 +33,11 @@ namespace MoipCSharp
         public static async Task<CustodiaResponse> LiberarCustodia(HttpClient httpClient, string escrow_id)
         {          
             HttpResponseMessage response = await httpClient.PostAsync($"escrows/{escrow_id}/release", null);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -51,11 +51,11 @@ namespace MoipCSharp
         public static async Task<PagamentoPreAutorizadoResponse> CapturarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
         {           
             HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/capture", null);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -69,11 +69,11 @@ namespace MoipCSharp
         public static async Task<PagamentoPreAutorizadoResponse> CancelarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
         {
             HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/void", null);
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -87,11 +87,11 @@ namespace MoipCSharp
         public static async Task<PagamentoResponse> ConsultarPagamento(HttpClient httpClient, string payment_id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"v2/payments/{payment_id}");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
             {
@@ -106,11 +106,11 @@ namespace MoipCSharp
         {
             httpClient.BaseAddress = new Uri("https://sandbox.moip.com.br/");
             HttpResponseMessage response = await httpClient.GetAsync($"simulador/authorize?payment_id={payment_id}&amount={valor}");
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             return response.StatusCode;
         }

@@ -77,6 +77,7 @@ HttpClient.DefaultRequestHeaders.ConnectionClose = false;
 HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 ServicePointManager.FindServicePoint(uri).ConnectionLeaseTimeout = 60 * 1000; //1 minuto
 ServicePointManager.DnsRefreshTimeout = 60 * 1000; //1 minuto
+ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; //mais informações: https://dev.moip.com.br/page/atualização-do-protocolo-de-segurança-tls-12
 HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "xxxxxxxxxxxxxxxxxxxxxxxxxxx_v2");
 ```
 

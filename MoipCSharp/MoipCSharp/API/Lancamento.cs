@@ -1,4 +1,5 @@
-﻿using MoipCSharp.Models;
+﻿using MoipCSharp.Exception;
+using MoipCSharp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Net;
@@ -14,13 +15,15 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync($"v2/entries/{entry_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                throw new ArgumentException(await response.Content.ReadAsStringAsync());
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
             }
             try
             {
                 return JsonConvert.DeserializeObject<LancamentoResponse>(await response.Content.ReadAsStringAsync());
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
@@ -30,13 +33,15 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync("v2/entries");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                throw new ArgumentException(await response.Content.ReadAsStringAsync());
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
             }
             try
             {
                 return JsonConvert.DeserializeObject<LancamentosResponse>(await response.Content.ReadAsStringAsync());
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }

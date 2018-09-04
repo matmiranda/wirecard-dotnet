@@ -1,4 +1,5 @@
-﻿using MoipCSharp.Models;
+﻿using MoipCSharp.Exception;
+using MoipCSharp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Net;
@@ -16,13 +17,15 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/refunds", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                throw new ArgumentException(await response.Content.ReadAsStringAsync());
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
             }
             try
             {
                 return JsonConvert.DeserializeObject<PagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
@@ -33,13 +36,15 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/{order_id}/refunds", stringContent);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                throw new ArgumentException(await response.Content.ReadAsStringAsync());
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
             }
             try
             {
                 return JsonConvert.DeserializeObject<CartaoCreditoResponse>(await response.Content.ReadAsStringAsync());
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
@@ -49,13 +54,15 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync($"v2/refunds/{refund_id}");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                throw new ArgumentException(await response.Content.ReadAsStringAsync());
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
             }
             try
             {
                 return JsonConvert.DeserializeObject<ReembolsoResponse>(await response.Content.ReadAsStringAsync());
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
@@ -65,13 +72,15 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync($"v2/payments/{payment_id}/refunds");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                throw new ArgumentException(await response.Content.ReadAsStringAsync());
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
             }
             try
             {
                 return JsonConvert.DeserializeObject<ReembolsosPagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
@@ -81,13 +90,15 @@ namespace MoipCSharp
             HttpResponseMessage response = await httpClient.GetAsync($"v2/orders/{orders_id}/refunds");
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                throw new ArgumentException(await response.Content.ReadAsStringAsync());
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "Error Code != 200", content, response.StatusCode, (int)response.StatusCode);
             }
             try
             {
                 return JsonConvert.DeserializeObject<ReembolsosPedidoResponse>(await response.Content.ReadAsStringAsync());
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }

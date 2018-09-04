@@ -476,15 +476,15 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 #### Obter erros
 Você pode recuperar os atributos `code`, `path`, `description` e `message`, veja no exemplo abaixo:
 ```C#
-using MoipCSharp.Exceptions;
+using MoipCSharp.Exception;
 
 try
 {
     var result = await Clientes.CriarCliente(HttpClient, new CriarClienteRequest());
 }
-catch (Exception moip)
+catch (MoipException MoipEx)
 {
-    var erros = JsonConvert.DeserializeObject<MoipException>(moip.Message);
+
 }
 ```
 

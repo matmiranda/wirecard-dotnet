@@ -459,7 +459,7 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 
 ## Exceção
 #### Obter erros
-Você pode recuperar os atributos `code`, `path`, `description` e `message`, veja no exemplo abaixo:
+Você pode recuperar os atributos `code`, `path`, `description`, `message` e `error`, veja no exemplo abaixo:
 ```C#
 using MoipCSharp.Exception;
 
@@ -469,7 +469,7 @@ try
 }
 catch (MoipException ex)
 {
-
+    var t = ex.errors;
 }
 ```
 

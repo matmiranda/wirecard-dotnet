@@ -282,7 +282,7 @@ var result = await MoipCSharpClient.Notificacao.CriarPreferenciaNotificacaoApp(b
 
 #### Consultar Preferência de Notificação
 ```C#
-var result = await MoipCSharpClient.Notificacao.ConsultarPreferenciaNotificacao(HttpClient, "NPR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Notificacao.ConsultarPreferenciaNotificacao("NPR-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas as Preferências de Notificação
@@ -388,7 +388,7 @@ var body = new ReembolsarPagamentoRequest
 {
     //informe os campos aqui
 };            
-var result = await Reembolsos.ReembolsarPagamento(HttpClient, body, "PAY-XXXXXXXXXXXX");
+var result = await Reembolsos.ReembolsarPagamento(body, "PAY-XXXXXXXXXXXX");
 ```
 
 #### Reembolsar Pedido via Cartão de Crédito

@@ -1,20 +1,37 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Text;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class Reembolsos
+    public partial class MultiPagamentosController : BaseController
     {
-        public static async Task<PagamentoResponse> ReembolsarPagamento(HttpClient httpClient, ReembolsarPagamentoRequest body, string payment_id)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static MultiPagamentosController instance = null;
+        internal static MultiPagamentosController Instance
+        {
+            get
+            {
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new MultiPagamentosController();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion Singleton Pattern
+
+        public async Task<MultiPagamentoResponse> CriarMultiPagamento(CriarMultiPagamentoRequest body, string multiorder_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/refunds", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/multiorders/{multiorder_id}/multipayments", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -23,17 +40,16 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<PagamentoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<MultiPagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<CartaoCreditoResponse> ReembolsarPedidoCartaoCredito(HttpClient httpClient, ReembolsarPedidoCartaoCreditoRequest body, string order_id)
+        public async Task<MultiPagamentoResponse> ConsultarMultiPagamento(string multiorder_id)
         {
-            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/{order_id}/refunds", stringContent);
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/multipayments/{multiorder_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -42,16 +58,16 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<CartaoCreditoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<MultiPagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<ReembolsoResponse> ConsultarReembolso(HttpClient httpClient, string refund_id)
+        public async Task<MultiPagamentoPreAutorizadoResponse> CapturarMultiPagamentoPreAutorizado(string multipayment_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/refunds/{refund_id}");
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/multipayments/{multipayment_id}/capture", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -60,16 +76,16 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ReembolsoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<MultiPagamentoPreAutorizadoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<ReembolsosPagamentoResponse> ListarReembolsosPagamento(HttpClient httpClient, string payment_id)
+        public async Task<MultiPagamentoPreAutorizadoResponse> CancelarMultiPagamentoPreAutorizado(string multipayment_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/payments/{payment_id}/refunds");
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/multipayments/{multipayment_id}/void", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -78,16 +94,16 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ReembolsosPagamentoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<MultiPagamentoPreAutorizadoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<ReembolsosPedidoResponse> ListarReembolsosPedido(HttpClient httpClient, string orders_id)
+        public async Task<CustodiaResponse> LiberarCustodia(string escrow_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/orders/{orders_id}/refunds");
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/escrows/{escrow_id}/release", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -96,11 +112,11 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<ReembolsosPedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<CustodiaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
     }

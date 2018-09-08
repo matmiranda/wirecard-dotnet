@@ -1,20 +1,38 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Text;
+using System.Net;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class Clientes
+    public partial class ClientesController : BaseController
     {
-        public static async Task<ClienteResponse> CriarCliente(HttpClient httpClient, CriarClienteRequest body)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static ClientesController instance = null;
+        internal static ClientesController Instance
+        {
+            get
+            {
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new ClientesController();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion Singleton Pattern
+
+        public async Task<ClienteResponse> CriarCliente(CriarClienteRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/customers", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/customers", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -27,13 +45,13 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<CartaoCreditoResponse> AdicionarCartaoCredito(HttpClient httpClient, AdicionarCartaoCreditoRequest body, string customer_id)
+        public async Task<CartaoCreditoResponse> AdicionarCartaoCredito(AdicionarCartaoCreditoRequest body, string customer_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/customers/{customer_id}/fundinginstruments", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/customers/{customer_id}/fundinginstruments", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -46,13 +64,13 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<AtualizarClienteResponse> AtualizarCliente(HttpClient httpClient, AtualizarClienteRequest body)
+        public async Task<AtualizarClienteResponse> AtualizarCliente(AtualizarClienteRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/orders/", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -65,17 +83,17 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<HttpStatusCode> DeletarCartaoCredito(HttpClient httpClient, string creditcard_id)
+        public async Task<HttpStatusCode> DeletarCartaoCredito(string creditcard_id)
         {
-            HttpResponseMessage response = await httpClient.DeleteAsync($"v2/fundinginstruments/{creditcard_id}");
+            HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/fundinginstruments/{creditcard_id}");
             return response.StatusCode;
         }
-        public static async Task<ClienteResponse> ConsultarCliente(HttpClient httpClient, string customer_id)
+        public async Task<ClienteResponse> ConsultarCliente(string customer_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/customers/{customer_id}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/{customer_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -88,12 +106,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<ClientesResponse> ListarTodosClientes(HttpClient httpClient)
+        public async Task<ClientesResponse> ListarTodosClientes()
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/customers/");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -106,7 +124,7 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
     }

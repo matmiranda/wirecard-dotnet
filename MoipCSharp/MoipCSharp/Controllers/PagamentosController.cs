@@ -1,20 +1,39 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Text;
+using System.Net;
+using System;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class Pagamentos
+    public partial class PagamentosController : BaseController
     {
-        public static async Task<PagamentoResponse> CriarPagamento(HttpClient httpClient, CriarPagamentoRequest body, string order_id)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static PagamentosController instance = null;
+        internal static PagamentosController Instance
+        {
+            get
+            {
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new PagamentosController();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion Singleton Pattern
+
+        public async Task<PagamentoResponse> CriarPagamento(CriarPagamentoRequest body, string order_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/orders/{order_id}/payments", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/orders/{order_id}/payments", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -27,12 +46,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<CustodiaResponse> LiberarCustodia(HttpClient httpClient, string escrow_id)
-        {          
-            HttpResponseMessage response = await httpClient.PostAsync($"escrows/{escrow_id}/release", null);
+        public async Task<CustodiaResponse> LiberarCustodia(string escrow_id)
+        {
+            HttpResponseMessage response = await ClientInstance.PostAsync($"escrows/{escrow_id}/release", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -48,9 +67,9 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<PagamentoPreAutorizadoResponse> CapturarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
-        {           
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/capture", null);
+        public async Task<PagamentoPreAutorizadoResponse> CapturarPagamentoPreAutorizado(string payment_id)
+        {
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/capture", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -66,9 +85,9 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<PagamentoPreAutorizadoResponse> CancelarPagamentoPreAutorizado(HttpClient httpClient, string payment_id)
+        public async Task<PagamentoPreAutorizadoResponse> CancelarPagamentoPreAutorizado(string payment_id)
         {
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/payments/{payment_id}/void", null);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/void", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -84,9 +103,9 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<PagamentoResponse> ConsultarPagamento(HttpClient httpClient, string payment_id)
+        public async Task<PagamentoResponse> ConsultarPagamento(string payment_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/payments/{payment_id}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/payments/{payment_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -102,10 +121,9 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<HttpStatusCode> SimularPagamentos(HttpClient httpClient, string payment_id, int valor)
+        public async Task<HttpStatusCode> SimularPagamentos(string payment_id, int valor)
         {
-            httpClient.BaseAddress = new Uri("https://sandbox.moip.com.br/");
-            HttpResponseMessage response = await httpClient.GetAsync($"simulador/authorize?payment_id={payment_id}&amount={valor}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"simulador/authorize?payment_id={payment_id}&amount={valor}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

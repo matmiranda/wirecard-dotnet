@@ -1,20 +1,38 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Text;
+using System.Net;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class Notificacoes
+    public partial class NotificacoesController : BaseController
     {
-        public static async Task<PreferenciaNotificacaoContaMoipResponse> CriarPreferenciaNotificacaoContaMoip(HttpClient httpClient, CriarPreferenciaNotificacaoContaMoipRequest body)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static NotificacoesController instance = null;
+        internal static NotificacoesController Instance
+        {
+            get
+            {
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new NotificacoesController();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion Singleton Pattern
+
+        public async Task<PreferenciaNotificacaoContaMoipResponse> CriarPreferenciaNotificacaoContaMoip(CriarPreferenciaNotificacaoContaMoipRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync("v2/preferences/notifications", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync("v2/preferences/notifications", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -27,13 +45,13 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<PreferenciaNotificacaoAppResponse> CriarPreferenciaNotificacaoApp(HttpClient httpClient, CriarPreferenciaNotificacaoAppRequest body, string app_id)
+        public async Task<PreferenciaNotificacaoAppResponse> CriarPreferenciaNotificacaoApp(CriarPreferenciaNotificacaoAppRequest body, string app_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -46,12 +64,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<PreferenciaNotificacaoResponse> ConsultarPreferenciaNotificacao(HttpClient httpClient, string notification_id)
+        public async Task<PreferenciaNotificacaoResponse> ConsultarPreferenciaNotificacao(string notification_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/preferences/notifications/{notification_id}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/preferences/notifications/{notification_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -64,12 +82,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<PreferenciasNotificacaoResponse> ListarTodasPreferenciasNotificacao(HttpClient httpClient)
+        public async Task<PreferenciasNotificacaoResponse> ListarTodasPreferenciasNotificacao()
         {
-            HttpResponseMessage response = await httpClient.GetAsync("v2/preferences/notifications");
+            HttpResponseMessage response = await ClientInstance.GetAsync("v2/preferences/notifications");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -82,12 +100,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<HttpStatusCode> RemoverPreferenciaNotificacao(HttpClient httpClient, string notification_id)
+        public async Task<HttpStatusCode> RemoverPreferenciaNotificacao(string notification_id)
         {
-            HttpResponseMessage response = await httpClient.DeleteAsync($"v2/preferences/notifications/{notification_id}");
+            HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/preferences/notifications/{notification_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -96,9 +114,9 @@ namespace MoipCSharp
             }
             return response.StatusCode;
         }
-        public static async Task<WebhookEnviadoResponse> ConsultarWebhookEnviado(HttpClient httpClient, string payment_id)
+        public async Task<WebhookEnviadoResponse> ConsultarWebhookEnviado(string payment_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/webhooks?resourceId={payment_id}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/webhooks?resourceId={payment_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -111,12 +129,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<WebhooksEnviadosResponse> ListarTodosWebhooksEnviados(HttpClient httpClient)
+        public async Task<WebhooksEnviadosResponse> ListarTodosWebhooksEnviados()
         {
-            HttpResponseMessage response = await httpClient.GetAsync("v2/webhooks");
+            HttpResponseMessage response = await ClientInstance.GetAsync("v2/webhooks");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -129,7 +147,7 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
     }

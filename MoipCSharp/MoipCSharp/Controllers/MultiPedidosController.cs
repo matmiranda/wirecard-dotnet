@@ -1,38 +1,37 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Text;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class MultiPedidos
+    public partial class MultiPedidosController : BaseController
     {
-        public static async Task<MultiPedidoResponse> CriarMultiPedido(HttpClient httpClient, CriarMultiPedidoRequest body)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static MultiPedidosController instance = null;
+        internal static MultiPedidosController Instance
         {
-            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync("v2/multiorders", stringContent);
-            if (!response.IsSuccessStatusCode)
+            get
             {
-                string content = await response.Content.ReadAsStringAsync();
-                MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
-            }
-            try
-            {
-                return JsonConvert.DeserializeObject<MultiPedidoResponse>(await response.Content.ReadAsStringAsync());
-            }
-            catch (System.Exception ex)
-            {
-                throw new ArgumentException("Error message: " + ex.Message);
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new MultiPedidosController();
+                    }
+                }
+                return instance;
             }
         }
-        public static async Task<MultiPedidoResponse> ConsultarMultiPedido(HttpClient httpClient, string multiorder_id)
+        #endregion Singleton Pattern
+
+        public async Task<MultiPedidoResponse> CriarMultiPedido(CriarMultiPedidoRequest body)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/multiorders/{multiorder_id}");
+            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await ClientInstance.PostAsync("v2/multiorders", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -45,7 +44,25 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
+            }
+        }
+        public async Task<MultiPedidoResponse> ConsultarMultiPedido(string multiorder_id)
+        {
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/multiorders/{multiorder_id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<MultiPedidoResponse>(await response.Content.ReadAsStringAsync());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
             }
         }
     }

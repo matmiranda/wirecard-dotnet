@@ -1,18 +1,36 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Text;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class Lancamento
+    public partial class LancamentosController : BaseController
     {
-        public static async Task<LancamentoResponse> ConsultarLancamento(HttpClient httpClient, string entry_id)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static LancamentosController instance = null;
+        internal static LancamentosController Instance
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/entries/{entry_id}");
+            get
+            {
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new LancamentosController();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion Singleton Pattern
+
+        public async Task<LancamentoResponse> ConsultarLancamento(string entry_id)
+        {
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/entries/{entry_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -25,12 +43,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<LancamentosResponse> ListarTodosLancamentos(HttpClient httpClient)
+        public async Task<LancamentosResponse> ListarTodosLancamentos()
         {
-            HttpResponseMessage response = await httpClient.GetAsync("v2/entries");
+            HttpResponseMessage response = await ClientInstance.GetAsync("v2/entries");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -43,7 +61,7 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
     }

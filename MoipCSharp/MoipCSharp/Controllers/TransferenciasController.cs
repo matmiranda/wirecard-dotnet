@@ -1,20 +1,37 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Text;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class Pedidos
+    public partial class TransferenciasController : BaseController
     {
-        public static async Task<PedidoResponse> CriarPedido(HttpClient httpClient, CriarPedidoRequest body)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static TransferenciasController instance = null;
+        internal static TransferenciasController Instance
+        {
+            get
+            {
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new TransferenciasController();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion Singleton Pattern
+
+        public async Task<TransferenciaResponse> CriarTransferencia(CriarTransferenciaRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/orders", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync("v2/transfers", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -23,16 +40,16 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<PedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<TransferenciaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<PedidoResponse> ConsultarPedido(HttpClient httpClient, string order_id)
+        public async Task<ReverterTransferenciaResponse> ReverterTransferencia(string transfer_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/orders/{order_id}");
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/transfers/{transfer_id}/reverse", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -41,16 +58,16 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<PedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ReverterTransferenciaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<PedidosResponse> ListarTodosPedidos(HttpClient httpClient)
+        public async Task<TransferenciaResponse> ConsultarTransferencia(string transfer_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/orders");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/transfers/{transfer_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -59,16 +76,16 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<PedidosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<TransferenciaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<PedidosResponse> ListarTodosPedidosFiltros(HttpClient httpClient, string filtros)
+        public async Task<TransferenciasResponse> ListarTodasTransferencias()
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/orders?{filtros}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -77,11 +94,11 @@ namespace MoipCSharp
             }
             try
             {
-                return JsonConvert.DeserializeObject<PedidosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<TransferenciasResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
     }

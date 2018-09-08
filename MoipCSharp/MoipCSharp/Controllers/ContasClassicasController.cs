@@ -1,18 +1,37 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Net;
+using System;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class ContaClassica
+    public partial class ContasClassicasController : BaseController
     {
-        public static async Task<HttpStatusCode> VerificarSeUsuarioJaPossuiContaMoip(HttpClient httpClient, string email)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static ContasClassicasController instance = null;
+        internal static ContasClassicasController Instance
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/exists?email={email}");
+            get
+            {
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new ContasClassicasController();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion Singleton Pattern
+
+        public async Task<HttpStatusCode> VerificarSeUsuarioJaPossuiContaMoip(string email)
+        {
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/exists?email={email}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -21,9 +40,9 @@ namespace MoipCSharp
             }
             return response.StatusCode;
         }
-        public static async Task<ContaMoipClassicaResponse> CriarContaMoipClassica(HttpClient httpClient, CriarContaMoipClassicaRequest body)
-        {         
-            HttpResponseMessage response = await httpClient.PostAsync("v2/accounts", null);
+        public async Task<ContaMoipClassicaResponse> CriarContaMoipClassica(CriarContaMoipClassicaRequest body)
+        {
+            HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -36,12 +55,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<ContaMoipResponse> ConsultarContaMoip(HttpClient httpClient, string account_id)
+        public async Task<ContaMoipResponse> ConsultarContaMoip(string account_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -54,11 +73,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<string> SolicitarPermissoesAcessoUsuario(HttpClient httpClient, string response_type, string client_id, string redirect_uri, string scope)
+        public async Task<string> SolicitarPermissoesAcessoUsuario(string response_type, string client_id, string redirect_uri, string scope)
         {
+            HttpClient httpClient = ClientInstance;
             httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
             HttpResponseMessage response = await httpClient.GetAsync($"oauth/authorize?response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}");
             if (!response.IsSuccessStatusCode)
@@ -73,11 +93,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<AccessTokenResponse> GerarAccessToken(HttpClient httpClient, string client_id, string client_secret, string redirect_uri, string grant_type, string code)
+        public async Task<AccessTokenResponse> GerarAccessToken(string client_id, string client_secret, string redirect_uri, string grant_type, string code)
         {
+            HttpClient httpClient = ClientInstance;
             httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
             HttpResponseMessage response = await httpClient.PostAsync($"oauth/token?client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type{grant_type}&code={code}", null);
             if (!response.IsSuccessStatusCode)
@@ -95,8 +116,9 @@ namespace MoipCSharp
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public static async Task<AccessTokenResponse> AtualizarAccessToken(HttpClient httpClient, string grant_type, string refresh_token)
+        public async Task<AccessTokenResponse> AtualizarAccessToken(string grant_type, string refresh_token)
         {
+            HttpClient httpClient = ClientInstance;
             httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
             HttpResponseMessage response = await httpClient.PostAsync($"oauth/token?grant_type={grant_type}&refresh_token={refresh_token}", null);
             if (!response.IsSuccessStatusCode)
@@ -111,12 +133,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<ChavePublicaContaMoipResponse> ObterChavePublicaContaMoip(HttpClient httpClient)
+        public async Task<ChavePublicaContaMoipResponse> ObterChavePublicaContaMoip()
         {
-            HttpResponseMessage response = await httpClient.GetAsync("v2/keys");
+            HttpResponseMessage response = await ClientInstance.GetAsync("v2/keys");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

@@ -1,20 +1,38 @@
-﻿using MoipCSharp.Exception;
-using MoipCSharp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
+using MoipCSharp.Models;
+using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Text;
+using System.Net;
 
-namespace MoipCSharp
+namespace MoipCSharp.Controllers
 {
-    public static class ContasBancarias
+    public partial class ContasBancariasController : BaseController
     {
-        public static async Task<ContaBancariaResponse> CriarContaBancaria(HttpClient httpClient, CriarContaBancariaRequest body, string account_id)
+        #region Singleton Pattern
+        private static readonly object syncObject = new object();
+        private static ContasBancariasController instance = null;
+        internal static ContasBancariasController Instance
+        {
+            get
+            {
+                lock (syncObject)
+                {
+                    if (null == instance)
+                    {
+                        instance = new ContasBancariasController();
+                    }
+                }
+                return instance;
+            }
+        }
+        #endregion Singleton Pattern
+
+        public async Task<ContaBancariaResponse> CriarContaBancaria(CriarContaBancariaRequest body, string account_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/accounts/{account_id}/bankaccounts", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/accounts/{account_id}/bankaccounts", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -27,18 +45,18 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<string> CriarContaBancariaString(HttpClient httpClient, CriarContaBancariaRequest body, string account_id)
+        public async Task<string> CriarContaBancariaString(CriarContaBancariaRequest body, string account_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PostAsync($"v2/accounts/{account_id}/bankaccounts", stringContent);
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/accounts/{account_id}/bankaccounts", stringContent);
             return await response.Content.ReadAsStringAsync();
         }
-        public static async Task<ContaBancariaResponse> ConsultarContaBancaria(HttpClient httpClient, string bank_account_id)
+        public async Task<ContaBancariaResponse> ConsultarContaBancaria(string bank_account_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/bankaccounts/{bank_account_id}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/bankaccounts/{bank_account_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -51,12 +69,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<ContasBancariasResponse[]> ListarTodasContasBancarias(HttpClient httpClient, string account_id)
+        public async Task<ContasBancariasResponse[]> ListarTodasContasBancarias(string account_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}/bankaccounts");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}/bankaccounts");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -69,12 +87,12 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
-        public static async Task<HttpStatusCode> DeletarContaBancaria(HttpClient httpClient, string account_id)
+        public async Task<HttpStatusCode> DeletarContaBancaria(string account_id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}/bankaccounts");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}/bankaccounts");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -83,10 +101,10 @@ namespace MoipCSharp
             }
             return response.StatusCode;
         }
-        public static async Task<ContaBancariaResponse> AtualizarContaBancaria(HttpClient httpClient, AtualizarContaBancariaRequest body, string bankaccount_id)
+        public static async Task<ContaBancariaResponse> AtualizarContaBancaria(AtualizarContaBancariaRequest body, string bankaccount_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.PutAsync($"v2/bankaccounts/{bankaccount_id}", stringContent);
+            HttpResponseMessage response = await ClientInstance.PutAsync($"v2/bankaccounts/{bankaccount_id}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -99,7 +117,7 @@ namespace MoipCSharp
             }
             catch (System.Exception ex)
             {
-                throw new ArgumentException("Error message: " + ex.Message);
+                throw ex;
             }
         }
     }

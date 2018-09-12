@@ -51,7 +51,7 @@ Criando uma nova instância **HttpClient** por solicitação, podendo esgotar os
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 3.0.0
+PM> Install-Package MoipCSharp -Version 3.0.1
 ```
 
 ## Autenticando e configurando o ambiente

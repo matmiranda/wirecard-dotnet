@@ -101,7 +101,7 @@ namespace MoipCSharp.Controllers
             }
             return response.StatusCode;
         }
-        public static async Task<ContaBancariaResponse> AtualizarContaBancaria(AtualizarContaBancariaRequest body, string bankaccount_id)
+        public async Task<ContaBancariaResponse> AtualizarContaBancaria(AtualizarContaBancariaRequest body, string bankaccount_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PutAsync($"v2/bankaccounts/{bankaccount_id}", stringContent);

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MoipCSharp</id>
+    <version>3.0.2</version>
+    <authors>MoipCSharp, Matheus Miranda</authors>
+    <owners>MoipCSharp, Matheus Miranda</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/matmiranda/MoipCSharp</projectUrl>
+    <description>Biblioteca para integração dos meios de pagamento do MOIP - Versão mais atualizada</description>
+    <releaseNotes>Adicionado: User-Agent</releaseNotes>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\bin\Release\netstandard2.0\MoipCSharp.dll" target="lib\netstandard2.0\MoipCSharp.dll" />
+  </files>
+</package>

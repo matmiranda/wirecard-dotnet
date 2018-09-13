@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
+using System.Reflection;
 
 namespace MoipCSharp
 {
@@ -28,6 +30,7 @@ namespace MoipCSharp
                 {
                     httpClient = new HttpClient();
                     httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Add("User-Agent", $"MoipCSharp_{GetVersion()}");
                     httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
                     httpClient.BaseAddress = new Uri(uri);
                 }
@@ -37,6 +40,11 @@ namespace MoipCSharp
                 }
             }
             return httpClient;
+        }
+
+        internal static string GetVersion()
+        {
+            return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         }
     }
 }

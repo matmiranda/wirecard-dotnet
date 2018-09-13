@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://getbootstrap.com/">
-    <img src="https://www.linknacional.com.br/wp-content/uploads/2016/03/moip-boleto-pagamento-whmcs.png" alt="Moip logo" width=150>
+    <img src="https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1536852276/moip.png" alt="Moip logo" width=150>
   </a>
   <p align="center">
     O jeito mais simples e rápido de integrar o Moip a sua aplicação .NET

@@ -14,7 +14,6 @@
 </p>
 
 ## Índice
-- [Informação](#informação)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Conta Clássica](#conta-clássica)
@@ -35,23 +34,11 @@
 - [Exceção](#exceção)
 - [Licença](#licença)
 
-## Informação
-
-Essa biblioteca usa a classe [HttpClient](https://docs.microsoft.com/pt-br/dotnet/api/system.net.http.httpclient?view=netframework-4.7.2) e disponibiliza os principais métodos (GET, POST, PUT, DELETE).
-
-[HttpClient](https://docs.microsoft.com/pt-br/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client#create-and-initialize-httpclient) destina-se a ser instanciada **uma vez** e reutilizada durante a vida útil de um aplicativo. 
-
-As condições a seguir podem resultar em [SocketException](https://msdn.microsoft.com/pt-br/library/system.net.sockets.socketexception(v=vs.110).aspx) erros:
-- Criando uma nova instância **HttpClient** por solicitação.
-- Servidor sob carga pesada.
-
-Criando uma nova instância **HttpClient** por solicitação, podendo esgotar os soquetes disponíveis.
-
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 3.0.3
+PM> Install-Package MoipCSharp -Version 3.0.4
 ```
 
 ## Autenticando e configurando o ambiente

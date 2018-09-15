@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 #pragma warning disable IDE1006
 
 namespace MoipCSharp.Models
@@ -7,7 +8,7 @@ namespace MoipCSharp.Models
     {
         public string id { get; set; }
         public string status { get; set; }
-        public Event[] events { get; set; }
+        public List<Event> events { get; set; }
         public Amount amount { get; set; }
         public string type { get; set; }
         public Refundinginstrument refundingInstrument { get; set; }

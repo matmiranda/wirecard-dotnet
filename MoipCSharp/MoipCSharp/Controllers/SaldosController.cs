@@ -3,6 +3,7 @@ using System.Net.Http;
 using MoipCSharp.Models;
 using MoipCSharp.Exception;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace MoipCSharp.Controllers
 {
@@ -27,7 +28,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<SaldosResponse> ConsultarSaldos()
+        public async Task<List<SaldosResponse>> ConsultarSaldos()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/balances");
             if (!response.IsSuccessStatusCode)
@@ -38,7 +39,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<SaldosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<SaldosResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

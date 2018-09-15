@@ -30,6 +30,7 @@ namespace MoipCSharp
                 {
                     httpClient = new HttpClient();
                     httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
                     httpClient.DefaultRequestHeaders.Add("User-Agent", $"MoipCSharp_{GetVersion()}");
                     httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
                     httpClient.BaseAddress = new Uri(uri);

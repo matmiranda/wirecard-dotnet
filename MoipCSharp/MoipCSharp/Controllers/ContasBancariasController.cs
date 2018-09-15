@@ -5,6 +5,7 @@ using MoipCSharp.Exception;
 using System.Threading.Tasks;
 using System.Text;
 using System.Net;
+using System.Collections.Generic;
 
 namespace MoipCSharp.Controllers
 {
@@ -72,7 +73,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<ContasBancariasResponse[]> ListarTodasContasBancarias(string account_id)
+        public async Task<List<ContasBancariasResponse>> ListarTodasContasBancarias(string account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}/bankaccounts");
             if (!response.IsSuccessStatusCode)
@@ -83,7 +84,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<ContasBancariasResponse[]>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<ContasBancariasResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

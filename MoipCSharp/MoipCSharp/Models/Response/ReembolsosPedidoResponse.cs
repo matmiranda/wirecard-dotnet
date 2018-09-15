@@ -1,9 +1,10 @@
-﻿#pragma warning disable IDE1006
+﻿using System.Collections.Generic;
+#pragma warning disable IDE1006
 
 namespace MoipCSharp.Models
 {
     public class ReembolsosPedidoResponse
     {
-        public Refund[] refunds { get; set; }
+        public List<Refund> refunds { get; set; }
     }
 }

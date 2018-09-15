@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 #pragma warning disable IDE1006
 
 namespace MoipCSharp.Models
@@ -11,7 +12,7 @@ namespace MoipCSharp.Models
         public DateTime createdAt { get; set; }
         public string updatedAt { get; set; }
         public Amount amount { get; set; }
-        public Order[] orders { get; set; }
+        public List<Order> orders { get; set; }
         public _Links _links { get; set; }
     }
 }

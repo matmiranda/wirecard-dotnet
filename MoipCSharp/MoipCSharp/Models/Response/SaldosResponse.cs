@@ -4,8 +4,10 @@ namespace MoipCSharp.Models
 {
     public class SaldosResponse
     {
-        public Unavailable[] unavailable { get; set; }
-        public Future[] future { get; set; }
-        public Current[] current { get; set; }
+        public int unavailable { get; set; }
+        public int future { get; set; }
+        public int current { get; set; }
+        public _Links _links { get; set; }
+        public string date { get; set; }
     }
 }

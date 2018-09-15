@@ -4,6 +4,7 @@ using MoipCSharp.Models;
 using MoipCSharp.Exception;
 using System.Threading.Tasks;
 using System.Text;
+using System.Collections.Generic;
 
 namespace MoipCSharp.Controllers
 {
@@ -46,7 +47,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<LancamentosResponse> ListarTodosLancamentos()
+        public async Task<List<LancamentosResponse>> ListarTodosLancamentos()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/entries");
             if (!response.IsSuccessStatusCode)
@@ -57,7 +58,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<LancamentosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<LancamentosResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

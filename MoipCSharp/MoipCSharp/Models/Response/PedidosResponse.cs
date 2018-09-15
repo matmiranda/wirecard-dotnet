@@ -1,4 +1,5 @@
-﻿#pragma warning disable IDE1006
+﻿using System.Collections.Generic;
+#pragma warning disable IDE1006
 
 namespace MoipCSharp.Models
 {
@@ -6,6 +7,6 @@ namespace MoipCSharp.Models
     {
         public _Links _links { get; set; }
         public Summary summary { get; set; }
-        public Order[] orders { get; set; }
+        public List<Order> orders { get; set; }
     }
 }

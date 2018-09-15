@@ -5,6 +5,7 @@ using MoipCSharp.Exception;
 using System.Threading.Tasks;
 using System.Text;
 using System.Net;
+using System.Collections.Generic;
 
 namespace MoipCSharp.Controllers
 {
@@ -85,7 +86,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<PreferenciasNotificacaoResponse> ListarTodasPreferenciasNotificacao()
+        public async Task<List<PreferenciasNotificacaoResponse>> ListarTodasPreferenciasNotificacao()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/preferences/notifications");
             if (!response.IsSuccessStatusCode)
@@ -96,7 +97,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<PreferenciasNotificacaoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<PreferenciasNotificacaoResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

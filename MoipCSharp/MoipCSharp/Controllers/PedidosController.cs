@@ -4,8 +4,6 @@ using MoipCSharp.Models;
 using MoipCSharp.Exception;
 using System.Threading.Tasks;
 using System.Text;
-using System.Net;
-using System;
 
 namespace MoipCSharp.Controllers
 {
@@ -85,9 +83,9 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<PedidosResponse> ListarTodosPedidosFiltros(HttpClient httpClient, string filtros)
+        public async Task<PedidosResponse> ListarTodosPedidosFiltros(string filtros)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/orders?{filtros}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders?{filtros}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

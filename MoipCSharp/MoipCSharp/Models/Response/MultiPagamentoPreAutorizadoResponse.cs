@@ -1,4 +1,5 @@
-﻿#pragma warning disable IDE1006
+﻿using System.Collections.Generic;
+#pragma warning disable IDE1006
 
 namespace MoipCSharp.Models
 {
@@ -8,7 +9,7 @@ namespace MoipCSharp.Models
         public string status { get; set; }
         public Amount amount { get; set; }
         public int installmentCount { get; set; }
-        public Payment[] payments { get; set; }
+        public List<Payment> payments { get; set; }
         public _Links _links { get; set; }
     }
 }

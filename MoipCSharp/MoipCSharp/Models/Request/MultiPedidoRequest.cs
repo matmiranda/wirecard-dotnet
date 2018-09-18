@@ -3,7 +3,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class CriarMultiPedidoRequest
+    public class MultiPedidoRequest
     {
         public string ownId { get; set; }
         public List<Order> orders { get; set; }

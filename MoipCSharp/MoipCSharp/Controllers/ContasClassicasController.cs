@@ -40,7 +40,7 @@ namespace MoipCSharp.Controllers
             }
             return response.StatusCode;
         }
-        public async Task<ContaClassicaResponse> CriarConta(ContaClassicaRequest body)
+        public async Task<ContaClassicaResponse> Criar(ContaClassicaRequest body)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", null);
             if (!response.IsSuccessStatusCode)
@@ -58,7 +58,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<ContaClassicaResponse> ConsultarConta(string account_id)
+        public async Task<ContaClassicaResponse> Consultar(string account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}");
             if (!response.IsSuccessStatusCode)

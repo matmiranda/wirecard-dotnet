@@ -28,7 +28,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<MultiPedidoResponse> Criar(CriarMultiPedidoRequest body)
+        public async Task<MultiPedidoResponse> Criar(MultiPedidoRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync("v2/multiorders", stringContent);

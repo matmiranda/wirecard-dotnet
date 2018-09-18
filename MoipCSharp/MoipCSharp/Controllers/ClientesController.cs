@@ -67,25 +67,6 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<ClienteResponse> Atualizar(ClienteRequest body)
-        {
-            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/orders/", stringContent);
-            if (!response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                MoipException.APIException moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
-            }
-            try
-            {
-                return JsonConvert.DeserializeObject<ClienteResponse>(await response.Content.ReadAsStringAsync());
-            }
-            catch (System.Exception ex)
-            {
-                throw ex;
-            }
-        }
         public async Task<HttpStatusCode> DeletarCartaoCredito(string creditcard_id)
         {
             HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/fundinginstruments/{creditcard_id}");

@@ -28,7 +28,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<List<SaldoResponse>> ConsultarSaldos()
+        public async Task<List<SaldoResponse>> Consultar()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/balances");
             if (!response.IsSuccessStatusCode)

@@ -38,7 +38,7 @@
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 3.0.6
+PM> Install-Package MoipCSharp -Version 3.0.8
 ```
 
 ## Autenticando e configurando o ambiente
@@ -55,21 +55,21 @@ private MoipCSharpClient MoipCSharpClient = new MoipCSharpClient(Environments.SA
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Moip
 ```C#
-var result = await MoipCSharpClient.ContaClassica.VerificarSeUsuarioJaPossuiContaMoip("meu_email@email.com");
+var result = await MoipCSharpClient.ContaClassica.ContaExiste("meu_email@email.com");
 ```
 
 #### Criar Conta Moip Clássica
 ```C#
-var body = new CriarContaMoipClassicaRequest
+var body = new ContaClassicaRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.ContaClassica.CriarContaMoipClassica(body);
+var result = await MoipCSharpClient.ContaClassica.Criar(body);
 ```
 
 #### Consultar Conta Moip
 ```C#
-var result = await MoipCSharpClient.ContaClassica.ConsultarContaMoip("MPA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.ContaClassica.Consultar("MPA-XXXXXXXXXXXX");
 ```
 
 #### Solicitar Permissões de Acesso ao Usuário
@@ -95,11 +95,11 @@ var result = await MoipCSharpClient.ContaClassica.ObterChavePublicaContaMoip();
 ## Conta Transparente
 #### Criar Conta Moip Transparente
 ```C#
-var body = new CriarContaMoipTransparenteRequest
+var body = new ContaTransparenteRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.ContaTrasparente.CriarContaMoipTransparente(body);
+var result = await MoipCSharpClient.ContaTrasparente.Criar(body);
 ```
 
 ## Clientes
@@ -109,25 +109,16 @@ var body = new ClienteRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.Cliente.CriarCliente(body);
+var result = await MoipCSharpClient.Cliente.Criar(body);
 ```
 
 #### Adicionar Cartão de Crédito
 ```C#
-var body = new CartaoDeCreditoRequest
+var body = new ClienteRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.Cliente.AdicionarCartaoDeCredito(body, "CUS-XXXXXXXXXXXX");
-```
-
-#### Atualizar Cliente
-```C#
-var body = new AtualizarClienteRequest
-{
-    //informe os campos aqui
-};
-var result = await MoipCSharpClient.Cliente.AtualizarCliente(body);
+var result = await MoipCSharpClient.Cliente.AdicionarCartaoCredito(body, "CUS-XXXXXXXXXXXX");
 ```
 
 #### Deletar Cartão de Crédito
@@ -137,12 +128,12 @@ var result = await MoipCSharpClient.Cliente.DeletarCartaoCredito("CRC-XXXXXXXXXX
 
 #### Consultar Cliente
 ```C#
-var result = await MoipCSharpClient.Cliente.ConsultarCliente("CUS-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Cliente.Consultar("CUS-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Clientes
 ```C#
-var result = await MoipCSharpClient.Cliente.ListarTodosClientes();
+var result = await MoipCSharpClient.Cliente.Listar();
 ```
 
 ## Pedidos
@@ -152,34 +143,34 @@ var body = new CriarPedidoRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.Pedido.CriarPedido(body);
+var result = await MoipCSharpClient.Pedido.Criar(body);
 ```
 
 #### Consultar Pedido
 ```C#
-var result = await MoipCSharpClient.Pedido.ConsultarPedido("ORD-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Pedido.Consultar("ORD-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Pedidos - Sem Filtros
 ```C#
-var result = await MoipCSharpClient.Pedido.ListarTodosPedidos();
+var result = await MoipCSharpClient.Pedido.Listar();
 ```
 
 #### Listar Todos os Pedidos - Com Filtros
 ```C#
 string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0";
-var result = await MoipCSharpClient.Pedido.ListarTodosPedidosFiltros(filtros);
+var result = await MoipCSharpClient.Pedido.ListarFiltro(filtros);
 ```
  Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
  
  ## Pagamentos
  #### Criar Pagamento
  ```C#
-var body = new CriarPagamentoRequest
+var body = new PagamentoRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Pagamento.CriarPagamento(body, "ORD-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Pagamento.Criar(body, "ORD-XXXXXXXXXXXX");
 ```
 
 #### Liberação de Custódia
@@ -189,59 +180,59 @@ var result = await MoipCSharpClient.Pagamento.LiberarCustodia("ECW-XXXXXXXXXXXX"
 
 #### Capturar Pagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.Pagamento.CapturarPagamentoPreAutorizado("PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Pagamento.CapturarPreAutorizado("PAY-XXXXXXXXXXXX");
 ```
 
 #### Cancelar Pagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.Pagamento.CancelarPagamentoPreAutorizado("PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Pagamento.CancelarPreAutorizado("PAY-XXXXXXXXXXXX");
 ```
 
 #### Consultar Pagamento
 ```C#
-var result = await MoipCSharpClient.Pagamento.ConsultarPagamento("PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Pagamento.Consultar("PAY-XXXXXXXXXXXX");
 ```
 
 #### Simular Pagamentos (sandbox)
 ```C#
-var result = await MoipCSharpClient.Pagamento.SimularPagamentos("PAY-XXXXXXXXXXXX", 26500);
+var result = await MoipCSharpClient.Pagamento.Simular("PAY-XXXXXXXXXXXX", 26500);
 ```
 
 ## Multipedidos
 #### Criar Multipedido
 ```C#
-var body = new CriarMultiPedidoRequest
+var body = new MultiPedidoRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.MultiPedido.CriarMultiPedido(body);
+var result = await MoipCSharpClient.MultiPedido.Criar(body);
 ```
 
 #### Consultar Multipedido
 ```C#
-var result = await MoipCSharpClient.MultiPedido.ConsultarMultiPedido("MOR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPedido.Consultar("MOR-XXXXXXXXXXXX");
 ```
 
 ## Multipagamentos
 #### Criar Multipagamento
 ```C#
-var body = new CriarMultiPagamentoRequest
+var body = new MultiPagamentoRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.MultiPagamento.CriarMultiPagamento(body, "MOR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPagamento.Criar(body, "MOR-XXXXXXXXXXXX");
 ```
 #### Consultar Multipagamento
 ```C#
-var result = await MoipCSharpClient.MultiPagamento.ConsultarMultiPagamento("MPY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPagamento.Consultar("MPY-XXXXXXXXXXXX");
 ```
 #### Capturar Multipagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.MultiPagamento.CapturarMultiPagamentoPreAutorizado("MPY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPagamento.CapturarPreAutorizado("MPY-XXXXXXXXXXXX");
 ```
 #### Cancelar Multipagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.MultiPagamento.CancelarMultiPagamentoPreAutorizado("MPY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPagamento.CancelarPreAutorizado("MPY-XXXXXXXXXXXX");
 ```
 #### Liberação de Custódia
 ```C#
@@ -251,127 +242,127 @@ var result = await MoipCSharpClient.MultiPagamento.LiberarCustodia("ECW-XXXXXXXX
 ## Notificações
 #### Criar Preferência de Notificação para Conta Moip
 ```C#
-var body = new CriarPreferenciaNotificacaoContaMoipRequest
+var body = new NotificacaoRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Notificacao.CriarPreferenciaNotificacaoContaMoip(body);
+var result = await MoipCSharpClient.Notificacao.CriarContaMoip(body);
 ```
 
 #### Criar Preferência de Notificação para App
 ```C#
-var body = new CriarPreferenciaNotificacaoAppRequest
+var body = new NotificacaoRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Notificacao.CriarPreferenciaNotificacaoApp(body, "APP-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Notificacao.CriarApp(body, "APP-XXXXXXXXXXXX");
 ```
 
 #### Consultar Preferência de Notificação
 ```C#
-var result = await MoipCSharpClient.Notificacao.ConsultarPreferenciaNotificacao("NPR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Notificacao.Consultar("NPR-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas as Preferências de Notificação
 ```C#
-var result = await MoipCSharpClient.Notificacao.ListarTodasPreferenciasNotificacao();
+var result = await MoipCSharpClient.Notificacao.Listar();
 ```
 
 #### Remover Preferência de Notificação
 ```C#
-var result = await MoipCSharpClient.Notificacao.RemoverPreferenciaNotificacao("NPR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Notificacao.Remover("NPR-XXXXXXXXXXXX");
 ```
 
 #### Consultar Webhook Enviado
 ```C#
-var result = await MoipCSharpClient.Notificacao.ConsultarWebhookEnviado("PAY-XXXXXXXXXXXX"); 
+var result = await MoipCSharpClient.Notificacao.ConsultarWebhook("PAY-XXXXXXXXXXXX"); 
 ```
 
 #### Listar Todos os Webhooks Enviados
 ```C#
-var result = await MoipCSharpClient.Notificacao.ListarTodosWebhooksEnviados();
+var result = await MoipCSharpClient.Notificacao.ListarWebhooks();
 ```
 
 ## Contas Bancárias
 #### Criar Conta Bancária
 ```C#
-var body = new CriarContaBancariaRequest
+var body = new ContaBancariaRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.ContaBancaria.CriarContaBancaria(body, "MPA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.ContaBancaria.Criar(body, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Consultar Conta Bancária
 ```C#
-var result = await MoipCSharpClient.ContaBancaria.ConsultarContaBancaria("BKA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.ContaBancaria.Consultar("BKA-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas Contas Bancárias
 ```C#
-var result = await MoipCSharpClient.ContaBancaria.ListarTodasContasBancarias("MPA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.ContaBancaria.Listar("MPA-XXXXXXXXXXXX");
 ```
 
 #### Deletar Conta Bancária
 ```C#
-var result = await MoipCSharpClient.ContaBancaria.DeletarContaBancaria("BKA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.ContaBancaria.Deletar("BKA-XXXXXXXXXXXX");
 ```
 
 #### Atualizar Conta Bancária
 ```C#
-var body = new AtualizarContaBancariaRequest
+var body = new ContaBancariaRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.ContaBancaria.AtualizarContaBancaria(body, "BKA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.ContaBancaria.Atualizar(body, "BKA-XXXXXXXXXXXX");
 ```
 
 ## Saldo Moip
 #### Consultar Saldos
 ```C#
-var result = await MoipCSharpClient.SaldoMoip.ConsultarSaldos();
+var result = await MoipCSharpClient.Saldo.Consultar();
 ```
 
 ## Lançamentos
 #### Consultar Lançamento
 ```C#
-var result = await MoipCSharpClient.Lancamento.ConsultarLancamento("ENT-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Lancamento.Consultar("ENT-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos Lançamentos
 ```C#
-var result = await MoipCSharpClient.Lancamento.ListarTodosLancamentos();
+var result = await MoipCSharpClient.Lancamento.Listar();
 ```
 
 ## Transferências
 #### Criar Transferência
 ```C#
-var body = new CriarTransferenciaRequest
+var body = new TransferenciaRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Transferencia.CriarTransferencia(body);
+var result = await MoipCSharpClient.Transferencia.Criar(body);
 ```
 
 #### Reverter Transferência
 ```C#
-var result = await MoipCSharpClient.Transferencia.ReverterTransferencia("TRA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Transferencia.Reverter("TRA-XXXXXXXXXXXX");
 ```
 
 #### Consultar Transferência
 ```C#
-var result = await MoipCSharpClient.Transferencia.ConsultarTransferencia("TRA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Transferencia.Consultar("TRA-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas Transferências
 ```C#
-var result = await MoipCSharpClient.Transferencias.ListarTodasTransferencias();
+var result = await MoipCSharpClient.Transferencias.Listar();
 ```
 
 ## Reembolsos
 #### Reembolsar Pagamento
 ```C#
-var body = new ReembolsarPagamentoRequest
+var body = new ReembolsarRequest
 {
     //informe os campos aqui
 };            
@@ -380,7 +371,7 @@ var result = await Reembolsos.ReembolsarPagamento(body, "PAY-XXXXXXXXXXXX");
 
 #### Reembolsar Pedido via Cartão de Crédito
 ```C#
-var body = new ReembolsarPedidoCartaoCreditoRequest
+var body = new ReembolsarRequest
 {
     //informe os campos aqui
 };            
@@ -389,17 +380,17 @@ var result = await MoipCSharpClient.Reembolso.ReembolsarPedidoCartaoCredito(body
 
 #### Consultar Reembolso
 ```C#
-var result = await MoipCSharpClient.Reembolso.ConsultarReembolso("REF-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Reembolso.Consultar("REF-XXXXXXXXXXXX");
 ```
 
 #### Listar Reembolsos do Pagamento
 ```C#
-var result = await MoipCSharpClient.Reembolso.ListarReembolsosPagamento("PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Reembolso.ListarPagamento("PAY-XXXXXXXXXXXX");
 ```
 
 #### Listar Reembolsos do Pedido
 ```C#
-var result = await MoipCSharpClient.Reembolso.ListarReembolsosPedido("ORD-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Reembolso.ListarPedido("ORD-XXXXXXXXXXXX");
 ```
 
 ## Conciliação

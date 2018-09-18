@@ -3,7 +3,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class WebhooksEnviadosResponse
+    public class WebhookResponse
     {
         public List<Webhook> webhooks { get; set; }
     }

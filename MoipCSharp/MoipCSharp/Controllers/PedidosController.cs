@@ -28,7 +28,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<PedidoResponse> CriarPedido(CriarPedidoRequest body)
+        public async Task<PedidoResponse> Criar(PedidoRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/orders", stringContent);
@@ -47,7 +47,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<PedidoResponse> ConsultarPedido(string order_id)
+        public async Task<PedidoResponse> Consultar(string order_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders/{order_id}");
             if (!response.IsSuccessStatusCode)
@@ -65,7 +65,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<PedidosResponse> ListarTodosPedidos()
+        public async Task<PedidosResponse> Listar()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders");
             if (!response.IsSuccessStatusCode)
@@ -83,9 +83,9 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<PedidosResponse> ListarTodosPedidosFiltros(string filtros)
+        public async Task<PedidosResponse> ListarFiltro(string filtro)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders?{filtros}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders?{filtro}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

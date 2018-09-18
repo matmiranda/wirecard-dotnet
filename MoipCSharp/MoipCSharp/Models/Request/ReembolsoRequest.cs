@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class ReembolsarPedidoCartaoCreditoRequest
+    public class ReembolsoRequest
     {
         public string amount { get; set; }
         public Refundinginstrument refundingInstrument { get; set; }

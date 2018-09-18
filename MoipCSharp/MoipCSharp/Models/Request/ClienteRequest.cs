@@ -1,7 +1,9 @@
+#pragma warning disable IDE1006
+using System.Collections.Generic;
+
 namespace MoipCSharp.Models
 {
-#pragma warning disable IDE1006
-    public class CriarClienteRequest
+    public class ClienteRequest
     {
         public string ownId { get; set; }
         public string fullname { get; set; }
@@ -10,5 +12,10 @@ namespace MoipCSharp.Models
         public Taxdocument taxDocument { get; set; }
         public Phone phone { get; set; }
         public Shippingaddress shippingAddress { get; set; }
+        public string method { get; set; }
+        public Creditcard creditCard { get; set; }
+        public Amount amount { get; set; }
+        public List<Item> items { get; set; }
+        public Customer customer { get; set; }
     }
 }

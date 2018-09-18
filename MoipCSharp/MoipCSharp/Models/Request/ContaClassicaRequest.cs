@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class CriarContaMoipClassicaRequest
+    public class ContaClassicaRequest
     {
         public Email email { get; set; }
         public Person person { get; set; }

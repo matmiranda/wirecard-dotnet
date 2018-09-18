@@ -3,7 +3,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class ContaMoipTransparenteResponse
+    public class ContaTransparenteResponse
     {
         public string id { get; set; }
         public string login { get; set; }

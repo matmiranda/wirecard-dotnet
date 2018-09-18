@@ -30,7 +30,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<PreferenciaNotificacaoContaMoipResponse> CriarPreferenciaNotificacaoContaMoip(CriarPreferenciaNotificacaoContaMoipRequest body)
+        public async Task<NotificacaoResponse> CriarContaMoip(NotificacaoRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync("v2/preferences/notifications", stringContent);
@@ -42,14 +42,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<PreferenciaNotificacaoContaMoipResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<NotificacaoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<PreferenciaNotificacaoAppResponse> CriarPreferenciaNotificacaoApp(CriarPreferenciaNotificacaoAppRequest body, string app_id)
+        public async Task<NotificacaoResponse> CriarApp(NotificacaoRequest body, string app_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
@@ -61,14 +61,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<PreferenciaNotificacaoAppResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<NotificacaoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<PreferenciaNotificacaoResponse> ConsultarPreferenciaNotificacao(string notification_id)
+        public async Task<NotificacaoResponse> Consultar(string notification_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/preferences/notifications/{notification_id}");
             if (!response.IsSuccessStatusCode)
@@ -79,14 +79,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<PreferenciaNotificacaoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<NotificacaoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<List<PreferenciasNotificacaoResponse>> ListarTodasPreferenciasNotificacao()
+        public async Task<List<NotificacaoResponse>> Listar()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/preferences/notifications");
             if (!response.IsSuccessStatusCode)
@@ -97,14 +97,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<List<PreferenciasNotificacaoResponse>>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<NotificacaoResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<HttpStatusCode> RemoverPreferenciaNotificacao(string notification_id)
+        public async Task<HttpStatusCode> Remover(string notification_id)
         {
             HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/preferences/notifications/{notification_id}");
             if (!response.IsSuccessStatusCode)
@@ -115,7 +115,7 @@ namespace MoipCSharp.Controllers
             }
             return response.StatusCode;
         }
-        public async Task<WebhookEnviadoResponse> ConsultarWebhookEnviado(string payment_id)
+        public async Task<WebhookResponse> ConsultarWebhook(string payment_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/webhooks?resourceId={payment_id}");
             if (!response.IsSuccessStatusCode)
@@ -126,14 +126,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<WebhookEnviadoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<WebhookResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<WebhooksEnviadosResponse> ListarTodosWebhooksEnviados()
+        public async Task<List<WebhookResponse>> ListarWebhooks()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/webhooks");
             if (!response.IsSuccessStatusCode)
@@ -144,7 +144,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<WebhooksEnviadosResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<WebhookResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

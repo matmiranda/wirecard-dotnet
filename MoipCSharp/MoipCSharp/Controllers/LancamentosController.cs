@@ -3,7 +3,6 @@ using System.Net.Http;
 using MoipCSharp.Models;
 using MoipCSharp.Exception;
 using System.Threading.Tasks;
-using System.Text;
 using System.Collections.Generic;
 
 namespace MoipCSharp.Controllers
@@ -29,7 +28,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<LancamentoResponse> ConsultarLancamento(string entry_id)
+        public async Task<LancamentoResponse> Consultar(string entry_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/entries/{entry_id}");
             if (!response.IsSuccessStatusCode)
@@ -47,7 +46,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<List<LancamentosResponse>> ListarTodosLancamentos()
+        public async Task<List<LancamentosResponse>> Listar()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/entries");
             if (!response.IsSuccessStatusCode)

@@ -28,7 +28,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<ContaMoipTransparenteResponse> CriarContaMoipTransparente(CriarContaMoipTransparenteRequest body)
+        public async Task<ContaTransparenteResponse> Criar(ContaTransparenteRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", stringContent);
@@ -40,7 +40,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<ContaMoipTransparenteResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ContaTransparenteResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

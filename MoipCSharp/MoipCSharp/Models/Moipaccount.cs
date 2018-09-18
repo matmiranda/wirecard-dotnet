@@ -7,5 +7,6 @@ namespace MoipCSharp.Models
         public string id { get; set; }
         public string login { get; set; }
         public string fullname { get; set; }
+        public string account { get; set; }
     }
 }

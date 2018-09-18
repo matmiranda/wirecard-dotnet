@@ -29,7 +29,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<HttpStatusCode> VerificarSeUsuarioJaPossuiContaMoip(string email)
+        public async Task<HttpStatusCode> ContaExiste(string email)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/exists?email={email}");
             if (!response.IsSuccessStatusCode)
@@ -40,7 +40,7 @@ namespace MoipCSharp.Controllers
             }
             return response.StatusCode;
         }
-        public async Task<ContaMoipClassicaResponse> CriarContaMoipClassica(CriarContaMoipClassicaRequest body)
+        public async Task<ContaClassicaResponse> CriarConta(ContaClassicaRequest body)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", null);
             if (!response.IsSuccessStatusCode)
@@ -51,14 +51,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<ContaMoipClassicaResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ContaClassicaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<ContaMoipResponse> ConsultarContaMoip(string account_id)
+        public async Task<ContaClassicaResponse> ConsultarConta(string account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}");
             if (!response.IsSuccessStatusCode)
@@ -69,7 +69,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<ContaMoipResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ContaClassicaResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
@@ -136,7 +136,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<ChavePublicaContaMoipResponse> ObterChavePublicaContaMoip()
+        public async Task<ChavePublicaContaMoipResponse> ObterChavePublica()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/keys");
             if (!response.IsSuccessStatusCode)

@@ -22,5 +22,7 @@ namespace MoipCSharp.Models
         public DateTime updatedAt { get; set; }
         public string type { get; set; }
         public Refundinginstrument refundingInstrument { get; set; }
+        public string description { get; set; }
+        public Cancellationdetails cancellationDetails { get; set; }
     }
 }

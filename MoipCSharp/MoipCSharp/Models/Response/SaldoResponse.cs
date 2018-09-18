@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class SaldosResponse
+    public class SaldoResponse
     {
         public int unavailable { get; set; }
         public int future { get; set; }

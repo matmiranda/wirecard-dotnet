@@ -28,7 +28,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<MultiPedidoResponse> CriarMultiPedido(CriarMultiPedidoRequest body)
+        public async Task<MultiPedidoResponse> Criar(CriarMultiPedidoRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync("v2/multiorders", stringContent);
@@ -47,7 +47,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<MultiPedidoResponse> ConsultarMultiPedido(string multiorder_id)
+        public async Task<MultiPedidoResponse> Consultar(string multiorder_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/multiorders/{multiorder_id}");
             if (!response.IsSuccessStatusCode)

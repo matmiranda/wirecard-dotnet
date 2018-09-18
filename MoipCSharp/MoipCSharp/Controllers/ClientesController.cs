@@ -29,7 +29,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<ClienteResponse> CriarCliente(CriarClienteRequest body)
+        public async Task<ClienteResponse> Criar(ClienteRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/customers", stringContent);
@@ -48,7 +48,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<CartaoCreditoResponse> AdicionarCartaoCredito(AdicionarCartaoCreditoRequest body, string customer_id)
+        public async Task<ClienteResponse> AdicionarCartaoCredito(ClienteRequest body, string customer_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/customers/{customer_id}/fundinginstruments", stringContent);
@@ -60,14 +60,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<CartaoCreditoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ClienteResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<AtualizarClienteResponse> AtualizarCliente(AtualizarClienteRequest body)
+        public async Task<ClienteResponse> Atualizar(ClienteRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/orders/", stringContent);
@@ -79,7 +79,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<AtualizarClienteResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ClienteResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
@@ -91,7 +91,7 @@ namespace MoipCSharp.Controllers
             HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/fundinginstruments/{creditcard_id}");
             return response.StatusCode;
         }
-        public async Task<ClienteResponse> ConsultarCliente(string customer_id)
+        public async Task<ClienteResponse> Consultar(string customer_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/{customer_id}");
             if (!response.IsSuccessStatusCode)
@@ -109,7 +109,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<ClientesResponse> ListarTodosClientes()
+        public async Task<ClientesResponse> Listar()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/");
             if (!response.IsSuccessStatusCode)

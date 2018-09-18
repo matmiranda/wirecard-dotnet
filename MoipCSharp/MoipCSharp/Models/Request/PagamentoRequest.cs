@@ -2,9 +2,11 @@
 
 namespace MoipCSharp.Models
 {
-    public class CriarMultiPagamentoRequest
+    public class PagamentoRequest
     {
         public int installmentCount { get; set; }
+        public string statementDescriptor { get; set; }
         public Fundinginstrument fundingInstrument { get; set; }
+        public Device device { get; set; }
     }
 }

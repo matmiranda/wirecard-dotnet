@@ -30,7 +30,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<ContaBancariaResponse> CriarContaBancaria(CriarContaBancariaRequest body, string account_id)
+        public async Task<ContaBancariaResponse> Criar(ContaBancariaRequest body, string account_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/accounts/{account_id}/bankaccounts", stringContent);
@@ -49,13 +49,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<string> CriarContaBancariaString(CriarContaBancariaRequest body, string account_id)
-        {
-            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/accounts/{account_id}/bankaccounts", stringContent);
-            return await response.Content.ReadAsStringAsync();
-        }
-        public async Task<ContaBancariaResponse> ConsultarContaBancaria(string bank_account_id)
+        public async Task<ContaBancariaResponse> Consultar(string bank_account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/bankaccounts/{bank_account_id}");
             if (!response.IsSuccessStatusCode)
@@ -73,7 +67,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<List<ContasBancariasResponse>> ListarTodasContasBancarias(string account_id)
+        public async Task<List<ContaBancariaResponse>> Listar(string account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}/bankaccounts");
             if (!response.IsSuccessStatusCode)
@@ -84,14 +78,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<List<ContasBancariasResponse>>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<ContaBancariaResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<HttpStatusCode> DeletarContaBancaria(string account_id)
+        public async Task<HttpStatusCode> Deletar(string account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}/bankaccounts");
             if (!response.IsSuccessStatusCode)
@@ -102,7 +96,7 @@ namespace MoipCSharp.Controllers
             }
             return response.StatusCode;
         }
-        public async Task<ContaBancariaResponse> AtualizarContaBancaria(AtualizarContaBancariaRequest body, string bankaccount_id)
+        public async Task<ContaBancariaResponse> Atualizar(ContaBancariaRequest body, string bankaccount_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PutAsync($"v2/bankaccounts/{bankaccount_id}", stringContent);

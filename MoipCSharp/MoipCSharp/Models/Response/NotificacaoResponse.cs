@@ -3,7 +3,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class PreferenciaNotificacaoResponse
+    public class NotificacaoResponse
     {
         public List<string> events { get; set; }
         public string target { get; set; }

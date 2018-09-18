@@ -7,5 +7,7 @@ namespace MoipCSharp.Models
     {
         public int addition { get; set; }
         public List<int> quantity { get; set; }
+        public int amount { get; set; }
+        public int number { get; set; }
     }
 }

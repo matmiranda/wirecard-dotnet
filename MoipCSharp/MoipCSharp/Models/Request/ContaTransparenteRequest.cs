@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class CriarContaMoipTransparenteRequest
+    public class ContaTransparenteRequest
     {
         public Email email { get; set; }
         public Person person { get; set; }

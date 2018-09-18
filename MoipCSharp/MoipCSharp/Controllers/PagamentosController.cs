@@ -30,7 +30,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<PagamentoResponse> CriarPagamento(CriarPagamentoRequest body, string order_id)
+        public async Task<PagamentoResponse> Criar(PagamentoRequest body, string order_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/orders/{order_id}/payments", stringContent);
@@ -49,7 +49,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<CustodiaResponse> LiberarCustodia(string escrow_id)
+        public async Task<PagamentoResponse> LiberarCustodia(string escrow_id)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync($"escrows/{escrow_id}/release", null);
             if (!response.IsSuccessStatusCode)
@@ -60,14 +60,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<CustodiaResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public async Task<PagamentoPreAutorizadoResponse> CapturarPagamentoPreAutorizado(string payment_id)
+        public async Task<PagamentoResponse> CapturarPreAutorizado(string payment_id)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/capture", null);
             if (!response.IsSuccessStatusCode)
@@ -78,14 +78,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<PagamentoPreAutorizadoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public async Task<PagamentoPreAutorizadoResponse> CancelarPagamentoPreAutorizado(string payment_id)
+        public async Task<PagamentoResponse> CancelarPreAutorizado(string payment_id)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/void", null);
             if (!response.IsSuccessStatusCode)
@@ -96,14 +96,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<PagamentoPreAutorizadoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PagamentoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public async Task<PagamentoResponse> ConsultarPagamento(string payment_id)
+        public async Task<PagamentoResponse> Consultar(string payment_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/payments/{payment_id}");
             if (!response.IsSuccessStatusCode)
@@ -121,7 +121,7 @@ namespace MoipCSharp.Controllers
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        public async Task<HttpStatusCode> SimularPagamentos(string payment_id, int valor)
+        public async Task<HttpStatusCode> Simular(string payment_id, int valor)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"simulador/authorize?payment_id={payment_id}&amount={valor}");
             if (!response.IsSuccessStatusCode)

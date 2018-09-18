@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 #pragma warning disable IDE1006
 
 namespace MoipCSharp.Models
@@ -11,5 +12,8 @@ namespace MoipCSharp.Models
         public int installmentCount { get; set; }
         public List<Payment> payments { get; set; }
         public _Links _links { get; set; }
+        public string description { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime updatedAt { get; set; }
     }
 }

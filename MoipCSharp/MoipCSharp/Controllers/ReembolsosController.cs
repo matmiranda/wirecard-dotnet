@@ -4,6 +4,7 @@ using MoipCSharp.Models;
 using MoipCSharp.Exception;
 using System.Threading.Tasks;
 using System.Text;
+using System.Collections.Generic;
 
 namespace MoipCSharp.Controllers
 {
@@ -28,7 +29,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<PagamentoResponse> ReembolsarPagamento(ReembolsarPagamentoRequest body, string payment_id)
+        public async Task<ReembolsoResponse> ReembolsarPagamento(ReembolsoRequest body, string payment_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/refunds", stringContent);
@@ -40,14 +41,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<PagamentoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ReembolsoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<CartaoCreditoResponse> ReembolsarPedidoCartaoCredito(ReembolsarPedidoCartaoCreditoRequest body, string order_id)
+        public async Task<ReembolsoResponse> ReembolsarPedidoCartaoCredito(ReembolsoRequest body, string order_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/orders/{order_id}/refunds", stringContent);
@@ -59,14 +60,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<CartaoCreditoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ReembolsoResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<ReembolsoResponse> ConsultarReembolso(string refund_id)
+        public async Task<ReembolsoResponse> Consultar(string refund_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/refunds/{refund_id}");
             if (!response.IsSuccessStatusCode)
@@ -84,7 +85,7 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        public async Task<ReembolsosPagamentoResponse> ListarReembolsosPagamento(string payment_id)
+        public async Task<List<ReembolsoResponse>> ListarPagamento(string payment_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/payments/{payment_id}/refunds");
             if (!response.IsSuccessStatusCode)
@@ -95,14 +96,14 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<ReembolsosPagamentoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<ReembolsoResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        public async Task<ReembolsosPedidoResponse> ListarReembolsosPedido(string orders_id)
+        public async Task<List<ReembolsoResponse>> ListarPedido(string orders_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders/{orders_id}/refunds");
             if (!response.IsSuccessStatusCode)
@@ -113,7 +114,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<ReembolsosPedidoResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<ReembolsoResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

@@ -28,7 +28,7 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<List<SaldosResponse>> ConsultarSaldos()
+        public async Task<List<SaldoResponse>> ConsultarSaldos()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/balances");
             if (!response.IsSuccessStatusCode)
@@ -39,7 +39,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<List<SaldosResponse>>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<List<SaldoResponse>>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

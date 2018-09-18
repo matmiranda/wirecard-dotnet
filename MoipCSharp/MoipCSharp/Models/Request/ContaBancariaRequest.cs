@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class CriarContaBancariaRequest
+    public class ContaBancariaRequest
     {
         public string bankNumber { get; set; }
         public string agencyNumber { get; set; }

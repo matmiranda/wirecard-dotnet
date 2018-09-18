@@ -2,7 +2,7 @@
 
 namespace MoipCSharp.Models
 {
-    public class CriarTransferenciaRequest
+    public class TransferenciaRequest
     {
         public int amount { get; set; }
         public Transferinstrument transferInstrument { get; set; }

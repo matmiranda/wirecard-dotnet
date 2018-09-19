@@ -38,7 +38,7 @@
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 3.0.9
+PM> Install-Package MoipCSharp -Version 3.1.0
 ```
 
 ## Autenticando e configurando o ambiente
@@ -53,9 +53,14 @@ private MoipCSharpClient MoipCSharpClient = new MoipCSharpClient(Environments.SA
 ```
 
 ## Conta Clássica
-#### Verificar se usuário já possui Conta Moip
+#### Verificar se usuário já possui Conta Moip (email)
 ```C#
 var result = await MoipCSharpClient.ContaClassica.ContaExiste("meu_email@email.com");
+```
+
+#### Verificar se usuário já possui Conta Moip (documento)
+```C#
+var result = await MoipCSharpClient.ContaClassica.ContaExiste("123.456.789-01");
 ```
 
 #### Criar Conta Moip Clássica

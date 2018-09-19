@@ -19,5 +19,8 @@ namespace MoipCSharp.Models
         public string feeType { get; set; }
         public int monthlyRevenueId { get; set; }
         public string softDescriptor { get; set; }
+        public bool limited { get; set; }
+        public bool verified { get; set; }
+        public Company company { get; set; }
     }
 }

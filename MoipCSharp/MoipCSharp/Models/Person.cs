@@ -11,5 +11,6 @@ namespace MoipCSharp.Models
         public Identitydocument identityDocument { get; set; }
         public Phone phone { get; set; }
         public Address address { get; set; }
+        public Parentsname parentsName { get; set; }
     }
 }

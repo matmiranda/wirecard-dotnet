@@ -11,5 +11,7 @@ namespace MoipCSharp.Models
         public Mainactivity mainActivity { get; set; }
         public Phone phone { get; set; }
         public Address address { get; set; }
+        public string monthlyRevenue { get; set; }
+        public string constitutionType { get; set; }
     }
 }

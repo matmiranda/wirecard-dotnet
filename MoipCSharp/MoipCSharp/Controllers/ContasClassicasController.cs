@@ -29,9 +29,9 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        public async Task<HttpStatusCode> ContaExiste(string email)
+        public async Task<HttpStatusCode> ContaExiste(string emailOuDocumento)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/exists?email={email}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/exists?{(emailOuDocumento.Contains("@")?"email": "tax_document")}={emailOuDocumento}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

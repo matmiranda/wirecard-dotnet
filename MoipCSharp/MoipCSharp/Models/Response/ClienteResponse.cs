@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MoipCSharp.Models
 {
-    #pragma warning disable IDE1006
+#pragma warning disable IDE1006
     public class ClienteResponse
     {
         public string id { get; set; }
@@ -16,8 +16,6 @@ namespace MoipCSharp.Models
         public Taxdocument taxDocument { get; set; }
         public Shippingaddress shippingAddress { get; set; }
         public _Links _links { get; set; }
-
-
         public string status { get; set; }
         public List<Event> events { get; set; }
         public Amount amount { get; set; }
@@ -26,11 +24,6 @@ namespace MoipCSharp.Models
         public Creditcard creditCard { get; set; }
         public Card card { get; set; }
         public string method { get; set; }
-
-
-
-
-
         public string platform { get; set; }
         public DateTime updatedAt { get; set; }
         public List<Item> items { get; set; }
@@ -41,5 +34,6 @@ namespace MoipCSharp.Models
         public object[] refunds { get; set; }
         public object[] entries { get; set; }
         public List<Receiver> receivers { get; set; }
+        public Fundinginstrument fundingInstrument { get; set; }
     }
 }

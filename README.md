@@ -38,7 +38,7 @@
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 3.1.1
+PM> Install-Package MoipCSharp -Version 3.1.2
 ```
 
 ## Autenticando e configurando o ambiente

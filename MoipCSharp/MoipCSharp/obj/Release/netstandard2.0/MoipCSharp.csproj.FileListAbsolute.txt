@@ -6,4 +6,3 @@ C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Release\netstand
 C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Release\netstandard2.0\MoipCSharp.AssemblyInfo.cs
 C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Release\netstandard2.0\MoipCSharp.dll
 C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Release\netstandard2.0\MoipCSharp.pdb
-C:\Users\Matheus Miranda\source\repos\MoipCSharp\MoipCSharp\obj\Release\netstandard2.0\MoipCSharp.csprojAssemblyReference.cache

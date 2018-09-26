@@ -121,7 +121,30 @@ var result = await MoipCSharpClient.Cliente.Criar(body);
 ```C#
 var body = new ClienteRequest
 {
-    //informe os campos aqui
+    method = "CREDIT_CARD",
+    creditCard = new Creditcard
+    {
+        expirationMonth = "06",
+        expirationYear = "2022",
+        number = "4012001037141112",
+        cvc = "816",
+        holder = new Holder
+        {
+            fullname = "João da Silva",
+            birthdate = "1961-03-01",
+            taxDocument = new Taxdocument
+            {
+                type = "CPF",
+                number = "11111111111"
+            },
+            phone = new Phone
+            {
+                countryCode = "55",
+                areaCode = "11",
+                number = "111111111"
+            }
+        }
+    }
 };
 var result = await MoipCSharpClient.Cliente.AdicionarCartaoCredito(body, "CUS-XXXXXXXXXXXX");
 ```

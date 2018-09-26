@@ -35,5 +35,6 @@ namespace MoipCSharp.Models
         public object[] entries { get; set; }
         public List<Receiver> receivers { get; set; }
         public Fundinginstrument fundingInstrument { get; set; }
+        public List<Fundinginstrument> fundingInstruments { get; set; }
     }
 }

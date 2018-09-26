@@ -127,7 +127,7 @@ var body = new ClienteRequest
         expirationMonth = "06",
         expirationYear = "2022",
         number = "4012001037141112",
-        cvc = "816",
+        cvc = "123",
         holder = new Holder
         {
             fullname = "João da Silva",

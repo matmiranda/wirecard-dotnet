@@ -167,269 +167,269 @@ var result = await MoipCSharpClient.Customer.List();
 ## Pedidos
 #### Criar Pedido
 ```C#
-var body = new CriarPedidoRequest
+var body = new OrderRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.Pedido.Criar(body);
+var result = await MoipCSharpClient.Order.Create(body);
 ```
 
 #### Consultar Pedido
 ```C#
-var result = await MoipCSharpClient.Pedido.Consultar("ORD-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Order.Consult("ORD-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Pedidos - Sem Filtros
 ```C#
-var result = await MoipCSharpClient.Pedido.Listar();
+var result = await MoipCSharpClient.Order.List();
 ```
 
 #### Listar Todos os Pedidos - Com Filtros
 ```C#
 string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0";
-var result = await MoipCSharpClient.Pedido.ListarFiltro(filtros);
+var result = await MoipCSharpClient.Order.ListFilter(filtros);
 ```
  Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
  
  ## Pagamentos
  #### Criar Pagamento
  ```C#
-var body = new PagamentoRequest
+var body = new PaymentRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Pagamento.Criar(body, "ORD-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Payment.Create(body, "ORD-XXXXXXXXXXXX");
 ```
 
 #### Liberação de Custódia
 ```C#
-var result = await MoipCSharpClient.Pagamento.LiberarCustodia("ECW-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Payment.ReleaseCustody("ECW-XXXXXXXXXXXX");
 ```
 
 #### Capturar Pagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.Pagamento.CapturarPreAutorizado("PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Payment.CaptureAuthorized("PAY-XXXXXXXXXXXX");
 ```
 
 #### Cancelar Pagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.Pagamento.CancelarPreAutorizado("PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Payment.CancelAuthorized("PAY-XXXXXXXXXXXX");
 ```
 
 #### Consultar Pagamento
 ```C#
-var result = await MoipCSharpClient.Pagamento.Consultar("PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Payment.Consult("PAY-XXXXXXXXXXXX");
 ```
 
 #### Simular Pagamentos (sandbox)
 ```C#
-var result = await MoipCSharpClient.Pagamento.Simular("PAY-XXXXXXXXXXXX", 26500);
+var result = await MoipCSharpClient.Payment.Simulate("PAY-XXXXXXXXXXXX", 26500);
 ```
 
 ## Multipedidos
 #### Criar Multipedido
 ```C#
-var body = new MultiPedidoRequest
+var body = new MultiOrderRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.MultiPedido.Criar(body);
+var result = await MoipCSharpClient.MultiOrder.Create(body);
 ```
 
 #### Consultar Multipedido
 ```C#
-var result = await MoipCSharpClient.MultiPedido.Consultar("MOR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiOrder.Consult("MOR-XXXXXXXXXXXX");
 ```
 
 ## Multipagamentos
 #### Criar Multipagamento
 ```C#
-var body = new MultiPagamentoRequest
+var body = new MultiPaymentRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.MultiPagamento.Criar(body, "MOR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPayment.Create(body, "MOR-XXXXXXXXXXXX");
 ```
 #### Consultar Multipagamento
 ```C#
-var result = await MoipCSharpClient.MultiPagamento.Consultar("MPY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPayment.Consult("MPY-XXXXXXXXXXXX");
 ```
 #### Capturar Multipagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.MultiPagamento.CapturarPreAutorizado("MPY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPayment.CaptureAuthorized("MPY-XXXXXXXXXXXX");
 ```
 #### Cancelar Multipagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.MultiPagamento.CancelarPreAutorizado("MPY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPayment.CancelAuthorized("MPY-XXXXXXXXXXXX");
 ```
 #### Liberação de Custódia
 ```C#
-var result = await MoipCSharpClient.MultiPagamento.LiberarCustodia("ECW-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.MultiPayment.ReleaseCustody("ECW-XXXXXXXXXXXX");
 ```
 
 ## Notificações
 #### Criar Preferência de Notificação para Conta Moip
 ```C#
-var body = new NotificacaoRequest
+var body = new NotificationRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Notificacao.CriarContaMoip(body);
+var result = await MoipCSharpClient.Notification.CreatAccountMoip(body);
 ```
 
 #### Criar Preferência de Notificação para App
 ```C#
-var body = new NotificacaoRequest
+var body = new NotificationRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Notificacao.CriarApp(body, "APP-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Notification.CreateApp(body, "APP-XXXXXXXXXXXX");
 ```
 
 #### Consultar Preferência de Notificação
 ```C#
-var result = await MoipCSharpClient.Notificacao.Consultar("NPR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Notification.Consult("NPR-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas as Preferências de Notificação
 ```C#
-var result = await MoipCSharpClient.Notificacao.Listar();
+var result = await MoipCSharpClient.Notification.List();
 ```
 
 #### Remover Preferência de Notificação
 ```C#
-var result = await MoipCSharpClient.Notificacao.Remover("NPR-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Notification.Remove("NPR-XXXXXXXXXXXX");
 ```
 
 #### Consultar Webhook Enviado
 ```C#
-var result = await MoipCSharpClient.Notificacao.ConsultarWebhook("PAY-XXXXXXXXXXXX"); 
+var result = await MoipCSharpClient.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX"); 
 ```
 
 #### Listar Todos os Webhooks Enviados
 ```C#
-var result = await MoipCSharpClient.Notificacao.ListarWebhooks();
+var result = await MoipCSharpClient.Notification.ListWebhooks();
 ```
 
 ## Contas Bancárias
 #### Criar Conta Bancária
 ```C#
-var body = new ContaBancariaRequest
+var body = new BankAccountRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.ContaBancaria.Criar(body, "MPA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.BankAccount.Create(body, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Consultar Conta Bancária
 ```C#
-var result = await MoipCSharpClient.ContaBancaria.Consultar("BKA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.BankAccount.Consult("BKA-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas Contas Bancárias
 ```C#
-var result = await MoipCSharpClient.ContaBancaria.Listar("MPA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.BankAccount.List("MPA-XXXXXXXXXXXX");
 ```
 
 #### Deletar Conta Bancária
 ```C#
-var result = await MoipCSharpClient.ContaBancaria.Deletar("BKA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.BankAccount.Delete("BKA-XXXXXXXXXXXX");
 ```
 
 #### Atualizar Conta Bancária
 ```C#
-var body = new ContaBancariaRequest
+var body = new BankAccountRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.ContaBancaria.Atualizar(body, "BKA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.BankAccount.Update(body, "BKA-XXXXXXXXXXXX");
 ```
 
 ## Saldo Moip
 #### Consultar Saldos
 ```C#
-var result = await MoipCSharpClient.Saldo.Consultar();
+var result = await MoipCSharpClient.Balance.Consult();
 ```
 
 ## Lançamentos
 #### Consultar Lançamento
 ```C#
-var result = await MoipCSharpClient.Lancamento.Consultar("ENT-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Launch.Consult("ENT-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos Lançamentos
 ```C#
-var result = await MoipCSharpClient.Lancamento.Listar();
+var result = await MoipCSharpClient.Launch.List();
 ```
 
 ## Transferências
 #### Criar Transferência
 ```C#
-var body = new TransferenciaRequest
+var body = new TransferRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Transferencia.Criar(body);
+var result = await MoipCSharpClient.Transfer.Create(body);
 ```
 
 #### Reverter Transferência
 ```C#
-var result = await MoipCSharpClient.Transferencia.Reverter("TRA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Transfer.Revert("TRA-XXXXXXXXXXXX");
 ```
 
 #### Consultar Transferência
 ```C#
-var result = await MoipCSharpClient.Transferencia.Consultar("TRA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Transfer.Consult("TRA-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas Transferências
 ```C#
-var result = await MoipCSharpClient.Transferencias.Listar();
+var result = await MoipCSharpClient.Transfer.List();
 ```
 
 ## Reembolsos
 #### Reembolsar Pagamento
 ```C#
-var body = new ReembolsarRequest
+var body = new RefundRequest
 {
     //informe os campos aqui
 };            
-var result = await Reembolsos.ReembolsarPagamento(body, "PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX");
 ```
 
 #### Reembolsar Pedido via Cartão de Crédito
 ```C#
-var body = new ReembolsarRequest
+var body = new RefundRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Reembolso.ReembolsarPedidoCartaoCredito(body, "ORD-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX");
 ```
 
 #### Consultar Reembolso
 ```C#
-var result = await MoipCSharpClient.Reembolso.Consultar("REF-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Refund.Consult("REF-XXXXXXXXXXXX");
 ```
 
 #### Listar Reembolsos do Pagamento
 ```C#
-var result = await MoipCSharpClient.Reembolso.ListarPagamento("PAY-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Refund.ListPayments("PAY-XXXXXXXXXXXX");
 ```
 
 #### Listar Reembolsos do Pedido
 ```C#
-var result = await MoipCSharpClient.Reembolso.ListarPedido("ORD-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Refund.ListOrders("ORD-XXXXXXXXXXXX");
 ```
 
 ## Conciliação
 #### Obter Arquivo de Vendas
 ```C#
-var result = await MoipCSharpClient.Conciliacao.ObterArquivoVendas("20180829"); // Data no formato YYYYMMDD
+var result = await MoipCSharpClient.Conciliation.GetSalesFile("20180829"); // Data no formato YYYYMMDD
 ```
 
 #### Obter Arquivo Financeiro
 ```C#
-var result = await MoipCSharpClient.Conciliacao.ObterArquivoFinanceiro("2018-08-29"); // Data no formato YYYY-MM-DD
+var result = await MoipCSharpClient.Conciliation.GetFinancialFile("2018-08-29"); // Data no formato YYYY-MM-DD
 ```
 
 ## Tabela - Filtros de busca

@@ -146,7 +146,7 @@ var body = new CustomerRequest
         }
     }
 };
-var result = await MoipCSharpClient.Customer.AdicionarCartaoCredito(body, "CUS-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX");
 ```
 
 #### Deletar Cartão de Crédito

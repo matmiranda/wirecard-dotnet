@@ -104,22 +104,22 @@ var body = new ContaTransparenteRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.ContaTrasparente.Criar(body);
+var result = await MoipCSharpClient.TransparentAccount.Create(body);
 ```
 
 ## Clientes
 #### Criar Cliente
 ```C#
-var body = new ClienteRequest
+var body = new CustomerRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.Cliente.Criar(body);
+var result = await MoipCSharpClient.Customer.Create(body);
 ```
 
 #### Adicionar Cartão de Crédito
 ```C#
-var body = new ClienteRequest
+var body = new CustomerRequest
 {
     method = "CREDIT_CARD",
     creditCard = new Creditcard
@@ -146,22 +146,22 @@ var body = new ClienteRequest
         }
     }
 };
-var result = await MoipCSharpClient.Cliente.AdicionarCartaoCredito(body, "CUS-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Customer.AdicionarCartaoCredito(body, "CUS-XXXXXXXXXXXX");
 ```
 
 #### Deletar Cartão de Crédito
 ```C#
-var result = await MoipCSharpClient.Cliente.DeletarCartaoCredito("CRC-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX");
 ```
 
 #### Consultar Cliente
 ```C#
-var result = await MoipCSharpClient.Cliente.Consultar("CUS-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.Customer.Consult("CUS-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Clientes
 ```C#
-var result = await MoipCSharpClient.Cliente.Listar();
+var result = await MoipCSharpClient.Customer.List();
 ```
 
 ## Pedidos

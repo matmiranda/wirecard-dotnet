@@ -100,7 +100,7 @@ var result = await MoipCSharpClient.ClassicAccount.GetPublickey();
 ## Conta Transparente
 #### Criar Conta Moip Transparente
 ```C#
-var body = new ContaTransparenteRequest
+var body = new TransparentAccountRequest
 {
     //informe os campos aqui
 };

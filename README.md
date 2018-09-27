@@ -55,46 +55,46 @@ private MoipCSharpClient MoipCSharpClient = new MoipCSharpClient(Environments.SA
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Moip (email)
 ```C#
-var result = await MoipCSharpClient.ContaClassica.ContaExiste("meu_email@email.com");
+var result = await MoipCSharpClient.ClassicAccount.AccountExist("meu_email@email.com");
 ```
 
 #### Verificar se usuário já possui Conta Moip (documento)
 ```C#
-var result = await MoipCSharpClient.ContaClassica.ContaExiste("123.456.789-01");
+var result = await MoipCSharpClient.ClassicAccount.AccountExist("123.456.789-01");
 ```
 
 #### Criar Conta Moip Clássica
 ```C#
-var body = new ContaClassicaRequest
+var body = new ClassicAccountRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.ContaClassica.Criar(body);
+var result = await MoipCSharpClient.ClassicAccount.Create(body);
 ```
 
 #### Consultar Conta Moip
 ```C#
-var result = await MoipCSharpClient.ContaClassica.Consultar("MPA-XXXXXXXXXXXX");
+var result = await MoipCSharpClient.ClassicAccount.Consult("MPA-XXXXXXXXXXXX");
 ```
 
 #### Solicitar Permissões de Acesso ao Usuário
 ```C#
-var result = await MoipCSharpClient.ContaClassica.SolicitarPermissoesAcessoUsuario(/*informe o valor de cada parâmetro*/);
+var result = await MoipCSharpClient.ClassicAccount.RequestUserAccessPermissions(/*informe o valor de cada parâmetro*/);
 ```
 
 #### Gerar Access Token
 ```C#
-var result = await MoipCSharpClient.ContaClassica.GerarAccessToken(/*informe o valor de cada parâmetro*/);
+var result = await MoipCSharpClient.ClassicAccount.GenerateAccessToken(/*informe o valor de cada parâmetro*/);
 ```
 
 #### Atualizar accessToken
 ```C#
-var result = await MoipCSharpClient.ContaClassica.AtualizarAccessToken(/*informe o valor de cada parâmetro*/);
+var result = await MoipCSharpClient.ClassicAccount.UpdateAccessToken(/*informe o valor de cada parâmetro*/);
 ```
 
 #### Obter chave pública de uma Conta Moip
 ```C#
-var result = await MoipCSharpClient.ContaClassica.ObterChavePublicaContaMoip();
+var result = await MoipCSharpClient.ClassicAccount.GetPublickey();
 ```
 
 ## Conta Transparente

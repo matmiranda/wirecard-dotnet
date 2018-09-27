@@ -6,7 +6,8 @@ namespace MoipCSharp.Exception
 {
     public class MoipException : System.Exception
     {
-        public class APIException
+        //trocar APIException por MoipError
+        public class MoipError
         {
             public string error { get; set; }
             public string message { get; set; }
@@ -19,27 +20,27 @@ namespace MoipCSharp.Exception
             public string path { get; set; }
             public string description { get; set; }
         }
-        public APIException errors { get; set; }
+        public MoipError moipError { get; set; }
         public string contentFromMoip { get; set; }
         public int statusCode { get; set; }
 
-        public MoipException(APIException moipException, string message, string contentFromMoip, int statusCode) : base(message)
+        public MoipException(MoipError moipError_, string message, string contentFromMoip, int statusCode) : base(message)
         {
             HelpLink = "https://dev.moip.com.br/v2.0/reference#erros-2";
             this.contentFromMoip = contentFromMoip;
             this.statusCode = statusCode;
-            errors = moipException;
+            moipError = moipError_;
         }
 
-        internal static APIException DeserializeObject(string json)
+        internal static MoipError DeserializeObject(string json)
         {
             try
             {
-                return JsonConvert.DeserializeObject<APIException>(json);
+                return JsonConvert.DeserializeObject<MoipError>(json);
             }
             catch
             {
-                return new APIException();
+                return new MoipError();
             }
         }
     }

@@ -38,7 +38,7 @@ namespace MoipCSharp.Controllers
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
                 throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
@@ -57,7 +57,7 @@ namespace MoipCSharp.Controllers
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
                 throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
@@ -76,7 +76,7 @@ namespace MoipCSharp.Controllers
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
                 throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try
@@ -95,7 +95,7 @@ namespace MoipCSharp.Controllers
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
                 throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             return response.StatusCode;
@@ -108,7 +108,7 @@ namespace MoipCSharp.Controllers
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                MoipException.APIException moipException = MoipException.DeserializeObject(content);
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
                 throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
             }
             try

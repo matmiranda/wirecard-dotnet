@@ -1,4 +1,5 @@
 ﻿#pragma warning disable IDE1006
+using Newtonsoft.Json;
 
 namespace MoipCSharp.Models
 {
@@ -6,6 +7,7 @@ namespace MoipCSharp.Models
     {
         public string currency { get; set; }
         public Subtotals subtotals { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int @fixed { get; set; }
         public int percentual { get; set; }
         public int paid { get; set; }

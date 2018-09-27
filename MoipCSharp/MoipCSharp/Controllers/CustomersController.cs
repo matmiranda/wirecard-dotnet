@@ -78,7 +78,7 @@ namespace MoipCSharp.Controllers
             return response.StatusCode;
         }
         //Consultar cliente - Consult Customer
-        public async Task<CustomerResponse> ConsultCustomer(string customer_id)
+        public async Task<CustomerResponse> Consult(string customer_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/{customer_id}");
             if (!response.IsSuccessStatusCode)

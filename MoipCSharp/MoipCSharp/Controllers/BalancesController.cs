@@ -29,7 +29,10 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Consultar Saldos - Consult Balances
+        /// <summary>
+        /// Consultar Saldos - Consult Balances
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<BalanceResponse>> Consult()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/balances");

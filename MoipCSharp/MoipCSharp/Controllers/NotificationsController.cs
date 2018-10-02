@@ -31,7 +31,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Criar Preferência de Notificação para Conta Moip - Create Notification Preference for Moip Account
+        /// <summary>
+        /// Criar Preferência de Notificação para Conta Moip - Create Notification Preference for Moip Account
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         public async Task<NotificationResponse> CreatAccountMoip(NotificationRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -51,7 +55,12 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Criar Preferência de Notificação para App - Create Notification Preference for App
+        /// <summary>
+        /// Criar Preferência de Notificação para App - Create Notification Preference for App
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="app_id">Código identificador do App. Exemplo: APP-3984HG73HE9</param>
+        /// <returns></returns>
         public async Task<NotificationResponse> CreateApp(NotificationRequest body, string app_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -71,7 +80,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Consult Notification Preference - Consultar Preferência de Notificação
+        /// <summary>
+        /// Consult Notification Preference - Consultar Preferência de Notificação
+        /// </summary>
+        /// <param name="notification_id">Código do identificador da preferência (NPR-DV61EEGGUFCQ)</param>
+        /// <returns></returns>
         public async Task<NotificationResponse> Consult(string notification_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/preferences/notifications/{notification_id}");
@@ -90,7 +103,10 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar Todas as Preferências de Notificação - List All Notification Preferences
+        /// <summary>
+        /// Listar Todas as Preferências de Notificação - List All Notification Preferences
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<NotificationResponse>> List()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/preferences/notifications");
@@ -109,7 +125,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Remover Preferência de Notificação - Remove Notification Preference
+        /// <summary>
+        /// Remover Preferência de Notificação - Remove Notification Preference
+        /// </summary>
+        /// <param name="notification_id">Código identificador da preferência (NPR-98G940NT23JO)</param>
+        /// <returns></returns>
         public async Task<HttpStatusCode> Remove(string notification_id)
         {
             HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/preferences/notifications/{notification_id}");
@@ -121,8 +141,12 @@ namespace MoipCSharp.Controllers
             }
             return response.StatusCode;
         }
-        //Consultar Webhook Enviado - Consult Webhook Submitted
-        public async Task<WebhookResponse> ConsultWebhook(string payment_id)
+        /// <summary>
+        /// Consultar Webhook Enviado - Consult Webhook Submitted
+        /// </summary>
+        /// <param name="payment_id">Identificador do pagamento</param>
+        /// <returns></returns>
+        public async Task<WebhooksResponse> ConsultWebhook(string payment_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/webhooks?resourceId={payment_id}");
             if (!response.IsSuccessStatusCode)
@@ -133,15 +157,18 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<WebhookResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<WebhooksResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
-        //Listar Todos os Webhooks Enviados - List All Sent Webhooks
-        public async Task<List<WebhookResponse>> ListWebhooks()
+        /// <summary>
+        /// Listar Todos os Webhooks Enviados - List All Sent Webhooks
+        /// </summary>
+        /// <returns></returns>
+        public async Task<WebhooksResponse> ListWebhooks()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/webhooks");
             if (!response.IsSuccessStatusCode)
@@ -152,7 +179,7 @@ namespace MoipCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<List<WebhookResponse>>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<WebhooksResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

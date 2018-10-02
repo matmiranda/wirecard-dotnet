@@ -31,7 +31,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Criar cliente - Create Client
+        /// <summary>
+        /// Criar cliente - Create Client
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         public async Task<CustomerResponse> Create(CustomerRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -51,7 +55,12 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Adicionar cartão de crédito - Add Credit Card
+        /// <summary>
+        /// Adicionar cartão de crédito - Add Credit Card
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="customer_id">Código identificador do cliente (exemplo: CUS-8563056295)</param>
+        /// <returns></returns>
         public async Task<CustomerResponse> AddCreditCard(CustomerRequest body, string customer_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -71,13 +80,21 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Deletar cartão de crédito - Delete Credit Card
+        /// <summary>
+        /// Deletar cartão de crédito - Delete Credit Card
+        /// </summary>
+        /// <param name="creditcard_id">Código identificador do cartão de crédito. Exemplo: CRC-8426482846</param>
+        /// <returns></returns>
         public async Task<HttpStatusCode> DeleteCreditCard(string creditcard_id)
         {
             HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/fundinginstruments/{creditcard_id}");
             return response.StatusCode;
         }
-        //Consultar cliente - Consult Customer
+        /// <summary>
+        /// Consultar cliente - Consult Customer
+        /// </summary>
+        /// <param name="customer_id">Código identificador do cliente que deseja consultar. Exemplo: CUS-1357915397</param>
+        /// <returns></returns>
         public async Task<CustomerResponse> Consult(string customer_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/{customer_id}");
@@ -96,7 +113,10 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar Todos os Clientes - List All Customers
+        /// <summary>
+        /// Listar Todos os Clientes - List All Customers
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<CustomerResponse>> List()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/");

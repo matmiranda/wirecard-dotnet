@@ -1,0 +1,409 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MoipCSharp</name>
+    </assembly>
+    <members>
+        <member name="M:MoipCSharp.Controllers.BalancesController.Consult">
+            <summary>
+            Consultar Saldos - Consult Balances
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.BankAccountsController.Create(MoipCSharp.Models.BankAccountRequest,System.String)">
+            <summary>
+            Criar conta bancária - create bank account
+            </summary>
+            <param name="body"></param>
+            <param name="account_id">Código identificador da conta Moip. Exemplo: MPA-3C5358FF2296</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.BankAccountsController.Consult(System.String)">
+            <summary>
+            Consultar conta bancária - consult bank account
+            </summary>
+            <param name="bank_account_id">Identificador da conta bancária.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.BankAccountsController.List(System.String)">
+            <summary>
+            Listar conta bancária - bank account list
+            </summary>
+            <param name="account_id">Código identificador da Conta Moip. Exemplo: MPA-05E8C79EAAAA</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.BankAccountsController.Delete(System.String)">
+            <summary>
+            Deletar conta bancária - delete bank account
+            </summary>
+            <param name="account_id">Identificador da conta bancária (BKA-XXXXXXXXXX)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.BankAccountsController.Update(MoipCSharp.Models.BankAccountRequest,System.String)">
+            <summary>
+            Atualizar conta bancária - update bank account
+            </summary>
+            <param name="body"></param>
+            <param name="bankaccount_id">Identificador da conta bancária (BKA-XXXXXXXXX).</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ClassicAccountsController.AccountExist(System.String)">
+            <summary>
+            Conta Existe - Account Exist
+            </summary>
+            <param name="email_document">email ou documento (cpf/cnpj)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ClassicAccountsController.Create(MoipCSharp.Models.ClassicAccountRequest)">
+            <summary>
+            Cria a conta clássica - Create the classic account
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ClassicAccountsController.Consult(System.String)">
+            <summary>
+            Consulta a conta clássica - Consult Classic Account
+            </summary>
+            <param name="account_id">ID da Conta Moip. Exemplo: MPA-3C5358FF2296</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ClassicAccountsController.RequestUserAccessPermissions(System.String,System.String,System.String,System.String)">
+            <summary>
+            Solicita Permissões de Acesso ao Usuário - Request User Access Permissions
+            </summary>
+            <param name="response_type">Define o tipo de resposta a ser obtido. Valores possíveis: code</param>
+            <param name="client_id">Identificador único do aplicativo que será realizada a solicitação. Exemplo: APP-DVLJHW59IKOS</param>
+            <param name="redirect_uri">URI de redirecionamento do cliente. ATENÇÂO: deve ser a mesma url cadastrada ao criar o app.</param>
+            <param name="scope">Permissões que deseja. Valores possíveis: RECEIVE_FUNDS, REFUND, MANAGE_ACCOUNT_INFO, RETRIEVE_FINANCIAL_INFO, TRANSFER_FUNDS, DEFINE_PREFERENCES</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ClassicAccountsController.GenerateAccessToken(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gera Access Token - Generate Access Token
+            </summary>
+            <param name="client_id">Código identificador do aplicativo que está realizando a solicitação. Exemplo: APP-M11STAPPOAU</param>
+            <param name="client_secret">Chave privada do aplicativo. O atributo secret que foi enviado na criação do seu aplicativo</param>
+            <param name="redirect_uri">URL de redirecionamento do cliente (deve ser a mesma utilizada na ação de solicitação de permissão).</param>
+            <param name="grant_type">Tipo de solicitação desejada. Valores possíveis: authorization_code</param>
+            <param name="code">Código de validação para recuperar o token de acesso. Esse é o code retornado para a URL cadastrada quando o usuário dá autorização de permissão.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ClassicAccountsController.UpdateAccessToken(System.String,System.String)">
+            <summary>
+            Atualiza access token - Update accessToken
+            </summary>
+            <param name="grant_type">Tipo de solicitação desejada. Valores possíveis: refresh_token</param>
+            <param name="refresh_token">Token para atualizar o token de autenticação</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ClassicAccountsController.GetPublickey">
+            <summary>
+            Obtem a chave pública - Get public key
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ConciliationsController.GetSalesFile(System.String)">
+            <summary>
+            Obter Arquivo de Vendas - Get Sales File
+            </summary>
+            <param name="date">Data no formato YYYYMMDD</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.ConciliationsController.GetFinancialFile(System.String)">
+            <summary>
+            Obter Arquivo Financeiro - Get Financial File
+            </summary>
+            <param name="eventsCreatedAt">Data referente à liquidação dos lançamentos financeiros. Formato: YYYY-MM-DD</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.CustomersController.Create(MoipCSharp.Models.CustomerRequest)">
+            <summary>
+            Criar cliente - Create Client
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.CustomersController.AddCreditCard(MoipCSharp.Models.CustomerRequest,System.String)">
+            <summary>
+            Adicionar cartão de crédito - Add Credit Card
+            </summary>
+            <param name="body"></param>
+            <param name="customer_id">Código identificador do cliente (exemplo: CUS-8563056295)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.CustomersController.DeleteCreditCard(System.String)">
+            <summary>
+            Deletar cartão de crédito - Delete Credit Card
+            </summary>
+            <param name="creditcard_id">Código identificador do cartão de crédito. Exemplo: CRC-8426482846</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.CustomersController.Consult(System.String)">
+            <summary>
+            Consultar cliente - Consult Customer
+            </summary>
+            <param name="customer_id">Código identificador do cliente que deseja consultar. Exemplo: CUS-1357915397</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.CustomersController.List">
+            <summary>
+            Listar Todos os Clientes - List All Customers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.LaunchesController.Consult(System.String)">
+            <summary>
+            Cosultar lançamento - Consult launch
+            </summary>
+            <param name="entry_id">Id do lançamento (Exemplo: ENT-BH4NJAVN65FB)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.LaunchesController.List">
+            <summary>
+            Listar lançamento - launch list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.MultiOrdersController.Create(MoipCSharp.Models.MultiOrderRequest)">
+            <summary>
+            Criar Multipedido - Create Multi Order
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.MultiOrdersController.Consult(System.String)">
+            <summary>
+            Consultar Multi pedido - Consult Multi order
+            </summary>
+            <param name="multiorder_id">Id identificador do multipagamento. Exemplo: MOR-9241K3EFW5DV</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.MultiPaymentsController.Create(MoipCSharp.Models.MultiPaymentRequest,System.String)">
+            <summary>
+            Criar Multi Pagamento - Create multi payment
+            </summary>
+            <param name="body"></param>
+            <param name="multiorder_id">Código identificador do multipedido. Exemplo: MOR-XXXXXXXX</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.MultiPaymentsController.Consult(System.String)">
+            <summary>
+            Consultar Multi Pagamento - Consult 
+            </summary>
+            <param name="multiorder_id">Id do multipagamento. string(16).</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.MultiPaymentsController.CaptureAuthorized(System.String)">
+            <summary>
+            Capturar Multi Pagamento Pré-Autorizado - Capture Multi-Payment Pre-authorized
+            </summary>
+            <param name="multipayment_id">Id identificador do multipagamento.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.MultiPaymentsController.CancelAuthorized(System.String)">
+            <summary>
+            Cancelar Multi Pagamento Pré-autorizado - Cancel Multi Payment Pre-authorized
+            </summary>
+            <param name="multipayment_id">Id identificador do multipagamento</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.MultiPaymentsController.ReleaseCustody(System.String)">
+            <summary>
+            Liberação de Custódia - Release of Custody
+            </summary>
+            <param name="escrow_id">Código identificador da custódia. Exemplo: ECW-87E7UUF9N2EK</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.NotificationsController.CreatAccountMoip(MoipCSharp.Models.NotificationRequest)">
+            <summary>
+            Criar Preferência de Notificação para Conta Moip - Create Notification Preference for Moip Account
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.NotificationsController.CreateApp(MoipCSharp.Models.NotificationRequest,System.String)">
+            <summary>
+            Criar Preferência de Notificação para App - Create Notification Preference for App
+            </summary>
+            <param name="body"></param>
+            <param name="app_id">Código identificador do App. Exemplo: APP-3984HG73HE9</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.NotificationsController.Consult(System.String)">
+            <summary>
+            Consult Notification Preference - Consultar Preferência de Notificação
+            </summary>
+            <param name="notification_id">Código do identificador da preferência (NPR-DV61EEGGUFCQ)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.NotificationsController.List">
+            <summary>
+            Listar Todas as Preferências de Notificação - List All Notification Preferences
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.NotificationsController.Remove(System.String)">
+            <summary>
+            Remover Preferência de Notificação - Remove Notification Preference
+            </summary>
+            <param name="notification_id">Código identificador da preferência (NPR-98G940NT23JO)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.NotificationsController.ConsultWebhook(System.String)">
+            <summary>
+            Consultar Webhook Enviado - Consult Webhook Submitted
+            </summary>
+            <param name="payment_id">Identificador do pagamento</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.NotificationsController.ListWebhooks">
+            <summary>
+            Listar Todos os Webhooks Enviados - List All Sent Webhooks
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.OrdersController.Create(MoipCSharp.Models.OrderRequest)">
+            <summary>
+            Criar Pedido - Create Order
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.OrdersController.Consult(System.String)">
+            <summary>
+            Consultar Pedido - Consult Order
+            </summary>
+            <param name="order_id">Código identificador do pedido. Exemplo: ORD-9BAYAVM87YHE</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.OrdersController.List">
+            <summary>
+            Listar Todos os Pedidos - List All Orders
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.OrdersController.ListFilter(System.String)">
+            <summary>
+            Listar Todos os Pedidos com filtro -  List All Filter Orders
+            </summary>
+            <param name="filter">Filtros de busca, mais informações <see href="https://github.com/matmiranda/MoipCSharp#listar-todos-os-pedidos---com-filtros">aqui</see></param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.PaymentsController.Create(MoipCSharp.Models.PaymentRequest,System.String)">
+            <summary>
+            Criar Pagamento - Create Payment
+            </summary>
+            <param name="body"></param>
+            <param name="order_id">Código identificador do pedido. Exemplo: ORD-9BAYAVM87YHE</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.PaymentsController.Consult(System.String)">
+            <summary>
+            Consultar Pagamento - Consult Payment
+            </summary>
+            <param name="payment_id">Código identificador do pagamento que deseja consultar. Exemplo: PAY-HL7QRKFEQNHV</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.PaymentsController.ReleaseCustody(System.String)">
+            <summary>
+            Liberação de Custódia - Release of Custody
+            </summary>
+            <param name="escrow_id">Código identificador da custódia. Exemplo ECW-9OS6FAPR3FD5</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.PaymentsController.CaptureAuthorized(System.String)">
+            <summary>
+             Capturar Pagamento Pré-autorizado - Capture Pre-authorized Payment
+            </summary>
+            <param name="payment_id">Código identificador do pagamento a ser pré-capturado. Exemplo: PAY-U1G2WVBEP19V</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.PaymentsController.CancelAuthorized(System.String)">
+            <summary>
+            Cancelar Pagamento Pré-autorizado - Cancelar Pagamento Pré-autorizado
+            </summary>
+            <param name="payment_id">Código identificador do pagamento pré-autorizado a ser cancelado. Exemplo: Exemplo: PAY-U1G2WVBEP19V</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.PaymentsController.Simulate(System.String,System.Int32)">
+            <summary>
+            Simular pagamentos - Simulate Payments
+            </summary>
+            <param name="payment_id">Código identificador do pagamento que deseja autorizar. Exemplo: PAY-0UBH5IAJ8KHX</param>
+            <param name="valor">Valor a ser autorizado no pagamento. O formato deve incluir centavos e não deve incluir vírgula. Exemplo: Para autorizar pagamento no valor de R$265 você deve setar o valor 26500</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.RefundsController.RefundPayment(MoipCSharp.Models.RefundRequest,System.String)">
+            <summary>
+            Reembolsar Pagamento - Refund Payment
+            </summary>
+            <param name="body"></param>
+            <param name="payment_id">Código identificador do pagamento a ser reembolsado. Exemplo: PAY-HL7QRKFEQNHV</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.RefundsController.RefundRequestCreditCard(MoipCSharp.Models.RefundRequest,System.String)">
+            <summary>
+            Reembolsar Pedido via Cartão de Crédito - Refund Request by Credit Card
+            </summary>
+            <param name="body"></param>
+            <param name="order_id">Código identificador do pedido a ser reembolsado. Exemplo: ORD-O5DLMAJZPTHV</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.RefundsController.Consult(System.String)">
+            <summary>
+            Consultar Reembolso - Consult Refund
+            </summary>
+            <param name="refund_id">Id do reembolso em formato de hash string(16).</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.RefundsController.ListPayments(System.String)">
+            <summary>
+            Listar Reembolsos do Pagamento - List Payment Refunds
+            </summary>
+            <param name="payment_id">Id do pagamento em formato de hash string(16).</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.RefundsController.ListOrders(System.String)">
+            <summary>
+            Listar Reembolsos do Pedido - List Order Reimbursements
+            </summary>
+            <param name="orders_id">Id do pedido em formato de hash. string(16).</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.TransfersController.Create(MoipCSharp.Models.TransferRequest)">
+            <summary>
+            Criar Transferência - Create Transfer
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.TransfersController.Revert(System.String)">
+            <summary>
+            Reverter Transferência - Revert Transfer
+            </summary>
+            <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.TransfersController.Consult(System.String)">
+            <summary>
+            Consultar Transferência - Consult Transfer
+            </summary>
+            <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.TransfersController.List">
+            <summary>
+            Listar Todas Transferências - List All Transfers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.TransparentAccountsController.Create(MoipCSharp.Models.TransparentAccountRequest)">
+            <summary>
+             Cria uma conta transparente - Create a transparent account
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

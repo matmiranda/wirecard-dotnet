@@ -29,7 +29,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Cosultar lançamento - Consult launch
+        /// <summary>
+        /// Cosultar lançamento - Consult launch
+        /// </summary>
+        /// <param name="entry_id">Id do lançamento (Exemplo: ENT-BH4NJAVN65FB)</param>
+        /// <returns></returns>
         public async Task<LaunchResponse> Consult(string entry_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/entries/{entry_id}");
@@ -48,7 +52,10 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar lançamento - launch list
+        /// <summary>
+        /// Listar lançamento - launch list
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<LaunchesResponse>> List()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/entries");

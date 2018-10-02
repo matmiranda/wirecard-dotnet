@@ -29,7 +29,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Criar Pedido - Create Order
+        /// <summary>
+        /// Criar Pedido - Create Order
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         public async Task<OrderResponse> Create(OrderRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -49,7 +53,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Consultar Pedido - Consult Order
+        /// <summary>
+        /// Consultar Pedido - Consult Order
+        /// </summary>
+        /// <param name="order_id">Código identificador do pedido. Exemplo: ORD-9BAYAVM87YHE</param>
+        /// <returns></returns>
         public async Task<OrderResponse> Consult(string order_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders/{order_id}");
@@ -68,7 +76,10 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar Todos os Pedidos - List All Orders
+        /// <summary>
+        /// Listar Todos os Pedidos - List All Orders
+        /// </summary>
+        /// <returns></returns>
         public async Task<OrdersResponse> List()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders");
@@ -87,7 +98,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar Todos os Pedidos com filtro -  List All Filter Orders
+        /// <summary>
+        /// Listar Todos os Pedidos com filtro -  List All Filter Orders
+        /// </summary>
+        /// <param name="filter">Filtros de busca, mais informações <see href="https://github.com/matmiranda/MoipCSharp#listar-todos-os-pedidos---com-filtros">aqui</see></param>
+        /// <returns></returns>
         public async Task<OrdersResponse> ListFilter(string filter)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders?{filter}");

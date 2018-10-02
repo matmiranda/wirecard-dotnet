@@ -30,7 +30,12 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Reembolsar Pagamento - Refund Payment
+        /// <summary>
+        /// Reembolsar Pagamento - Refund Payment
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="payment_id">Código identificador do pagamento a ser reembolsado. Exemplo: PAY-HL7QRKFEQNHV</param>
+        /// <returns></returns>
         public async Task<RefundResponse> RefundPayment(RefundRequest body, string payment_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -50,7 +55,12 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Reembolsar Pedido via Cartão de Crédito - Refund Request by Credit Card
+        /// <summary>
+        /// Reembolsar Pedido via Cartão de Crédito - Refund Request by Credit Card
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="order_id">Código identificador do pedido a ser reembolsado. Exemplo: ORD-O5DLMAJZPTHV</param>
+        /// <returns></returns>
         public async Task<RefundResponse> RefundRequestCreditCard(RefundRequest body, string order_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -70,7 +80,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Consultar Reembolso - Consult Refund
+        /// <summary>
+        /// Consultar Reembolso - Consult Refund
+        /// </summary>
+        /// <param name="refund_id">Id do reembolso em formato de hash string(16).</param>
+        /// <returns></returns>
         public async Task<RefundResponse> Consult(string refund_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/refunds/{refund_id}");
@@ -89,7 +103,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar Reembolsos do Pagamento - List Payment Refunds
+        /// <summary>
+        /// Listar Reembolsos do Pagamento - List Payment Refunds
+        /// </summary>
+        /// <param name="payment_id">Id do pagamento em formato de hash string(16).</param>
+        /// <returns></returns>
         public async Task<List<RefundResponse>> ListPayments(string payment_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/payments/{payment_id}/refunds");
@@ -108,7 +126,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar Reembolsos do Pedido - List Order Reimbursements
+        /// <summary>
+        /// Listar Reembolsos do Pedido - List Order Reimbursements
+        /// </summary>
+        /// <param name="orders_id">Id do pedido em formato de hash. string(16).</param>
+        /// <returns></returns>
         public async Task<List<RefundResponse>> ListOrders(string orders_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders/{orders_id}/refunds");

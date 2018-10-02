@@ -28,7 +28,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Obter Arquivo de Vendas - Get Sales File
+        /// <summary>
+        /// Obter Arquivo de Vendas - Get Sales File
+        /// </summary>
+        /// <param name="date">Data no formato YYYYMMDD</param>
+        /// <returns></returns>
         public async Task<SalesFileResponse> GetSalesFile(string date)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/reconciliations/sales/{date}");
@@ -47,7 +51,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Obter Arquivo Financeiro - Get Financial File
+        /// <summary>
+        /// Obter Arquivo Financeiro - Get Financial File
+        /// </summary>
+        /// <param name="eventsCreatedAt">Data referente à liquidação dos lançamentos financeiros. Formato: YYYY-MM-DD</param>
+        /// <returns></returns>
         public async Task<string> GetFinancialFile(string eventsCreatedAt)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/reconciliations/financials?eventsCreatedAt={eventsCreatedAt}");

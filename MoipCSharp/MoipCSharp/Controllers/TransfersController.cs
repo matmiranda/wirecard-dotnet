@@ -29,7 +29,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Criar Transferência - Create Transfer
+        /// <summary>
+        /// Criar Transferência - Create Transfer
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         public async Task<TransferResponse> Create(TransferRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -49,7 +53,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Reverter Transferência - Revert Transfer
+        /// <summary>
+        /// Reverter Transferência - Revert Transfer
+        /// </summary>
+        /// <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
+        /// <returns></returns>
         public async Task<TransferResponse> Revert(string transfer_id)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/transfers/{transfer_id}/reverse", null);
@@ -68,7 +76,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Consultar Transferência - Consult Transfer
+        /// <summary>
+        /// Consultar Transferência - Consult Transfer
+        /// </summary>
+        /// <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
+        /// <returns></returns>
         public async Task<TransferResponse> Consult(string transfer_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/transfers/{transfer_id}");
@@ -87,7 +99,10 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar Todas Transferências - List All Transfers
+        /// <summary>
+        /// Listar Todas Transferências - List All Transfers
+        /// </summary>
+        /// <returns></returns>
         public async Task<TransfersResponse> List()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders");

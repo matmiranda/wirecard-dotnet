@@ -30,7 +30,12 @@ namespace MoipCSharp.Controllers
             }
         }
         #endregion Singleton Pattern
-        //Criar conta bancária - create bank account
+        /// <summary>
+        /// Criar conta bancária - create bank account
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="account_id">Código identificador da conta Moip. Exemplo: MPA-3C5358FF2296</param>
+        /// <returns></returns>
         public async Task<BankAccountResponse> Create(BankAccountRequest body, string account_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -50,7 +55,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Consultar conta bancária - consult bank account
+        /// <summary>
+        /// Consultar conta bancária - consult bank account
+        /// </summary>
+        /// <param name="bank_account_id">Identificador da conta bancária.</param>
+        /// <returns></returns>
         public async Task<BankAccountResponse> Consult(string bank_account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/bankaccounts/{bank_account_id}");
@@ -69,7 +78,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Listar conta bancária - bank account list
+        /// <summary>
+        /// Listar conta bancária - bank account list
+        /// </summary>
+        /// <param name="account_id">Código identificador da Conta Moip. Exemplo: MPA-05E8C79EAAAA</param>
+        /// <returns></returns>
         public async Task<List<BankAccountResponse>> List(string account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}/bankaccounts");
@@ -88,7 +101,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Deletar conta bancária - delete bank account
+        /// <summary>
+        /// Deletar conta bancária - delete bank account
+        /// </summary>
+        /// <param name="account_id">Identificador da conta bancária (BKA-XXXXXXXXXX)</param>
+        /// <returns></returns>
         public async Task<HttpStatusCode> Delete(string account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}/bankaccounts");
@@ -100,7 +117,12 @@ namespace MoipCSharp.Controllers
             }
             return response.StatusCode;
         }
-        //Atualizar conta bancária - update bank account
+        /// <summary>
+        /// Atualizar conta bancária - update bank account
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="bankaccount_id">Identificador da conta bancária (BKA-XXXXXXXXX).</param>
+        /// <returns></returns>
         public async Task<BankAccountResponse> Update(BankAccountRequest body, string bankaccount_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");

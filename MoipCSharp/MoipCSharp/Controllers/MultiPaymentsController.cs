@@ -29,7 +29,12 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Criar Multi Pagamento - Create multi payment
+        /// <summary>
+        /// Criar Multi Pagamento - Create multi payment
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="multiorder_id">Código identificador do multipedido. Exemplo: MOR-XXXXXXXX</param>
+        /// <returns></returns>
         public async Task<MultiPaymentResponse> Create(MultiPaymentRequest body, string multiorder_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -49,7 +54,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Consultar Multi Pagamento - Consult multipayment
+        /// <summary>
+        /// Consultar Multi Pagamento - Consult 
+        /// </summary>
+        /// <param name="multiorder_id">Id do multipagamento. string(16).</param>
+        /// <returns></returns>
         public async Task<MultiPaymentResponse> Consult(string multiorder_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/multipayments/{multiorder_id}");
@@ -68,7 +77,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Capturar Multi Pagamento Pré-Autorizado - Capture Multi-Payment Pre-authorized
+        /// <summary>
+        /// Capturar Multi Pagamento Pré-Autorizado - Capture Multi-Payment Pre-authorized
+        /// </summary>
+        /// <param name="multipayment_id">Id identificador do multipagamento.</param>
+        /// <returns></returns>
         public async Task<MultiPaymentResponse> CaptureAuthorized(string multipayment_id)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/multipayments/{multipayment_id}/capture", null);
@@ -87,7 +100,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Cancelar Multi Pagamento Pré-autorizado - Cancel Multi Payment Pre-authorized
+        /// <summary>
+        /// Cancelar Multi Pagamento Pré-autorizado - Cancel Multi Payment Pre-authorized
+        /// </summary>
+        /// <param name="multipayment_id">Id identificador do multipagamento</param>
+        /// <returns></returns>
         public async Task<MultiPaymentResponse> CancelAuthorized(string multipayment_id)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/multipayments/{multipayment_id}/void", null);
@@ -106,7 +123,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Liberação de Custódia - Release of Custody
+        /// <summary>
+        /// Liberação de Custódia - Release of Custody
+        /// </summary>
+        /// <param name="escrow_id">Código identificador da custódia. Exemplo: ECW-87E7UUF9N2EK</param>
+        /// <returns></returns>
         public async Task<MultiPaymentResponse> ReleaseCustody(string escrow_id)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/escrows/{escrow_id}/release", null);

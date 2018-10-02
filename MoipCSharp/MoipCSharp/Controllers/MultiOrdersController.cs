@@ -29,7 +29,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Criar Multipedido - Create Multi Order
+        /// <summary>
+        /// Criar Multipedido - Create Multi Order
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         public async Task<MultiOrderResponse> Create(MultiOrderRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -49,7 +53,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Consultar Multi pedido - Consult Multi order
+        /// <summary>
+        /// Consultar Multi pedido - Consult Multi order
+        /// </summary>
+        /// <param name="multiorder_id">Id identificador do multipagamento. Exemplo: MOR-9241K3EFW5DV</param>
+        /// <returns></returns>
         public async Task<MultiOrderResponse> Consult(string multiorder_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/multiorders/{multiorder_id}");

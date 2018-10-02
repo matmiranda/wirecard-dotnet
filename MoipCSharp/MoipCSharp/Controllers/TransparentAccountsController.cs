@@ -29,7 +29,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Cria a conta transparente - Create transparent account
+        /// <summary>
+        ///  Cria uma conta transparente - Create a transparent account
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         public async Task<TransparentAccountResponse> Create(TransparentAccountRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");

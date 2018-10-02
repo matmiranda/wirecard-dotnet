@@ -30,7 +30,11 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Conta Existe - Account Exist
+        /// <summary>
+        /// Conta Existe - Account Exist
+        /// </summary>
+        /// <param name="email_document">email ou documento (cpf/cnpj)</param>
+        /// <returns></returns>
         public async Task<HttpStatusCode> AccountExist(string email_document)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/exists?{(email_document.Contains("@") ? "email" : "tax_document")}={email_document}");
@@ -42,7 +46,11 @@ namespace MoipCSharp.Controllers
             }
             return response.StatusCode;
         }
-        //Cria a conta clássica - Create the classic account
+        /// <summary>
+        /// Cria a conta clássica - Create the classic account
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         public async Task<ClassAccountResponse> Create(ClassicAccountRequest body)
         {
             HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", null);
@@ -61,7 +69,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Consulta a conta clássica - Consult Classic Account
+        /// <summary>
+        /// Consulta a conta clássica - Consult Classic Account
+        /// </summary>
+        /// <param name="account_id">ID da Conta Moip. Exemplo: MPA-3C5358FF2296</param>
+        /// <returns></returns>
         public async Task<ClassAccountResponse> Consult(string account_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}");
@@ -80,7 +92,14 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Solicita Permissões de Acesso ao Usuário - Request User Access Permissions
+        /// <summary>
+        /// Solicita Permissões de Acesso ao Usuário - Request User Access Permissions
+        /// </summary>
+        /// <param name="response_type">Define o tipo de resposta a ser obtido. Valores possíveis: code</param>
+        /// <param name="client_id">Identificador único do aplicativo que será realizada a solicitação. Exemplo: APP-DVLJHW59IKOS</param>
+        /// <param name="redirect_uri">URI de redirecionamento do cliente. ATENÇÂO: deve ser a mesma url cadastrada ao criar o app.</param>
+        /// <param name="scope">Permissões que deseja. Valores possíveis: RECEIVE_FUNDS, REFUND, MANAGE_ACCOUNT_INFO, RETRIEVE_FINANCIAL_INFO, TRANSFER_FUNDS, DEFINE_PREFERENCES</param>
+        /// <returns></returns>
         public async Task<string> RequestUserAccessPermissions(string response_type, string client_id, string redirect_uri, string scope)
         {
             HttpClient httpClient = ClientInstance;
@@ -101,7 +120,15 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Gera Access Token - Generate Access Token
+        /// <summary>
+        /// Gera Access Token - Generate Access Token
+        /// </summary>
+        /// <param name="client_id">Código identificador do aplicativo que está realizando a solicitação. Exemplo: APP-M11STAPPOAU</param>
+        /// <param name="client_secret">Chave privada do aplicativo. O atributo secret que foi enviado na criação do seu aplicativo</param>
+        /// <param name="redirect_uri">URL de redirecionamento do cliente (deve ser a mesma utilizada na ação de solicitação de permissão).</param>
+        /// <param name="grant_type">Tipo de solicitação desejada. Valores possíveis: authorization_code</param>
+        /// <param name="code">Código de validação para recuperar o token de acesso. Esse é o code retornado para a URL cadastrada quando o usuário dá autorização de permissão.</param>
+        /// <returns></returns>
         public async Task<AccessTokenResponse> GenerateAccessToken(string client_id, string client_secret, string redirect_uri, string grant_type, string code)
         {
             HttpClient httpClient = ClientInstance;
@@ -122,7 +149,12 @@ namespace MoipCSharp.Controllers
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        //Atualiza access token - Update accessToken
+        /// <summary>
+        /// Atualiza access token - Update accessToken
+        /// </summary>
+        /// <param name="grant_type">Tipo de solicitação desejada. Valores possíveis: refresh_token</param>
+        /// <param name="refresh_token">Token para atualizar o token de autenticação</param>
+        /// <returns></returns>
         public async Task<AccessTokenResponse> UpdateAccessToken(string grant_type, string refresh_token)
         {
             HttpClient httpClient = ClientInstance;
@@ -143,7 +175,10 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Obtem a chave pública - Get public key
+        /// <summary>
+        /// Obtem a chave pública - Get public key
+        /// </summary>
+        /// <returns></returns>
         public async Task<PublicKeyAccountMoipResponse> GetPublickey()
         {
             HttpResponseMessage response = await ClientInstance.GetAsync("v2/keys");

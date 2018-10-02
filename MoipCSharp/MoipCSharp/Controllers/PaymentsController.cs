@@ -31,7 +31,12 @@ namespace MoipCSharp.Controllers
         }
         #endregion Singleton Pattern
 
-        //Criar Pagamento - Create Payment
+        /// <summary>
+        /// Criar Pagamento - Create Payment
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="order_id">Código identificador do pedido. Exemplo: ORD-9BAYAVM87YHE</param>
+        /// <returns></returns>
         public async Task<PaymentResponse> Create(PaymentRequest body, string order_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
@@ -51,64 +56,11 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
-        //Liberação de Custódia - Release of Custody
-        public async Task<PaymentResponse> ReleaseCustody(string escrow_id)
-        {
-            HttpResponseMessage response = await ClientInstance.PostAsync($"escrows/{escrow_id}/release", null);
-            if (!response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
-            }
-            try
-            {
-                return JsonConvert.DeserializeObject<PaymentResponse>(await response.Content.ReadAsStringAsync());
-            }
-            catch (System.Exception ex)
-            {
-                throw new ArgumentException("Error message: " + ex.Message);
-            }
-        }
-        //Capturar Pagamento Pré-autorizado - Capture Pre-authorized Payment
-        public async Task<PaymentResponse> CaptureAuthorized(string payment_id)
-        {
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/capture", null);
-            if (!response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
-            }
-            try
-            {
-                return JsonConvert.DeserializeObject<PaymentResponse>(await response.Content.ReadAsStringAsync());
-            }
-            catch (System.Exception ex)
-            {
-                throw new ArgumentException("Error message: " + ex.Message);
-            }
-        }
-        //Cancelar Pagamento Pré-autorizado - Cancelar Pagamento Pré-autorizado
-        public async Task<PaymentResponse> CancelAuthorized(string payment_id)
-        {
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/void", null);
-            if (!response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
-                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
-            }
-            try
-            {
-                return JsonConvert.DeserializeObject<PaymentResponse>(await response.Content.ReadAsStringAsync());
-            }
-            catch (System.Exception ex)
-            {
-                throw new ArgumentException("Error message: " + ex.Message);
-            }
-        }
-        //Consultar Pagamento - Consult Payment
+        /// <summary>
+        /// Consultar Pagamento - Consult Payment
+        /// </summary>
+        /// <param name="payment_id">Código identificador do pagamento que deseja consultar. Exemplo: PAY-HL7QRKFEQNHV</param>
+        /// <returns></returns>
         public async Task<PaymentResponse> Consult(string payment_id)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/payments/{payment_id}");
@@ -127,7 +79,81 @@ namespace MoipCSharp.Controllers
                 throw new ArgumentException("Error message: " + ex.Message);
             }
         }
-        //Simular pagamentos - Simulate Payments
+        /// <summary>
+        /// Liberação de Custódia - Release of Custody
+        /// </summary>
+        /// <param name="escrow_id">Código identificador da custódia. Exemplo ECW-9OS6FAPR3FD5</param>
+        /// <returns></returns>
+        public async Task<PaymentResponse> ReleaseCustody(string escrow_id)
+        {
+            HttpResponseMessage response = await ClientInstance.PostAsync($"escrows/{escrow_id}/release", null);
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<PaymentResponse>(await response.Content.ReadAsStringAsync());
+            }
+            catch (System.Exception ex)
+            {
+                throw new ArgumentException("Error message: " + ex.Message);
+            }
+        }
+        /// <summary>
+        ///  Capturar Pagamento Pré-autorizado - Capture Pre-authorized Payment
+        /// </summary>
+        /// <param name="payment_id">Código identificador do pagamento a ser pré-capturado. Exemplo: PAY-U1G2WVBEP19V</param>
+        /// <returns></returns>
+        public async Task<PaymentResponse> CaptureAuthorized(string payment_id)
+        {
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/capture", null);
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<PaymentResponse>(await response.Content.ReadAsStringAsync());
+            }
+            catch (System.Exception ex)
+            {
+                throw new ArgumentException("Error message: " + ex.Message);
+            }
+        }
+        /// <summary>
+        /// Cancelar Pagamento Pré-autorizado - Cancelar Pagamento Pré-autorizado
+        /// </summary>
+        /// <param name="payment_id">Código identificador do pagamento pré-autorizado a ser cancelado. Exemplo: Exemplo: PAY-U1G2WVBEP19V</param>
+        /// <returns></returns>
+        public async Task<PaymentResponse> CancelAuthorized(string payment_id)
+        {
+            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/void", null);
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<PaymentResponse>(await response.Content.ReadAsStringAsync());
+            }
+            catch (System.Exception ex)
+            {
+                throw new ArgumentException("Error message: " + ex.Message);
+            }
+        }
+        /// <summary>
+        /// Simular pagamentos - Simulate Payments
+        /// </summary>
+        /// <param name="payment_id">Código identificador do pagamento que deseja autorizar. Exemplo: PAY-0UBH5IAJ8KHX</param>
+        /// <param name="valor">Valor a ser autorizado no pagamento. O formato deve incluir centavos e não deve incluir vírgula. Exemplo: Para autorizar pagamento no valor de R$265 você deve setar o valor 26500</param>
+        /// <returns></returns>
         public async Task<HttpStatusCode> Simulate(string payment_id, int valor)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"simulador/authorize?payment_id={payment_id}&amount={valor}");

@@ -38,7 +38,7 @@
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 4.0.3
+PM> Install-Package MoipCSharp -Version 4.0.4
 ```
 
 ## Autenticando e configurando o ambiente
@@ -316,24 +316,42 @@ var result = await MoipCSharpClient.Notification.ListWebhooks();
 ```C#
 var body = new BankAccountRequest
 {
-    //informe os campos aqui
-};            
-var result = await MoipCSharpClient.BankAccount.Create(body, "MPA-XXXXXXXXXXXX");
+    bankNumber = "237",
+    agencyNumber = "12345",
+    agencyCheckNumber = "0",
+    accountNumber = "12345678",
+    accountCheckNumber = "7",
+    type = "CHECKING",
+    holder = new Holder
+    {
+        taxDocument = new Taxdocument
+        {
+            type = "CPF",
+            number = "622.134.533-22"
+        },
+        fullname = "Demo Moip"
+    }
+};
+string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
+var result = await MoipCSharpClient.BankAccount.Create(body, accesstoken, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Consultar Conta Bancária
 ```C#
-var result = await MoipCSharpClient.BankAccount.Consult("BKA-XXXXXXXXXXXX");
+string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
+var result = await MoipCSharpClient.BankAccount.Consult(accesstoken, "BKA-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas Contas Bancárias
 ```C#
-var result = await MoipCSharpClient.BankAccount.List("MPA-XXXXXXXXXXXX");
+string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
+var result = await MoipCSharpClient.BankAccount.List(accesstoken, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Deletar Conta Bancária
 ```C#
-var result = await MoipCSharpClient.BankAccount.Delete("BKA-XXXXXXXXXXXX");
+string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
+var result = await MoipCSharpClient.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX");
 ```
 
 #### Atualizar Conta Bancária
@@ -341,8 +359,9 @@ var result = await MoipCSharpClient.BankAccount.Delete("BKA-XXXXXXXXXXXX");
 var body = new BankAccountRequest
 {
     //informe os campos aqui
-};            
-var result = await MoipCSharpClient.BankAccount.Update(body, "BKA-XXXXXXXXXXXX");
+};
+string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
+var result = await MoipCSharpClient.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX");
 ```
 
 ## Saldo Moip

@@ -170,6 +170,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MoipCSharp.Controllers.LaunchesController.ListFilter(System.String)">
+            <summary>
+            Listar lançamento com filtro - List launch with filter
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
         <member name="M:MoipCSharp.Controllers.MultiOrdersController.Create(MoipCSharp.Models.MultiOrderRequest)">
             <summary>
             Criar Multipedido - Create Multi Order

@@ -74,5 +74,28 @@ namespace MoipCSharp.Controllers
                 throw ex;
             }
         }
+        /// <summary>
+        /// Listar lançamento com filtro - List launch with filter
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        public async Task<List<LaunchesResponse>> ListFilter(string filter)
+        {
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/entries?{filter}");
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                MoipException.MoipError moipException = MoipException.DeserializeObject(content);
+                throw new MoipException(moipException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<List<LaunchesResponse>>(await response.Content.ReadAsStringAsync());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

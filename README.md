@@ -381,6 +381,12 @@ var result = await MoipCSharpClient.Launch.Consult("ENT-XXXXXXXXXXXX");
 var result = await MoipCSharpClient.Launch.List();
 ```
 
+#### Listar Todos Lançamentos com Filtro
+```C#
+string filtros = "filters=status::in(SETTLED)";
+var result = await MoipCSharpClient.Launch.ListFilter(filtros);
+```
+
 ## Transferências
 #### Criar Transferência
 ```C#

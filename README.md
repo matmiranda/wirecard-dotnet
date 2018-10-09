@@ -393,18 +393,21 @@ var result = await MoipCSharpClient.Launch.ListFilter(filtros);
 var body = new TransferRequest
 {
     //informe os campos aqui
-};            
-var result = await MoipCSharpClient.Transfer.Create(body);
+};
+string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
+var result = await MoipCSharpClient.Transfer.Create(body, accessToken);
 ```
 
 #### Reverter Transferência
 ```C#
-var result = await MoipCSharpClient.Transfer.Revert("TRA-XXXXXXXXXXXX");
+string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
+var result = await MoipCSharpClient.Transfer.Revert("TRA-XXXXXXXXXXXX", accessToken);
 ```
 
 #### Consultar Transferência
 ```C#
-var result = await MoipCSharpClient.Transfer.Consult("TRA-XXXXXXXXXXXX");
+string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
+var result = await MoipCSharpClient.Transfer.Consult("TRA-XXXXXXXXXXXX", accessToken);
 ```
 
 #### Listar Todas Transferências

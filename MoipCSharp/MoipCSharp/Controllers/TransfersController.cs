@@ -70,7 +70,8 @@ namespace MoipCSharp.Controllers
             HttpClient httpClient = ClientInstance;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/transfers/{transfer_id}/reverse", null);
+            StringContent stringContent = new StringContent(string.Empty, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await httpClient.PostAsync($"v2/transfers/{transfer_id}/reverse", stringContent);
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
             if (!response.IsSuccessStatusCode)

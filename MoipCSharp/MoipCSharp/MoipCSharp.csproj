@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>4.0.6</Version>
+    <Version>4.0.7</Version>
     <Authors>MoipCSharp, Matheus Miranda</Authors>
     <Description>Biblioteca para integração dos meios de pagamento do MOIP - Versão mais atualizada</Description>
     <PackageProjectUrl>https://github.com/matmiranda/MoipCSharp</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageReleaseNotes>TransfersController foi corrigido</PackageReleaseNotes>
+    <PackageReleaseNotes>Reverter a transferência foi corrigido</PackageReleaseNotes>
     <PackageIconUrl>http://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1536852276/moip.png</PackageIconUrl>
   </PropertyGroup>
 

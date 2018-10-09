@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "MoipCSharp/4.0.5": {
+      "MoipCSharp/4.0.6": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "11.0.2"
@@ -33,7 +33,7 @@
     }
   },
   "libraries": {
-    "MoipCSharp/4.0.5": {
+    "MoipCSharp/4.0.6": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

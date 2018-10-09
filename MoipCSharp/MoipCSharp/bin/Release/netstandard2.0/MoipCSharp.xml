@@ -383,30 +383,39 @@
             <param name="orders_id">Id do pedido em formato de hash. string(16).</param>
             <returns></returns>
         </member>
-        <member name="M:MoipCSharp.Controllers.TransfersController.Create(MoipCSharp.Models.TransferRequest)">
+        <member name="M:MoipCSharp.Controllers.TransfersController.Create(MoipCSharp.Models.TransferRequest,System.String)">
             <summary>
             Criar Transferência - Create Transfer
             </summary>
             <param name="body"></param>
+            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
             <returns></returns>
         </member>
-        <member name="M:MoipCSharp.Controllers.TransfersController.Revert(System.String)">
+        <member name="M:MoipCSharp.Controllers.TransfersController.Revert(System.String,System.String)">
             <summary>
             Reverter Transferência - Revert Transfer
             </summary>
             <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
+            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
             <returns></returns>
         </member>
-        <member name="M:MoipCSharp.Controllers.TransfersController.Consult(System.String)">
+        <member name="M:MoipCSharp.Controllers.TransfersController.Consult(System.String,System.String)">
             <summary>
             Consultar Transferência - Consult Transfer
             </summary>
             <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
+            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
             <returns></returns>
         </member>
         <member name="M:MoipCSharp.Controllers.TransfersController.List">
             <summary>
             Listar Todas Transferências - List All Transfers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MoipCSharp.Controllers.TransfersController.ListFilter(System.String)">
+            <summary>
+            Listar Todas Transferências com filtro - List All Transfers with filter
             </summary>
             <returns></returns>
         </member>

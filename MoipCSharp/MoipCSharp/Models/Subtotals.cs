@@ -1,12 +1,16 @@
-﻿#pragma warning disable IDE1006
+﻿using Newtonsoft.Json;
 
 namespace MoipCSharp.Models
 {
     public class Subtotals
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int shipping { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int addition { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int discount { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int items { get; set; }
     }
 }

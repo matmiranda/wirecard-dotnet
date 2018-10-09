@@ -1,9 +1,10 @@
-﻿#pragma warning disable IDE1006
+﻿using Newtonsoft.Json;
 
 namespace MoipCSharp.Models
 {
     public class Self
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string href { get; set; }
     }
 }

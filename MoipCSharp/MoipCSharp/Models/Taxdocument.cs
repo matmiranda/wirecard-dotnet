@@ -1,9 +1,12 @@
-﻿namespace MoipCSharp.Models
+﻿using Newtonsoft.Json;
+
+namespace MoipCSharp.Models
 {
-#pragma warning disable IDE1006
     public class Taxdocument
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string type { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string number { get; set; }
     }
 }

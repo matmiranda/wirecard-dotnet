@@ -1,10 +1,12 @@
-﻿#pragma warning disable IDE1006
+﻿using Newtonsoft.Json;
 
 namespace MoipCSharp.Models
 {
     public class Unavailable
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int amount { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string currency { get; set; }
     }
 }

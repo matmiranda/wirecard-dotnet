@@ -1,10 +1,12 @@
-﻿#pragma warning disable IDE1006
+﻿using Newtonsoft.Json;
 
 namespace MoipCSharp.Models
 {
     public class Redirecturls
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string urlFailure { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string urlSuccess { get; set; }
     }
 }

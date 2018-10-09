@@ -1,10 +1,14 @@
-﻿namespace MoipCSharp.Models
+﻿using Newtonsoft.Json;
+
+namespace MoipCSharp.Models
 {
-#pragma warning disable IDE1006
     public class Phone
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string countryCode { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string areaCode { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string number { get; set; }
     }
 }

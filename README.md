@@ -102,7 +102,39 @@ var result = await MoipCSharpClient.ClassicAccount.GetPublickey();
 ```C#
 var body = new TransparentAccountRequest
 {
-    //informe os campos aqui
+    transparentAccount = true,
+    type = "MERCHANT",
+    email = new Email
+    {
+        address = "teste@hotmail.com"
+    },
+    person = new Person
+    {
+        name = "PrimeiroNome",
+        lastName = "SegundoNome",
+        taxDocument = new Taxdocument
+        {
+            type = "CPF",
+            number = "123.456.798-91"
+        },
+        birthDate = "2011-01-01",
+        phone = new Phone
+        {
+            countryCode = "55",
+            areaCode = "11",
+            number = "965213244"
+        },
+        address = new Address
+        {
+            street = "Av. Brigadeiro Faria Lima",
+            streetNumber = "2927",
+            district = "Itaim",
+            zipCode = "01234000",
+            city = "Osasco",
+            state = "SP",
+            country = "BRA"
+        }                    
+    }
 };
 var result = await MoipCSharpClient.TransparentAccount.Create(body);
 ```

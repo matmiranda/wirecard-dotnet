@@ -21,5 +21,7 @@ namespace MoipCSharp.Models
         public DateTime createdAt { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public _Links _links { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string role { get; set; }
     }
 }

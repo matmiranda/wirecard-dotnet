@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text;
+using Newtonsoft.Json;
 using System.Net.Http;
 using MoipCSharp.Models;
 using MoipCSharp.Exception;
 using System.Threading.Tasks;
-using System.Text;
 
 namespace MoipCSharp.Controllers
 {
@@ -33,7 +33,7 @@ namespace MoipCSharp.Controllers
         /// Criar Transferência - Create Transfer
         /// </summary>
         /// <param name="body"></param>
-        /// <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+        /// <param name="accesstoken">accesstoken da conta Moip</param>
         /// <returns></returns>
         public async Task<TransferResponse> Create(TransferRequest body, string accesstoken)
         {
@@ -63,7 +63,7 @@ namespace MoipCSharp.Controllers
         /// Reverter Transferência - Revert Transfer
         /// </summary>
         /// <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
-        /// <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+        /// <param name="accesstoken">accesstoken da conta Moip a qual foi destinatária da transferência</param>
         /// <returns></returns>
         public async Task<TransferResponse> Revert(string transfer_id, string accesstoken)
         {
@@ -93,7 +93,7 @@ namespace MoipCSharp.Controllers
         /// Consultar Transferência - Consult Transfer
         /// </summary>
         /// <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
-        /// <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+        /// <param name="accesstoken">accesstoken da conta Moip</param>
         /// <returns></returns>
         public async Task<TransferResponse> Consult(string transfer_id, string accesstoken)
         {
@@ -124,7 +124,7 @@ namespace MoipCSharp.Controllers
         /// <returns></returns>
         public async Task<TransfersResponse> List()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/transfers");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -146,7 +146,7 @@ namespace MoipCSharp.Controllers
         /// <returns></returns>
         public async Task<TransfersResponse> ListFilter(string filter)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders?{filter}");
+            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/transfers?{filter}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

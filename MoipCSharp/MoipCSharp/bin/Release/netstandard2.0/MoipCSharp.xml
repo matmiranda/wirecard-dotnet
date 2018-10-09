@@ -388,7 +388,7 @@
             Criar Transferência - Create Transfer
             </summary>
             <param name="body"></param>
-            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+            <param name="accesstoken">accesstoken da conta Moip</param>
             <returns></returns>
         </member>
         <member name="M:MoipCSharp.Controllers.TransfersController.Revert(System.String,System.String)">
@@ -396,7 +396,7 @@
             Reverter Transferência - Revert Transfer
             </summary>
             <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
-            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+            <param name="accesstoken">accesstoken da conta Moip a qual foi destinatária da transferência</param>
             <returns></returns>
         </member>
         <member name="M:MoipCSharp.Controllers.TransfersController.Consult(System.String,System.String)">
@@ -404,7 +404,7 @@
             Consultar Transferência - Consult Transfer
             </summary>
             <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
-            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+            <param name="accesstoken">accesstoken da conta Moip</param>
             <returns></returns>
         </member>
         <member name="M:MoipCSharp.Controllers.TransfersController.List">

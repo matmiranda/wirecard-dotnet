@@ -415,6 +415,12 @@ var result = await MoipCSharpClient.Transfer.Consult("TRA-XXXXXXXXXXXX", accessT
 var result = await MoipCSharpClient.Transfer.List();
 ```
 
+#### Listar Todas Transferências com filtros
+```C#
+string filtros = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0";
+var result = await MoipCSharpClient.Transfer.List();
+```
+
 ## Reembolsos
 #### Reembolsar Pagamento
 ```C#

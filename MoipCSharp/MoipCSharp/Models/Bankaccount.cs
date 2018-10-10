@@ -5,6 +5,7 @@ namespace MoipCSharp.Models
 {
     public class Bankaccount
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string id { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int agencyNumber { get; set; }

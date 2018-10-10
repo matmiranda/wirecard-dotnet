@@ -12,5 +12,7 @@ namespace MoipCSharp.Models
         public string fullname { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string account { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string email { get; set; }
     }
 }

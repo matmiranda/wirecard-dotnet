@@ -8,5 +8,7 @@ namespace MoipCSharp.Models
         public string method { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Bankaccount bankAccount { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Moipaccount moipAccount { get; set; }
     }
 }

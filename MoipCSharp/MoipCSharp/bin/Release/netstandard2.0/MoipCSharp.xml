@@ -426,5 +426,47 @@
             <param name="body"></param>
             <returns></returns>
         </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Customer">
+            <summary> Cliente </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Conciliation">
+            <summary> Conciliação </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.ClassicAccount">
+            <summary> Conta Clássica </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.TransparentAccount">
+            <summary> Conta Transparente </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.BankAccount">
+            <summary> Conta Bancária </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Launch">
+            <summary> Lançamento </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.MultiPayment">
+            <summary> Multi-Pagamento </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.MultiOrder">
+            <summary> Multi-Pedido </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Notification">
+            <summary> Notificação </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Payment">
+            <summary> Pagamento </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Order">
+            <summary> Pedido </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Refund">
+            <summary> Reembolso </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Balance">
+            <summary> Saldos </summary>
+        </member>
+        <member name="P:MoipCSharp.MoipCSharpClient.Transfer">
+            <summary> Transferência </summary>
+        </member>
     </members>
 </doc>

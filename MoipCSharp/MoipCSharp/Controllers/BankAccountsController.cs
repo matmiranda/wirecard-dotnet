@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Net;
+using System.Text;
+using Newtonsoft.Json;
 using System.Net.Http;
 using MoipCSharp.Models;
 using MoipCSharp.Exception;
 using System.Threading.Tasks;
-using System.Text;
-using System.Net;
 using System.Collections.Generic;
 
 namespace MoipCSharp.Controllers

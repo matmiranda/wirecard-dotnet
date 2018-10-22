@@ -25,7 +25,7 @@
 - [Multipagamentos](#multipagamentos)
 - [Notificações](#notificações)
 - [Contas Bancárias](#contas-bancárias)
-- [Saldo Moip](#saldo-moip)
+- [Saldo Wirecard](#saldo-wirecard)
 - [Lançamentos](#lançamentos)
 - [Transferências](#transferências)
 - [Reembolsos](#reembolsos)

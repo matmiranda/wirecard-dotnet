@@ -45,11 +45,11 @@ PM> Install-Package WirecardCSharp -Version 1.0.0
 Informe seu token e em qual "meio ambiente" você quer executar suas ações:
 
 ```C#
-using MoipCSharp;
-using MoipCSharp.Models;
+using WirecardCSharp;
+using WirecardCSharp.Models;
 
 private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-private MoipCSharpClient MoipCSharpClient = new MoipCSharpClient(Environments.SANDBOX, accessToken);
+private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, accessToken);
 ```
 
 ## Conta Clássica

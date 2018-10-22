@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://dev.wirecard.com.br/v2.0/">
-    <img src="https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1540216474/Wirecard%20png.png" alt="Moip logo" width=200>
+    <img src="https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1540216474/Wirecard%20png.png" alt="Wirecard logo" width=200>
   </a>
   <p align="center">
     O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET
@@ -53,52 +53,52 @@ private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX,
 ```
 
 ## Conta Clássica
-#### Verificar se usuário já possui Conta Moip (email)
+#### Verificar se usuário já possui Conta Wirecard (email)
 ```C#
-var result = await MoipCSharpClient.ClassicAccount.AccountExist("meu_email@email.com");
+var result = await WirecardClient.ClassicAccount.AccountExist("meu_email@email.com");
 ```
 
-#### Verificar se usuário já possui Conta Moip (documento)
+#### Verificar se usuário já possui Conta Wirecard (documento)
 ```C#
-var result = await MoipCSharpClient.ClassicAccount.AccountExist("123.456.789-01");
+var result = await WirecardClient.ClassicAccount.AccountExist("123.456.789-01");
 ```
 
-#### Criar Conta Moip Clássica
+#### Criar Conta Wirecard Clássica
 ```C#
 var body = new ClassicAccountRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.ClassicAccount.Create(body);
+var result = await WirecardClient.ClassicAccount.Create(body);
 ```
 
-#### Consultar Conta Moip
+#### Consultar Conta Wirecard
 ```C#
-var result = await MoipCSharpClient.ClassicAccount.Consult("MPA-XXXXXXXXXXXX");
+var result = await WirecardClient.ClassicAccount.Consult("MPA-XXXXXXXXXXXX");
 ```
 
 #### Solicitar Permissões de Acesso ao Usuário
 ```C#
-var result = await MoipCSharpClient.ClassicAccount.RequestUserAccessPermissions(/*informe o valor de cada parâmetro*/);
+var result = await WirecardClient.ClassicAccount.RequestUserAccessPermissions(/*informe o valor de cada parâmetro*/);
 ```
 
 #### Gerar Access Token
 ```C#
-var result = await MoipCSharpClient.ClassicAccount.GenerateAccessToken(/*informe o valor de cada parâmetro*/);
+var result = await WirecardClient.ClassicAccount.GenerateAccessToken(/*informe o valor de cada parâmetro*/);
 ```
 
 #### Atualizar accessToken
 ```C#
-var result = await MoipCSharpClient.ClassicAccount.UpdateAccessToken(/*informe o valor de cada parâmetro*/);
+var result = await WirecardClient.ClassicAccount.UpdateAccessToken(/*informe o valor de cada parâmetro*/);
 ```
 
-#### Obter chave pública de uma Conta Moip
+#### Obter chave pública de uma Conta Wirecard
 ```C#
-var result = await MoipCSharpClient.ClassicAccount.GetPublickey();
+var result = await WirecardClient.ClassicAccount.GetPublickey();
 ```
 
 ## Conta Transparente
-#### Criar Conta Moip Transparente
+#### Criar Conta Wirecard Transparente
 ```C#
 var body = new TransparentAccountRequest
 {
@@ -136,7 +136,7 @@ var body = new TransparentAccountRequest
         }                    
     }
 };
-var result = await MoipCSharpClient.TransparentAccount.Create(body);
+var result = await WirecardClient.TransparentAccount.Create(body);
 ```
 
 ## Clientes
@@ -146,7 +146,7 @@ var body = new CustomerRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.Customer.Create(body);
+var result = await WirecardClient.Customer.Create(body);
 ```
 
 #### Adicionar Cartão de Crédito
@@ -178,22 +178,22 @@ var body = new CustomerRequest
         }
     }
 };
-var result = await MoipCSharpClient.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX");
+var result = await WirecardClient.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX");
 ```
 
 #### Deletar Cartão de Crédito
 ```C#
-var result = await MoipCSharpClient.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX");
+var result = await WirecardClient.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX");
 ```
 
 #### Consultar Cliente
 ```C#
-var result = await MoipCSharpClient.Customer.Consult("CUS-XXXXXXXXXXXX");
+var result = await WirecardClient.Customer.Consult("CUS-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Clientes
 ```C#
-var result = await MoipCSharpClient.Customer.List();
+var result = await WirecardClient.Customer.List();
 ```
 
 ## Pedidos
@@ -203,23 +203,23 @@ var body = new OrderRequest
 {
     //informe os campos aqui
 };
-var result = await MoipCSharpClient.Order.Create(body);
+var result = await WirecardClient.Order.Create(body);
 ```
 
 #### Consultar Pedido
 ```C#
-var result = await MoipCSharpClient.Order.Consult("ORD-XXXXXXXXXXXX");
+var result = await WirecardClient.Order.Consult("ORD-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Pedidos - Sem Filtros
 ```C#
-var result = await MoipCSharpClient.Order.List();
+var result = await WirecardClient.Order.List();
 ```
 
 #### Listar Todos os Pedidos - Com Filtros
 ```C#
 string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0";
-var result = await MoipCSharpClient.Order.ListFilter(filtros);
+var result = await WirecardClient.Order.ListFilter(filtros);
 ```
  Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
  
@@ -230,32 +230,32 @@ var body = new PaymentRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Payment.Create(body, "ORD-XXXXXXXXXXXX");
+var result = await WirecardClient.Payment.Create(body, "ORD-XXXXXXXXXXXX");
 ```
 
 #### Liberação de Custódia
 ```C#
-var result = await MoipCSharpClient.Payment.ReleaseCustody("ECW-XXXXXXXXXXXX");
+var result = await WirecardClient.Payment.ReleaseCustody("ECW-XXXXXXXXXXXX");
 ```
 
 #### Capturar Pagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.Payment.CaptureAuthorized("PAY-XXXXXXXXXXXX");
+var result = await WirecardClient.Payment.CaptureAuthorized("PAY-XXXXXXXXXXXX");
 ```
 
 #### Cancelar Pagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.Payment.CancelAuthorized("PAY-XXXXXXXXXXXX");
+var result = await WirecardClient.Payment.CancelAuthorized("PAY-XXXXXXXXXXXX");
 ```
 
 #### Consultar Pagamento
 ```C#
-var result = await MoipCSharpClient.Payment.Consult("PAY-XXXXXXXXXXXX");
+var result = await WirecardClient.Payment.Consult("PAY-XXXXXXXXXXXX");
 ```
 
 #### Simular Pagamentos (sandbox)
 ```C#
-var result = await MoipCSharpClient.Payment.Simulate("PAY-XXXXXXXXXXXX", 26500);
+var result = await WirecardClient.Payment.Simulate("PAY-XXXXXXXXXXXX", 26500);
 ```
 
 ## Multipedidos
@@ -265,12 +265,12 @@ var body = new MultiOrderRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.MultiOrder.Create(body);
+var result = await WirecardClient.MultiOrder.Create(body);
 ```
 
 #### Consultar Multipedido
 ```C#
-var result = await MoipCSharpClient.MultiOrder.Consult("MOR-XXXXXXXXXXXX");
+var result = await WirecardClient.MultiOrder.Consult("MOR-XXXXXXXXXXXX");
 ```
 
 ## Multipagamentos
@@ -280,33 +280,33 @@ var body = new MultiPaymentRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.MultiPayment.Create(body, "MOR-XXXXXXXXXXXX");
+var result = await WirecardClient.MultiPayment.Create(body, "MOR-XXXXXXXXXXXX");
 ```
 #### Consultar Multipagamento
 ```C#
-var result = await MoipCSharpClient.MultiPayment.Consult("MPY-XXXXXXXXXXXX");
+var result = await WirecardClient.MultiPayment.Consult("MPY-XXXXXXXXXXXX");
 ```
 #### Capturar Multipagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.MultiPayment.CaptureAuthorized("MPY-XXXXXXXXXXXX");
+var result = await WirecardClient.MultiPayment.CaptureAuthorized("MPY-XXXXXXXXXXXX");
 ```
 #### Cancelar Multipagamento Pré-autorizado
 ```C#
-var result = await MoipCSharpClient.MultiPayment.CancelAuthorized("MPY-XXXXXXXXXXXX");
+var result = await WirecardClient.MultiPayment.CancelAuthorized("MPY-XXXXXXXXXXXX");
 ```
 #### Liberação de Custódia
 ```C#
-var result = await MoipCSharpClient.MultiPayment.ReleaseCustody("ECW-XXXXXXXXXXXX");
+var result = await WirecardClient.MultiPayment.ReleaseCustody("ECW-XXXXXXXXXXXX");
 ```
 
 ## Notificações
-#### Criar Preferência de Notificação para Conta Moip
+#### Criar Preferência de Notificação para Conta Wirecard
 ```C#
 var body = new NotificationRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Notification.CreatAccountMoip(body);
+var result = await WirecardClient.Notification.CreatAccountWirecard(body);
 ```
 
 #### Criar Preferência de Notificação para App
@@ -315,32 +315,32 @@ var body = new NotificationRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Notification.CreateApp(body, "APP-XXXXXXXXXXXX");
+var result = await WirecardClient.Notification.CreateApp(body, "APP-XXXXXXXXXXXX");
 ```
 
 #### Consultar Preferência de Notificação
 ```C#
-var result = await MoipCSharpClient.Notification.Consult("NPR-XXXXXXXXXXXX");
+var result = await WirecardClient.Notification.Consult("NPR-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas as Preferências de Notificação
 ```C#
-var result = await MoipCSharpClient.Notification.List();
+var result = await WirecardClient.Notification.List();
 ```
 
 #### Remover Preferência de Notificação
 ```C#
-var result = await MoipCSharpClient.Notification.Remove("NPR-XXXXXXXXXXXX");
+var result = await WirecardClient.Notification.Remove("NPR-XXXXXXXXXXXX");
 ```
 
 #### Consultar Webhook Enviado
 ```C#
-var result = await MoipCSharpClient.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX"); 
+var result = await WirecardClient.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX"); 
 ```
 
 #### Listar Todos os Webhooks Enviados
 ```C#
-var result = await MoipCSharpClient.Notification.ListWebhooks();
+var result = await WirecardClient.Notification.ListWebhooks();
 ```
 
 ## Contas Bancárias
@@ -361,29 +361,29 @@ var body = new BankAccountRequest
             type = "CPF",
             number = "622.134.533-22"
         },
-        fullname = "Demo Moip"
+        fullname = "Demo Wirecard"
     }
 };
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await MoipCSharpClient.BankAccount.Create(body, accesstoken, "MPA-XXXXXXXXXXXX");
+var result = await WirecardClient.BankAccount.Create(body, accesstoken, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Consultar Conta Bancária
 ```C#
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await MoipCSharpClient.BankAccount.Consult(accesstoken, "BKA-XXXXXXXXXXXX");
+var result = await WirecardClient.BankAccount.Consult(accesstoken, "BKA-XXXXXXXXXXXX");
 ```
 
 #### Listar Todas Contas Bancárias
 ```C#
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await MoipCSharpClient.BankAccount.List(accesstoken, "MPA-XXXXXXXXXXXX");
+var result = await WirecardClient.BankAccount.List(accesstoken, "MPA-XXXXXXXXXXXX");
 ```
 
 #### Deletar Conta Bancária
 ```C#
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await MoipCSharpClient.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX");
+var result = await WirecardClient.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX");
 ```
 
 #### Atualizar Conta Bancária
@@ -393,30 +393,30 @@ var body = new BankAccountRequest
     //informe os campos aqui
 };
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await MoipCSharpClient.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX");
+var result = await WirecardClient.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX");
 ```
 
-## Saldo Moip
+## Saldo Wirecard
 #### Consultar Saldos
 ```C#
-var result = await MoipCSharpClient.Balance.Consult();
+var result = await WirecardClient.Balance.Consult();
 ```
 
 ## Lançamentos
 #### Consultar Lançamento
 ```C#
-var result = await MoipCSharpClient.Launch.Consult("ENT-XXXXXXXXXXXX");
+var result = await WirecardClient.Launch.Consult("ENT-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos Lançamentos
 ```C#
-var result = await MoipCSharpClient.Launch.List();
+var result = await WirecardClient.Launch.List();
 ```
 
 #### Listar Todos Lançamentos com Filtro
 ```C#
 string filtros = "filters=status::in(SETTLED)";
-var result = await MoipCSharpClient.Launch.ListFilter(filtros);
+var result = await WirecardClient.Launch.ListFilter(filtros);
 ```
 
 ## Transferências
@@ -427,30 +427,30 @@ var body = new TransferRequest
     //informe os campos aqui
 };
 string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-var result = await MoipCSharpClient.Transfer.Create(body, accessToken);
+var result = await WirecardClient.Transfer.Create(body, accessToken);
 ```
 
 #### Reverter Transferência
 ```C#
 string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-var result = await MoipCSharpClient.Transfer.Revert("TRA-XXXXXXXXXXXX", accessToken);
+var result = await WirecardClient.Transfer.Revert("TRA-XXXXXXXXXXXX", accessToken);
 ```
 
 #### Consultar Transferência
 ```C#
 string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-var result = await MoipCSharpClient.Transfer.Consult("TRA-XXXXXXXXXXXX", accessToken);
+var result = await WirecardClient.Transfer.Consult("TRA-XXXXXXXXXXXX", accessToken);
 ```
 
 #### Listar Todas Transferências
 ```C#
-var result = await MoipCSharpClient.Transfer.List();
+var result = await WirecardClient.Transfer.List();
 ```
 
 #### Listar Todas Transferências com filtros
 ```C#
 string filtros = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0";
-var result = await MoipCSharpClient.Transfer.List();
+var result = await WirecardClient.Transfer.List();
 ```
 
 ## Reembolsos
@@ -460,7 +460,7 @@ var body = new RefundRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX");
+var result = await WirecardClient.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX");
 ```
 
 #### Reembolsar Pedido via Cartão de Crédito
@@ -469,33 +469,33 @@ var body = new RefundRequest
 {
     //informe os campos aqui
 };            
-var result = await MoipCSharpClient.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX");
+var result = await WirecardClient.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX");
 ```
 
 #### Consultar Reembolso
 ```C#
-var result = await MoipCSharpClient.Refund.Consult("REF-XXXXXXXXXXXX");
+var result = await WirecardClient.Refund.Consult("REF-XXXXXXXXXXXX");
 ```
 
 #### Listar Reembolsos do Pagamento
 ```C#
-var result = await MoipCSharpClient.Refund.ListPayments("PAY-XXXXXXXXXXXX");
+var result = await WirecardClient.Refund.ListPayments("PAY-XXXXXXXXXXXX");
 ```
 
 #### Listar Reembolsos do Pedido
 ```C#
-var result = await MoipCSharpClient.Refund.ListOrders("ORD-XXXXXXXXXXXX");
+var result = await WirecardClient.Refund.ListOrders("ORD-XXXXXXXXXXXX");
 ```
 
 ## Conciliação
 #### Obter Arquivo de Vendas
 ```C#
-var result = await MoipCSharpClient.Conciliation.GetSalesFile("20180829"); // Data no formato YYYYMMDD
+var result = await WirecardClient.Conciliation.GetSalesFile("20180829"); // Data no formato YYYYMMDD
 ```
 
 #### Obter Arquivo Financeiro
 ```C#
-var result = await MoipCSharpClient.Conciliation.GetFinancialFile("2018-08-29"); // Data no formato YYYY-MM-DD
+var result = await WirecardClient.Conciliation.GetFinancialFile("2018-08-29"); // Data no formato YYYY-MM-DD
 ```
 
 ## Tabela - Filtros de busca
@@ -533,13 +533,13 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 #### Obter erros
 Você pode recuperar os atributos `code`, `path`, `description`, `message` e `error`, veja no exemplo abaixo:
 ```C#
-using MoipCSharp.Exception;
+using WirecardCSharp.Exception;
 
 try
 {
-    var result = await MoipCSharpClient.Cliente.CriarCliente(new CriarClienteRequest());
+    var result = await WirecardClient.Cliente.CriarCliente(new CriarClienteRequest());
 }
-catch (MoipException ex)
+catch (WirecardException ex)
 {
     var t = ex.errors;
 }
@@ -552,13 +552,13 @@ catch (MoipException ex)
 | code  | Código identificador do erro  | string |
 | path  | Parâmetro relacionado ao erro | string |
 | description  | Descrição do erro | string |
-| message  | Mensagem do retorno Moip  | string |
+| message  | Mensagem do retorno Wirecard  | string |
 
 
 
 ## Licença
 
-[The MIT License](https://github.com/matmiranda/MoipCSharp/blob/master/LICENSE)
+[The MIT License](https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE)
 
 Tem dúvidas? Fale com a gente no [Slack](https://slackin-cqtchmfquq.now.sh/)!
 Algum problema ? Abre issues!

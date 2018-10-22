@@ -41,6 +41,8 @@ Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/Wirec
 PM> Install-Package WirecardCSharp -Version 1.0.1
 ```
 
+Obs: Trocamos a biblioteca [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/) por [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/).
+
 ## Autenticando e configurando o ambiente
 Informe seu token e em qual "meio ambiente" você quer executar suas ações:
 

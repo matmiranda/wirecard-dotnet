@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WirecardCSharp.Models
+{
+    public class TransferResponse
+    {
+        public DateTime updatedAt { get; set; }
+        public int fee { get; set; }
+        public int amount { get; set; }
+        public string id { get; set; }
+        public Transferinstrument transferInstrument { get; set; }
+        public string status { get; set; }
+        public DateTime createdAt { get; set; }
+        public List<Event> events { get; set; }
+        public List<Entry> entries { get; set; }
+        public _Links _links { get; set; }
+    }
+}

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>WirecardCSharp, Matheus Miranda</Authors>
+    <Description>Biblioteca para integração dos meios de pagamento do WIRECARD</Description>
+    <PackageIconUrl>https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1540226689/Wirecard_icon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/matmiranda/WirecardCSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/matmiranda/WirecardCSharp.git</RepositoryUrl>
+    <PackageTags>Wirecard</PackageTags>
+    <PackageReleaseNotes>Moip para Wirecard</PackageReleaseNotes>
+    <Version>1.0.2</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591;IDE1006</NoWarn>
+    <DocumentationFile>C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\WirecardCSharp.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591;IDE1006</NoWarn>
+    <DocumentationFile>C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\WirecardCSharp.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+</Project>

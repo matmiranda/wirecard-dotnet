@@ -5,9 +5,9 @@
   <p align="center">
     O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET
     <br>
-    <a href="https://dev.moip.com.br/v2.0/docs">Documentação</a>
+    <a href="https://dev.wirecard.com.br/v2.0/docs">Documentação</a>
     .
-    <a href="https://dev.moip.com.br/v2.0/reference">Referência API</a>
+    <a href="https://dev.wirecard.com.br/v2.0/reference">Referência API</a>
     ·
     <a href="https://slackin-cqtchmfquq.now.sh/">Slack</a>
   </p>

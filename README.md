@@ -38,7 +38,7 @@
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
 
 ```xml
-PM> Install-Package WirecardCSharp -Version 1.0.0
+PM> Install-Package WirecardCSharp -Version 1.0.1
 ```
 
 ## Autenticando e configurando o ambiente

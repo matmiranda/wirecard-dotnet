@@ -35,10 +35,10 @@
 - [Licença](#licença)
 
 ## Instalação
-Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/MoipCSharp/):
+Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
 
 ```xml
-PM> Install-Package MoipCSharp -Version 4.0.9
+PM> Install-Package WirecardCSharp -Version 1.0.0
 ```
 
 ## Autenticando e configurando o ambiente

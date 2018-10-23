@@ -14,6 +14,7 @@
 </p>
 
 ## Índice
+- [Plataformas Suportadas](#)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Conta Clássica](#conta-clássica)
@@ -33,6 +34,16 @@
 - [Tabela - Filtros de busca](#tabela---filtros-de-busca)
 - [Exceção](#exceção)
 - [Licença](#licença)
+
+## Plataformas Suportadas
+
+* .NET Core 2.0
+* .NET Framework 4.6.1
+* Mono 5.4
+* Xamarin.iOS 10.14
+* Xamarin.Mac 3.8
+* Xamarin.Android 7.5
+* Universal Windows Platform vNext
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):

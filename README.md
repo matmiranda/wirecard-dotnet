@@ -14,7 +14,7 @@
 </p>
 
 ## Índice
-- [Plataformas Suportadas](#)
+- [Plataformas Suportadas](#plataformas-suportadas)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Conta Clássica](#conta-clássica)

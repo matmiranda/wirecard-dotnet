@@ -14,7 +14,7 @@
 </p>
 
 ## Índice
-- [Plataformas Suportadas](#plataformas-suportadas)
+- [Plataformas Suportadas](#implementações-net-com-suporte)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Conta Clássica](#conta-clássica)
@@ -45,7 +45,8 @@ Essa biblioteca foi feito em .NET Standard 2.0 e tem suporte das seguintes imple
 * Xamarin.Mac 3.8 ou posterior
 * Xamarin.Android 8.0 ou posterior
 * Plataforma Universal do Windows 10.0.16299 ou posterior
-Para mais informações visite [aqui](https://docs.microsoft.com/pt-br/dotnet/standard/whats-new/whats-new-in-dotnet-standard?tabs=csharp).
+
+Para mais informações: [.NET Standard](https://docs.microsoft.com/pt-br/dotnet/standard/whats-new/whats-new-in-dotnet-standard?tabs=csharp).
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):

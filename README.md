@@ -69,6 +69,10 @@ private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX,
 #### Verificar se usuário já possui Conta Wirecard (email)
 ```C#
 var result = await WirecardClient.ClassicAccount.AccountExist("meu_email@email.com");
+if (result == HttpStatusCode.OK)
+{
+    // já existe
+}
 ```
 
 #### Verificar se usuário já possui Conta Wirecard (documento)

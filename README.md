@@ -67,9 +67,7 @@ private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX,
 
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Wirecard (email)
-```diff
-- red ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Essa função funciona somente na conta clássica.
-```
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Essa função funciona somente na conta clássica.
 ```C#
 var result = await WirecardClient.ClassicAccount.AccountExist("meu_email@email.com");
 if (result == HttpStatusCode.OK)
@@ -83,9 +81,7 @@ if (result == HttpStatusCode.OK)
 ```
 
 #### Verificar se usuário já possui Conta Wirecard (documento)
-```diff
-- red Essa função funciona somente na conta clássica.
-```
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Essa função funciona somente na conta clássica.
 ```C#
 var result = await WirecardClient.ClassicAccount.AccountExist("123.456.789-01");
 if (result == HttpStatusCode.OK)

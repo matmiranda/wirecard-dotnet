@@ -74,6 +74,10 @@ var result = await WirecardClient.ClassicAccount.AccountExist("meu_email@email.c
 #### Verificar se usuário já possui Conta Wirecard (documento)
 ```C#
 var result = await WirecardClient.ClassicAccount.AccountExist("123.456.789-01");
+if (result == System.Net.HttpStatusCode.OK)
+{
+    // já existe
+}
 ```
 
 #### Criar Conta Wirecard Clássica

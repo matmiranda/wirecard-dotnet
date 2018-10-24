@@ -3,7 +3,7 @@
     <img src="https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1540216474/Wirecard%20png.png" alt="Wirecard logo" width=200>
   </a>
   <p align="center">
-    O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET
+    O jeito mais simples e rápido de integrar o Wirecard a sua aplicação e feito com base nas APIs REST do Wirecard.
     <br>
     <a href="https://dev.wirecard.com.br/v2.0/docs">Documentação</a>
     .

@@ -72,6 +72,10 @@ var result = await WirecardClient.ClassicAccount.AccountExist("meu_email@email.c
 if (result == HttpStatusCode.OK)
 {
     // já existe
+    //HttpStatusCode.OK == 200 (já existe)
+    //HttpStatusCode.BadRequest == 400 (CPF inválido)
+    //HttpStatusCode.NotFound == 404 (Para CPF válido, mas não possui Conta Wirecard)
+
 }
 ```
 
@@ -81,6 +85,9 @@ var result = await WirecardClient.ClassicAccount.AccountExist("123.456.789-01");
 if (result == HttpStatusCode.OK)
 {
     // já existe
+    //HttpStatusCode.OK == 200 (já existe)
+    //HttpStatusCode.BadRequest == 400 (CPF inválido)
+    //HttpStatusCode.NotFound == 404 (Para CPF válido, mas não possui Conta Wirecard)
 }
 ```
 

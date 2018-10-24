@@ -76,7 +76,6 @@ if (result == HttpStatusCode.OK)
     //HttpStatusCode.OK == 200 (já existe)
     //HttpStatusCode.BadRequest == 400 (CPF inválido)
     //HttpStatusCode.NotFound == 404 (Para CPF válido, mas não possui Conta Wirecard)
-
 }
 ```
 

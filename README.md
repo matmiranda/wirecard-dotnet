@@ -14,7 +14,7 @@
 </p>
 
 ## Índice
-- [Plataformas Suportadas](#implementações-net-com-suporte)
+- [Implementações .NET com suporte](#implementações-net-com-suporte)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Conta Clássica](#conta-clássica)

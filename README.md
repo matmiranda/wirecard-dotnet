@@ -3,7 +3,7 @@
     <img src="https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1540216474/Wirecard%20png.png" alt="Wirecard logo" width=200>
   </a>
   <p align="center">
-    O jeito mais simples e rápido de integrar o Wirecard a sua aplicação e feito com base nas APIs REST do Wirecard.
+    O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET e feito com base nas APIs REST do Wirecard.
     <br>
     <a href="https://dev.wirecard.com.br/v2.0/docs">Documentação</a>
     .
@@ -35,15 +35,17 @@
 - [Exceção](#exceção)
 - [Licença](#licença)
 
-## Plataformas Suportadas
+## Implementações .NET com suporte
+Essa biblioteca foi feito em .NET Standard 2.0 e tem suporte das seguintes implementações do .NET:
 
-* .NET Core 2.0
-* .NET Framework 4.6.1
-* Mono 5.4
-* Xamarin.iOS 10.14
-* Xamarin.Mac 3.8
-* Xamarin.Android 7.5
-* Universal Windows Platform vNext
+* .NET Core 2.0 ou posterior
+* .NET Framework 4.6.1 ou posterior
+* Mono 5.4 ou posterior
+* Xamarin.iOS 10.14 ou posterior
+* Xamarin.Mac 3.8 ou posterior
+* Xamarin.Android 8.0 ou posterior
+* Plataforma Universal do Windows 10.0.16299 ou posterior
+Para mais informações visite [aqui](https://docs.microsoft.com/pt-br/dotnet/standard/whats-new/whats-new-in-dotnet-standard?tabs=csharp).
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):

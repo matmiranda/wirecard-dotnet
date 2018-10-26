@@ -15,7 +15,7 @@
 
 ## Índice
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
-- [Aviso Importante](#Aviso-Importante)
+- [Aviso Importante](#aviso-importante)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Conta Clássica](#conta-clássica)

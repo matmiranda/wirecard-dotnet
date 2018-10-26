@@ -52,7 +52,7 @@ Para mais informações: [.NET Standard](https://docs.microsoft.com/pt-br/dotnet
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
 
 ```xml
-PM> Install-Package WirecardCSharp -Version 1.0.2
+PM> Install-Package WirecardCSharp -Version 1.0.3
 ```
 
 Obs: Trocamos a biblioteca [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/) por [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/).

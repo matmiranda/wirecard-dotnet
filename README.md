@@ -15,6 +15,7 @@
 
 ## Índice
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
+- [Aviso Importante](#Aviso-Importante)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente](#autenticando-e-configurando-o-ambiente)
 - [Conta Clássica](#conta-clássica)
@@ -47,6 +48,17 @@ Essa biblioteca foi feito em .NET Standard 2.0 e tem suporte das seguintes imple
 * Plataforma Universal do Windows 10.0.16299 ou posterior
 
 Para mais informações: [.NET Standard](https://docs.microsoft.com/pt-br/dotnet/standard/whats-new/whats-new-in-dotnet-standard?tabs=csharp).
+
+## Aviso Importante
+Pensando em melhorar ainda mais a sua segurança e para atender a padrões internacionais do nosso selo PCI Compliance, o Wirecard desativará protocolos de segurança TLS (Transport Layer Security) inferiores a 1.2 à partir do dia 30/06/2018. Verifique se o seu projeto já possui TLS na versão 1.2, caso não, você receberá uma exceção:
+
+InnerException = {"A solicitação foi anulada: Não foi possível criar um canal seguro para SSL/TLS."}
+
+Para isso, adicione o seguinte código no seu projeto:
+
+```C#
+System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+```
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):

@@ -38,12 +38,6 @@ namespace WirecardCSharp.Controllers
         public async Task<HttpStatusCode> AccountExist(string email_document)
         {
             HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/exists?{(email_document.Contains("@") ? "email" : "tax_document")}={email_document}");
-            if (!response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                WirecardException.WirecardError wirecardException = WirecardException.DeserializeObject(content);
-                throw new WirecardException(wirecardException, "HTTP Response Not Success", content, (int)response.StatusCode);
-            }
             return response.StatusCode;
         }
         /// <summary>

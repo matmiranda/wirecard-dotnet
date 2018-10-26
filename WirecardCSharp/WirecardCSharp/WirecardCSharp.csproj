@@ -9,8 +9,8 @@
     <PackageProjectUrl>https://github.com/matmiranda/WirecardCSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/matmiranda/WirecardCSharp.git</RepositoryUrl>
     <PackageTags>Wirecard</PackageTags>
-    <PackageReleaseNotes>Moip para Wirecard</PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <PackageReleaseNotes>Pequena mudança em ClassicAccount.AccountExist();</PackageReleaseNotes>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

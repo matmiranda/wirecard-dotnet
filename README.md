@@ -80,7 +80,7 @@ using WirecardCSharp;
 using WirecardCSharp.Models;
 
 private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, accessToken);
+private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, token, key);
 ```
 
 ## Autenticando e configurando o ambiente (Marketplace)
@@ -92,7 +92,7 @@ using WirecardCSharp.Models;
 
 private const string token = "xxxxxxxxxxxxxxxxxxx";
 private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
-private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, token, key);
+private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, accessToken);
 ```
 
 ## Conta Clássica

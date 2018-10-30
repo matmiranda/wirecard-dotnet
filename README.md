@@ -72,7 +72,7 @@ PM> Install-Package WirecardCSharp
 
 Obs: Trocamos a biblioteca [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/) por [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/).
 
-## Autenticando e configurando o ambiente
+## Autenticando e configurando o ambiente (E-Commerce)
 Informe seu token e em qual "meio ambiente" você quer executar suas ações:
 
 ```C#
@@ -81,6 +81,18 @@ using WirecardCSharp.Models;
 
 private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
 private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, accessToken);
+```
+
+## Autenticando e configurando o ambiente (Marketplace)
+Informe seu token e em qual "meio ambiente" você quer executar suas ações:
+
+```C#
+using WirecardCSharp;
+using WirecardCSharp.Models;
+
+private const string token = "xxxxxxxxxxxxxxxxxxx";
+private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
+private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, token, key);
 ```
 
 ## Conta Clássica

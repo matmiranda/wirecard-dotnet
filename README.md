@@ -66,7 +66,7 @@ Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
 
 ```xml
-PM> Install-Package WirecardCSharp -Version 1.0.3
+PM> Install-Package WirecardCSharp
 ```
 
 Obs: Trocamos a biblioteca [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/) por [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/).

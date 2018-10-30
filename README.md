@@ -73,7 +73,7 @@ PM> Install-Package WirecardCSharp
 Obs: Trocamos a biblioteca [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/) por [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/).
 
 ## Autenticando e configurando o ambiente (E-Commerce)
-Informe seu (token, chave) e em qual "meio ambiente" você quer executar suas ações:
+Escolha o "ambiente" você quer executar suas ações e informe seu (token, chave):
 
 ```C#
 using WirecardCSharp;
@@ -88,8 +88,7 @@ Para obter um token e a chave, primeiro faça o login [aqui](https://connect-san
 Você pode acessá-las em **Minha conta** > **Configurações** > **Chaves de Acesso**.
 
 ## Autenticando e configurando o ambiente (Marketplace)
-Informe seu accesstoken e em qual "meio ambiente" você quer executar suas ações:
-
+Escolha o "ambiente" você quer executar suas ações e informe seu accesstoken: 
 ```C#
 using WirecardCSharp;
 using WirecardCSharp.Models;

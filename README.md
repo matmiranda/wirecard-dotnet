@@ -79,7 +79,8 @@ Informe seu token e em qual "meio ambiente" você quer executar suas ações:
 using WirecardCSharp;
 using WirecardCSharp.Models;
 
-private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
+private const string token = "xxxxxxxxxxxxxxxxxxx";
+private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
 private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, token, key);
 ```
 Para obter a token e a chave, primeiro faça o login [aqui](https://connect-sandbox.wirecard.com.br/login) e você pode acessá-las em Minha conta > Configurações > Chaves de Acesso.
@@ -91,8 +92,7 @@ Informe seu token e em qual "meio ambiente" você quer executar suas ações:
 using WirecardCSharp;
 using WirecardCSharp.Models;
 
-private const string token = "xxxxxxxxxxxxxxxxxxx";
-private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
+private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
 private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, accessToken);
 ```
 

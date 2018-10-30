@@ -83,7 +83,9 @@ private const string token = "xxxxxxxxxxxxxxxxxxx";
 private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
 private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, token, key);
 ```
-Para obter a token e a chave, primeiro faça o login [aqui](https://connect-sandbox.wirecard.com.br/login) e você pode acessá-las em Minha conta > Configurações > Chaves de Acesso.
+Para obter a token e a chave, primeiro faça o login [aqui](https://connect-sandbox.wirecard.com.br/login).
+
+Você pode acessá-las em Minha conta > Configurações > Chaves de Acesso.
 
 ## Autenticando e configurando o ambiente (Marketplace)
 Informe seu token e em qual "meio ambiente" você quer executar suas ações:

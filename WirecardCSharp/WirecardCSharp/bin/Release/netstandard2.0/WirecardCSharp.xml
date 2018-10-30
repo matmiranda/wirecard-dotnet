@@ -426,6 +426,21 @@
             <param name="body"></param>
             <returns></returns>
         </member>
+        <member name="M:WirecardCSharp.WirecardClient.#ctor(WirecardCSharp.Environments,System.String)">
+            <summary>
+            Tipo de negócio: MARKETPLACE
+            </summary>
+            <param name="environments">Escolha um "meio ambiente" você quer executar suas ações</param>
+            <param name="accesstoken">accesstoken</param>
+        </member>
+        <member name="M:WirecardCSharp.WirecardClient.#ctor(WirecardCSharp.Environments,System.String,System.String)">
+            <summary>
+            Tipo de negócio: E-COMMERCE
+            </summary>
+            <param name="environments">Escolha um "meio ambiente" você quer executar suas ações</param>
+            <param name="token">token</param>
+            <param name="key">chave</param>
+        </member>
         <member name="P:WirecardCSharp.WirecardClient.Customer">
             <summary> Cliente </summary>
         </member>
@@ -467,6 +482,9 @@
         </member>
         <member name="P:WirecardCSharp.WirecardClient.Transfer">
             <summary> Transferência </summary>
+        </member>
+        <member name="P:WirecardCSharp.WirecardClient._BusinessType">
+            <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>
         </member>
     </members>
 </doc>

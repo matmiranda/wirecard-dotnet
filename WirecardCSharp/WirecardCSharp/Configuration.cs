@@ -15,13 +15,13 @@ namespace WirecardCSharp
         SANDBOX,
         PRODUCTION,
     }
-
     internal class _HttpClient
     {
         internal static HttpClient httpClient = null;
-        internal static string accesstoken = string.Empty;
+        internal static string accesstoken = string.Empty; //marketplace
+        internal static string base64 = string.Empty; //e-commerce
         internal static string uri = string.Empty;
-
+        internal static string BusinessType = null;
         internal static HttpClient Client()
         {
             if (httpClient == null)
@@ -32,8 +32,16 @@ namespace WirecardCSharp
                     httpClient.DefaultRequestHeaders.Clear();
                     httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
                     httpClient.DefaultRequestHeaders.Add("User-Agent", $"WirecardCSharp{GetVersion()}");
-                    httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
-                    httpClient.BaseAddress = new Uri(uri);
+                    if (accesstoken != string.Empty && base64 == string.Empty)
+                    {
+                        httpClient.BaseAddress = new Uri(uri);
+                        httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accesstoken}");
+                    }
+                    else
+                    {
+                        httpClient.BaseAddress = new Uri(uri);
+                        httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {base64}");
+                    }
                 }
                 catch (System.Exception ex)
                 {

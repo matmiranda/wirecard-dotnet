@@ -9,8 +9,8 @@
     <PackageProjectUrl>https://github.com/matmiranda/WirecardCSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/matmiranda/WirecardCSharp.git</RepositoryUrl>
     <PackageTags>Wirecard</PackageTags>
-    <PackageReleaseNotes>Pequena mudança em ClassicAccount.AccountExist();</PackageReleaseNotes>
-    <Version>1.0.3</Version>
+    <PackageReleaseNotes>Novidade: E-COMMERCE ou MARKETPLACE</PackageReleaseNotes>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

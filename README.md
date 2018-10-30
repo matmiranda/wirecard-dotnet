@@ -82,6 +82,7 @@ using WirecardCSharp.Models;
 private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
 private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, token, key);
 ```
+Para obter a token e a chave, primeiro faça o login [aqui](https://connect-sandbox.wirecard.com.br/login) e você pode acessá-las em Minha conta > Configurações > Chaves de Acesso.
 
 ## Autenticando e configurando o ambiente (Marketplace)
 Informe seu token e em qual "meio ambiente" você quer executar suas ações:
@@ -94,6 +95,8 @@ private const string token = "xxxxxxxxxxxxxxxxxxx";
 private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
 private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, accessToken);
 ```
+
+Para obter o accesstoken, você precisa criar um [App](https://dev.wirecard.com.br/reference#1-criar-um-app).
 
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Wirecard (email)

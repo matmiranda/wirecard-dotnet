@@ -104,7 +104,7 @@ Para obter o accesstoken, você precisa criar um [App](https://dev.wirecard.com.
 Todos os métodos são **assíncronos**, caso você queira executar de forma **síncrona**, veja o exemplo:
 
 ```C#
-var result = Task.Run(() => WC.Customer.List()).Result;
+var result = Task.Run(() => WirecardClient.Customer.List()).Result;
 ```
 
 ## Conta Clássica

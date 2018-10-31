@@ -23,5 +23,7 @@ namespace WirecardCSharp.Models
         public _Links _links { get; set; }
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string role { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ownId { get; set; }
     }
 }

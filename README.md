@@ -19,6 +19,7 @@
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente (E-Commerce)](#autenticando-e-configurando-o-ambiente-e-commerce)
 - [Autenticando e configurando o ambiente (Marketplace)](#autenticando-e-configurando-o-ambiente-marketplace)
+- [Assíncrona x Síncrona](#)
 - [Conta Clássica](#conta-clássica)
 - [Conta Transparente](#conta-transparente)
 - [Clientes](#clientes)
@@ -63,13 +64,6 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%A7%C3%A3o-do-protocolo-de-seguran%C3%A7a-tls-12).
 
-## Assíncrona x Síncrona
-Todos os métodos são **assíncronos**, caso você queira executar de forma **síncrona**, veja o exemplo:
-
-```C#
-var result = Task.Run(() => WC.Customer.List()).Result;
-```
-
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
 
@@ -105,6 +99,13 @@ private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX,
 ```
 
 Para obter o accesstoken, você precisa criar um [App](https://dev.wirecard.com.br/reference#1-criar-um-app).
+
+## Assíncrona x Síncrona
+Todos os métodos são **assíncronos**, caso você queira executar de forma **síncrona**, veja o exemplo:
+
+```C#
+var result = Task.Run(() => WC.Customer.List()).Result;
+```
 
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Wirecard (email)

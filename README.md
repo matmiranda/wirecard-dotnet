@@ -63,6 +63,12 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%A7%C3%A3o-do-protocolo-de-seguran%C3%A7a-tls-12).
 
+Todos os métodos são **assíncrono**, caso você queira executar de forma **síncrona**, veja o exemplo:
+
+```C#
+var result = Task.Run(() => WC.Customer.List()).Result;
+```
+
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
 

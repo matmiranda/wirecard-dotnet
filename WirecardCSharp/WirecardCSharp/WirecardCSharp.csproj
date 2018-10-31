@@ -9,8 +9,8 @@
     <PackageProjectUrl>https://github.com/matmiranda/WirecardCSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/matmiranda/WirecardCSharp.git</RepositoryUrl>
     <PackageTags>Wirecard</PackageTags>
-    <PackageReleaseNotes>Novidade: E-COMMERCE ou MARKETPLACE</PackageReleaseNotes>
-    <Version>1.0.4</Version>
+    <PackageReleaseNotes>Método de listar todos os clientes foi corrigido.</PackageReleaseNotes>
+    <Version>1.0.5</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -129,7 +129,12 @@ namespace WirecardCSharp.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<List<CustomerResponse>>(await response.Content.ReadAsStringAsync());
+                string json = await response.Content.ReadAsStringAsync();
+                //remove: {'customers':
+                json = json.Remove(0, 13);
+                //remove: }
+                json = json.Remove(json.Length - 1);
+                return JsonConvert.DeserializeObject<List<CustomerResponse>>(json);
             }
             catch (System.Exception ex)
             {

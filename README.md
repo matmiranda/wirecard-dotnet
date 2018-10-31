@@ -63,6 +63,7 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%A7%C3%A3o-do-protocolo-de-seguran%C3%A7a-tls-12).
 
+# Assíncrona x Síncrona
 Todos os métodos são **assíncrono**, caso você queira executar de forma **síncrona**, veja o exemplo:
 
 ```C#

@@ -12,6 +12,7 @@ namespace WirecardCSharp.Models
         public Phone phone { get; set; }
         public Shippingaddress shippingAddress { get; set; }
         public string method { get; set; }
+        public Fundinginstrument fundingInstrument { get; set; }
         public Creditcard creditCard { get; set; }
         public Amount amount { get; set; }
         public List<Item> items { get; set; }

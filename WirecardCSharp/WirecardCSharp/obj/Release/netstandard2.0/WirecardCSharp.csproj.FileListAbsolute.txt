@@ -1,9 +1,0 @@
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\bin\Release\netstandard2.0\WirecardCSharp.deps.json
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\bin\Release\netstandard2.0\WirecardCSharp.dll
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\bin\Release\netstandard2.0\WirecardCSharp.pdb
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\bin\Release\netstandard2.0\WirecardCSharp.xml
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\obj\Release\netstandard2.0\WirecardCSharp.csproj.CoreCompileInputs.cache
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\obj\Release\netstandard2.0\WirecardCSharp.AssemblyInfoInputs.cache
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\obj\Release\netstandard2.0\WirecardCSharp.AssemblyInfo.cs
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\obj\Release\netstandard2.0\WirecardCSharp.dll
-C:\Users\Matheus Miranda\source\repos\WirecardCSharp\WirecardCSharp\obj\Release\netstandard2.0\WirecardCSharp.pdb

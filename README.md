@@ -9,9 +9,7 @@
     .
     <a href="https://dev.wirecard.com.br/v2.0/reference">Referência API</a>
     ·
-    <a href="https://slackin-cqtchmfquq.now.sh/">Comunidade Slack
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png" alt="icon" width="20">
-    </a>
+    <a href="https://slackin-cqtchmfquq.now.sh/">Comunidade Slack</a>
   </p>
 </p>
 

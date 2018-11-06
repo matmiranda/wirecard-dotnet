@@ -1,10 +1,28 @@
-﻿namespace WirecardCSharp.Models
+using System;
+using Newtonsoft.Json;
+
+namespace WirecardCSharp.Models
 {
-    public class TransferRequest
+    public partial class TransferRequest
     {
-        public string ownId { get; set; }
-        public int amount { get; set; }
-        public string description { get; set; }
-        public Transferinstrument transferInstrument { get; set; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string ownId { get => OwnId; set => value = OwnId; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public int amount { get => Amount; set => value = Amount; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string description { get => Description; set => value = Description; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public Transferinstrument transferInstrument { get => TransferInstrument; set => value = TransferInstrument; }
+    }
+    public partial class TransferRequest
+    {
+        [JsonProperty("ownId", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string OwnId { get; set; }
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int Amount { get; set; }
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Description { get; set; }
+        [JsonProperty("transferInstrument", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Transferinstrument TransferInstrument { get; set; }
     }
 }

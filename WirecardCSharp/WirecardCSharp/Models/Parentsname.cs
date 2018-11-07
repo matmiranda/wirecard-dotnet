@@ -1,12 +1,20 @@
-﻿using Newtonsoft.Json;
+using System;
+using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public class Parentsname
+    public partial class Parentsname
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string mother { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string father { get; set; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string mother { get => Mother; set => value = Mother; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string father { get => Father; set => value = Father; }
+    }
+    public partial class Parentsname
+    {
+        [JsonProperty("mother", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Mother { get; set; }
+        [JsonProperty("father", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Father { get; set; }
     }
 }

@@ -1,12 +1,20 @@
-﻿using Newtonsoft.Json;
+using System;
+using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public class Keys
+    public partial class Keys
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Basicauth basicAuth { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string encryption { get; set; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public Basicauth basicAuth { get => BasicAuth; set => value = BasicAuth; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string encryption { get => Encryption; set => value = Encryption; }
+    }
+    public partial class Keys
+    {
+        [JsonProperty("basicAuth", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Basicauth BasicAuth { get; set; }
+        [JsonProperty("encryption", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Encryption { get; set; }
     }
 }

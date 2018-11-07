@@ -1,12 +1,20 @@
-﻿using Newtonsoft.Json;
+using System;
+using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public class Taxdocument
+    public partial class Taxdocument
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string type { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string number { get; set; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string type { get => Type; set => value = Type; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string number { get => Number; set => value = Number; }
+    }
+    public partial class Taxdocument
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Type { get; set; }
+        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Number { get; set; }
     }
 }

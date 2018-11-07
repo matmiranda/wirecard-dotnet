@@ -1,10 +1,16 @@
-﻿using Newtonsoft.Json;
+using System;
+using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public class Payboleto
+    public partial class Payboleto
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string redirectHref { get; set; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string redirectHref { get => RedirectHref; set => value = RedirectHref; }
+    }
+    public partial class Payboleto
+    {
+        [JsonProperty("redirectHref", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string RedirectHref { get; set; }
     }
 }

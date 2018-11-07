@@ -19,7 +19,7 @@ namespace WirecardCSharp.Models
         public DateTime createdAt { get => CreatedAt; set => value = CreatedAt; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public string accountCheckNumber { get => AccountCheckNumber; set => value = AccountCheckNumber; }
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]]
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public _Links _links { get => _Links; set => value = _Links; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public string bankName { get => BankName; set => value = BankName; }

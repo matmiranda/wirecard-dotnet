@@ -1,11 +1,25 @@
-﻿using System.Collections.Generic;
+using System;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace WirecardCSharp.Models
 {
-    public class OrdersResponse
+    public partial class OrdersResponse
     {
-        public _Links _links { get; set; }
-        public Summary summary { get; set; }
-        public List<Order> orders { get; set; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public _Links _links { get => _Links; set => value = _Links; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public Summary summary { get => Summary; set => value = Summary; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public List<Order> orders { get => Orders; set => value = Orders; }
+    }
+    public partial class OrdersResponse
+    {
+        [JsonProperty("_links", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public _Links _Links { get; set; }
+        [JsonProperty("summary", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Summary Summary { get; set; }
+        [JsonProperty("orders", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public List<Order> Orders { get; set; }
     }
 }

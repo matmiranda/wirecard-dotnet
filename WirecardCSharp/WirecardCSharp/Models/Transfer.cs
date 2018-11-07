@@ -1,29 +1,52 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public class Transfer
+    public partial class Transfer
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int fee { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int amount { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public DateTime updatedAt { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string id { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Transferinstrument transferInstrument { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string status { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public DateTime createdAt { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public _Links _links { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string role { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string ownId { get; set; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public int fee { get => Fee; set => value = Fee; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public int amount { get => Amount; set => value = Amount; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public DateTime updatedAt { get => UpdatedAt; set => value = UpdatedAt; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string id { get => Id; set => value = Id; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public Transferinstrument transferInstrument { get => TransferInstrument; set => value = TransferInstrument; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string status { get => Status; set => value = Status; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public DateTime createdAt { get => CreatedAt; set => value = CreatedAt; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public _Links _links { get => _Links; set => value = _Links; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string role { get => Role; set => value = Role; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string ownId { get => OwnId; set => value = OwnId; }
+    }
+    public partial class Transfer
+    {
+        [JsonProperty("fee", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int Fee { get; set; }
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int Amount { get; set; }
+        [JsonProperty("updatedAt", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public DateTime UpdatedAt { get; set; }
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Id { get; set; }
+        [JsonProperty("transferInstrument", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Transferinstrument TransferInstrument { get; set; }
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Status { get; set; }
+        [JsonProperty("createdAt", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public DateTime CreatedAt { get; set; }
+        [JsonProperty("_links", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public _Links _Links { get; set; }
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Role { get; set; }
+        [JsonProperty("ownId", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string OwnId { get; set; }
     }
 }

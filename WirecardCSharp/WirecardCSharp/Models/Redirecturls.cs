@@ -1,12 +1,20 @@
-﻿using Newtonsoft.Json;
+using System;
+using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public class Redirecturls
+    public partial class Redirecturls
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string urlFailure { get; set; }
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string urlSuccess { get; set; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string urlFailure { get => UrlFailure; set => value = UrlFailure; }
+        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        public string urlSuccess { get => UrlSuccess; set => value = UrlSuccess; }
+    }
+    public partial class Redirecturls
+    {
+        [JsonProperty("urlFailure", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string UrlFailure { get; set; }
+        [JsonProperty("urlSuccess", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string UrlSuccess { get; set; }
     }
 }

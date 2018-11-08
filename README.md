@@ -16,6 +16,7 @@
 ## Índice
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
 - [Aviso Importante](#aviso-importante)
+- [Status](#status)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente (E-Commerce)](#autenticando-e-configurando-o-ambiente-e-commerce)
 - [Autenticando e configurando o ambiente (Marketplace)](#autenticando-e-configurando-o-ambiente-marketplace)
@@ -64,8 +65,12 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%A7%C3%A3o-do-protocolo-de-seguran%C3%A7a-tls-12).
 
+## Status
+[![Slack](https://img.shields.io/badge/slack-345-pink.svg)](https://slackin-cqtchmfquq.now.sh/)
+[![NuGet](https://img.shields.io/badge/nuget-v1.9.0-blue.svg)](https://www.nuget.org/packages/WirecardCSharp/)
+
 ## Instalação
-Execute o comando para instalar via **NuGet**: [![NuGet](https://img.shields.io/badge/nuget-v1.9.0-blue.svg)](https://www.nuget.org/packages/WirecardCSharp/)
+Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
 
 
 ```xml

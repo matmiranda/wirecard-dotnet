@@ -6,29 +6,29 @@ namespace WirecardCSharp.Models
     public partial class Bankaccount
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => value = Id; }
+        public string id { get => Id; set => Id = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int agencyNumber { get => AgencyNumber; set => value = AgencyNumber; }
+        public int agencyNumber { get => AgencyNumber; set => AgencyNumber = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Holder holder { get => Holder; set => value = Holder; }
+        public Holder holder { get => Holder; set => Holder = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int accountNumber { get => AccountNumber; set => value = AccountNumber; }
+        public int accountNumber { get => AccountNumber; set => AccountNumber = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string status { get => Status; set => value = Status; }
+        public string status { get => Status; set => Status = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime createdAt { get => CreatedAt; set => value = CreatedAt; }
+        public DateTime createdAt { get => CreatedAt; set => CreatedAt = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string accountCheckNumber { get => AccountCheckNumber; set => value = AccountCheckNumber; }
+        public string accountCheckNumber { get => AccountCheckNumber; set => AccountCheckNumber = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => value = _Links; }
+        public _Links _links { get => _Links; set => _Links = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string bankName { get => BankName; set => value = BankName; }
+        public string bankName { get => BankName; set => BankName = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string type { get => Type; set => value = Type; }
+        public string type { get => Type; set => Type = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string agencyCheckNumber { get => AgencyCheckNumber; set => value = AgencyCheckNumber; }
+        public string agencyCheckNumber { get => AgencyCheckNumber; set => AgencyCheckNumber = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string bankNumber { get => BankNumber; set => value = BankNumber; }
+        public string bankNumber { get => BankNumber; set => BankNumber = value; }
     }
     public partial class Bankaccount
     {

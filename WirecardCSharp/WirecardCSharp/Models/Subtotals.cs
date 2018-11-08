@@ -6,13 +6,13 @@ namespace WirecardCSharp.Models
     public partial class Subtotals
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int shipping { get => Shipping; set => value = Shipping; }
+        public int shipping { get => Shipping; set => Shipping = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int addition { get => Addition; set => value = Addition; }
+        public int addition { get => Addition; set => Addition = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int discount { get => Discount; set => value = Discount; }
+        public int discount { get => Discount; set => Discount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int items { get => Items; set => value = Items; }
+        public int items { get => Items; set => Items = value; }
     }
     public partial class Subtotals
     {

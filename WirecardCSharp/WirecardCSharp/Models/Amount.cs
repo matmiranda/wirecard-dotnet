@@ -6,30 +6,30 @@ namespace WirecardCSharp.Models
     public partial class Amount
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string currency { get => Currency; set => value = Currency; }
-        public Subtotals subtotals { get => Subtotals; set => value = Subtotals; }
+        public string currency { get => Currency; set => Currency = value; }
+        public Subtotals subtotals { get => Subtotals; set => Subtotals = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int @fixed { get => Fixed; set => value = Fixed; }
+        public int @fixed { get => Fixed; set => Fixed = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int percentual { get => Percentual; set => value = Percentual; }
+        public int percentual { get => Percentual; set => Percentual = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int paid { get => Paid; set => value = Paid; }
+        public int paid { get => Paid; set => Paid = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int total { get => Total; set => value = Total; }
+        public int total { get => Total; set => Total = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int fees { get => Fees; set => value = Fees; }
+        public int fees { get => Fees; set => Fees = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int refunds { get => Refunds; set => value = Refunds; }
+        public int refunds { get => Refunds; set => Refunds = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int liquid { get => Liquid; set => value = Liquid; }
+        public int liquid { get => Liquid; set => Liquid = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int otherReceivers { get => OtherReceivers; set => value = OtherReceivers; }
+        public int otherReceivers { get => OtherReceivers; set => OtherReceivers = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int addition { get => Addition; set => value = Addition; }
+        public int addition { get => Addition; set => Addition = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int deduction { get => Deduction; set => value = Deduction; }
+        public int deduction { get => Deduction; set => Deduction = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int gross { get => Gross; set => value = Gross; }
+        public int gross { get => Gross; set => Gross = value; }
     }
     public partial class Amount
     {

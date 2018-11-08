@@ -7,35 +7,35 @@ namespace WirecardCSharp.Models
     public partial class Order
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => value = Id; }
+        public string id { get => Id; set => Id = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string ownId { get => OwnId; set => value = OwnId; }
+        public string ownId { get => OwnId; set => OwnId = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string status { get => Status; set => value = Status; }
+        public string status { get => Status; set => Status = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool blocked { get => Blocked; set => value = Blocked; }
+        public bool blocked { get => Blocked; set => Blocked = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Amount amount { get => Amount; set => value = Amount; }
+        public Amount amount { get => Amount; set => Amount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Receiver> receivers { get => Receivers; set => value = Receivers; }
+        public List<Receiver> receivers { get => Receivers; set => Receivers = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Customer customer { get => Customer; set => value = Customer; }
+        public Customer customer { get => Customer; set => Customer = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Item> items { get => Items; set => value = Items; }
+        public List<Item> items { get => Items; set => Items = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Payment> payments { get => Payments; set => value = Payments; }
+        public List<Payment> payments { get => Payments; set => Payments = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Event> events { get => Events; set => value = Events; }
+        public List<Event> events { get => Events; set => Events = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => value = _Links; }
+        public _Links _links { get => _Links; set => _Links = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime createdAt { get => CreatedAt; set => value = CreatedAt; }
+        public DateTime createdAt { get => CreatedAt; set => CreatedAt = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime updatedAt { get => UpdatedAt; set => value = UpdatedAt; }
+        public DateTime updatedAt { get => UpdatedAt; set => UpdatedAt = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string href { get => Href; set => value = Href; }
+        public string href { get => Href; set => Href = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string title { get => Title; set => value = Title; }
+        public string title { get => Title; set => Title = value; }
     }
     public partial class Order
     {

@@ -6,17 +6,17 @@ namespace WirecardCSharp.Models
     public partial class Holder
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string fullname { get => FullName; set => value = FullName; }
+        public string fullname { get => FullName; set => FullName = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string birthdate { get => BirthDate; set => value = BirthDate; }
+        public string birthdate { get => BirthDate; set => BirthDate = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Taxdocument taxDocument { get => TaxDocument; set => value = TaxDocument; }
+        public Taxdocument taxDocument { get => TaxDocument; set => TaxDocument = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Phone phone { get => Phone; set => value = Phone; }
+        public Phone phone { get => Phone; set => Phone = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Billingaddress billingAddress { get => BillingAddress; set => value = BillingAddress; }
+        public Billingaddress billingAddress { get => BillingAddress; set => BillingAddress = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool thirdParty { get => ThirdParty; set => value = ThirdParty; }
+        public bool thirdParty { get => ThirdParty; set => ThirdParty = value; }
     }
     public partial class Holder
     {

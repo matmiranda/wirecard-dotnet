@@ -6,11 +6,11 @@ namespace WirecardCSharp.Models
     public partial class Fundinginstrument
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Creditcard creditCard { get => CreditCard; set => value = CreditCard; }
+        public Creditcard creditCard { get => CreditCard; set => CreditCard = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string method { get => Method; set => value = Method; }
+        public string method { get => Method; set => Method = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string brand { get => Brand; set => value = Brand; }
+        public string brand { get => Brand; set => Brand = value; }
     }
     public partial class Fundinginstrument
     {

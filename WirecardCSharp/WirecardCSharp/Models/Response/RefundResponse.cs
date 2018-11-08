@@ -7,43 +7,43 @@ namespace WirecardCSharp.Models
     public partial class RefundResponse
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => value = Id; }
+        public string id { get => Id; set => Id = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string status { get => Status; set => value = Status; }
+        public string status { get => Status; set => Status = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool delayCapture { get => DelayCapture; set => value = DelayCapture; }
+        public bool delayCapture { get => DelayCapture; set => DelayCapture = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Amount amount { get => Amount; set => value = Amount; }
+        public Amount amount { get => Amount; set => Amount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int installmentCount { get => InstallmentCount; set => value = InstallmentCount; }
+        public int installmentCount { get => InstallmentCount; set => InstallmentCount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string statementDescriptor { get => StatementDescriptor; set => value = StatementDescriptor; }
+        public string statementDescriptor { get => StatementDescriptor; set => StatementDescriptor = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Fundinginstrument fundingInstrument { get => FundingInstrument; set => value = FundingInstrument; }
+        public Fundinginstrument fundingInstrument { get => FundingInstrument; set => FundingInstrument = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Fee> fees { get => Fees; set => value = Fees; }
+        public List<Fee> fees { get => Fees; set => Fees = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Event> events { get => Events; set => value = Events; }
+        public List<Event> events { get => Events; set => Events = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Receiver> receivers { get => Receivers; set => value = Receivers; }
+        public List<Receiver> receivers { get => Receivers; set => Receivers = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Device device { get => Device; set => value = Device; }
+        public Device device { get => Device; set => Device = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => value = _Links; }
+        public _Links _links { get => _Links; set => _Links = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime createdAt { get => CreatedAt; set => value = CreatedAt; }
+        public DateTime createdAt { get => CreatedAt; set => CreatedAt = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime updatedAt { get => UpdatedAt; set => value = UpdatedAt; }
+        public DateTime updatedAt { get => UpdatedAt; set => UpdatedAt = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string type { get => Type; set => value = Type; }
+        public string type { get => Type; set => Type = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Refundinginstrument refundingInstrument { get => RefundingInstrument; set => value = RefundingInstrument; }
+        public Refundinginstrument refundingInstrument { get => RefundingInstrument; set => RefundingInstrument = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Creditcard creditCard { get => CreditCard; set => value = CreditCard; }
+        public Creditcard creditCard { get => CreditCard; set => CreditCard = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Card card { get => Card; set => value = Card; }
+        public Card card { get => Card; set => Card = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string method { get => Method; set => value = Method; }
+        public string method { get => Method; set => Method = value; }
     }
     public partial class RefundResponse
     {

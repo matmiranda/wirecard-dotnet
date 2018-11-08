@@ -6,15 +6,15 @@ namespace WirecardCSharp.Models
     public partial class ClassicAccountRequest
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Email email { get => Email; set => value = Email; }
+        public Email email { get => Email; set => Email = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Person person { get => Person; set => value = Person; }
+        public Person person { get => Person; set => Person = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Company company { get => Company; set => value = Company; }
+        public Company company { get => Company; set => Company = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Businesssegment businessSegment { get => BusinessSegment; set => value = BusinessSegment; }
+        public Businesssegment businessSegment { get => BusinessSegment; set => BusinessSegment = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string type { get => Type; set => value = Type; }
+        public string type { get => Type; set => Type = value; }
     }
     public partial class ClassicAccountRequest
     {

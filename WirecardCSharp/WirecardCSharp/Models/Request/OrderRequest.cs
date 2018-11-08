@@ -7,15 +7,15 @@ namespace WirecardCSharp.Models
     public partial class OrderRequest
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string ownId { get => OwnId; set => value = OwnId; }
+        public string ownId { get => OwnId; set => OwnId = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Amount amount { get => Amount; set => value = Amount; }
+        public Amount amount { get => Amount; set => Amount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Item> items { get => Items; set => value = Items; }
+        public List<Item> items { get => Items; set => Items = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Customer customer { get => Customer; set => value = Customer; }
+        public Customer customer { get => Customer; set => Customer = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Receiver> receivers { get => Receivers; set => value = Receivers; }
+        public List<Receiver> receivers { get => Receivers; set => Receivers = value; }
     }
     public partial class OrderRequest
     {

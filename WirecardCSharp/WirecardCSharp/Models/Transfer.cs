@@ -6,25 +6,25 @@ namespace WirecardCSharp.Models
     public partial class Transfer
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int fee { get => Fee; set => value = Fee; }
+        public int fee { get => Fee; set => Fee = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int amount { get => Amount; set => value = Amount; }
+        public int amount { get => Amount; set => Amount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime updatedAt { get => UpdatedAt; set => value = UpdatedAt; }
+        public DateTime updatedAt { get => UpdatedAt; set => UpdatedAt = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => value = Id; }
+        public string id { get => Id; set => Id = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Transferinstrument transferInstrument { get => TransferInstrument; set => value = TransferInstrument; }
+        public Transferinstrument transferInstrument { get => TransferInstrument; set => TransferInstrument = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string status { get => Status; set => value = Status; }
+        public string status { get => Status; set => Status = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime createdAt { get => CreatedAt; set => value = CreatedAt; }
+        public DateTime createdAt { get => CreatedAt; set => CreatedAt = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => value = _Links; }
+        public _Links _links { get => _Links; set => _Links = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string role { get => Role; set => value = Role; }
+        public string role { get => Role; set => Role = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string ownId { get => OwnId; set => value = OwnId; }
+        public string ownId { get => OwnId; set => OwnId = value; }
     }
     public partial class Transfer
     {

@@ -6,11 +6,11 @@ namespace WirecardCSharp.Models
     public partial class Cancellationdetails
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string code { get => Code; set => value = Code; }
+        public string code { get => Code; set => Code = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string description { get => Description; set => value = Description; }
+        public string description { get => Description; set => Description = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string cancelledBy { get => CancelledBy; set => value = CancelledBy; }
+        public string cancelledBy { get => CancelledBy; set => CancelledBy = value; }
     }
     public partial class Cancellationdetails
     {

@@ -6,13 +6,13 @@ namespace WirecardCSharp.Models
     public partial class SalesFileResponse
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => value = Id; }
+        public string id { get => Id; set => Id = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string date { get => Date; set => value = Date; }
+        public string date { get => Date; set => Date = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string type { get => Type; set => value = Type; }
+        public string type { get => Type; set => Type = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => value = _Links; }
+        public _Links _links { get => _Links; set => _Links = value; }
     }
     public partial class SalesFileResponse
     {

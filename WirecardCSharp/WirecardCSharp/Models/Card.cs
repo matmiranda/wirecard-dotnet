@@ -6,9 +6,9 @@ namespace WirecardCSharp.Models
     public partial class Card
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string brand { get => Brand; set => value = Brand; }
+        public string brand { get => Brand; set => Brand = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool store { get => Store; set => value = Store; }
+        public bool store { get => Store; set => Store = value; }
     }
     public partial class Card
     {

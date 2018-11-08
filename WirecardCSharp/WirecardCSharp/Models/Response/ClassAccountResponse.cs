@@ -6,39 +6,39 @@ namespace WirecardCSharp.Models
     public partial class ClassAccountResponse
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => value = Id; }
+        public string id { get => Id; set => Id = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string accessToken { get => AccessToken; set => value = AccessToken; }
+        public string accessToken { get => AccessToken; set => AccessToken = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string channelId { get => ChannelId; set => value = ChannelId; }
+        public string channelId { get => ChannelId; set => ChannelId = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string type { get => Type; set => value = Type; }
+        public string type { get => Type; set => Type = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool transparentAccount { get => TransparentAccount; set => value = TransparentAccount; }
+        public bool transparentAccount { get => TransparentAccount; set => TransparentAccount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime createdAt { get => CreatedAt; set => value = CreatedAt; }
+        public DateTime createdAt { get => CreatedAt; set => CreatedAt = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Person person { get => Person; set => value = Person; }
+        public Person person { get => Person; set => Person = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Email email { get => Email; set => value = Email; }
+        public Email email { get => Email; set => Email = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => value = _Links; }
+        public _Links _links { get => _Links; set => _Links = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string login { get => Login; set => value = Login; }
+        public string login { get => Login; set => Login = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Businesssegment businessSegment { get => BusinessSegment; set => value = BusinessSegment; }
+        public Businesssegment businessSegment { get => BusinessSegment; set => BusinessSegment = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string feeType { get => FeeType; set => value = FeeType; }
+        public string feeType { get => FeeType; set => FeeType = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int monthlyRevenueId { get => MonthlyRevenueId; set => value = MonthlyRevenueId; }
+        public int monthlyRevenueId { get => MonthlyRevenueId; set => MonthlyRevenueId = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string softDescriptor { get => SoftDescriptor; set => value = SoftDescriptor; }
+        public string softDescriptor { get => SoftDescriptor; set => SoftDescriptor = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool limited { get => Limited; set => value = Limited; }
+        public bool limited { get => Limited; set => Limited = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool verified { get => Verified; set => value = Verified; }
+        public bool verified { get => Verified; set => Verified = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Company company { get => Company; set => value = Company; }
+        public Company company { get => Company; set => Company = value; }
     }
     public partial class ClassAccountResponse
     {

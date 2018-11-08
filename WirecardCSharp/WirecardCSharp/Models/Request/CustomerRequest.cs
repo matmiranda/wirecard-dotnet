@@ -7,31 +7,31 @@ namespace WirecardCSharp.Models
     public partial class CustomerRequest
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string ownId { get => OwnId; set => value = OwnId; }
+        public string ownId { get => OwnId; set => OwnId = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string fullname { get => FullName; set => value = FullName; }
+        public string fullname { get => FullName; set => FullName = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string email { get => Email; set => value = Email; }
+        public string email { get => Email; set => Email = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string birthDate { get => BirthDate; set => value = BirthDate; }
+        public string birthDate { get => BirthDate; set => BirthDate = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Taxdocument taxDocument { get => TaxDocument; set => value = TaxDocument; }
+        public Taxdocument taxDocument { get => TaxDocument; set => TaxDocument = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Phone phone { get => Phone; set => value = Phone; }
+        public Phone phone { get => Phone; set => Phone = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Shippingaddress shippingAddress { get => ShippingAddress; set => value = ShippingAddress; }
+        public Shippingaddress shippingAddress { get => ShippingAddress; set => ShippingAddress = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string method { get => Method; set => value = Method; }
+        public string method { get => Method; set => Method = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Fundinginstrument fundingInstrument { get => FundingInstrument; set => value = FundingInstrument; }
+        public Fundinginstrument fundingInstrument { get => FundingInstrument; set => FundingInstrument = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Creditcard creditCard { get => CreditCard; set => value = CreditCard; }
+        public Creditcard creditCard { get => CreditCard; set => CreditCard = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Amount amount { get => Amount; set => value = Amount; }
+        public Amount amount { get => Amount; set => Amount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Item> items { get => Items; set => value = Items; }
+        public List<Item> items { get => Items; set => Items = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Customer customer { get => Customer; set => value = Customer; }
+        public Customer customer { get => Customer; set => Customer = value; }
     }
     public partial class CustomerRequest
     {

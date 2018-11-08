@@ -6,9 +6,9 @@ namespace WirecardCSharp.Models
     public partial class Geolocation
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public float latitude { get => Latitude; set => value = Latitude; }
+        public float latitude { get => Latitude; set => Latitude = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public float longitude { get => Longitude; set => value = Longitude; }
+        public float longitude { get => Longitude; set => Longitude = value; }
     }
     public partial class Geolocation
     {

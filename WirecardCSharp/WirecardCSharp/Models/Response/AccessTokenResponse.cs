@@ -6,19 +6,19 @@ namespace WirecardCSharp.Models
     public partial class AccessTokenResponse
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string accessToken { get => AccessToken; set => value = AccessToken; }
+        public string accessToken { get => AccessToken; set => AccessToken = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string access_token { get => Access_Token; set => value = Access_Token; }
+        public string access_token { get => Access_Token; set => Access_Token = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string expires_in { get => Expires_In; set => value = Expires_In; }
+        public string expires_in { get => Expires_In; set => Expires_In = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string refreshToken { get => RefreshToken; set => value = RefreshToken; }
+        public string refreshToken { get => RefreshToken; set => RefreshToken = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string refresh_token { get => Refresh_Token; set => value = Refresh_Token; }
+        public string refresh_token { get => Refresh_Token; set => Refresh_Token = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string scope { get => Scope; set => value = Scope; }
+        public string scope { get => Scope; set => Scope = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Moipaccount moipAccount { get => MoipAccount; set => value = MoipAccount; }
+        public Moipaccount moipAccount { get => MoipAccount; set => MoipAccount = value; }
     }
     public partial class AccessTokenResponse
     {

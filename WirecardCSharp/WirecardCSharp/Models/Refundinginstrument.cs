@@ -6,13 +6,13 @@ namespace WirecardCSharp.Models
     public partial class Refundinginstrument
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Creditcard creditCard { get => CreditCard; set => value = CreditCard; }
+        public Creditcard creditCard { get => CreditCard; set => CreditCard = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string method { get => Method; set => value = Method; }
+        public string method { get => Method; set => Method = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Moipaccount moipAccount { get => MoipAccount; set => value = MoipAccount; }
+        public Moipaccount moipAccount { get => MoipAccount; set => MoipAccount = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Bankaccount bankAccount { get => BankAccount; set => value = BankAccount; }
+        public Bankaccount bankAccount { get => BankAccount; set => BankAccount = value; }
     }
     public partial class Refundinginstrument
     {

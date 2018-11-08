@@ -7,9 +7,9 @@ namespace WirecardCSharp.Models
     public partial class Checkoutpreferences
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Installment> installments { get => Installments; set => value = Installments; }
+        public List<Installment> installments { get => Installments; set => Installments = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Redirecturls redirectUrls { get => RedirectUrls; set => value = RedirectUrls; }
+        public Redirecturls redirectUrls { get => RedirectUrls; set => RedirectUrls = value; }
     }
     public partial class Checkoutpreferences
     {

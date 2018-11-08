@@ -6,13 +6,13 @@ namespace WirecardCSharp.Models
     public partial class Checkout
     {
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Paycheckout payCheckout { get => PayCheckout; set => value = PayCheckout; }
+        public Paycheckout payCheckout { get => PayCheckout; set => PayCheckout = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Paycreditcard payCreditCard { get => PayCreditCard; set => value = PayCreditCard; }
+        public Paycreditcard payCreditCard { get => PayCreditCard; set => PayCreditCard = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Payboleto payBoleto { get => PayBoleto; set => value = PayBoleto; }
+        public Payboleto payBoleto { get => PayBoleto; set => PayBoleto = value; }
         [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Payonlinebankdebititau payOnlineBankDebitItau { get => PayOnlineBankDebitItau; set => value = PayOnlineBankDebitItau; }
+        public Payonlinebankdebititau payOnlineBankDebitItau { get => PayOnlineBankDebitItau; set => PayOnlineBankDebitItau = value; }
     }
     public partial class Checkout
     {

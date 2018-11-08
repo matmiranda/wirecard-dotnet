@@ -5,11 +5,11 @@ namespace WirecardCSharp.Models
 {
     public partial class RefundRequest
     {
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public string amount { get => Amount; set => Amount = value; }
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public Refundinginstrument refundingInstrument { get => RefundingInstrument; set => RefundingInstrument = value; }
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public Creditcard creditCard { get => CreditCard; set => CreditCard = value; }
     }
     public partial class RefundRequest

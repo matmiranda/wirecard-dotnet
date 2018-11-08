@@ -5,9 +5,9 @@ namespace WirecardCSharp.Models
 {
     public partial class Parentsname
     {
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public string mother { get => Mother; set => Mother = value; }
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public string father { get => Father; set => Father = value; }
     }
     public partial class Parentsname

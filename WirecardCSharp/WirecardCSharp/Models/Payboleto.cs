@@ -5,7 +5,7 @@ namespace WirecardCSharp.Models
 {
     public partial class Payboleto
     {
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public string redirectHref { get => RedirectHref; set => RedirectHref = value; }
     }
     public partial class Payboleto

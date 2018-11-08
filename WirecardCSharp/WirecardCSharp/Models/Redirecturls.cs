@@ -5,9 +5,9 @@ namespace WirecardCSharp.Models
 {
     public partial class Redirecturls
     {
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public string urlFailure { get => UrlFailure; set => UrlFailure = value; }
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public string urlSuccess { get => UrlSuccess; set => UrlSuccess = value; }
     }
     public partial class Redirecturls

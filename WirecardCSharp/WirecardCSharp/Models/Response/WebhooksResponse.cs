@@ -6,7 +6,7 @@ namespace WirecardCSharp.Models
 {
     public partial class WebhooksResponse
     {
-        [Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
+        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
         public List<Webhook> webhooks { get => WebHooks; set => WebHooks = value; }
     }
     public partial class WebhooksResponse

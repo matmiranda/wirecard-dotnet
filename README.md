@@ -65,7 +65,8 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%A7%C3%A3o-do-protocolo-de-seguran%C3%A7a-tls-12).
 
 ## Instalação
-Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
+Execute o comando para instalar via **NuGet**: [![NuGet](https://img.shields.io/badge/nuget-v1.9.0-blue.svg)](https://www.nuget.org/packages/WirecardCSharp/)
+
 
 ```xml
 PM> Install-Package WirecardCSharp

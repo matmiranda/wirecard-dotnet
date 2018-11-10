@@ -2,29 +2,29 @@
   <a href="https://dev.wirecard.com.br/v2.0/">
     <img src="https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1540216474/Wirecard%20png.png" alt="Wirecard logo" width=200>
   </a>
-  <p align="center">
-    O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET e feito com base nas APIs REST do Wirecard.
-    <br>
-    <br>
-    <a href="https://dev.wirecard.com.br/v2.0/docs" target="_blank" style="text-decoration: none">
-      <img align="center" src="https://img.shields.io/badge/Docs-Wirecard-lightgrey.svg" />
-    </a>
-    <a href="https://dev.wirecard.com.br/v2.0/reference" target="_blank" style="text-decoration: none">
-      <img align="center" src="https://img.shields.io/badge/API%20Reference-Wirecard-darkblue.svg" />
-    </a>
-    <a href="https://slackin-cqtchmfquq.now.sh/" target="_blank" style="text-decoration: none">
-      <img align="center" src="https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg" />
-    </a>
-    <a href="https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE" target="_blank">
-      <img align="center" src="https://img.shields.io/badge/License-MIT-brightgreen.svg" />
-    </a>
-    <a href="https://www.nuget.org/packages/WirecardCSharp/" target="_blank" style="text-decoration: none">
-      <img align="center" src="https://img.shields.io/badge/Nuget-v1.9.0-blue.svg" />
-    </a>
-    <a href="https://pt.stackoverflow.com/questions/tagged/moip" target="_blank" style="text-decoration: none">
-      <img align="center" src="https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg" />
-    </a>
-  </p>
+</p>
+<p align="center">
+  O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET e feito com base nas APIs REST do Wirecard.
+  <br>
+  <br>
+  <a href="https://dev.wirecard.com.br/v2.0/docs">
+    <img align="center" src="https://img.shields.io/badge/Docs-Wirecard-lightgrey.svg" alt="docs" />
+  </a>
+  <a href="https://dev.wirecard.com.br/v2.0/reference">
+    <img align="center" src="https://img.shields.io/badge/API%20Reference-Wirecard-darkblue.svg" alt="API Reference" />
+  </a>
+  <a href="https://slackin-cqtchmfquq.now.sh/">
+    <img align="center" src="https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg" alt="Slack" />
+  </a>
+  <a href="https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE">
+    <img align="center" src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT" />
+  </a>
+  <a href="https://www.nuget.org/packages/WirecardCSharp/">
+    <img align="center" src="https://img.shields.io/badge/Nuget-v1.9.0-blue.svg" />
+  </a>
+  <a href="https://pt.stackoverflow.com/questions/tagged/moip">
+    <img align="center" src="https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg" alt="StackOverFlow" />
+  </a>
 </p>
 
 ## Índice

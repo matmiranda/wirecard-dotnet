@@ -6,22 +6,22 @@
     O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET e feito com base nas APIs REST do Wirecard.
     <br>
     <br>
-    <a href="https://dev.wirecard.com.br/v2.0/docs" target="_blank">
+    <a href="https://dev.wirecard.com.br/v2.0/docs" target="_blank" style="text-decoration: none">
       <img align="center" src="https://img.shields.io/badge/Docs-Wirecard-lightgrey.svg" />
     </a>
-    <a href="https://dev.wirecard.com.br/v2.0/reference" target="_blank">
+    <a href="https://dev.wirecard.com.br/v2.0/reference" target="_blank" style="text-decoration: none">
       <img align="center" src="https://img.shields.io/badge/API%20Reference-Wirecard-darkblue.svg" />
     </a>
-    <a href="https://slackin-cqtchmfquq.now.sh/" target="_blank">
+    <a href="https://slackin-cqtchmfquq.now.sh/" target="_blank" style="text-decoration: none">
       <img align="center" src="https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg" />
     </a>
     <a href="https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE" target="_blank">
       <img align="center" src="https://img.shields.io/badge/License-MIT-brightgreen.svg" />
     </a>
-    <a href="https://www.nuget.org/packages/WirecardCSharp/" target="_blank">
+    <a href="https://www.nuget.org/packages/WirecardCSharp/" target="_blank" style="text-decoration: none">
       <img align="center" src="https://img.shields.io/badge/Nuget-v1.9.0-blue.svg" />
     </a>
-    <a href="https://pt.stackoverflow.com/questions/tagged/moip" target="_blank">
+    <a href="https://pt.stackoverflow.com/questions/tagged/moip" target="_blank" style="text-decoration: none">
       <img align="center" src="https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg" />
     </a>
   </p>

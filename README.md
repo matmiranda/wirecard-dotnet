@@ -17,13 +17,14 @@
     <a href="https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE" target="_blank">
       <img align="center" src="https://img.shields.io/badge/License-MIT-brightgreen.svg" />
     </a>
+    <a href="https://www.nuget.org/packages/WirecardCSharp/" target="_blank">
+      <img align="center" src="https://img.shields.io/badge/Nuget-v1.9.0-blue.svg" />
+    </a>
+    <a href="https://pt.stackoverflow.com/questions/tagged/moip" target="_blank">
+      <img align="center" src="https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg" />
+    </a>
   </p>
 </p>
-
-[![MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE)
-[![Slack](https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg)](https://slackin-cqtchmfquq.now.sh/)
-[![Stack OverFlow](https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg)](https://pt.stackoverflow.com/questions/tagged/moip)
-[![NuGet](https://img.shields.io/badge/Nuget-v1.9.0-blue.svg)](https://www.nuget.org/packages/WirecardCSharp/)
 
 ## Índice
 - [Implementações .NET com suporte](#implementações-net-com-suporte)

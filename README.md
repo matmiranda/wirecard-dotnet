@@ -68,6 +68,7 @@ Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%
 ## Status
 [![MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE)
 [![Slack](https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg)](https://slackin-cqtchmfquq.now.sh/)
+[![Stack OverFlow](https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg)](https://pt.stackoverflow.com/questions/tagged/moip)
 [![NuGet](https://img.shields.io/badge/Nuget-v1.9.0-blue.svg)](https://www.nuget.org/packages/WirecardCSharp/)
 
 ## Instalação

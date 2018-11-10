@@ -5,6 +5,7 @@
   <p align="center">
     O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET e feito com base nas APIs REST do Wirecard.
     <br>
+    <br>
     <a href="https://dev.wirecard.com.br/v2.0/docs" target="_blank">
       <img align="center" src="https://img.shields.io/badge/Docs-Wirecard-lightgrey.svg" />
     </a>
@@ -29,7 +30,6 @@
 ## Índice
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
 - [Aviso Importante](#aviso-importante)
-- [Status](#status)
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente (E-Commerce)](#autenticando-e-configurando-o-ambiente-e-commerce)
 - [Autenticando e configurando o ambiente (Marketplace)](#autenticando-e-configurando-o-ambiente-marketplace)
@@ -77,12 +77,6 @@ Para isso, adicione o seguinte código no seu projeto:
 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%A7%C3%A3o-do-protocolo-de-seguran%C3%A7a-tls-12).
-
-## Status
-[![MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE)
-[![Slack](https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg)](https://slackin-cqtchmfquq.now.sh/)
-[![Stack OverFlow](https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg)](https://pt.stackoverflow.com/questions/tagged/moip)
-[![NuGet](https://img.shields.io/badge/Nuget-v1.9.0-blue.svg)](https://www.nuget.org/packages/WirecardCSharp/)
 
 ## Instalação
 Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):

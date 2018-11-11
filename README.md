@@ -4,27 +4,21 @@
   </a>
 </p>
 <p align="center">
-  O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET e feito com base nas APIs REST do Wirecard.
-  <br>
-  <br>
-  <a href="https://dev.wirecard.com.br/v2.0/docs" target="_blank">
-    <img align="center" src="https://img.shields.io/badge/Docs-Wirecard-lightgrey.svg" alt="docs" />
-  </a>
-  <a href="https://dev.wirecard.com.br/v2.0/reference" target="_blank">
-    <img align="center" src="https://img.shields.io/badge/API%20Reference-Wirecard-darkblue.svg" alt="API Reference" />
-  </a>
-  <a href="https://slackin-cqtchmfquq.now.sh/" target="_blank">
-    <img align="center" src="https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg" alt="Slack" />
-  </a>
-  <a href="https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE" target="_blank">
-    <img align="center" src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT" />
-  </a>
-  <a href="https://www.nuget.org/packages/WirecardCSharp/" target="_blank">
-    <img align="center" src="https://img.shields.io/badge/Nuget-v1.9.0-blue.svg" alt="Nuget" />
-  </a>
-  <a href="https://pt.stackoverflow.com/questions/tagged/moip" target="_blank">
-    <img align="center" src="https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg" alt="StackOverFlow" />
-  </a>
+    <a href="https://dev.wirecard.com.br/v2.0/docs">
+        <img src="https://img.shields.io/badge/Docs-Wirecard-lightgrey.svg"
+            alt="Docs"></a>
+    <a href="https://dev.wirecard.com.br/v2.0/reference">
+        <img src="https://img.shields.io/badge/API%20Reference-Wirecard-darkblue.svg"
+            alt="API Reference"></a>
+    <a href="https://slackin-cqtchmfquq.now.sh/">
+        <img src="https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg"
+            alt="Slack"/></a>
+    <a href="https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE">
+        <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
+            alt="MIT"></a>
+    <a href="https://www.nuget.org/packages/WirecardCSharp">
+        <img src="https://img.shields.io/badge/Nuget-v1.9.0-blue.svg"
+            alt="NuGet"></a>
 </p>
 
 ## Índice

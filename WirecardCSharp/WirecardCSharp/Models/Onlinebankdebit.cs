@@ -20,5 +20,7 @@ namespace WirecardCSharp.Models
         public string ExpirationDate { get; set; }
         [JsonProperty("bankName", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string BankName { get; set; }
+        [JsonProperty("returnUri", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ReturnUri { get; set; }
     }
 }

@@ -20,5 +20,7 @@ namespace WirecardCSharp.Models
         public string Method { get; set; }
         [JsonProperty("brand", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Brand { get; set; }
+        [JsonProperty("boleto", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Boleto Boleto { get; set; }
     }
 }

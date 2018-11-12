@@ -310,12 +310,32 @@ var result = await WirecardClient.Order.ListFilter(filtros);
  Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
  
  ## Pagamentos
- #### Criar Pagamento
+ #### Criar Pagamento - Cartão de Crédito
  ```C#
 var body = new PaymentRequest
 {
     //informe os campos aqui
-};            
+    InstallmentCount = 1,
+    FundingInstrument = new Fundinginstrument
+    {
+        Method = "CREDIT_CARD",
+        CreditCard = new Creditcard
+        {
+            Id = "CRC-XXXXXXXXXXXX",
+            Cvc = "123",
+            Holder = new Holder
+            {
+                FullName = "Jose Portador da Silva",
+                BirthDate = "1988-12-30",
+                TaxDocument = new Taxdocument
+                {
+                    Type = "CPF",
+                    Number = "33333333333"
+                }
+            }
+        }
+    }
+};          
 var result = await WirecardClient.Payment.Create(body, "ORD-XXXXXXXXXXXX");
 ```
 

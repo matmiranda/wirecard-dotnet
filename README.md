@@ -188,38 +188,38 @@ var result = await WirecardClient.ClassicAccount.GetPublickey();
 ```C#
 var body = new TransparentAccountRequest
 {
-    transparentAccount = true,
-    type = "MERCHANT",
-    email = new Email
+    TransparentAccount = true,
+    Type = "MERCHANT",
+    Email = new Email
     {
-        address = "teste@hotmail.com"
+        Address = "teste@hotmail.com"
     },
-    person = new Person
+    Person = new Person
     {
-        name = "PrimeiroNome",
-        lastName = "SegundoNome",
-        taxDocument = new Taxdocument
+        Name = "PrimeiroNome",
+        LastName = "SegundoNome",
+        TaxDocument = new Taxdocument
         {
-            type = "CPF",
-            number = "123.456.798-91"
+            Type = "CPF",
+            Number = "123.456.798-91"
         },
-        birthDate = "2011-01-01",
-        phone = new Phone
+        BirthDate = "2011-01-01",
+        Phone = new Phone
         {
-            countryCode = "55",
-            areaCode = "11",
-            number = "965213244"
+            CountryCode = "55",
+            AreaCode = "11",
+            Number = "965213244"
         },
-        address = new Address
+        Address = new Address
         {
-            street = "Av. Brigadeiro Faria Lima",
-            streetNumber = "2927",
-            district = "Itaim",
-            zipCode = "01234000",
-            city = "Osasco",
-            state = "SP",
-            country = "BRA"
-        }                    
+            Street = "Av. Brigadeiro Faria Lima",
+            StreetNumber = "2927",
+            District = "Itaim",
+            ZipCode = "01234000",
+            City = "Osasco",
+            State = "SP",
+            Country = "BRA"
+        }
     }
 };
 var result = await WirecardClient.TransparentAccount.Create(body);
@@ -239,27 +239,27 @@ var result = await WirecardClient.Customer.Create(body);
 ```C#
 var body = new CustomerRequest
 {
-    method = "CREDIT_CARD",
-    creditCard = new Creditcard
+    Method = "CREDIT_CARD",
+    CreditCard = new Creditcard
     {
-        expirationMonth = "06",
-        expirationYear = "2022",
-        number = "4012001037141112",
-        cvc = "123",
-        holder = new Holder
+        ExpirationMonth = "06",
+        ExpirationYear = "2022",
+        Number = "4012001037141112",
+        Cvc = "123",
+        Holder = new Holder
         {
-            fullname = "João da Silva",
-            birthdate = "1961-03-01",
-            taxDocument = new Taxdocument
+            FullName = "João da Silva",
+            BirthDate = "1961-03-01",
+            TaxDocument = new Taxdocument
             {
-                type = "CPF",
-                number = "11111111111"
+                Type = "CPF",
+                Number = "11111111111"
             },
-            phone = new Phone
+            Phone = new Phone
             {
-                countryCode = "55",
-                areaCode = "11",
-                number = "111111111"
+                CountryCode = "55",
+                AreaCode = "11",
+                Number = "111111111"
             }
         }
     }

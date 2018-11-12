@@ -319,6 +319,31 @@ var body = new PaymentRequest
 var result = await WirecardClient.Payment.Create(body, "ORD-XXXXXXXXXXXX");
 ```
 
+#### Criar Pagamento - Boleto
+
+```C#
+var body = new PaymentRequest
+{
+    //informe os campos aqui
+    StatementDescriptor = "Minha Loja",
+    FundingInstrument = new Fundinginstrument
+    {
+        Method = "BOLETO",
+        Boleto = new Boleto
+        {
+            ExpirationDate = "2020-06-20", //yyyy-MM-dd
+            InstructionLines = new Instructionlines
+            {
+                First = "Atenção",
+                Second = "fique atento à data de vencimento do boleto.",
+                Third = "Pague em qualquer casa lotérica."
+            }
+        }        
+    }
+};
+var result = await WirecardClient.Payment.Create(body, "ORD-XXXXXXXXXXXX");
+```
+
 #### Liberação de Custódia
 ```C#
 var result = await WirecardClient.Payment.ReleaseCustody("ECW-XXXXXXXXXXXX");

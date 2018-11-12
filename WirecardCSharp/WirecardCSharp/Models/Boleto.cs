@@ -10,5 +10,7 @@ namespace WirecardCSharp.Models
         public Instructionlines InstructionLines { get; set; }
         [JsonProperty("logoUri", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string LogoUri { get; set; }
+        [JsonProperty("lineCode", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string LineCode { get; set; }
     }
 }

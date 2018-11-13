@@ -44,5 +44,7 @@ namespace WirecardCSharp.Models
         public Setpassword SetPassword { get; set; }
         [JsonProperty("checkout", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Checkout Checkout { get; set; }
+        [JsonProperty("payBoleto", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Payboleto Payboleto { get; set; }
     }
 }

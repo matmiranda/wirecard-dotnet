@@ -10,6 +10,8 @@ namespace WirecardCSharp.Models
     }
     public partial class Payboleto
     {
+        [JsonProperty("printHref", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string PrintHref { get; set; }
         [JsonProperty("redirectHref", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string RedirectHref { get; set; }
     }

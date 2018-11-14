@@ -462,6 +462,10 @@ var result = await WirecardClient.Notification.List();
 #### Remover Preferência de Notificação
 ```C#
 var result = await WirecardClient.Notification.Remove("NPR-XXXXXXXXXXXX");
+if (result == HttpStatusCode.NoContent)
+{
+    // Caso a Preferência de Notificação tenha sido deletada, você deve receber uma response vazia (NoContent)
+}
 ```
 
 #### Consultar Webhook Enviado

@@ -441,11 +441,15 @@ var result = await WirecardClient.Notification.CreatAccountWirecard(body);
 ```
 
 #### Criar Preferência de Notificação para App
+Caso não tenha uma URL disponível, você pode usar o [Webhook Tester](https://webhook.site) para fazer seus testes e receber os webhooks. Para isso basta acessar o [site](https://webhook.site) e gera uma URL automaticamente.
+
 ```C#
 var body = new NotificationRequest
 {
-    //informe os campos aqui
-};            
+    Events = new List<string> { "ORDER.*" },
+    Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+    Media = "WEBHOOK"
+};           
 var result = await WirecardClient.Notification.CreateApp(body, "APP-XXXXXXXXXXXX");
 ```
 

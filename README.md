@@ -441,7 +441,9 @@ var result = await WirecardClient.Notification.CreatAccountWirecard(body);
 ```
 
 #### Criar Preferência de Notificação para App
-Caso não tenha uma URL disponível, você pode usar o **Webhook Tester** para fazer seus testes e receber os webhooks. Para isso basta acessar o [site](https://webhook.site) e gera uma URL automaticamente.
+Caso não tenha uma URL disponível, você pode usar o **Webhook Tester** para fazer seus testes e receber os webhooks. 
+
+Para isso basta acessar o [site](https://webhook.site) e gera uma URL automaticamente.
 
 ```C#
 var body = new NotificationRequest
@@ -485,11 +487,11 @@ var result = await WirecardClient.Notification.ListWebhooks();
 #### Desserializar WebHook
 Ao configurar suas Preferências de Notificação você deve receber os webhooks em formato JSON e você pode desserializar.
 
-Veja um exemplo do webhook [aqui](https://jsoneditoronline.org/?id=010880926fa743bbace9291d5ae5b01e).
 ```C#
 var json = "{ \"date\": \"\", \"env\": \"\", ... }";
 var result = Utilities.DeserializeWebHook(json);
 ```
+Veja um exemplo do webhook [aqui](https://gist.githubusercontent.com/matmiranda/61b8fac6159d0a61c1cd52deb0941fd8/raw/c08a41818abd135d56c7608587f353bc0bd99df7/Exemplo%2520WebHook.json).
 
 ## Contas Bancárias
 #### Criar Conta Bancária

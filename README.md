@@ -478,6 +478,12 @@ var result = await WirecardClient.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX"
 var result = await WirecardClient.Notification.ListWebhooks();
 ```
 
+#### Desserializar WebHook
+```C#
+var json = "{ "date": "", "env": "", ... }";
+var result = Utilities.DeserializeWebHook(json);
+```
+
 ## Contas Bancárias
 #### Criar Conta Bancária
 ```C#

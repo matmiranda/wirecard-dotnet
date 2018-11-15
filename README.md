@@ -20,7 +20,7 @@
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
             alt="MIT"></a>
     <a href="https://www.nuget.org/packages/WirecardCSharp">
-        <img src="https://img.shields.io/badge/Nuget-v1.9.5-blue.svg"
+        <img src="https://img.shields.io/badge/Nuget-v1.9.6-blue.svg"
             alt="NuGet"></a>
       <a href="https://pt.stackoverflow.com/questions/tagged/moip">
         <img src="https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg"
@@ -484,6 +484,8 @@ var result = await WirecardClient.Notification.ListWebhooks();
 
 #### Desserializar WebHook
 Ao configurar suas Preferências de Notificação você deve receber os webhooks em formato JSON e você pode desserializar.
+
+Veja um exemplo do webhook [aqui](https://jsoneditoronline.org/?id=010880926fa743bbace9291d5ae5b01e).
 ```C#
 var json = "{ \"date\": \"\", \"env\": \"\", ... }";
 var result = Utilities.DeserializeWebHook(json);

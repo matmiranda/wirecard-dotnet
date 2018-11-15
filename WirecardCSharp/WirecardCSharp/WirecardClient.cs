@@ -1,7 +1,5 @@
 using System;
 using System.Text;
-using WirecardCSharp.Models;
-using WirecardCSharp.Utilities;
 using WirecardCSharp.Controllers;
 using System.Text.RegularExpressions;
 
@@ -97,9 +95,5 @@ namespace WirecardCSharp
         public TransfersController Transfer => TransfersController.Instance;
         /// <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>
         public string _BusinessType => _HttpClient.BusinessType;
-        /// <summary> Converte json para objeto - deserialize to a object </summary>
-        /// <param name="json">Retorno json</param>
-        /// <returns></returns>
-        public ReturnWebHook DeserializeWebHook(string json) => DeserializeObject.WebHook(json);
     }
 }

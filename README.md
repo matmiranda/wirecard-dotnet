@@ -479,8 +479,9 @@ var result = await WirecardClient.Notification.ListWebhooks();
 ```
 
 #### Desserializar WebHook
+Ao configurar suas Preferências de Notificação você deve receber os webhooks em formato JSON e você pode desserializar.
 ```C#
-var json = "{ "date": "", "env": "", ... }";
+var json = "{ \"date\": \"\", \"env\": \"\", ... }";
 var result = Utilities.DeserializeWebHook(json);
 ```
 

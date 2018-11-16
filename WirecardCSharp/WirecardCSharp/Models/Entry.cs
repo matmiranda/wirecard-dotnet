@@ -77,5 +77,7 @@ namespace WirecardCSharp.Models
         public DateTime SettledAt { get; set; }
         [JsonProperty("liquidAmount", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int LiquidAmount { get; set; }
+        [JsonProperty("blocked", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool Blocked { get; set; }
     }
 }

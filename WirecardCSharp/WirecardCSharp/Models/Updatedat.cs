@@ -1,9 +1,11 @@
-﻿using System;
+using System;
+using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
     public class Updatedat
     {
-        public DateTime date { get; set; }
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public DateTime Date { get; set; }
     }
 }

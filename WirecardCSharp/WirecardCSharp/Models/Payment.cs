@@ -31,6 +31,8 @@ namespace WirecardCSharp.Models
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
+        [JsonProperty("acquirerDetails", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Acquirerdetails AcquirerDetails { get; set; }
         [JsonProperty("installmentCount", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int InstallmentCount { get; set; }
         [JsonProperty("fundingInstrument", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -51,5 +53,9 @@ namespace WirecardCSharp.Models
         public DateTime CreatedAt { get; set; }
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public List<Payment> Payments { get; set; }
+        [JsonProperty("delayCapture", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool DelayCapture { get; set; }
+        [JsonProperty("statementDescriptor", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string StatementDescriptor { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace WirecardCSharp.Models
 {
@@ -48,5 +49,9 @@ namespace WirecardCSharp.Models
         public string Role { get; set; }
         [JsonProperty("ownId", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string OwnId { get; set; }
+        [JsonProperty("entries", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public List<Entry> Entries { get; set; }
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public List<Event> Events { get; set; }
     }
 }

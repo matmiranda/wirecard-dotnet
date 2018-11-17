@@ -49,5 +49,7 @@ namespace WirecardCSharp.Models
         public DateTime UpdatedAt { get; set; }
         [JsonProperty("createdAt", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public DateTime CreatedAt { get; set; }
+        [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public List<Payment> Payments { get; set; }
     }
 }

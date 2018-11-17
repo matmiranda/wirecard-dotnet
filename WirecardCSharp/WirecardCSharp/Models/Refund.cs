@@ -41,5 +41,7 @@ namespace WirecardCSharp.Models
         public _Links _Links { get; set; }
         [JsonProperty("createdAt", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public DateTime CreatedAt { get; set; }
+        [JsonProperty("receiversDebited", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public List<Receiversdebited> ReceiversDebited { get; set; }
     }
 }

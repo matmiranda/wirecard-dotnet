@@ -2,9 +2,9 @@
 
 namespace WirecardCSharp.Models
 {
-    public class _Id
+    public class Id
     {
-        [JsonProperty("oid", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        [JsonProperty("$oid", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Oid { get; set; }
     }
 }

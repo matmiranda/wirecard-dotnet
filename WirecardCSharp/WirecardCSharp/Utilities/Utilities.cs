@@ -12,7 +12,11 @@ namespace WirecardCSharp
         {
             try
             {
-                return JsonConvert.DeserializeObject<ReturnWebHook>(json);
+                JsonSerializerSettings setting = new JsonSerializerSettings
+                {
+                    MetadataPropertyHandling = MetadataPropertyHandling.Ignore
+                };
+                return JsonConvert.DeserializeObject<ReturnWebHook>(json, setting);
             }
             catch (System.Exception ex)
             {

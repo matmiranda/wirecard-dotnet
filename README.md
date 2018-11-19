@@ -20,7 +20,7 @@
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
             alt="MIT"></a>
     <a href="https://www.nuget.org/packages/WirecardCSharp">
-        <img src="https://img.shields.io/badge/Nuget-v1.9.7-blue.svg"
+        <img src="https://img.shields.io/badge/Nuget-v1.9.8-blue.svg"
             alt="NuGet"></a>
       <a href="https://pt.stackoverflow.com/questions/tagged/moip">
         <img src="https://img.shields.io/badge/Stack%20OverFlow-Wirecard-orange.svg"

@@ -29,6 +29,8 @@ namespace WirecardCSharp.Models
     }
     public partial class TransferResponse
     {
+        [JsonProperty("ownId", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string OwnId { get; set; }
         [JsonProperty("updatedAt", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public DateTime UpdatedAt { get; set; }
         [JsonProperty("fee", DefaultValueHandling = DefaultValueHandling.Ignore)]

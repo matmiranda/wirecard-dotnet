@@ -64,7 +64,7 @@ Essa biblioteca foi feito em .NET Standard 1.2 e tem suporte das seguintes imple
 * Windows 8.1
 * Windows Phone 8.1
 
-Para mais informações: [.NET Standard](https://docs.microsoft.com/pt-br/dotnet/standard/whats-new/whats-new-in-dotnet-standard?tabs=csharp).
+Para mais informações: [.NET Standard](https://docs.microsoft.com/pt-br/dotnet/standard/net-standard).
 
 ## Aviso Importante
 Pensando em melhorar ainda mais a sua segurança e para atender a padrões internacionais do nosso selo PCI Compliance, o Wirecard desativará protocolos de segurança TLS (Transport Layer Security) inferiores a 1.2 à partir do dia 30/06/2018. Verifique se o seu projeto já possui TLS na versão 1.2, caso não, você receberá uma exceção:

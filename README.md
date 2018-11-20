@@ -53,15 +53,16 @@
 - [Licença](#licença)
 
 ## Implementações .NET com suporte
-Essa biblioteca foi feito em .NET Standard 2.0 e tem suporte das seguintes implementações do .NET:
+Essa biblioteca foi feito em .NET Standard 1.2 e tem suporte das seguintes implementações do .NET:
 
-* .NET Core 2.0 ou posterior
-* .NET Framework 4.6.1 ou posterior
-* Mono 5.4 ou posterior
-* Xamarin.iOS 10.14 ou posterior
-* Xamarin.Mac 3.8 ou posterior
-* Xamarin.Android 8.0 ou posterior
-* Plataforma Universal do Windows 10.0.16299 ou posterior
+* .NET Core 1.0
+* .NET Framework 4.5.1
+* Mono 4.6
+* Xamarin.iOS 10.0
+* Xamarin.Android 7.0
+* Universal Windows Platform 10
+* Windows 8.1
+* Windows Phone 8.1
 
 Para mais informações: [.NET Standard](https://docs.microsoft.com/pt-br/dotnet/standard/whats-new/whats-new-in-dotnet-standard?tabs=csharp).
 

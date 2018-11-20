@@ -1,30 +1,8 @@
-using System;
 using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public partial class Company
-    {
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string name { get => Name; set => Name = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string businessName { get => BusinessName; set => BusinessName = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string openingDate { get => OpeningDate; set => OpeningDate = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Taxdocument taxDocument { get => TaxDocument; set => TaxDocument = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Mainactivity mainActivity { get => MainActivity; set => MainActivity = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Phone phone { get => Phone; set => Phone = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Address address { get => Address; set => Address = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string monthlyRevenue { get => MonthlyRevenue; set => MonthlyRevenue = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string constitutionType { get => ConstitutionType; set => ConstitutionType = value; }
-    }
-    public partial class Company
+    public class Company
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Name { get; set; }

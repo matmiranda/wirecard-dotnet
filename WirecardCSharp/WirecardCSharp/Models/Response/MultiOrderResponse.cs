@@ -4,26 +4,7 @@ using System.Collections.Generic;
 
 namespace WirecardCSharp.Models
 {
-    public partial class MultiOrderResponse
-    {
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => Id = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string ownId { get => OwnId; set => OwnId = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string status { get => Status; set => Status = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime createdAt { get => CreatedAt; set => CreatedAt = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string updatedAt { get => UpdatedAt; set => UpdatedAt = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Amount amount { get => Amount; set => Amount = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Order> orders { get => Orders; set => Orders = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => _Links = value; }
-    }
-    public partial class MultiOrderResponse
+    public class MultiOrderResponse
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 using WirecardCSharp.Exception;
 
@@ -20,7 +18,6 @@ namespace WirecardCSharp
                 foreach (var error in we.wirecardError.errors)
                     sb.AppendLine($"{error.description} ({error.code})");
             }
-
             return sb.ToString();
         }
     }

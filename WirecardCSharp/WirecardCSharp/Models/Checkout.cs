@@ -1,20 +1,8 @@
-using System;
 using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public partial class Checkout
-    {
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Paycheckout payCheckout { get => PayCheckout; set => PayCheckout = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Paycreditcard payCreditCard { get => PayCreditCard; set => PayCreditCard = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Payboleto payBoleto { get => PayBoleto; set => PayBoleto = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Payonlinebankdebititau payOnlineBankDebitItau { get => PayOnlineBankDebitItau; set => PayOnlineBankDebitItau = value; }
-    }
-    public partial class Checkout
+    public class Checkout
     {
         [JsonProperty("payCheckout", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Paycheckout PayCheckout { get; set; }

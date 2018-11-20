@@ -3,44 +3,7 @@ using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public partial class ClassAccountResponse
-    {
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => Id = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string accessToken { get => AccessToken; set => AccessToken = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string channelId { get => ChannelId; set => ChannelId = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string type { get => Type; set => Type = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool transparentAccount { get => TransparentAccount; set => TransparentAccount = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public DateTime createdAt { get => CreatedAt; set => CreatedAt = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Person person { get => Person; set => Person = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Email email { get => Email; set => Email = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => _Links = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string login { get => Login; set => Login = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Businesssegment businessSegment { get => BusinessSegment; set => BusinessSegment = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string feeType { get => FeeType; set => FeeType = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int monthlyRevenueId { get => MonthlyRevenueId; set => MonthlyRevenueId = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string softDescriptor { get => SoftDescriptor; set => SoftDescriptor = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool limited { get => Limited; set => Limited = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public bool verified { get => Verified; set => Verified = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public Company company { get => Company; set => Company = value; }
-    }
-    public partial class ClassAccountResponse
+    public class ClassAccountResponse
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }

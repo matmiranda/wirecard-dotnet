@@ -1,20 +1,8 @@
-using System;
 using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public partial class SalesFileResponse
-    {
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string id { get => Id; set => Id = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string date { get => Date; set => Date = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string type { get => Type; set => Type = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public _Links _links { get => _Links; set => _Links = value; }
-    }
-    public partial class SalesFileResponse
+    public class SalesFileResponse
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }

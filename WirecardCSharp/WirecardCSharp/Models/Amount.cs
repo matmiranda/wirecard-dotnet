@@ -1,37 +1,8 @@
-using System;
 using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public partial class Amount
-    {
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string currency { get => Currency; set => Currency = value; }
-        public Subtotals subtotals { get => Subtotals; set => Subtotals = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int @fixed { get => Fixed; set => Fixed = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int percentual { get => Percentual; set => Percentual = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int paid { get => Paid; set => Paid = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int total { get => Total; set => Total = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int fees { get => Fees; set => Fees = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int refunds { get => Refunds; set => Refunds = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int liquid { get => Liquid; set => Liquid = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int otherReceivers { get => OtherReceivers; set => OtherReceivers = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int addition { get => Addition; set => Addition = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int deduction { get => Deduction; set => Deduction = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public int gross { get => Gross; set => Gross = value; }
-    }
-    public partial class Amount
+    public class Amount
     {
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Currency { get; set; }

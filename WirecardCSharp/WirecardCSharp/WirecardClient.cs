@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text;
 using WirecardCSharp.Controllers;
 using System.Text.RegularExpressions;

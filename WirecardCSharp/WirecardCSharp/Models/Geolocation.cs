@@ -1,16 +1,8 @@
-using System;
 using Newtonsoft.Json;
 
 namespace WirecardCSharp.Models
 {
-    public partial class Geolocation
-    {
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public float latitude { get => Latitude; set => Latitude = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public float longitude { get => Longitude; set => Longitude = value; }
-    }
-    public partial class Geolocation
+    public class Geolocation
     {
         [JsonProperty("latitude", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public float Latitude { get; set; }

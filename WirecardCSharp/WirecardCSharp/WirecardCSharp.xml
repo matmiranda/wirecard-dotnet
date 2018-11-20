@@ -426,6 +426,11 @@
             <param name="body"></param>
             <returns></returns>
         </member>
+        <member name="M:WirecardCSharp.Utilities.DeserializeWebHook(System.String)">
+            <summary> Converte json para objeto - deserialize to a object </summary>
+            <param name="json">Retorno json</param>
+            <returns></returns>
+        </member>
         <member name="M:WirecardCSharp.WirecardClient.#ctor(WirecardCSharp.Environments,System.String)">
             <summary>
             Tipo de negócio: MARKETPLACE

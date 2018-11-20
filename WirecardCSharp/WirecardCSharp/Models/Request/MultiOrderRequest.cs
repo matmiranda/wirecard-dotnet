@@ -1,17 +1,9 @@
-using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace WirecardCSharp.Models
 {
-    public partial class MultiOrderRequest
-    {
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public string ownId { get => OwnId; set => OwnId = value; }
-        [JsonIgnore, Obsolete("Utilize a propriedade que inicia com a letra maiúscula. Essa deixará de existir a partir da versão 2.0.0.")]
-        public List<Order> orders { get => Orders; set => Orders = value; }
-    }
-    public partial class MultiOrderRequest
+    public class MultiOrderRequest
     {
         [JsonProperty("ownId", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string OwnId { get; set; }

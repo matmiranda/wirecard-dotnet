@@ -162,6 +162,9 @@ var result = await WirecardClient.ClassicAccount.Consult("MPA-XXXXXXXXXXXX");
 ```
 
 #### Solicitar Permissões de Acesso ao Usuário
+
+🔺 O código a seguir não consome API, apenas monta o URL. Mais informações clica [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permiss%C3%A3o).
+
 ```C#
 string response_type = "code";
 string client_id = "APP-FFFGVQMOK123";
@@ -169,6 +172,8 @@ string redirect_uri = "https://example.com/abc?DEF=あいう\x20えお";
 string scope = "RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES";
 var r = Utilities.RequestUserAccessPermissions(response_type, client_id, redirect_uri, scope);
 ```
+
+Veja [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permiss%C3%A3o) como funciona a permissão.
 
 #### Gerar Access Token
 ```C#

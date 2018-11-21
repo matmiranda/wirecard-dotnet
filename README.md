@@ -170,7 +170,9 @@ string response_type = "code";
 string client_id = "APP-FFFGVQMOK123";
 string redirect_uri = "https://example.com/abc?DEF=あいう\x20えお";
 string scope = "RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES";
-var r = Utilities.RequestUserAccessPermissions(response_type, client_id, redirect_uri, scope);
+var url = Utilities.RequestUserAccessPermissions(response_type, client_id, redirect_uri, scope);
+
+//https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-FFFGVQMOK123&redirect_uri=https://example.com/abc?DEF=%E3%81%82%E3%81%84%E3%81%86%20%E3%81%88%E3%81%8A&scope=RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES
 ```
 
 Veja [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permiss%C3%A3o) como funciona a permissão.

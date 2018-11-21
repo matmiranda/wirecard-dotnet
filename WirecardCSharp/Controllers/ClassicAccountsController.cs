@@ -87,34 +87,6 @@ namespace WirecardCSharp.Controllers
             }
         }
         /// <summary>
-        /// Solicita Permissões de Acesso ao Usuário - Request User Access Permissions
-        /// </summary>
-        /// <param name="response_type">Define o tipo de resposta a ser obtido. Valores possíveis: code</param>
-        /// <param name="client_id">Identificador único do aplicativo que será realizada a solicitação. Exemplo: APP-DVLJHW59IKOS</param>
-        /// <param name="redirect_uri">URI de redirecionamento do cliente. ATENÇÂO: deve ser a mesma url cadastrada ao criar o app.</param>
-        /// <param name="scope">Permissões que deseja. Valores possíveis: RECEIVE_FUNDS, REFUND, MANAGE_ACCOUNT_INFO, RETRIEVE_FINANCIAL_INFO, TRANSFER_FUNDS, DEFINE_PREFERENCES</param>
-        /// <returns></returns>
-        public async Task<string> RequestUserAccessPermissions(string response_type, string client_id, string redirect_uri, string scope)
-        {
-            HttpClient httpClient = ClientInstance;
-            httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
-            HttpResponseMessage response = await httpClient.GetAsync($"oauth/authorize?response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}");
-            if (!response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                WirecardException.WirecardError wirecardException = WirecardException.DeserializeObject(content);
-                throw new WirecardException(wirecardException, "HTTP Response Not Success", content, (int)response.StatusCode);
-            }
-            try
-            {
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (System.Exception ex)
-            {
-                throw ex;
-            }
-        }
-        /// <summary>
         /// Gera Access Token - Generate Access Token
         /// </summary>
         /// <param name="client_id">Código identificador do aplicativo que está realizando a solicitação. Exemplo: APP-M11STAPPOAU</param>

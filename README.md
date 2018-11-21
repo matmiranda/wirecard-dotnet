@@ -163,7 +163,11 @@ var result = await WirecardClient.ClassicAccount.Consult("MPA-XXXXXXXXXXXX");
 
 #### Solicitar Permissões de Acesso ao Usuário
 ```C#
-var result = await WirecardClient.ClassicAccount.RequestUserAccessPermissions(/*informe o valor de cada parâmetro*/);
+string response_type = "code";
+string client_id = "APP-FFFGVQMOK123";
+string redirect_uri = "https://example.com/abc?DEF=あいう\x20えお";
+string scope = "RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES";
+var r = Utilities.RequestUserAccessPermissions(response_type, client_id, redirect_uri, scope);
 ```
 
 #### Gerar Access Token

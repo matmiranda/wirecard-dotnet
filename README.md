@@ -698,12 +698,12 @@ using WirecardCSharp.Exception;
 
 try
 {
-    var result = await WirecardClient.Cliente.CriarCliente(new CriarClienteRequest());
+    var result = await WC.Customer.Create(new CustomerRequest());
 }
 catch (WirecardException ex)
 {
-    var t = ex.errors;
-}
+    var t = ex.wirecardError;
+} 
 ```
 
 #### Tabela de erros

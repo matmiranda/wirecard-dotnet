@@ -703,6 +703,7 @@ try
 catch (WirecardException ex)
 {
     var t = ex.wirecardError;
+    var t_text = ex.GetExceptionText();
 } 
 ```
 

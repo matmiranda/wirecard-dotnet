@@ -122,7 +122,7 @@ var result = Task.Run(() => WirecardClient.Customer.List()).Result;
 
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Wirecard (email)
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Essa função funciona somente na conta clássica.
+🚩 Essa função funciona somente na conta clássica.
 ```C#
 var result = await WirecardClient.ClassicAccount.AccountExist("meu_email@email.com");
 if (result == HttpStatusCode.OK)
@@ -135,7 +135,7 @@ if (result == HttpStatusCode.OK)
 ```
 
 #### Verificar se usuário já possui Conta Wirecard (documento)
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Essa função funciona somente na conta clássica.
+🚩 Essa função funciona somente na conta clássica.
 ```C#
 var result = await WirecardClient.ClassicAccount.AccountExist("123.456.789-01");
 if (result == HttpStatusCode.OK)

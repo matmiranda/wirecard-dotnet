@@ -660,7 +660,7 @@ var result = await WirecardClient.Conciliation.GetSalesFile("20180829"); // Data
 var result = await WirecardClient.Conciliation.GetFinancialFile("2018-08-29"); // Data no formato YYYY-MM-DD
 ```
 
-#### Convertendo objeto para json
+## Convertendo objeto para json
 
 As vezes você enfrenta um problema e o suporte Wirecard pede o código json para verificar se realmente está no json:
 

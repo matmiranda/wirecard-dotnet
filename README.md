@@ -45,6 +45,7 @@
 - [Transferências](#transferências)
 - [Reembolsos](#reembolsos)
 - [Conciliação](#conciliação)
+- [Convertendo objeto para json](#exceção)
 - [Tabela - Filtros de busca](#tabela---filtros-de-busca)
 - [Exceção](#exceção)
 - [Licença](#licença)
@@ -657,6 +658,61 @@ var result = await WirecardClient.Conciliation.GetSalesFile("20180829"); // Data
 #### Obter Arquivo Financeiro
 ```C#
 var result = await WirecardClient.Conciliation.GetFinancialFile("2018-08-29"); // Data no formato YYYY-MM-DD
+```
+
+#### Convertendo objeto para json
+
+As vezes você enfrenta um problema e o suporte Wirecard pede o código json para verificar se realmente está no json:
+
+```C#
+var body = new PaymentRequest
+{
+    //informe os campos aqui
+    DelayCapture = true,
+    InstallmentCount = 1,
+    FundingInstrument = new Fundinginstrument
+    {
+        Method = "CREDIT_CARD",
+        CreditCard = new Creditcard
+        {
+            Id = "CRC-XXXXXXXXXXXX",
+            Cvc = "123",
+            Holder = new Holder
+            {
+                FullName = "Jose Portador da Silva",
+                BirthDate = "1988-12-30",
+                TaxDocument = new Taxdocument
+                {
+                    Type = "CPF",
+                    Number = "33333333333"
+                }
+            }
+        }
+    }
+};
+
+//Aqui você pode obter json e compratilhar para suporte Wirecard
+string json = JsonConvert.SerializeObject(body, Formatting.Indented);
+
+//{
+//  "installmentCount": 1,
+//  "delayCapture": true,
+//  "fundingInstrument": {
+//    "method": "CREDIT_CARD",
+//    "creditCard": {
+//      "id": "CRC-XXXXXXXXXXXX",
+//      "cvc": "123",
+//      "holder": {
+//        "fullname": "Jose Portador da Silva",
+//        "birthdate": "1988-12-30",
+//        "taxDocument": {
+//          "type": "CPF",
+//          "number": "33333333333"
+//        }
+//      }
+//    }
+//  }
+//}
 ```
 
 ## Tabela - Filtros de busca

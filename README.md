@@ -45,7 +45,7 @@
 - [Transferências](#transferências)
 - [Reembolsos](#reembolsos)
 - [Conciliação](#conciliação)
-- [Convertendo objeto para json](#exceção)
+- [Convertendo objeto para json](#convertendo-objeto-para-json)
 - [Tabela - Filtros de busca](#tabela---filtros-de-busca)
 - [Exceção](#exceção)
 - [Licença](#licença)
@@ -693,26 +693,30 @@ var body = new PaymentRequest
 
 //Aqui você pode obter json e compratilhar para suporte Wirecard
 string json = JsonConvert.SerializeObject(body, Formatting.Indented);
+```
 
-//{
-//  "installmentCount": 1,
-//  "delayCapture": true,
-//  "fundingInstrument": {
-//    "method": "CREDIT_CARD",
-//    "creditCard": {
-//      "id": "CRC-XXXXXXXXXXXX",
-//      "cvc": "123",
-//      "holder": {
-//        "fullname": "Jose Portador da Silva",
-//        "birthdate": "1988-12-30",
-//        "taxDocument": {
-//          "type": "CPF",
-//          "number": "33333333333"
-//        }
-//      }
-//    }
-//  }
-//}
+Veja como ficou na variável json:
+
+```json
+{
+  "installmentCount": 1,
+  "delayCapture": true,
+  "fundingInstrument": {
+    "method": "CREDIT_CARD",
+    "creditCard": {
+      "id": "CRC-XXXXXXXXXXXX",
+      "cvc": "123",
+      "holder": {
+        "fullname": "Jose Portador da Silva",
+        "birthdate": "1988-12-30",
+        "taxDocument": {
+          "type": "CPF",
+          "number": "33333333333"
+        }
+      }
+    }
+  }
+}
 ```
 
 ## Tabela - Filtros de busca

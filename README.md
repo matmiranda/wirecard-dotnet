@@ -665,6 +665,8 @@ var result = await WirecardClient.Conciliation.GetFinancialFile("2018-08-29"); /
 As vezes você enfrenta um problema e o suporte Wirecard pede o código json para verificar se realmente está no json:
 
 ```C#
+using Newtonsoft.Json;
+
 var body = new PaymentRequest
 {
     //informe os campos aqui

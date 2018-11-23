@@ -5,7 +5,6 @@
 </p>
 <p align="center">
     O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET e feito com base nas APIs REST do Wirecard.
-  <small>The simplest and fastest way to integrate your application with the Wirecard API.</small>
   <br>
   <br>
     <a href="https://dev.wirecard.com.br/v2.0/docs">
@@ -24,6 +23,7 @@
         <img src="https://img.shields.io/badge/Nuget-v2.0.1-blue.svg"
             alt="NuGet"></a>
 </p>
+<small>The simplest and fastest way to integrate your application with the Wirecard API.</small>
 
 ## Índice
 - [Implementações .NET com suporte](#implementações-net-com-suporte)

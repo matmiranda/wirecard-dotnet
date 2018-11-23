@@ -52,6 +52,7 @@
 
 ## Implementações .NET com suporte
 Português: Essa biblioteca foi feito em .NET Standard 1.2 e tem suporte das seguintes implementações do .NET:
+
 English: This library was made in .NET Standard 1.2 and has support for the following .NET implementations:
 
 * .NET Core 1.0

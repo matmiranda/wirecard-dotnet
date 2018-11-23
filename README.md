@@ -54,9 +54,8 @@
 - [Licença](#licença)
 
 ## Implementações .NET com suporte
-Português: Essa biblioteca foi feito em .NET Standard 1.2 e tem suporte das seguintes implementações do .NET:
-
-English: This library was made in .NET Standard 1.2 and has support for the following .NET implementations:
+Essa biblioteca foi feito em .NET Standard 1.2 e tem suporte das seguintes implementações do .NET:
+<sub>This library was made in .NET Standard 1.2 and has support for the following .NET implementations:</sub>
 
 * .NET Core 1.0
 * .NET Framework 4.5.1

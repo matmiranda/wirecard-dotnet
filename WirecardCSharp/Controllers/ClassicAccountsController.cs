@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Net;
+using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
 using WirecardCSharp.Models;
@@ -47,7 +48,8 @@ namespace WirecardCSharp.Controllers
         /// <returns></returns>
         public async Task<ClassAccountResponse> Create(ClassicAccountRequest body)
         {
-            HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", null);
+            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

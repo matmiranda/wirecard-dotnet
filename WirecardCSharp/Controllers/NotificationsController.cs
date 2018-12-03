@@ -85,7 +85,7 @@ namespace WirecardCSharp.Controllers
         /// Criar Preferência de Notificação para App - Create Notification Preference for App
         /// </summary>
         /// <param name="body"></param>
-        /// <param name="app_id">Código identificador do App. Exemplo: APP-3984HG73HE9</param>
+        /// <param name="app_id">Código identificador do App. Exemplo: APP-3984HG73HE92</param>
         /// <returns></returns>
         public async Task<NotificationResponse> CreateApp(NotificationRequest body, string app_id)
         {

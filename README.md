@@ -464,7 +464,17 @@ var body = new NotificationRequest
     Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
     Media = "WEBHOOK"
 };           
-var result = await WirecardClient.Notification.CreateApp(body, "APP-XXXXXXXXXXXX");
+var result = await WirecardClient.Notification.CreateApp(body);
+```
+#### Criar Preferência de Notificação para App com código identificador
+```C#
+var body = new NotificationRequest
+{
+    Events = new List<string> { "ORDER.*" },
+    Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+    Media = "WEBHOOK"
+};           
+var result = await WirecardClient.Notification.CreateApp(body, "APP-3984HG73HE9");
 ```
 
 #### Consultar Preferência de Notificação

@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
@@ -6,6 +7,7 @@ using WirecardCSharp.Models;
 using System.Threading.Tasks;
 using WirecardCSharp.Exception;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace WirecardCSharp.Controllers
 {
@@ -87,6 +89,12 @@ namespace WirecardCSharp.Controllers
         /// <returns></returns>
         public async Task<NotificationResponse> CreateApp(NotificationRequest body, string app_id)
         {
+            Regex regex = new Regex(@"^APP-[a-zA-Z0-9]{12}$");
+            Match match = regex.Match(app_id);
+            if (!match.Success)
+            {
+                throw new ArgumentException("app_id invalid");
+            }
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
             if (!response.IsSuccessStatusCode)

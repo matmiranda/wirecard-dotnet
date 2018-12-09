@@ -14,5 +14,9 @@ namespace WirecardCSharp.Models
         public string Detail { get; set; }
         [JsonProperty("price", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Price { get; set; }
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int Amount { get; set; }
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Type { get; set; }
     }
 }

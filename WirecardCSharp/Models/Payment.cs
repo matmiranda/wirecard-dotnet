@@ -34,5 +34,11 @@ namespace WirecardCSharp.Models
         public bool DelayCapture { get; set; }
         [JsonProperty("statementDescriptor", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string StatementDescriptor { get; set; }
+        [JsonProperty("moip_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int Moip_Id { get; set; }
+        [JsonProperty("payment_method", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Payment_Method Payment_Method { get; set; }
+        [JsonProperty("creation_date", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Creation_Date Creation_Date { get; set; }
     }
 }

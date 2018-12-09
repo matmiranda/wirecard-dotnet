@@ -45,6 +45,7 @@
 - [Transferências](#transferências)
 - [Reembolsos](#reembolsos)
 - [Conciliação](#conciliação)
+- [Assinatura](#assinatura)
 - [Convertendo objeto para json](#convertendo-objeto-para-json)
 - [Tabela - Filtros de busca](#tabela---filtros-de-busca)
 - [Exceção](#exceção)
@@ -441,7 +442,6 @@ var result = await WirecardClient.MultiPayment.CancelAuthorized("MPY-XXXXXXXXXXX
 ```C#
 var result = await WirecardClient.MultiPayment.ReleaseCustody("ECW-XXXXXXXXXXXX");
 ```
-
 ## Notificações
 #### Criar Preferência de Notificação para Conta Wirecard
 ```C#
@@ -476,17 +476,14 @@ var body = new NotificationRequest
 };           
 var result = await WirecardClient.Notification.CreateApp(body, "APP-3984HG73HE9");
 ```
-
 #### Consultar Preferência de Notificação
 ```C#
 var result = await WirecardClient.Notification.Consult("NPR-XXXXXXXXXXXX");
 ```
-
 #### Listar Todas as Preferências de Notificação
 ```C#
 var result = await WirecardClient.Notification.List();
 ```
-
 #### Remover Preferência de Notificação
 ```C#
 var result = await WirecardClient.Notification.Remove("NPR-XXXXXXXXXXXX");
@@ -495,17 +492,14 @@ if (result == HttpStatusCode.NoContent)
     // Caso a Preferência de Notificação tenha sido deletada, você deve receber uma response vazia (NoContent)
 }
 ```
-
 #### Consultar Webhook Enviado
 ```C#
 var result = await WirecardClient.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX"); 
 ```
-
 #### Listar Todos os Webhooks Enviados
 ```C#
 var result = await WirecardClient.Notification.ListWebhooks();
 ```
-
 #### Desserializar WebHook
 Ao configurar suas Preferências de Notificação você deve receber os webhooks em formato JSON e você pode desserializar.
 
@@ -539,25 +533,21 @@ var body = new BankAccountRequest
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
 var result = await WirecardClient.BankAccount.Create(body, accesstoken, "MPA-XXXXXXXXXXXX");
 ```
-
 #### Consultar Conta Bancária
 ```C#
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
 var result = await WirecardClient.BankAccount.Consult(accesstoken, "BKA-XXXXXXXXXXXX");
 ```
-
 #### Listar Todas Contas Bancárias
 ```C#
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
 var result = await WirecardClient.BankAccount.List(accesstoken, "MPA-XXXXXXXXXXXX");
 ```
-
 #### Deletar Conta Bancária
 ```C#
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
 var result = await WirecardClient.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX");
 ```
-
 #### Atualizar Conta Bancária
 ```C#
 var body = new BankAccountRequest
@@ -567,30 +557,25 @@ var body = new BankAccountRequest
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
 var result = await WirecardClient.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX");
 ```
-
 ## Saldo Wirecard
 #### Consultar Saldos
 ```C#
 var result = await WirecardClient.Balance.Consult();
 ```
-
 ## Lançamentos
 #### Consultar Lançamento
 ```C#
 var result = await WirecardClient.Launch.Consult("ENT-XXXXXXXXXXXX");
 ```
-
 #### Listar Todos Lançamentos
 ```C#
 var result = await WirecardClient.Launch.List();
 ```
-
 #### Listar Todos Lançamentos com Filtro
 ```C#
 string filtros = "filters=status::in(SETTLED)";
 var result = await WirecardClient.Launch.ListFilter(filtros);
 ```
-
 ## Transferências
 #### Criar Transferência
 ```C#
@@ -601,30 +586,25 @@ var body = new TransferRequest
 string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
 var result = await WirecardClient.Transfer.Create(body, accessToken);
 ```
-
 #### Reverter Transferência
 ```C#
 string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
 var result = await WirecardClient.Transfer.Revert("TRA-XXXXXXXXXXXX", accessToken);
 ```
-
 #### Consultar Transferência
 ```C#
 string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
 var result = await WirecardClient.Transfer.Consult("TRA-XXXXXXXXXXXX", accessToken);
 ```
-
 #### Listar Todas Transferências
 ```C#
 var result = await WirecardClient.Transfer.List();
 ```
-
 #### Listar Todas Transferências com filtros
 ```C#
 string filtros = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0";
 var result = await WirecardClient.Transfer.List();
 ```
-
 ## Reembolsos
 #### Reembolsar Pagamento
 ```C#
@@ -634,7 +614,6 @@ var body = new RefundRequest
 };            
 var result = await WirecardClient.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX");
 ```
-
 #### Reembolsar Pedido via Cartão de Crédito
 ```C#
 var body = new RefundRequest
@@ -643,32 +622,353 @@ var body = new RefundRequest
 };            
 var result = await WirecardClient.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX");
 ```
-
 #### Consultar Reembolso
 ```C#
 var result = await WirecardClient.Refund.Consult("REF-XXXXXXXXXXXX");
 ```
-
 #### Listar Reembolsos do Pagamento
 ```C#
 var result = await WirecardClient.Refund.ListPayments("PAY-XXXXXXXXXXXX");
 ```
-
 #### Listar Reembolsos do Pedido
 ```C#
 var result = await WirecardClient.Refund.ListOrders("ORD-XXXXXXXXXXXX");
 ```
-
 ## Conciliação
 #### Obter Arquivo de Vendas
 ```C#
 var result = await WirecardClient.Conciliation.GetSalesFile("20180829"); // Data no formato YYYYMMDD
 ```
-
 #### Obter Arquivo Financeiro
 ```C#
 var result = await WirecardClient.Conciliation.GetFinancialFile("2018-08-29"); // Data no formato YYYY-MM-DD
 ```
+## Assinatura
+#### Criar Plano
+```C#
+var body = new PlanRequest
+{
+    Code = "plan103",
+    Name = "Plano Especial",
+    Description = "Descrição do Plano Especial",
+    Amount = 990,
+    Setup_Fee = 500,
+    Max_Qty = 1,
+    Interval = new Interval
+    {
+        Length = 1,
+        Unit = "MONTH"
+    },
+    Billing_Cycles = 12,
+    Trial = new Trial
+    {
+        Days = 30,
+        Enabled = true,
+        Hold_Setup_Fee = true
+    }
+};
+var result = await WirecardClient.Signature.CreatePlan(body);
+```
+#### Listar Planos
+```C#
+var result = await WirecardClient.Signature.ListPlans();
+```
+#### Consultar Plano
+```C#
+var result = await WirecardClient.Signature.ConsultPlan("plan101");
+```
+#### Ativar Plano
+```C#
+var result = await WirecardClient.Signature.EnablePlan("plan101");
+```
+#### Desativar Plano
+```C#
+var result = await WirecardClient.Signature.DisablePlan("plan101");
+```
+#### Alterar Plano
+```C#
+var body = new PlanRequest
+{
+    Name = "Plano Especial",
+    Description = "",
+    Amount = 1290,
+    Setup_Fee = 800,
+    Max_Qty = 1,
+    Payment_Method = "CREDIT_CARD",
+    Interval = new Interval
+    {
+        Length = 1,
+        Unit = "MONTH"
+    },
+    Billing_Cycles = 12,
+    Trial = new Trial
+    {
+        Days = 30,
+        Enabled = true,
+        Hold_Setup_Fee = true
+    }
+};
+var result = await WirecardClient.Signature.ChangePlan(body, "plan101");
+```
+#### Criar Assinante
+```C#
+var body = new SubscriberRequest
+{
+    Code = "cliente03",
+    Email = "nome@exemplo.com.br",
+    FullName = "Nome Sobrenome",
+    Cpf = "22222222222",
+    Phone_Area_Code = "11",
+    Phone_Number = "934343434",
+    BirthDate_Day = "26",
+    BirthDate_Month = "04",
+    BirthDate_Year = "1980",
+    Address = new Address
+    {
+        Street = "Rua Nome da Rua",
+        StreetNumber = "100",
+        Complement = "casa",
+        District = "Nome do Bairro",
+        City = "São Paulo",
+        State = "SP",
+        Country = "BRA",
+        ZipCode = "05015010"
+    },
+    Billing_Info = new Billing_Info
+    {
+        Credit_Card = new Credit_Card
+        {
+            Holder_Name = "Nome Completo",
+            Number = "4111111111111111",
+            Expiration_Month = "06",
+            Expiration_Year = "22"
+        }
+    }
+};
+var result = await WirecardClient.Signature.CreateSubscriber(body, true);
+```
+#### Listar Assinantes
+```C#
+var result = await WirecardClient.Signature.ListSubscribers();
+```
+#### Consultar Assinante
+```C#
+var result = await WirecardClient.Signature.ConsultSubscriber("cliente01");
+```
+#### Alterar Assinante
+```C#
+var body = new SubscriberRequest
+{
+    Code = "cliente01",
+    Email = "nome@exemplo.com.br",
+    FullName = "Nome Sobrenome",
+    Cpf = "22222222222",
+    Phone_Area_Code = "11",
+    Phone_Number = "934343434",
+    BirthDate_Day = "26",
+    BirthDate_Month = "04",
+    BirthDate_Year = "1980",
+    Address = new Address
+    {
+        Street = "Rua Nome da Rua1",
+        StreetNumber = "100",
+        Complement = "casa",
+        District = "Nome do Bairro",
+        City = "São Paulo",
+        State = "SP",
+        Country = "BRA",
+        ZipCode = "05015010"
+    }
+};
+var result = await WirecardClient.Signature.ChangeSubscriber(body, "cliente01");
+```
+#### Atualizar Cartão do Assinante
+```C#
+var body = new SubscriberRequest
+{
+    Billing_Info = new Billing_Info
+    {
+        Credit_Card = new Credit_Card
+        {
+            Holder_Name = "Novo nome222",
+            Number = "5555666677778884",
+            Expiration_Month = "12",
+            Expiration_Year = "20"
+        }
+    }
+};
+var result = await WirecardClient.Signature.UpdateSubscriberCard(body, "cliente01");
+```
+#### Criar Assinaturas
+```C#
+var body = new SubscriptionRequest
+{
+    Code = "assinatura04",
+    Amount = "9000",
+    Plan = new Plan
+    {
+        Code = "plan101"
+    },
+    Payment_Method = "CREDIT_CARD",
+    Customer = new Customer
+    {
+        Code = "cliente01",
+    }
+};
+var result = await WirecardClient.Signature.CreateSubscriptions(body, false);
+```
+#### Listar Todas Assinaturas
+```C#
+var result = await WirecardClient.Signature.ListAllSubscriptions();
+```
+#### Consultar Assinatura
+```C#
+var result = await WirecardClient.Signature.ConsultSubscription("assinatura01");
+```
+#### Suspender Assinatura
+```C#
+var result = await WirecardClient.Signature.SuspendSubscription("assinatura01");
+```
+#### Reativar Assinatura
+```C#
+var result = await WirecardClient.Signature.ReactivateSignature("assinatura01");
+```
+#### Cancelar Assinatura
+```C#
+var result = await WirecardClient.Signature.CancelSignature("assinatura01");
+```
+#### Alterar Assinatura
+```C#
+var body = new SubscriptionRequest
+{
+    Plan = new Plan
+    {
+        Code = "plan101"
+    },
+    Amount = "9990",
+    Next_Invoice_Date = new Next_Invoice_Date
+    {
+        Day = 15,
+        Month = 12,
+        Year = 2018
+    }
+};
+var result = await WirecardClient.Signature.ChangeSubscription(body, "assinatura01");
+```
+#### Alterar método de pagamento
+```C#
+var body = new SubscriptionRequest
+{
+    Payment_Method = "BOLETO"
+};
+var result = await WirecardClient.Signature.ChangePaymentMethod(body, "assinatura01");
+```
+#### Listar Todas as Faturas de Uma Assinatura
+```C#
+var result = await WirecardClient.Signature.ListSignatureInvoices("assinatura01");
+```
+#### Consultar Fatura
+```C#
+var result = await WirecardClient.Signature.ConsultInvoice("10865746");
+```
+#### Listar todos os pagamentos de fatura
+```C#
+var result = await WirecardClient.Signature.ListAllInvoicePayments("10865746");
+```
+#### Consultar pagamento de assinatura
+```C#
+var result = await WirecardClient.Signature.ConsultSubscriptionPayment("PAY-123456789012");
+```
+#### Criar Cupom
+```C#
+var body = new CouponRequest
+{
+    Code = "coupon-0002",
+    Name = "Coupon name",
+    Description = "My new coupon",
+    Discount = new Discount
+    {
+        Value = 1000,
+        Type = "percent"
+    },
+    Status = "active",
+    Duration = new Duration
+    {
+        Type = "repeating",
+        Occurrences = 12
+    },
+    Max_Redemptions = 100,
+    Expiration_Date = new Expiration_Date
+    {
+        Year = 2020,
+        Month = 08,
+        Day = 01    
+    }
+};
+var result = await WirecardClient.Signature.CreateCoupon(body);
+```
+#### Associar Cupom para Assinatura
+```C#
+var body = new CouponRequest
+{
+    Coupon = new Coupon
+    {
+        Code = "coupon-0001"
+    }
+};
+var result = await WirecardClient.Signature.AssociateCouponForExistingSignature(body, "assinatura01");
+```
+#### Associar Cupom para Nova Assinatura
+```C#
+var body = new CouponRequest
+{
+    //informar os campos
+};
+var result = await WirecardClient.Signature.AssociateCouponForExistingSignature(body, "true");
+```
+#### Consultar Cupom
+```C#
+var result = await WirecardClient.Signature.ConsultCoupon("coupon-0001");
+```
+#### Listar Todos os Cupons
+```C#
+var result = await WirecardClient.Signature.ListAllCoupons();
+```
+#### Ativar e Inativar Cupons
+```C#
+var result = await WirecardClient.Signature.EnableOrDisableCoupon("coupon-0001", "inactive");
+```
+#### Excluir Cupom de uma Assinatura
+```C#
+var result = await WirecardClient.Signature.DeleteSignatureCoupon("assinatura01");
+```
+#### Retentativa de pagamento de uma fatura
+```C#
+var result = await WirecardClient.Signature.RetentiveInvoicePayment("1548222");
+```
+#### Gerar um novo boleto para uma fatura
+```C#
+var body = new RetentativeRequest
+{
+    Year = 2020,
+    Month = 08,
+    Day = 01
+};
+var result = await WirecardClient.Signature.CreateNewInvoiceBoleto(body,"1548222");
+```
+#### Criar Regras de Retentativas Automáticas
+```C#
+var body = new RetentativeRequest
+{
+    First_Try = 1,
+    Second_Try = 3,
+    Third_Try = 5,
+    Finally = "cancel"
+};
+var result = await WirecardClient.Signature.CreateAutomaticRetentionRules(body);
+```
+
+#### Criar Preferência de Notificação - Em Desenvolvimento...
 
 ## Convertendo objeto para json
 
@@ -770,7 +1070,7 @@ using WirecardCSharp.Exception;
 
 try
 {
-    var result = await WC.Customer.Create(new CustomerRequest());
+    var result = await WirecardClient.Customer.Create(new CustomerRequest());
 }
 catch (WirecardException ex)
 {

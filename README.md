@@ -823,13 +823,25 @@ var result = await WirecardClient.Signature.ListAllSubscriptions();
 ```
 #### Consultar Assinatura -Sem Filtro
 ```C#
-var filter = "q=assinatura01&filters=status::eq(ACTIVE)";
 var result = await WirecardClient.Signature.ConsultSubscriptionFilter("assinatura01");
 ```
 #### Consultar Assinatura - Com Filtro
 ```C#
-var result = await WirecardClient.Signature.ConsultSubscription("assinatura01");
+var filter = "q=assinatura01&filters=status::eq(ACTIVE)";
+var result = await WirecardClient.Signature.ConsultSubscription(filter);
 ```
+Alguns exemplos de como filtrar:
+
+Pesquisar e Filtrar assinaturas (``` q=teste&filters=status::eq(EXPIRED) ```)
+Filtrar assinaturas por status (``` filters=status::eq(EXPIRED)&limit=10&offset=0 ```)
+Filtrar assinaturas por creation_date (``` filters=creation_date::bt(2014-11-08,2015-05-07)&limit=100&offset=0 ```)
+Filtrar assinaturas por next_invoice_date (``` filters=next_invoice_date::bt(2015-10-12,2015-10-12)&limit=100&offset=0 ```)
+Filtrar assinaturas por plano (``` filters=plan.code::eq(TESTE_WIRECARD)&limit=100&offset=0 ```)
+Filtrar assinaturas por customer.code (``` filters=customer.code::eq(HHDGOo)&limit=100&offset=0 ```)
+Filtrar assinaturas por customer.email (``` filters=customer.email::eq(joao.silva@email.com.br)&limit=100&offset=0 ```)
+Filtrar assinaturas por customer.cpf (``` filters=customer.cpf::eq(22222222222)&limit=100&offset=0 ```)
+Filtrar assinaturas por valor (``` filters=amount::bt(100,100000) ```)
+Pesquisar Assinatura (``` q=diego nunes&limit=10&offset=0 ```)
 #### Suspender Assinatura
 ```C#
 var result = await WirecardClient.Signature.SuspendSubscription("assinatura01");

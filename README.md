@@ -821,7 +821,12 @@ var result = await WirecardClient.Signature.CreateSubscriptions(body, false);
 ```C#
 var result = await WirecardClient.Signature.ListAllSubscriptions();
 ```
-#### Consultar Assinatura
+#### Consultar Assinatura -Sem Filtro
+```C#
+var filter = "q=assinatura01&filters=status::eq(ACTIVE)";
+var result = await WirecardClient.Signature.ConsultSubscriptionFilter("assinatura01");
+```
+#### Consultar Assinatura - Com Filtro
 ```C#
 var result = await WirecardClient.Signature.ConsultSubscription("assinatura01");
 ```
@@ -969,6 +974,30 @@ var result = await WirecardClient.Signature.CreateAutomaticRetentionRules(body);
 ```
 
 #### Criar Preferência de Notificação - Em Desenvolvimento...
+```C#
+var body = new NotificationRequest
+{
+    Notification = new Notification
+    {
+        Webhook = new Webhook
+        {
+            Url = "http://exemploldeurl.com.br/assinaturas"
+        },
+        Email = new Email
+        {
+            Merchant = new Merchant
+            {
+                Enabled = true
+            },
+            Customer = new Customer
+            {
+                Enabled = true
+            }
+        }
+    }
+};
+var result = await WC.Signature.CreateNotificationPreference(body);
+```
 
 ## Convertendo objeto para json
 

@@ -93,6 +93,8 @@ namespace WirecardCSharp
         public BalancesController Balance => BalancesController.Instance;
         /// <summary> Transferência </summary>
         public TransfersController Transfer => TransfersController.Instance;
+        /// <summary> Assinatura </summary>
+        public SignaturesController Signature => SignaturesController.Instance;
         /// <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>
         public string _BusinessType => _HttpClient.BusinessType;
     }

@@ -400,6 +400,29 @@ namespace WirecardCSharp.Controllers
             }
         }
         /// <summary>
+        /// Consultar Assinatura com Filtro - Consult Subscription with Filter
+        /// </summary>
+        /// <param name="filter">Filtros de busca, mais informações <see href="link de filtros">aqui</see></param>
+        /// <returns></returns>
+        public async Task<SubscriptionsResponse> ConsultSubscriptionFilter(string filter)
+        {
+            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/subscriptions?{filter}");
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                WirecardException.WirecardError wirecardException = WirecardException.DeserializeObject(content);
+                throw new WirecardException(wirecardException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<SubscriptionsResponse>(await response.Content.ReadAsStringAsync());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
         /// Suspender Assinatura - Suspend Subscription
         /// </summary>
         /// <param name="code">Código da Assinatura</param>
@@ -826,6 +849,23 @@ namespace WirecardCSharp.Controllers
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await ClientInstance.PostAsync($"assinaturas/v1/users/preferences/retry", stringContent);
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                WirecardException.WirecardError wirecardException = WirecardException.DeserializeObject(content);
+                throw new WirecardException(wirecardException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            return response.StatusCode;
+        }
+        /// <summary>
+        /// Criar Preferência de Notificação - Create Notification Preference
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
+        public async Task<HttpStatusCode> CreateNotificationPreference(NotificationRequest body)
+        {
+            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await ClientInstance.PostAsync("assinaturas/v1/users/preferences", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

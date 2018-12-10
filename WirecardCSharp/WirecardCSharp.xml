@@ -73,16 +73,6 @@
             <param name="account_id">ID da Conta Wirecard. Exemplo: MPA-3C5358FF2296</param>
             <returns></returns>
         </member>
-        <member name="M:WirecardCSharp.Controllers.ClassicAccountsController.RequestUserAccessPermissions(System.String,System.String,System.String,System.String)">
-            <summary>
-            Solicita Permissões de Acesso ao Usuário - Request User Access Permissions
-            </summary>
-            <param name="response_type">Define o tipo de resposta a ser obtido. Valores possíveis: code</param>
-            <param name="client_id">Identificador único do aplicativo que será realizada a solicitação. Exemplo: APP-DVLJHW59IKOS</param>
-            <param name="redirect_uri">URI de redirecionamento do cliente. ATENÇÂO: deve ser a mesma url cadastrada ao criar o app.</param>
-            <param name="scope">Permissões que deseja. Valores possíveis: RECEIVE_FUNDS, REFUND, MANAGE_ACCOUNT_INFO, RETRIEVE_FINANCIAL_INFO, TRANSFER_FUNDS, DEFINE_PREFERENCES</param>
-            <returns></returns>
-        </member>
         <member name="M:WirecardCSharp.Controllers.ClassicAccountsController.GenerateAccessToken(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Gera Access Token - Generate Access Token
@@ -234,12 +224,19 @@
             <param name="body"></param>
             <returns></returns>
         </member>
+        <member name="M:WirecardCSharp.Controllers.NotificationsController.CreateApp(WirecardCSharp.Models.NotificationRequest)">
+            <summary>
+            Criar Preferência de Notificação para App - Create Notification Preference for App
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
         <member name="M:WirecardCSharp.Controllers.NotificationsController.CreateApp(WirecardCSharp.Models.NotificationRequest,System.String)">
             <summary>
             Criar Preferência de Notificação para App - Create Notification Preference for App
             </summary>
             <param name="body"></param>
-            <param name="app_id">Código identificador do App. Exemplo: APP-3984HG73HE9</param>
+            <param name="app_id">Código identificador do App. Exemplo: APP-3984HG73HE92</param>
             <returns></returns>
         </member>
         <member name="M:WirecardCSharp.Controllers.NotificationsController.Consult(System.String)">
@@ -383,6 +380,254 @@
             <param name="orders_id">Id do pedido em formato de hash. string(16).</param>
             <returns></returns>
         </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.CreatePlan(WirecardCSharp.Models.PlanRequest)">
+            <summary>
+            Criar plano - Create plan
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ListPlans">
+            <summary>
+            Listar Planos - List Plans
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ConsultPlan(System.String)">
+            <summary>
+            Consultar Plano - Consult Plan
+            </summary>
+            <param name="code"> Código do plano </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.EnablePlan(System.String)">
+            <summary>
+            Ativar Plano - Enable Plan
+            </summary>
+            <param name="code"> Código do plano </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.DisablePlan(System.String)">
+            <summary>
+            Desativar Plano - Disable Plan
+            </summary>
+            <param name="code"> Código do plano </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ChangePlan(WirecardCSharp.Models.PlanRequest,System.String)">
+            <summary>
+            Alterar Plano - Change Plan
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do plano </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.CreateSubscriber(WirecardCSharp.Models.SubscriberRequest,System.Boolean)">
+            <summary>
+            Criar Assinante - Create Subscriber
+            </summary>
+            <param name="body"></param>
+            <param name="new_vault">Se new_vault=true, o envio do node credit_card é obrigatório. Utilize isso para criar um assinante com dados de cartão e gerar um cofre para guardar os dados de pagamento com segurança no Moip.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ListSubscribers">
+            <summary>
+            Listar Assinantes - List Subscribers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ConsultSubscriber(System.String)">
+            <summary>
+            Consultar Assinante - Consult Subscriber
+            </summary>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ChangeSubscriber(WirecardCSharp.Models.SubscriberRequest,System.String)">
+            <summary>
+            Alterar Assinante - Change Subscriber
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.UpdateSubscriberCard(WirecardCSharp.Models.SubscriberRequest,System.String)">
+            <summary>
+            Atualizar Cartão do Assinante - Update Subscriber Card
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.CreateSubscriptions(WirecardCSharp.Models.SubscriptionRequest,System.Boolean)">
+            <summary>
+            Criar Assinaturas - Create Subscriptions
+            </summary>
+            <param name="body"></param>
+            <param name="true_or_false">Caso queira adicionar um novo assinante à Assinatura, entre com valor true.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ListAllSubscriptions">
+            <summary>
+            Listar Todas Assinaturas - List All Subscriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ConsultSubscription(System.String)">
+            <summary>
+            Consultar Assinatura - Consult Subscription
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ConsultSubscriptionFilter(System.String)">
+            <summary>
+            Consultar Assinatura com Filtro - Consult Subscription with Filter
+            </summary>
+            <param name="filter">Filtros de busca, mais informações <see href="link de filtros">aqui</see></param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.SuspendSubscription(System.String)">
+            <summary>
+            Suspender Assinatura - Suspend Subscription
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ReactivateSignature(System.String)">
+            <summary>
+            Reativar Assinatura - Reactivate Signature
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.CancelSignature(System.String)">
+            <summary>
+            Cancelar Assinatura - Cancel Signature
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ChangeSubscription(WirecardCSharp.Models.SubscriptionRequest,System.String)">
+            <summary>
+            Alterar Assinatura - Change Subscription
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ChangePaymentMethod(WirecardCSharp.Models.SubscriptionRequest,System.String)">
+            <summary>
+            Alterar método de pagamento - Change Payment Method
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ListSignatureInvoices(System.String)">
+            <summary>
+            Listar Faturas de Assinatura - List Signature Invoices
+            </summary>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ConsultInvoice(System.String)">
+            <summary>
+            Consultar Fatura - Consult Invoice
+            </summary>
+            <param name="id"> Id da Cobrança </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ListAllInvoicePayments(System.String)">
+            <summary>
+            Listar todos os pagamentos de fatura - List all invoice payments
+            </summary>
+            <param name="id"> Id da Cobrança </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ConsultSubscriptionPayment(System.String)">
+            <summary>
+            Consultar pagamento de assinatura - Consult subscription payment
+            </summary>
+            <param name="id"> Id do pagamento </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.CreateCoupon(WirecardCSharp.Models.CouponRequest)">
+            <summary>
+            Criar cupom - Create Coupon
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.AssociateCouponForExistingSignature(WirecardCSharp.Models.CouponRequest,System.String)">
+            <summary>
+            Associar Cupom para Assinatura Existente - Associate Coupon For Existing Signature
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.AssociateCouponForNewSignature(WirecardCSharp.Models.CouponRequest,System.String)">
+            <summary>
+            Associar Cupom para Nova Assinatura - Associate Coupon For New Signature
+            </summary>
+            <param name="body"></param>
+            <param name="true_or_false">Caso queira criar um novo Assinante o valor desse ser "true", caso contrário "false".</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ConsultCoupon(System.String)">
+            <summary>
+            Consultar Cupom - Consult Coupon
+            </summary>
+            <param name="code"> Código do Cupom. </param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.ListAllCoupons">
+            <summary>
+            Listar Todos os Cupons - List All Coupons
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.EnableOrDisableCoupon(System.String,System.String)">
+            <summary>
+            Ativar ou Inativar Cupon - Enable or Disable Coupon
+            </summary>
+            <param name="code">Código do Cupom</param>
+            <param name="active_or_inactive">Escolha active para Ativar um Cupom e inactive para desativar</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.DeleteSignatureCoupon(System.String)">
+            <summary>
+            Excluir Cupom de Assinatura - Delete Signature Coupon
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.RetentiveInvoicePayment(System.String)">
+            <summary>
+            Retentativa pagamento de fatura - Retentive invoice payment
+            </summary>
+            <param name="id">ID da fatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.CreateNewInvoiceBoleto(WirecardCSharp.Models.RetentativeRequest,System.String)">
+            <summary>
+            Criar novo boleto de fatura - Create New Invoice Boleto
+            </summary>
+            <param name="body"></param>
+            <param name="id">ID da fatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.CreateAutomaticRetentionRules(WirecardCSharp.Models.RetentativeRequest)">
+            <summary>
+            Criar Regras de Retentativas Automáticas - Create Automatic Retention Rules
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Controllers.SignaturesController.CreateNotificationPreference(WirecardCSharp.Models.NotificationRequest)">
+            <summary>
+            Criar Preferência de Notificação - Create Notification Preference
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
         <member name="M:WirecardCSharp.Controllers.TransfersController.Create(WirecardCSharp.Models.TransferRequest,System.String)">
             <summary>
             Criar Transferência - Create Transfer
@@ -429,6 +674,23 @@
         <member name="M:WirecardCSharp.Utilities.DeserializeWebHook(System.String)">
             <summary> Converte json para objeto - deserialize to a object </summary>
             <param name="json">Retorno json</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Utilities.GetExceptionText(WirecardCSharp.Exception.WirecardException)">
+            <summary>
+            Obter os erros como texto - Get errors as text
+            </summary>
+            <param name="we">WirecardException</param>
+            <returns></returns>
+        </member>
+        <member name="M:WirecardCSharp.Utilities.RequestUserAccessPermissions(System.String,System.String,System.String,System.String)">
+            <summary>
+            Solicita Permissões de Acesso ao Usuário - Request User Access Permissions
+            </summary>
+            <param name="response_type">Define o tipo de resposta a ser obtido. Valores possíveis: code</param>
+            <param name="client_id">Identificador único do aplicativo que será realizada a solicitação. Exemplo: APP-DVLJHW59IKOS</param>
+            <param name="redirect_uri">URI de redirecionamento do cliente. ATENÇÂO: deve ser a mesma url cadastrada ao criar o app.</param>
+            <param name="scope">Permissões que deseja. Valores possíveis: RECEIVE_FUNDS, REFUND, MANAGE_ACCOUNT_INFO, RETRIEVE_FINANCIAL_INFO, TRANSFER_FUNDS, DEFINE_PREFERENCES</param>
             <returns></returns>
         </member>
         <member name="M:WirecardCSharp.WirecardClient.#ctor(WirecardCSharp.Environments,System.String)">
@@ -487,6 +749,9 @@
         </member>
         <member name="P:WirecardCSharp.WirecardClient.Transfer">
             <summary> Transferência </summary>
+        </member>
+        <member name="P:WirecardCSharp.WirecardClient.Signature">
+            <summary> Assinatura </summary>
         </member>
         <member name="P:WirecardCSharp.WirecardClient._BusinessType">
             <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>

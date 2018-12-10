@@ -53,5 +53,7 @@ namespace WirecardCSharp.Models
         public int BirthDate_Day { get; set; }
         [JsonProperty("phone_area_code", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Phone_Area_Code { get; set; }
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool Enabled { get; set; }
     }
 }

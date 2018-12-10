@@ -11,5 +11,7 @@ namespace WirecardCSharp.Models
         public string Target { get; set; }
         [JsonProperty("media", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Media { get; set; }
+        [JsonProperty("notification", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Notification Notification { get; set; }
     }
 }

@@ -54,14 +54,14 @@
 ## Implementações .NET com suporte
 Essa biblioteca foi feito em .NET Standard 1.2 e tem suporte das seguintes implementações do .NET:
 
-* .NET Core 1.0
-* .NET Framework 4.5.1
-* Mono 4.6
-* Xamarin.iOS 10.0
-* Xamarin.Android 7.0
-* Universal Windows Platform 10
-* Windows 8.1
-* Windows Phone 8.1
+* .NET Core 1.0 ou superior
+* .NET Framework 4.5.1 ou superior
+* Mono 4.6 ou superior
+* Xamarin.iOS 10.0 ou superior
+* Xamarin.Android 7.0 ou superior
+* Universal Windows Platform 10 ou superior
+* Windows 8.1 ou superior
+* Windows Phone 8.1 ou superior
 
 Para mais informações: [.NET Standard](https://docs.microsoft.com/pt-br/dotnet/standard/net-standard).
 

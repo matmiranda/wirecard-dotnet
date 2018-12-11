@@ -511,7 +511,7 @@ Veja um exemplo do webhook [aqui](https://gist.githubusercontent.com/matmiranda/
 
 Para aumentar a segurança da sua aplicação e garantir que apenas a Wirecard pode enviar notificações para o seu sistema, você pode conferir o token enviado no header dos webhooks. Este token é o mesmo que é gerado no momento do cadastro da sua URL:
 ```C#
-var token = Request.Headers["Authorization"]
+var token = Request.Headers["Authorization"];
 ```
 
 ## Contas Bancárias

@@ -52,7 +52,7 @@
 - [Licença](#licença)
 
 ## Implementações .NET com suporte
-Essa biblioteca foi feito em .NET Standard 1.2 e tem suporte das seguintes implementações do .NET:
+Essa biblioteca foi feito em (**.NET Standard 1.2 e VS2017**) e tem suporte das seguintes implementações do .NET:
 
 * .NET Core 1.0 ou superior
 * .NET Framework 4.5.1 ou superior

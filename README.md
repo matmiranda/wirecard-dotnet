@@ -308,7 +308,13 @@ var result = await WirecardClient.ClassicAccount.GenerateAccessToken(/*informe o
 
 #### Atualizar accessToken
 ```C#
-var result = await WirecardClient.ClassicAccount.UpdateAccessToken(/*informe o valor de cada parâmetro*/);
+string client_id = "APP-M11STAPPOAU";
+string client_secret = "SplxlOBeZQQYbYS6WxSbIA";
+string redirect_uri = "http://localhost/moip/callback";
+string grant_type = "authorization_code";
+string code = "4d9e0466bc14aad85b894237145b217219e9a825";
+var result = await WirecardClient.ClassicAccount.GenerateAccessToken(
+                client_id, client_secret, redirect_uri, grant_type, code);
 ```
 
 #### Obter chave pública de uma Conta Wirecard

@@ -568,6 +568,23 @@ var body = new PaymentRequest
 };
 var result = await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX");
 ```
+#### Criar Pagamento - Débito Online
+
+```C#
+var body = new PaymentRequest
+{
+    FundingInstrument = new Fundinginstrument
+    {
+        Method = "ONLINE_BANK_DEBIT",
+        OnlineBankDebit = new Onlinebankdebit
+        {
+            BankNumber = "341",
+            ExpirationDate = "2017-10-22"
+        }
+    }
+};
+var result = await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX");
+```
 
 #### Liberação de Custódia
 ```C#

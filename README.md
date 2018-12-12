@@ -950,7 +950,29 @@ var result = await WC.Launch.ListFilter(filtros);
 ```C#
 var body = new TransferRequest
 {
-    //informe os campos aqui
+    Amount = 500,
+    TransferInstrument = new Transferinstrument
+    {
+        Method = "",
+        BankAccount = new Bankaccount
+        {
+            Type = "CHECKING",
+            BankNumber = "001",
+            AgencyNumber = "1111",
+            AgencyCheckNumber = "2",
+            AccountNumber = "9999",
+            AccountCheckNumber = "8",
+            Holder = new Holder
+            {
+                FullName = "Nome do Portador",
+                TaxDocument = new Taxdocument
+                {
+                    Type = "CPF",
+                    Number = "22222222222"
+                }
+            }
+        }
+    }
 };
 string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
 var result = await WC.Transfer.Create(body, accessToken);
@@ -979,7 +1001,8 @@ var result = await WC.Transfer.List();
 ```C#
 var body = new RefundRequest
 {
-    //informe os campos aqui
+    //caso queira fazer um reembolso parcial é necessário informar o atributo amount na requisição
+    Amount = "2000"
 };            
 var result = await WC.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX");
 ```
@@ -987,7 +1010,8 @@ var result = await WC.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX");
 ```C#
 var body = new RefundRequest
 {
-    //informe os campos aqui
+    //caso queira fazer um reembolso parcial é necessário informar o atributo amount na requisição
+    Amount = "2000"
 };            
 var result = await WC.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX");
 ```

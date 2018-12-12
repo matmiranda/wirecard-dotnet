@@ -97,7 +97,7 @@ using WirecardCSharp.Models;
 
 private const string token = "xxxxxxxxxxxxxxxxxxx";
 private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
-private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, token, key);
+private WirecardClient WC = new WirecardClient(Environments.SANDBOX, token, key);
 ```
 Para obter um token e a chave, primeiro faça o login [aqui](https://connect-sandbox.wirecard.com.br/login).
 
@@ -110,7 +110,7 @@ using WirecardCSharp;
 using WirecardCSharp.Models;
 
 private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-private WirecardClient WirecardClient = new WirecardClient(Environments.SANDBOX, accessToken);
+private WirecardClient WC = new WirecardClient(Environments.SANDBOX, accessToken);
 ```
 
 Para obter o accesstoken, você precisa criar um [App](https://dev.wirecard.com.br/reference#1-criar-um-app).
@@ -303,11 +303,6 @@ Veja [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permis
 
 #### Gerar Access Token
 ```C#
-var result = await WirecardClient.ClassicAccount.GenerateAccessToken(/*informe o valor de cada parâmetro*/);
-```
-
-#### Atualizar accessToken
-```C#
 string client_id = "APP-M11STAPPOAU";
 string client_secret = "SplxlOBeZQQYbYS6WxSbIA";
 string redirect_uri = "http://localhost/moip/callback";
@@ -317,9 +312,16 @@ var result = await WirecardClient.ClassicAccount.GenerateAccessToken(
                 client_id, client_secret, redirect_uri, grant_type, code);
 ```
 
+#### Atualizar accessToken
+```C#
+string grant_type = "refresh_token";
+string refresh_token = "2381dfbbcbd645268af1dd0e4456bfe1_v2";
+var result = await WC.ClassicAccount.UpdateAccessToken(grant_type, refresh_token);
+```
+
 #### Obter chave pública de uma Conta Wirecard
 ```C#
-var result = await WirecardClient.ClassicAccount.GetPublickey();
+var result = await WC.ClassicAccount.GetPublickey();
 ```
 
 ## Conta Transparente
@@ -361,7 +363,7 @@ var body = new TransparentAccountRequest
         }
     }
 };
-var result = await WirecardClient.TransparentAccount.Create(body);
+var result = await WC.TransparentAccount.Create(body);
 ```
 
 ## Clientes
@@ -371,7 +373,7 @@ var body = new CustomerRequest
 {
     //informe os campos aqui
 };
-var result = await WirecardClient.Customer.Create(body);
+var result = await WC.Customer.Create(body);
 ```
 
 #### Adicionar Cartão de Crédito
@@ -403,22 +405,22 @@ var body = new CustomerRequest
         }
     }
 };
-var result = await WirecardClient.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX");
+var result = await WC.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX");
 ```
 
 #### Deletar Cartão de Crédito
 ```C#
-var result = await WirecardClient.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX");
+var result = await WC.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX");
 ```
 
 #### Consultar Cliente
 ```C#
-var result = await WirecardClient.Customer.Consult("CUS-XXXXXXXXXXXX");
+var result = await WC.Customer.Consult("CUS-XXXXXXXXXXXX");
 ```
 
 #### Listar Todos os Clientes
 ```C#
-var result = await WirecardClient.Customer.List();
+var result = await WC.Customer.List();
 ```
 
 ## Pedidos
@@ -428,7 +430,7 @@ var body = new OrderRequest
 {
     //informe os campos aqui
 };
-var result = await WirecardClient.Order.Create(body);
+var result = await WC.Order.Create(body);
 ```
 
 #### Consultar Pedido

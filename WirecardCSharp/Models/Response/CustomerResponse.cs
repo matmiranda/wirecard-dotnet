@@ -25,7 +25,7 @@ namespace WirecardCSharp.Models
         [JsonProperty("shippingAddress", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Shippingaddress ShippingAddress { get; set; }
         [JsonProperty("_links", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public _Links _Links { get; set; }
+        public _Links Links { get; set; }
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Status { get; set; }
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Ignore)]

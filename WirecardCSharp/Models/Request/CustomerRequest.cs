@@ -14,9 +14,15 @@ namespace WirecardCSharp.Models
         [JsonProperty("birthDate", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string BirthDate { get; set; }
         [JsonProperty("taxDocument", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Taxdocument TaxDocument { get; set; }
+        public Taxdocument Taxdocument { get; set; }
         [JsonProperty("phone", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Phone Phone { get; set; }
+        [JsonProperty("shippingAddress", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Shippingaddress Shippingaddress { get; set; }
+        [JsonProperty("fundingInstrument", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Fundinginstrument Fundinginstrument { get; set; }
+        [JsonProperty("taxDocument", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Taxdocument TaxDocument { get; set; }
         [JsonProperty("shippingAddress", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Shippingaddress ShippingAddress { get; set; }
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Ignore)]

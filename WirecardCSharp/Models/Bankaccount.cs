@@ -8,11 +8,11 @@ namespace WirecardCSharp.Models
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
         [JsonProperty("agencyNumber", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int AgencyNumber { get; set; }
+        public string AgencyNumber { get; set; }
         [JsonProperty("holder", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Holder Holder { get; set; }
         [JsonProperty("accountNumber", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int AccountNumber { get; set; }
+        public string AccountNumber { get; set; }
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Status { get; set; }
         [JsonProperty("createdAt", DefaultValueHandling = DefaultValueHandling.Ignore)]

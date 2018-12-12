@@ -367,7 +367,77 @@ var result = await WC.TransparentAccount.Create(body);
 ```
 
 ## Clientes
-#### Criar Cliente
+#### Criar Cliente - (E-COMMERCE)
+```C#
+var body = new CustomerRequest
+{
+    OwnId = "meu_id_customer_002",
+    FullName = "Maria Oliveira",
+    Email = "maria@email.com",
+    BirthDate = "1980-5-10",
+    TaxDocument = new Taxdocument
+    {
+        Type = "CPF",
+        Number = "22288866644"
+    },
+    Phone = new Phone
+    {
+        CountryCode = "55",
+        AreaCode = "11",
+        Number = "55552266"
+    },
+    ShippingAddress = new Shippingaddress
+    {
+        City = "São Paulo",
+        Complement = "10",
+        District = "Itaim Bibi",
+        Street = "Avenida Faria Lima",
+        StreetNumber = "500",
+        ZipCode = "01234000",
+        State = "SP",
+        Country = "BRA"
+    },
+    FundingInstrument = new Fundinginstrument
+    {
+        Method = "CREDIT_CARD",
+        CreditCard = new Creditcard
+        {
+            ExpirationMonth = "06",
+            ExpirationYear = "22",
+            Number = "6362970000457013",
+            Cvc = "123",
+            Holder = new Holder
+            {
+                FullName = "Maria Oliveira",
+                BirthDate = "1988-12-30",
+                TaxDocument = new Taxdocument
+                {
+                    Type = "CPF",
+                    Number = "33333333333"
+                },
+                BillingAddress = new Billingaddress
+                {
+                    City = "Rio de Janeiro",
+                    District = "Copacabana",
+                    Street = "Rua Raimundo Corrêa",
+                    StreetNumber = "1200",
+                    ZipCode = "05246200",
+                    State = "SP",
+                    Country = "BRA"
+                },
+                Phone = new Phone
+                {
+                    CountryCode = "55",
+                    AreaCode = "11",
+                    Number = "66778899"
+                }
+            }
+        }
+    }
+};
+var result = await WC.Customer.Create(body);
+```
+#### Criar Cliente - (MARKETPLACE / PLATAFORMA)
 ```C#
  var body = new CustomerRequest
  {

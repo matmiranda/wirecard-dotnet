@@ -149,11 +149,131 @@ if (result == HttpStatusCode.OK)
 }
 ```
 
-#### Criar Conta Wirecard Clássica
+#### Criar Conta Wirecard Clássica (Conta PF)
 ```C#
 var body = new ClassicAccountRequest
 {
-    //informe os campos aqui
+    Email = new Email
+    {
+        Address = "fulano@hotmail.com"
+    },
+    Person = new Person
+    {
+        Name = "Fulano",
+        LastName = "da Silva",
+        TaxDocument = new Taxdocument
+        {
+            Type = "CPF",
+            Number = "123.456.789-91"
+        },
+        IdentityDocument = new Identitydocument
+        {
+            Type = "RG",
+            Number = "434322344",
+            Issuer = "SPP",
+            IssueDate = "2000-12-12"
+        },
+        BirthDate = "1990-01-01",
+        Phone = new Phone
+        {
+            CountryCode = "55",
+            AreaCode = "11",
+            Number = "965213244"
+        },
+        Address = new Address
+        {
+            Street = "Av. Brigadeiro Faria Lima",
+            StreetNumber = "2927",
+            District = "Itaim",
+            ZipCode = "01234-000",
+            City = "São Paulo",
+            State = "SP",
+            Country = "BR"
+        }
+    },
+    Type = "MERCHANT"
+};
+var result = await WirecardClient.ClassicAccount.Create(body);
+```
+#### Criar Conta Wirecard Clássica (Conta PJ)
+```C#
+var body = new ClassicAccountRequest
+{
+    Email = new Email
+    {
+        Address = "fulano@hotmail.com"
+    },
+    Person = new Person
+    {
+        Name = "Fulano",
+        LastName = "da Silva",
+        BirthDate = "1990-01-01",
+        TaxDocument = new Taxdocument
+        {
+            Type = "CPF",
+            Number = "123.456.789-91"
+        },
+        IdentityDocument = new Identitydocument
+        {
+            Type = "RG",
+            Number = "434322344",
+            Issuer = "SPP",
+            IssueDate = "2000-12-12"
+        },
+        Phone = new Phone
+        {
+            CountryCode = "55",
+            AreaCode = "11",
+            Number = "965213244"
+        },
+        Address = new Address
+        {
+            Street = "Av. Brigadeiro Faria Lima",
+            StreetNumber = "2927",
+            District = "Itaim",
+            ZipCode = "01234-000",
+            City = "São Paulo",
+            State = "SP",
+            Country = "BR"
+        }
+    },
+    Company = new Company
+    {
+        Name = "Noma da empresa",
+        BusinessName = "Wirecard Pagamentos",
+        OpeningDate = "2011-01-01",
+        TaxDocument = new Taxdocument
+        {
+            Type = "CNPJ",
+            Number = "11.698.147/0001-13"
+        },
+        MainActivity = new Mainactivity
+        {
+            Cnae = "82.91-1/00",
+            Description = "Atividades de cobranças e informações cadastrais"
+        },
+        Phone = new Phone
+        {
+            CountryCode = "55",
+            AreaCode = "11",
+            Number = "32234455"
+        },
+        Address = new Address
+        {
+            Street = "Av. Brigadeiro Faria Lima",
+            StreetNumber = "2927",
+            District = "Itaim",
+            ZipCode = "01234-000",
+            City = "São Paulo",
+            State = "SP",
+            Country = "BRA"
+        }
+    },
+    BusinessSegment = new Businesssegment
+    {
+        Id = 3
+    },
+    Type = "MERCHANT"
 };
 var result = await WirecardClient.ClassicAccount.Create(body);
 ```

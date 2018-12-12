@@ -369,10 +369,35 @@ var result = await WC.TransparentAccount.Create(body);
 ## Clientes
 #### Criar Cliente
 ```C#
-var body = new CustomerRequest
-{
-    //informe os campos aqui
-};
+ var body = new CustomerRequest
+ {
+     OwnId = "meu_id_customer",
+     FullName = "João Silva",
+     Email = "joao@email.com",
+     BirthDate = "1990-10-22",
+     TaxDocument = new Taxdocument
+     {
+         Type = "CPF",
+         Number = "22288866644"
+     },
+     Phone = new Phone
+     {
+         CountryCode = "55",
+         AreaCode = "11",
+         Number = "55552266"
+     },
+     ShippingAddress = new Shippingaddress
+     {
+         City = "São Paulo",
+         Complement = "10",
+         District = "Itaim Bibi",
+         Street = "Avenida Faria Lima",
+         StreetNumber = "500",
+         ZipCode = "01234000",
+         State = "SP",
+         Country = "BRA"
+     }
+ };
 var result = await WC.Customer.Create(body);
 ```
 
@@ -428,7 +453,46 @@ var result = await WC.Customer.List();
 ```C#
 var body = new OrderRequest
 {
-    //informe os campos aqui
+    OwnId = "id_pedido",
+    Amount = new Amount
+    {
+        Currency = "BRL",
+        Subtotals = new Subtotals
+        {
+            Shipping = 1000
+        }
+    },
+    Items = new List<Item>
+    {
+        new Item
+        {
+            Product = "Descrição do pedido",
+            Category = "VIDEO_GAME_SOFTWARE",
+            Quantity = 1,
+            Detail = "Mais info...",
+            Price = 22000
+        }
+    },
+    Customer = new Customer
+    {
+        Id = "CUS-7AKU0VORZ2D4"
+    },
+    Receivers = new List<Receiver>
+    {
+        new Receiver
+        {
+            Type = "SECONDARY",
+            FeePayor = false,
+            MoipAccount = new Moipaccount
+            {
+                Id = "MPA-E3C8493A06AE"
+            },
+            Amount = new Amount
+            {
+                Fixed = 5000
+            }
+        }
+    }
 };
 var result = await WC.Order.Create(body);
 ```

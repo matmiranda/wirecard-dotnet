@@ -599,7 +599,139 @@ var result = await WC.Payment.Simulate("PAY-XXXXXXXXXXXX", 26500);
 ```C#
 var body = new MultiOrderRequest
 {
-    //informe os campos aqui
+    OwnId = "meu_multiorder_id",
+    Orders = new List<Order>
+    {
+        new Order
+        {
+            OwnId = "pedido_1_id",
+            Amount = new Amount
+            {
+                Currency = "BRL",
+                Subtotals = new Subtotals
+                {
+                    Shipping = 2000
+                }
+            },
+            Items = new List<Item>
+            {
+                new Item
+                {
+                    Product = "Camisa Verde e Amarelo - Brasil",
+                    Quantity = 1,
+                    Detail = "Seleção Brasileira",
+                    Price = 2000
+                }
+            },
+            Customer = new Customer
+            {
+                OwnId = "customer[1234]",
+                FullName = "Joao Souza",
+                Email = "joao.sousa@email.com",
+                BirthDate = "1988-12-30",
+                TaxDocument = new Taxdocument
+                {
+                    Type = "CPF",
+                    Number = "22222222222"
+                },
+                Phone = new Phone
+                {
+                    CountryCode = "55",
+                    AreaCode = "11",
+                    Number = "66778899"
+                },
+                ShippingAddress = new Shippingaddress
+                {
+                    City = "São Paulo",
+                    Complement = "10",
+                    District = "Itaim Bibi",
+                    Street = "Avenida Faria Lima",
+                    StreetNumber = "500",
+                    ZipCode = "01234000",
+                    State = "SP",
+                    Country = "BRA"
+                }
+            },
+            Receivers = new List<Receiver>
+            {
+                new Receiver
+                {
+                    MoipAccount = new Moipaccount
+                    {
+                        Id = "MPA-VB5OGTVPCI52"
+                    },
+                    Type = "PRIMARY"
+                }
+            }
+        },
+        new Order
+        {
+            OwnId = "pedido_2_id",
+            Amount = new Amount
+            {
+                Currency = "BRL",
+                Subtotals = new Subtotals
+                {
+                    Shipping = 2000
+                }
+            },
+            Items = new List<Item>
+            {
+                new Item
+                {
+                    Product = "Camisa Preta e Vermelha - Alemanha",
+                    Quantity = 1,
+                    Detail = "Camiseta da Copa 2014",
+                    Price = 2000
+                }
+            },
+            Customer = new Customer
+            {
+                OwnId = "customer[1234]",
+                FullName = "Joao Souza",
+                Email = "joao.sousa@email.com",
+                BirthDate = "1988-12-30",
+                TaxDocument = new Taxdocument
+                {
+                    Type = "CPF",
+                    Number = "22222222222"
+                },
+                Phone = new Phone
+                {
+                    CountryCode = "55",
+                    AreaCode = "11",
+                    Number = "66778899"
+                },
+                ShippingAddress = new Shippingaddress
+                {
+                    City = "São Paulo",
+                    Complement = "10",
+                    District = "Itaim Bibi",
+                    Street = "Avenida Faria Lima",
+                    StreetNumber = "500",
+                    ZipCode = "01234000",
+                    State = "SP",
+                    Country = "BRA"
+                }
+            },
+            Receivers = new List<Receiver>
+            {
+                new Receiver
+                {
+                    MoipAccount = new Moipaccount
+                    {
+                        Id = "MPA-KQB1QFWS6QNM"
+                    },
+                    Type = "SECONDARY",
+                    FeePayor = false,
+                    Amount = new Amount
+                    {
+                        Fixed = 55
+                    }
+                }
+            }
+        }
+    }
 };            
 var result = await WC.MultiOrder.Create(body);
 ```
@@ -614,7 +746,31 @@ var result = await WC.MultiOrder.Consult("MOR-XXXXXXXXXXXX");
 ```C#
 var body = new MultiPaymentRequest
 {
-    //informe os campos aqui
+    InstallmentCount = 1,
+    FundingInstrument = new Fundinginstrument
+    {
+        Method = "CREDIT_CARD",
+        CreditCard = new Creditcard
+        {
+            Hash = "HhL0...pIkjl2+3Q==",
+            Holder = new Holder
+            {
+                FullName = "",
+                BirthDate = "1988-12-30",
+                TaxDocument = new Taxdocument
+                {
+                    Type = "CPF",
+                    Number = "33333333333"
+                },
+                Phone = new Phone
+                {
+                    CountryCode  = "55",
+                    AreaCode = "11",
+                    Number = "66778899"
+                }
+            }
+        }
+    }
 };            
 var result = await WC.MultiPayment.Create(body, "MOR-XXXXXXXXXXXX");
 ```
@@ -639,8 +795,10 @@ var result = await WC.MultiPayment.ReleaseCustody("ECW-XXXXXXXXXXXX");
 ```C#
 var body = new NotificationRequest
 {
-    //informe os campos aqui
-};            
+    Events = new List<string> { "ORDER.*", "PAYMENT.AUTHORIZED", "PAYMENT.CANCELLED" },
+    Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+    Media = "WEBHOOK"
+};           
 var result = await WC.Notification.CreatAccountWirecard(body);
 ```
 
@@ -749,7 +907,21 @@ var result = await WC.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX");
 ```C#
 var body = new BankAccountRequest
 {
-    //informe os campos aqui
+    BankNumber = "237",
+    AgencyNumber = "12345",
+    AgencyCheckNumber = "8",
+    AccountNumber = "12345678",
+    AccountCheckNumber = "8",
+    Type = "CHECKING",
+    Holder = new Holder
+    {
+        TaxDocument = new Taxdocument
+        {
+            Type = "CPF",
+            Number = "622.134.533-22"
+        },
+        FullName = "Nome Completo"
+    }
 };
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
 var result = await WC.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX");

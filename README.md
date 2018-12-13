@@ -84,11 +84,32 @@
   - [Listar Todos os Webhooks Enviados](#listar-todos-os-webhooks-enviados)
   - [Desserializar WebHook](#desserializar-webhook)
 - [Contas Bancárias](#contas-bancárias)
+  - [Criar Conta Bancária](#criar-conta-bancária)
+  - [Consultar Conta Bancária](#consultar-conta-bancária)
+  - [Listar Todas Contas Bancárias](#listar-todas-contas-bancárias)
+  - [Deletar Conta Bancária](#deletar-conta-bancária)
+  - [Atualizar Conta Bancária](#atualizar-conta-bancária)
 - [Saldo Wirecard](#saldo-wirecard)
+  - [Consultar Saldos](#consultar-saldos)
 - [Lançamentos](#lançamentos)
+  - [Consultar Lançamento](#consultar-lançamento)
+  - [Listar Todos Lançamentos](#listar-todos-lançamentos)
+  - [Listar Todos Lançamentos com Filtro](#listar-todos-lançamentos-com-filtro)
 - [Transferências](#transferências)
+  - [Criar Transferência](#criar-transferência)
+  - [Reverter Transferência](#reverter-transferência)
+  - [Consultar Transferência](#consultar-transferência)
+  - [Listar Todas Transferências](#listar-todas-transferências)
+  - [Listar Todas Transferências com filtros](#listar-todas-transferências-com-filtros)
 - [Reembolsos](#reembolsos)
+  -[Reembolsar Pagamento](#reembolsar-pagamento)
+  -[Reembolsar Pedido via Cartão de Crédito](#reembolsar-pedido-via-cartão-de-crédito)
+  -[Consultar Reembolso](#consultar-reembolso)
+  -[Listar Reembolsos do Pagamento](#listar-reembolsos-do-pagamento)
+  -[Listar Reembolsos do Pedido](#listar-reembolsos-do-pedido)
 - [Conciliação](#conciliação)
+  -[Obter Arquivo de Vendas](#obter-arquivo-de-vendas)
+  -[Obter Arquivo Financeiro](#obter-arquivo-financeiro)
 - [Assinatura](#assinatura)
 - [Convertendo objeto para json](#convertendo-objeto-para-json)
 - [Tabela - Filtros de busca](#tabela---filtros-de-busca)
@@ -1509,7 +1530,7 @@ var body = new RetentativeRequest
 var result = await WC.Signature.CreateAutomaticRetentionRules(body);
 ```
 
-#### Criar Preferência de Notificação - Em Desenvolvimento...
+#### Criar Preferência de Notificação
 ```C#
 var body = new NotificationRequest
 {

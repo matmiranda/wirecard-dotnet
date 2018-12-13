@@ -149,7 +149,7 @@
 - [Convertendo objeto para json](#convertendo-objeto-para-json)
 - [Tabela - Filtros de busca](#tabela---filtros-de-busca)
 - [Exceção](#exceção)
- - [Obter erros](#obter-erros)
+  - [Obter erros](#obter-erros)
 - [Licença](#licença)
 
 ## Implementações .NET com suporte

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://dev.wirecard.com.br/v2.0/">
-    <img src="https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1544831803/Wirecard%20%2B%20.Net.jpg" alt="Wirecard logo" width=400>
+    <img src="https://res.cloudinary.com/https-github-com-matmiranda-moipcsharp/image/upload/v1544831943/Wirecard%20%2B%20.Net.jpg" alt="Wirecard logo" width=400>
   </a>
 </p>
 <p align="center">

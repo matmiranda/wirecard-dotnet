@@ -22,6 +22,9 @@
     <a href="https://www.nuget.org/packages/WirecardCSharp">
         <img src="https://img.shields.io/badge/Nuget-v2.0.6-blue.svg"
             alt="NuGet"></a>
+      <a href="https://www.nuget.org/stats/packages/WirecardCSharp?groupby=Version">
+        <img src="https://img.shields.io/badge/Statistics-155.svg"
+            alt="Statistics"></a>
 </p>
 
 ## Índice  

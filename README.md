@@ -8,7 +8,7 @@
   <br>
   <br>
     <a href="https://dev.wirecard.com.br/v2.0/docs">
-        <img src="https://img.shields.io/badge/Docs-Wirecard-lightgrey.svg"
+        <img src="https://img.shields.io/badge/Docs-Wirecard-orange.svg"
             alt="Docs"></a>
     <a href="https://dev.wirecard.com.br/v2.0/reference">
         <img src="https://img.shields.io/badge/API%20Reference-Wirecard-darkblue.svg"

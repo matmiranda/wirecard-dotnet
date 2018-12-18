@@ -55,7 +55,7 @@ namespace WirecardCSharp
             //return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
             //for .NET Standard 1.2 - write the version number manually.
-            return "2.0.5";
+            return "2.0.7";
         }
     }
 }

@@ -25,7 +25,7 @@
       <a href="https://www.nuget.org/stats/packages/WirecardCSharp?groupby=Version">
         <img src="https://img.shields.io/badge/Statistics-155.svg"
             alt="Statistics"></a>
-      <a href="#" onclick="event.preventDefault();">
+      <a href="#1">
             <img src="https://img.shields.io/badge/Download-1k-red.svg"
             alt="Download"></a>
 </p>

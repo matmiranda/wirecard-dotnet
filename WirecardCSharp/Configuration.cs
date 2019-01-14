@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net.Http;
 
 namespace WirecardCSharp
@@ -16,6 +16,7 @@ namespace WirecardCSharp
     internal class _HttpClient
     {
         internal static HttpClient httpClient = null;
+        internal static HttpClient httpClient_Connect = null; // para base https://connect-sandbox.moip.com.br
         internal static string accesstoken = string.Empty; //marketplace
         internal static string base64 = string.Empty; //e-commerce
         internal static string uri = string.Empty;
@@ -48,6 +49,34 @@ namespace WirecardCSharp
             }
             return httpClient;
         }
+        internal static HttpClient Client_Connect()
+        {
+            if (httpClient_Connect == null)
+            {
+                try
+                {
+                    httpClient_Connect = new HttpClient();
+                    httpClient_Connect.DefaultRequestHeaders.Clear();
+                    httpClient_Connect.DefaultRequestHeaders.Add("Accept", "application/json");
+                    httpClient_Connect.DefaultRequestHeaders.Add("User-Agent", $"WirecardCSharp{GetVersion()}");
+                    if (accesstoken != string.Empty && base64 == string.Empty)
+                    {
+                        httpClient_Connect.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
+                        httpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Bearer {accesstoken}");
+                    }
+                    else
+                    {
+                        httpClient_Connect.BaseAddress = new Uri(uri);
+                        httpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Basic {base64}");
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return httpClient_Connect;
+        }
 
         internal static string GetVersion()
         {
@@ -55,7 +84,7 @@ namespace WirecardCSharp
             //return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
             //for .NET Standard 1.2 - write the version number manually.
-            return "2.0.7";
+            return "3.0.0";
         }
     }
 }

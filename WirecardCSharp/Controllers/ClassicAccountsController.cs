@@ -6,6 +6,7 @@ using System.Net.Http;
 using WirecardCSharp.Models;
 using System.Threading.Tasks;
 using WirecardCSharp.Exception;
+using System.Collections.Generic;
 
 namespace WirecardCSharp.Controllers
 {
@@ -99,9 +100,18 @@ namespace WirecardCSharp.Controllers
         /// <returns></returns>
         public async Task<AccessTokenResponse> GenerateAccessToken(string client_id, string client_secret, string redirect_uri, string grant_type, string code)
         {
+            Dictionary<string, string> @params = new Dictionary<string, string>
+            {
+                { "client_id", client_id },
+                { "client_secret", client_secret },
+                { "redirect_uri", redirect_uri },
+                { "grant_type", grant_type },
+                { "code", code },
+            };
+            FormUrlEncodedContent encodedContent = new FormUrlEncodedContent(@params);
             HttpClient httpClient = ClientInstance;
             httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
-            HttpResponseMessage response = await httpClient.PostAsync($"oauth/token?client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type{grant_type}&code={code}", null);
+            HttpResponseMessage response = await httpClient.PostAsync($"oauth/token", encodedContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -125,9 +135,15 @@ namespace WirecardCSharp.Controllers
         /// <returns></returns>
         public async Task<AccessTokenResponse> UpdateAccessToken(string grant_type, string refresh_token)
         {
+            Dictionary<string, string> @params = new Dictionary<string, string>
+            {
+                { "grant_type", grant_type },
+                { "refresh_token", refresh_token }
+            };
+            FormUrlEncodedContent encodedContent = new FormUrlEncodedContent(@params);
             HttpClient httpClient = ClientInstance;
             httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
-            HttpResponseMessage response = await httpClient.PostAsync($"oauth/token?grant_type={grant_type}&refresh_token={refresh_token}", null);
+            HttpResponseMessage response = await httpClient.PostAsync($"oauth/token", encodedContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

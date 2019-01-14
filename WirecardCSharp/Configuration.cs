@@ -19,8 +19,8 @@ namespace WirecardCSharp
         internal static HttpClient httpClient_Connect = null; // para base https://connect-sandbox.moip.com.br
         internal static string accesstoken = string.Empty; //marketplace
         internal static string base64 = string.Empty; //e-commerce
-        internal static string uri = string.Empty;
         internal static string BusinessType = null;
+        internal static Environments SelectedEnvironment;
         internal static HttpClient Client()
         {
             if (httpClient == null)
@@ -33,11 +33,15 @@ namespace WirecardCSharp
                     httpClient.DefaultRequestHeaders.Add("User-Agent", $"WirecardCSharp{GetVersion()}");
                     if (accesstoken != string.Empty && base64 == string.Empty)
                     {
+                        string uri = SelectedEnvironment == 
+                            Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
                         httpClient.BaseAddress = new Uri(uri);
                         httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accesstoken}");
                     }
                     else
                     {
+                        string uri = SelectedEnvironment ==
+                            Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
                         httpClient.BaseAddress = new Uri(uri);
                         httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {base64}");
                     }
@@ -59,16 +63,15 @@ namespace WirecardCSharp
                     httpClient_Connect.DefaultRequestHeaders.Clear();
                     httpClient_Connect.DefaultRequestHeaders.Add("Accept", "application/json");
                     httpClient_Connect.DefaultRequestHeaders.Add("User-Agent", $"WirecardCSharp{GetVersion()}");
-                    if (accesstoken != string.Empty && base64 == string.Empty)
+                    if (SelectedEnvironment == Environments.SANDBOX)
                     {
                         httpClient_Connect.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
-                        httpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Bearer {accesstoken}");
                     }
                     else
                     {
-                        httpClient_Connect.BaseAddress = new Uri(uri);
-                        httpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Basic {base64}");
+                        httpClient_Connect.BaseAddress = new Uri("https://connect.moip.com.br/");
                     }
+                    httpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Bearer {accesstoken}");
                 }
                 catch (System.Exception ex)
                 {
@@ -84,7 +87,7 @@ namespace WirecardCSharp
             //return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
             //for .NET Standard 1.2 - write the version number manually.
-            return "3.0.0";
+            return "3.0.2";
         }
     }
 }

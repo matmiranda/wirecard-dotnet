@@ -109,8 +109,7 @@ namespace WirecardCSharp.Controllers
                 { "code", code },
             };
             FormUrlEncodedContent encodedContent = new FormUrlEncodedContent(@params);
-            HttpClient httpClient = ClientInstance;
-            httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
+            HttpClient httpClient = ConnectClientInstance;
             HttpResponseMessage response = await httpClient.PostAsync($"oauth/token", encodedContent);
             if (!response.IsSuccessStatusCode)
             {
@@ -141,8 +140,7 @@ namespace WirecardCSharp.Controllers
                 { "refresh_token", refresh_token }
             };
             FormUrlEncodedContent encodedContent = new FormUrlEncodedContent(@params);
-            HttpClient httpClient = ClientInstance;
-            httpClient.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
+            HttpClient httpClient = ConnectClientInstance;
             HttpResponseMessage response = await httpClient.PostAsync($"oauth/token", encodedContent);
             if (!response.IsSuccessStatusCode)
             {

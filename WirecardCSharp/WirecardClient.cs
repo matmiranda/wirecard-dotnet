@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using WirecardCSharp.Controllers;
 using System.Text.RegularExpressions;
@@ -28,7 +28,8 @@ namespace WirecardCSharp
             {
                 throw new ArgumentException("accesstoken invalid");
             }            
-            _HttpClient.uri = environments == Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
+            //_HttpClient.uri = environments == Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
+            _HttpClient.SelectedEnvironment = environments;
             _HttpClient.accesstoken = accesstoken;
             _HttpClient.BusinessType = "MARKETPLACE";
         }
@@ -61,7 +62,8 @@ namespace WirecardCSharp
             {
                 throw new ArgumentException("base64 invalid");
             }
-            _HttpClient.uri = environments == Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
+            //_HttpClient.uri = environments == Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
+            _HttpClient.SelectedEnvironment = environments;
             _HttpClient.base64 = base64;
             _HttpClient.BusinessType = "E-COMMERCE";
         }

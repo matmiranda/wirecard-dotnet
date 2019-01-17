@@ -16,13 +16,13 @@
     <a href="https://slackin-cqtchmfquq.now.sh/">
         <img src="https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg"
             alt="Slack"/></a>
-    <a href="https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE">
+    <a href="https://github.com/matmiranda/Wirecard/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
             alt="MIT"></a>
-    <a href="https://www.nuget.org/packages/WirecardCSharp">
-        <img src="https://img.shields.io/badge/Nuget-v3.0.1-blue.svg"
+    <a href="https://www.nuget.org/packages/Wirecard">
+        <img src="https://img.shields.io/badge/Nuget-v3.0.4-blue.svg"
             alt="NuGet"></a>
-      <a href="https://www.nuget.org/stats/packages/WirecardCSharp?groupby=Version">
+      <a href="https://www.nuget.org/stats/packages/Wirecard?groupby=Version">
         <img src="https://img.shields.io/badge/Statistics-155.svg"
             alt="Statistics"></a>
       <a href="#1">
@@ -190,10 +190,10 @@ Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/Wirec
 
 
 ```xml
-PM> Install-Package WirecardCSharp
+PM> Install-Package Wirecard
 ```
 
-💥 **Obs**: Trocamos a biblioteca [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/) por [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/).
+💥 **Obs**: Trocamos a biblioteca [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/) por [Wirecard](https://www.nuget.org/packages/Wirecard/).
 
 ## Autenticando e configurando o ambiente (E-Commerce)
 Escolha o "ambiente" você quer executar suas ações e informe seu (token, chave):

@@ -985,113 +985,106 @@ Dim result = Await WC.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX")
 ```
 ## Saldo Wirecard
 #### Consultar Saldos
-```C#
-var result = await WC.Balance.Consult();
+```VB.NET
+Dim result = Await WC.Balance.Consult()
 ```
 ## Lançamentos
 #### Consultar Lançamento
-```C#
-var result = await WC.Launch.Consult("ENT-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Launch.Consult("ENT-XXXXXXXXXXXX")
 ```
 #### Listar Todos Lançamentos
-```C#
-var result = await WC.Launch.List();
+```VB.NET
+Dim result = Await WC.Launch.List()
 ```
 #### Listar Todos Lançamentos com Filtro
-```C#
-string filtros = "filters=status::in(SETTLED)";
-var result = await WC.Launch.ListFilter(filtros);
+```VB.NET
+Dim filtros As String = "filters=status::in(SETTLED)"
+Dim result = Await WC.Launch.ListFilter(filtros)
 ```
 ## Transferências
 #### Criar Transferência
-```C#
-var body = new TransferRequest
-{
-    Amount = 500,
-    TransferInstrument = new Transferinstrument
-    {
-        Method = "",
-        BankAccount = new Bankaccount
-        {
-            Type = "CHECKING",
-            BankNumber = "001",
-            AgencyNumber = "1111",
-            AgencyCheckNumber = "2",
-            AccountNumber = "9999",
-            AccountCheckNumber = "8",
-            Holder = new Holder
-            {
-                FullName = "Nome do Portador",
-                TaxDocument = new Taxdocument
-                {
-                    Type = "CPF",
-                    Number = "22222222222"
+```VB.NET
+Dim body = New TransferRequest With {
+    .Amount = 500,
+    .TransferInstrument = New Transferinstrument With {
+        .Method = "",
+        .BankAccount = New Bankaccount With {
+            .Type = "CHECKING",
+            .BankNumber = "001",
+            .AgencyNumber = "1111",
+            .AgencyCheckNumber = "2",
+            .AccountNumber = "9999",
+            .AccountCheckNumber = "8",
+            .Holder = New Holder With {
+                .FullName = "Nome do Portador",
+                .TaxDocument = New Taxdocument With {
+                    .Type = "CPF",
+                    .Number = "22222222222"
                 }
             }
         }
     }
-};
-string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-var result = await WC.Transfer.Create(body, accessToken);
+}
+Dim accessToken As String = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
+Dim result = Await WC.Transfer.Create(body, accessToken)
 ```
 #### Reverter Transferência
-```C#
-string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-var result = await WC.Transfer.Revert("TRA-XXXXXXXXXXXX", accessToken);
+```VB.NET
+Dim accessToken As String = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
+Dim result = Await WC.Transfer.Revert("TRA-XXXXXXXXXXXX", accessToken)
 ```
 #### Consultar Transferência
-```C#
-string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-var result = await WC.Transfer.Consult("TRA-XXXXXXXXXXXX", accessToken);
+```VB.NET
+Dim accessToken As String = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
+Dim result = Await WC.Transfer.Consult("TRA-XXXXXXXXXXXX", accessToken)
 ```
 #### Listar Todas Transferências
-```C#
-var result = await WC.Transfer.List();
+```VB.NET
+Dim result = Await WC.Transfer.List()
 ```
 #### Listar Todas Transferências com filtros
-```C#
-string filtros = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0";
-var result = await WC.Transfer.List();
+```VB.NET
+Dim filtros As String = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0"
+Dim result = Await WC.Transfer.List()
 ```
 ## Reembolsos
 #### Reembolsar Pagamento
-```C#
-var body = new RefundRequest
-{
-    //caso queira fazer um reembolso parcial é necessário informar o atributo amount na requisição
-    Amount = "2000"
-};            
-var result = await WC.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX");
+```VB.NET
+Dim body = New RefundRequest With {
+    .Amount = "2000"
+}
+Dim result = Await WC.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX")
 ```
 #### Reembolsar Pedido via Cartão de Crédito
-```C#
-var body = new RefundRequest
-{
-    //caso queira fazer um reembolso parcial é necessário informar o atributo amount na requisição
-    Amount = "2000"
-};            
-var result = await WC.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX");
+```VB.NET
+Dim body = New RefundRequest With {
+    .Amount = "2000"
+}
+Dim result = Await WC.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX")
 ```
 #### Consultar Reembolso
-```C#
-var result = await WC.Refund.Consult("REF-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Refund.Consult("REF-XXXXXXXXXXXX")
 ```
 #### Listar Reembolsos do Pagamento
-```C#
-var result = await WC.Refund.ListPayments("PAY-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Refund.ListPayments("PAY-XXXXXXXXXXXX")
 ```
 #### Listar Reembolsos do Pedido
-```C#
-var result = await WC.Refund.ListOrders("ORD-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Refund.ListOrders("ORD-XXXXXXXXXXXX")
 ```
 ## Conciliação
 #### Obter Arquivo de Vendas
-```C#
-var result = await WC.Conciliation.GetSalesFile("20180829"); // Data no formato YYYYMMDD
+```VB.NET
+Dim result = Await WC.Conciliation.GetSalesFile("20180829")
+'Data no formato YYYYMMDD
 ```
 #### Obter Arquivo Financeiro
-```C#
-var result = await WC.Conciliation.GetFinancialFile("2018-08-29"); // Data no formato YYYY-MM-DD
+```VB.NET
+Dim result = Await WC.Conciliation.GetFinancialFile("2018-08-29")
+'Data no formato YYYY-MM-DD
 ```
 ## Assinatura
 #### Criar Plano

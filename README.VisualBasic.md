@@ -1,4 +1,4 @@
-*Leia isso em outras linguagens de programação: [C#](README.md), [F# - Em Breve](README.FSHARP.md).*
+*Leia isso em outras linguagens de programação: [C#](README.md), [F#](README.FSHARP.md).*
 
 ## Índice  
 - [Implementações .NET com suporte](#implementações-net-com-suporte)

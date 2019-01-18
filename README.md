@@ -30,7 +30,7 @@
             alt="Download"></a>
 </p>
 
-*Ler em outras linguagens de programação: [C#](README.md), [Visual Basic](README.VisualBasic.md), [F#](README.FSHARP.md).*
+*Ler em outras linguagens de programação: [Visual Basic](README.VisualBasic.md), [F#](README.FSHARP.md).*
 
 ## Índice  
 - [Implementações .NET com suporte](#implementações-net-com-suporte)

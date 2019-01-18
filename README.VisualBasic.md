@@ -202,7 +202,7 @@ Dim result As OrdersResponse = Task.Run(Function() WC.Order.List()).Result
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Wirecard (email)
 🚩 Essa função funciona somente na conta clássica.
-```V.NET
+```VB.NET
  Dim result = Await WC.ClassicAccount.AccountExist("meu_email@email.com")
  If result = HttpStatusCode.OK Then
      ' já existe

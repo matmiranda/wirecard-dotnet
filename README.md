@@ -188,7 +188,7 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%A7%C3%A3o-do-protocolo-de-seguran%C3%A7a-tls-12).
 
 ## Instalação
-Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/WirecardCSharp/):
+Execute o comando para instalar via [NuGet](https://www.nuget.org/packages/Wirecard/):
 
 
 ```xml
@@ -201,8 +201,8 @@ PM> Install-Package Wirecard
 Escolha o "ambiente" você quer executar suas ações e informe seu (token, chave):
 
 ```C#
-using WirecardCSharp;
-using WirecardCSharp.Models;
+using Wirecard;
+using Wirecard.Models;
 
 private const string token = "xxxxxxxxxxxxxxxxxxx";
 private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
@@ -215,8 +215,8 @@ Você pode acessá-las em **Minha conta** > **Configurações** > **Chaves de Ac
 ## Autenticando e configurando o ambiente (Marketplace)
 Escolha o "ambiente" você quer executar suas ações e informe seu accesstoken: 
 ```C#
-using WirecardCSharp;
-using WirecardCSharp.Models;
+using Wirecard;
+using Wirecard.Models;
 
 private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
 private WirecardClient WC = new WirecardClient(Environments.SANDBOX, accessToken);
@@ -1696,7 +1696,7 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 #### Obter erros
 Você pode recuperar os atributos `code`, `path`, `description`, `message` e `error`, veja no exemplo abaixo:
 ```C#
-using WirecardCSharp.Exception;
+using Wirecard.Exception;
 
 try
 {
@@ -1722,7 +1722,7 @@ catch (WirecardException ex)
 
 ## Licença
 
-[The MIT License](https://github.com/matmiranda/WirecardCSharp/blob/master/LICENSE)
+[The MIT License](https://github.com/matmiranda/Wirecard/blob/master/LICENSE)
 
 Tem dúvidas? Fale com a gente no [Slack](https://slackin-cqtchmfquq.now.sh/)!
 Algum problema ? Abre issues!

@@ -1,36 +1,4 @@
-<p align="center">
-  <a href="https://dev.wirecard.com.br/v2.0/">
-    <img src="https://res.cloudinary.com/matmiranda/image/upload/v1547763491/Wirecard%20%2B%20.NET.jpg" alt="Wirecard logo" width=400>
-  </a>
-</p>
-<p align="center">
-    O jeito mais simples e rápido de integrar o Wirecard a sua aplicação .NET e feito com base nas APIs REST do Wirecard.
-  <br>
-  <br>
-    <a href="https://dev.wirecard.com.br/v2.0/docs">
-        <img src="https://img.shields.io/badge/Docs-Wirecard-orange.svg"
-            alt="Docs"></a>
-    <a href="https://dev.wirecard.com.br/v2.0/reference">
-        <img src="https://img.shields.io/badge/API%20Reference-Wirecard-darkblue.svg"
-            alt="API Reference"></a>
-    <a href="https://slackin-cqtchmfquq.now.sh/">
-        <img src="https://img.shields.io/badge/Slack-Wirecard%20Devs-black.svg"
-            alt="Slack"/></a>
-    <a href="https://github.com/matmiranda/Wirecard/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
-            alt="MIT"></a>
-    <a href="https://www.nuget.org/packages/Wirecard">
-        <img src="https://img.shields.io/badge/Nuget-v3.0.4-blue.svg"
-            alt="NuGet"></a>
-      <a href="https://www.nuget.org/stats/packages/Wirecard?groupby=Version">
-        <img src="https://img.shields.io/badge/Statistics-155.svg"
-            alt="Statistics"></a>
-      <a href="#1">
-            <img src="https://img.shields.io/badge/Download-1k-red.svg"
-            alt="Download"></a>
-</p>
-
-*Leia isso em outras linguagens de programação: [C#](README.md), [Visual Basic - Em Breve](README.VB.md), [F# - Em Breve](README.FSHARP.md).*
+*Leia isso em outras linguagens de programação: [C#](README.md), [F# - Em Breve](README.FSHARP.md).*
 
 ## Índice  
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
@@ -200,13 +168,13 @@ PM> Install-Package Wirecard
 ## Autenticando e configurando o ambiente (E-Commerce)
 Escolha o "ambiente" você quer executar suas ações e informe seu (token, chave):
 
-```C#
-using WirecardCSharp;
-using WirecardCSharp.Models;
+```VB.NET
+Imports WirecardCSharp
+Imports WirecardCSharp.Models
 
-private const string token = "xxxxxxxxxxxxxxxxxxx";
-private const string key = "xxxxxxxxxxxxxxxxxxxxxxxxxx";
-private WirecardClient WC = new WirecardClient(Environments.SANDBOX, token, key);
+Private Const Token As String = "xxxxxxxxxxxxxxxxxxx"
+Private Const Key As String = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
+Private WC As New WirecardClient(Environments.SANDBOX, Token, Key)
 ```
 Para obter um token e a chave, primeiro faça o login [aqui](https://connect-sandbox.wirecard.com.br/login).
 

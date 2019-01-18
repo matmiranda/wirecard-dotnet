@@ -1088,190 +1088,172 @@ Dim result = Await WC.Conciliation.GetFinancialFile("2018-08-29")
 ```
 ## Assinatura
 #### Criar Plano
-```C#
-var body = new PlanRequest
-{
-    Code = "plan103",
-    Name = "Plano Especial",
-    Description = "Descrição do Plano Especial",
-    Amount = 990,
-    Setup_Fee = 500,
-    Max_Qty = 1,
-    Interval = new Interval
-    {
-        Length = 1,
-        Unit = "MONTH"
+```VB.NET
+Dim body = New PlanRequest With {
+    .Code = "plan103",
+    .Name = "Plano Especial",
+    .Description = "Descrição do Plano Especial",
+    .Amount = 990,
+    .Setup_Fee = 500,
+    .Max_Qty = 1,
+    .Interval = New Interval With {
+        .Length = 1,
+        .Unit = "MONTH"
     },
-    Billing_Cycles = 12,
-    Trial = new Trial
-    {
-        Days = 30,
-        Enabled = true,
-        Hold_Setup_Fee = true
+    .Billing_Cycles = 12,
+    .Trial = New Trial With {
+        .Days = 30,
+        .Enabled = True,
+        .Hold_Setup_Fee = True
     }
-};
-var result = await WC.Signature.CreatePlan(body);
+}
+Dim result = Await WC.Signature.CreatePlan(body)
 ```
 #### Listar Planos
-```C#
-var result = await WC.Signature.ListPlans();
+```VB.NET
+Dim result = Await WC.Signature.ListPlans()
 ```
 #### Consultar Plano
-```C#
-var result = await WC.Signature.ConsultPlan("plan101");
+```VB.NET
+Dim result = Await WC.Signature.ConsultPlan("plan101")
 ```
 #### Ativar Plano
-```C#
-var result = await WC.Signature.EnablePlan("plan101");
+```VB.NET
+Dim result = Await WC.Signature.EnablePlan("plan101")
 ```
 #### Desativar Plano
-```C#
-var result = await WC.Signature.DisablePlan("plan101");
+```VB.NET
+Dim result = Await WC.Signature.DisablePlan("plan101")
 ```
 #### Alterar Plano
-```C#
-var body = new PlanRequest
-{
-    Name = "Plano Especial",
-    Description = "",
-    Amount = 1290,
-    Setup_Fee = 800,
-    Max_Qty = 1,
-    Payment_Method = "CREDIT_CARD",
-    Interval = new Interval
-    {
-        Length = 1,
-        Unit = "MONTH"
+```VB.NET
+Dim body = New PlanRequest With {
+    .Name = "Plano Especial",
+    .Description = "",
+    .Amount = 1290,
+    .Setup_Fee = 800,
+    .Max_Qty = 1,
+    .Payment_Method = "CREDIT_CARD",
+    .Interval = New Interval With {
+        .Length = 1,
+        .Unit = "MONTH"
     },
-    Billing_Cycles = 12,
-    Trial = new Trial
-    {
-        Days = 30,
-        Enabled = true,
-        Hold_Setup_Fee = true
+    .Billing_Cycles = 12,
+    .Trial = New Trial With {
+        .Days = 30,
+        .Enabled = True,
+        .Hold_Setup_Fee = True
     }
-};
-var result = await WC.Signature.ChangePlan(body, "plan101");
+}
+Dim result = Await WC.Signature.ChangePlan(body, "plan101")
 ```
 #### Criar Assinante
-```C#
-var body = new SubscriberRequest
-{
-    Code = "cliente03",
-    Email = "nome@exemplo.com.br",
-    FullName = "Nome Sobrenome",
-    Cpf = "22222222222",
-    Phone_Area_Code = "11",
-    Phone_Number = "934343434",
-    BirthDate_Day = "26",
-    BirthDate_Month = "04",
-    BirthDate_Year = "1980",
-    Address = new Address
-    {
-        Street = "Rua Nome da Rua",
-        StreetNumber = "100",
-        Complement = "casa",
-        District = "Nome do Bairro",
-        City = "São Paulo",
-        State = "SP",
-        Country = "BRA",
-        ZipCode = "05015010"
+```VB.NET
+Dim body = New SubscriberRequest With {
+    .Code = "cliente03",
+    .Email = "nome@exemplo.com.br",
+    .FullName = "Nome Sobrenome",
+    .Cpf = "22222222222",
+    .Phone_Area_Code = "11",
+    .Phone_Number = "934343434",
+    .BirthDate_Day = "26",
+    .BirthDate_Month = "04",
+    .BirthDate_Year = "1980",
+    .Address = New Address With {
+        .Street = "Rua Nome da Rua",
+        .StreetNumber = "100",
+        .Complement = "casa",
+        .District = "Nome do Bairro",
+        .City = "São Paulo",
+        .State = "SP",
+        .Country = "BRA",
+        .ZipCode = "05015010"
     },
-    Billing_Info = new Billing_Info
-    {
-        Credit_Card = new Credit_Card
-        {
-            Holder_Name = "Nome Completo",
-            Number = "4111111111111111",
-            Expiration_Month = "06",
-            Expiration_Year = "22"
+    .Billing_Info = New Billing_Info With {
+        .Credit_Card = New Credit_Card With {
+            .Holder_Name = "Nome Completo",
+            .Number = "4111111111111111",
+            .Expiration_Month = "06",
+            .Expiration_Year = "22"
         }
     }
-};
-var result = await WC.Signature.CreateSubscriber(body, true);
+}
+Dim result = Await WC.Signature.CreateSubscriber(body, True)
 ```
 #### Listar Assinantes
-```C#
-var result = await WC.Signature.ListSubscribers();
+```VB.NET
+Dim result = Await WC.Signature.ListSubscribers()
 ```
 #### Consultar Assinante
-```C#
-var result = await WC.Signature.ConsultSubscriber("cliente01");
+```VB.NET
+Dim result = Await WC.Signature.ConsultSubscriber("cliente01")
 ```
 #### Alterar Assinante
-```C#
-var body = new SubscriberRequest
-{
-    Code = "cliente01",
-    Email = "nome@exemplo.com.br",
-    FullName = "Nome Sobrenome",
-    Cpf = "22222222222",
-    Phone_Area_Code = "11",
-    Phone_Number = "934343434",
-    BirthDate_Day = "26",
-    BirthDate_Month = "04",
-    BirthDate_Year = "1980",
-    Address = new Address
-    {
-        Street = "Rua Nome da Rua1",
-        StreetNumber = "100",
-        Complement = "casa",
-        District = "Nome do Bairro",
-        City = "São Paulo",
-        State = "SP",
-        Country = "BRA",
-        ZipCode = "05015010"
+```VB.NET
+Dim body = New SubscriberRequest With {
+    .Code = "cliente01",
+    .Email = "nome@exemplo.com.br",
+    .FullName = "Nome Sobrenome",
+    .Cpf = "22222222222",
+    .Phone_Area_Code = "11",
+    .Phone_Number = "934343434",
+    .BirthDate_Day = "26",
+    .BirthDate_Month = "04",
+    .BirthDate_Year = "1980",
+    .Address = New Address With {
+        .Street = "Rua Nome da Rua1",
+        .StreetNumber = "100",
+        .Complement = "casa",
+        .District = "Nome do Bairro",
+        .City = "São Paulo",
+        .State = "SP",
+        .Country = "BRA",
+        .ZipCode = "05015010"
     }
-};
-var result = await WC.Signature.ChangeSubscriber(body, "cliente01");
+}
+Dim result = Await WC.Signature.ChangeSubscriber(body, "cliente01")
 ```
 #### Atualizar Cartão do Assinante
-```C#
-var body = new SubscriberRequest
-{
-    Billing_Info = new Billing_Info
-    {
-        Credit_Card = new Credit_Card
-        {
-            Holder_Name = "Novo nome222",
-            Number = "5555666677778884",
-            Expiration_Month = "12",
-            Expiration_Year = "20"
+```VB.NET
+Dim body = New SubscriberRequest With {
+    .Billing_Info = New Billing_Info With {
+        .Credit_Card = New Credit_Card With {
+            .Holder_Name = "Novo nome222",
+            .Number = "5555666677778884",
+            .Expiration_Month = "12",
+            .Expiration_Year = "20"
         }
     }
-};
-var result = await WC.Signature.UpdateSubscriberCard(body, "cliente01");
+}
+Dim result = Await WC.Signature.UpdateSubscriberCard(body, "cliente01")
 ```
 #### Criar Assinaturas
-```C#
-var body = new SubscriptionRequest
-{
-    Code = "assinatura04",
-    Amount = "9000",
-    Plan = new Plan
-    {
-        Code = "plan101"
+```VB.NET
+Dim body = New SubscriptionRequest With {
+    .Code = "assinatura04",
+    .Amount = "9000",
+    .Plan = New Plan With {
+        .Code = "plan101"
     },
-    Payment_Method = "CREDIT_CARD",
-    Customer = new Customer
-    {
-        Code = "cliente01",
+    .Payment_Method = "CREDIT_CARD",
+    .Customer = New Customer With {
+        .Code = "cliente01"
     }
-};
-var result = await WC.Signature.CreateSubscriptions(body, false);
+}
+Dim result = Await WC.Signature.CreateSubscriptions(body, False)
 ```
 #### Listar Todas Assinaturas
-```C#
-var result = await WC.Signature.ListAllSubscriptions();
+```VB.NET
+Dim result = Await WC.Signature.ListAllSubscriptions()
 ```
 #### Consultar Assinatura -Sem Filtro
-```C#
-var result = await WC.Signature.ConsultSubscriptionFilter("assinatura01");
+```VB.NET
+Dim result = Await WC.Signature.ConsultSubscriptionFilter("assinatura01")
 ```
 #### Consultar Assinatura - Com Filtro
-```C#
-var filter = "q=assinatura01&filters=status::eq(ACTIVE)";
-var result = await WC.Signature.ConsultSubscription(filter);
+```VB.NET
+Dim filter = "q=assinatura01&filters=status::eq(ACTIVE)"
+Dim result = Await WC.Signature.ConsultSubscription(filter)
 ```
 Alguns exemplos de como filtrar:
 
@@ -1286,172 +1268,151 @@ Alguns exemplos de como filtrar:
 9. Filtrar assinaturas por valor (``` filters=amount::bt(100,100000) ```)
 10. Pesquisar Assinatura (``` q=diego nunes&limit=10&offset=0 ```)
 #### Suspender Assinatura
-```C#
-var result = await WC.Signature.SuspendSubscription("assinatura01");
+```VB.NET
+Dim result = Await WC.Signature.SuspendSubscription("assinatura01")
 ```
 #### Reativar Assinatura
-```C#
-var result = await WC.Signature.ReactivateSignature("assinatura01");
+```VB.NET
+Dim result = Await WC.Signature.ReactivateSignature("assinatura01")
 ```
 #### Cancelar Assinatura
-```C#
-var result = await WC.Signature.CancelSignature("assinatura01");
+```VB.NET
+Dim result = Await WC.Signature.CancelSignature("assinatura01")
 ```
 #### Alterar Assinatura
-```C#
-var body = new SubscriptionRequest
-{
-    Plan = new Plan
-    {
-        Code = "plan101"
+```VB.NET
+Dim body = New SubscriptionRequest With {
+    .Plan = New Plan With {
+        .Code = "plan101"
     },
-    Amount = "9990",
-    Next_Invoice_Date = new Next_Invoice_Date
-    {
-        Day = 15,
-        Month = 12,
-        Year = 2018
+    .Amount = "9990",
+    .Next_Invoice_Date = New Next_Invoice_Date With {
+        .Day = 15,
+        .Month = 12,
+        .Year = 2018
     }
-};
-var result = await WC.Signature.ChangeSubscription(body, "assinatura01");
+}
+Dim result = Await WC.Signature.ChangeSubscription(body, "assinatura01")
 ```
 #### Alterar método de pagamento
-```C#
-var body = new SubscriptionRequest
-{
-    Payment_Method = "BOLETO"
-};
-var result = await WC.Signature.ChangePaymentMethod(body, "assinatura01");
+```VB.NET
+Dim body = New SubscriptionRequest With {
+    .Payment_Method = "BOLETO"
+}
+Dim result = Await WC.Signature.ChangePaymentMethod(body, "assinatura01")
 ```
 #### Listar Todas as Faturas de Uma Assinatura
-```C#
-var result = await WC.Signature.ListSignatureInvoices("assinatura01");
+```VB.NET
+Dim result = Await WC.Signature.ListSignatureInvoices("assinatura01")
 ```
 #### Consultar Fatura
-```C#
-var result = await WC.Signature.ConsultInvoice("10865746");
+```VB.NET
+Dim result = Await WC.Signature.ConsultInvoice("10865746")
 ```
 #### Listar todos os pagamentos de fatura
-```C#
-var result = await WC.Signature.ListAllInvoicePayments("10865746");
+```VB.NET
+Dim result = Await WC.Signature.ListAllInvoicePayments("10865746")
 ```
 #### Consultar pagamento de assinatura
-```C#
-var result = await WC.Signature.ConsultSubscriptionPayment("PAY-123456789012");
+```VB.NET
+Dim result = Await WC.Signature.ConsultSubscriptionPayment("PAY-123456789012")
 ```
 #### Criar Cupom
-```C#
-var body = new CouponRequest
-{
-    Code = "coupon-0002",
-    Name = "Coupon name",
-    Description = "My new coupon",
-    Discount = new Discount
-    {
-        Value = 1000,
-        Type = "percent"
+```VB.NET
+Dim body = New CouponRequest With {
+    .Code = "coupon-0002",
+    .Name = "Coupon name",
+    .Description = "My new coupon",
+    .Discount = New Discount With {
+        .Value = 1000,
+        .Type = "percent"
     },
-    Status = "active",
-    Duration = new Duration
-    {
-        Type = "repeating",
-        Occurrences = 12
+    .Status = "active",
+    .Duration = New Duration With {
+        .Type = "repeating",
+        .Occurrences = 12
     },
-    Max_Redemptions = 100,
-    Expiration_Date = new Expiration_Date
-    {
-        Year = 2020,
-        Month = 08,
-        Day = 01    
+    .Max_Redemptions = 100,
+    .Expiration_Date = New Expiration_Date With {
+        .Year = 2020,
+        .Month = 08,
+        .Day = 01
     }
-};
-var result = await WC.Signature.CreateCoupon(body);
+}
+Dim result = Await WC.Signature.CreateCoupon(body)
 ```
 #### Associar Cupom para Assinatura
-```C#
-var body = new CouponRequest
-{
-    Coupon = new Coupon
-    {
-        Code = "coupon-0001"
+```VB.NET
+Dim body = New CouponRequest With {
+    .Coupon = New Coupon With {
+        .Code = "coupon-0001"
     }
-};
-var result = await WC.Signature.AssociateCouponForExistingSignature(body, "assinatura01");
+}
+Dim result = Await WC.Signature.AssociateCouponForExistingSignature(body, "assinatura01")
 ```
 #### Associar Cupom para Nova Assinatura
-```C#
-var body = new CouponRequest
-{
-    //informar os campos
-};
-var result = await WC.Signature.AssociateCouponForExistingSignature(body, "true");
+```VB.NET
+Dim body = New CouponRequest()
+Dim result = Await WC.Signature.AssociateCouponForExistingSignature(body, "true")
 ```
 #### Consultar Cupom
-```C#
-var result = await WC.Signature.ConsultCoupon("coupon-0001");
+```VB.NET
+Dim result = Await WC.Signature.ConsultCoupon("coupon-0001")
 ```
 #### Listar Todos os Cupons
-```C#
-var result = await WC.Signature.ListAllCoupons();
+```VB.NET
+Dim result = Await WC.Signature.ListAllCoupons()
 ```
 #### Ativar e Inativar Cupons
-```C#
-var result = await WC.Signature.EnableOrDisableCoupon("coupon-0001", "inactive");
+```VB.NET
+Dim result = Await WC.Signature.EnableOrDisableCoupon("coupon-0001", "inactive")
 ```
 #### Excluir Cupom de uma Assinatura
-```C#
-var result = await WC.Signature.DeleteSignatureCoupon("assinatura01");
+```VB.NET
+Dim result = Await WC.Signature.DeleteSignatureCoupon("assinatura01")
 ```
 #### Retentativa de pagamento de uma fatura
-```C#
-var result = await WC.Signature.RetentiveInvoicePayment("1548222");
+```VB.NET
+Dim result = Await WC.Signature.RetentiveInvoicePayment("1548222")
 ```
 #### Gerar um novo boleto para uma fatura
-```C#
-var body = new RetentativeRequest
-{
-    Year = 2020,
-    Month = 08,
-    Day = 01
-};
-var result = await WC.Signature.CreateNewInvoiceBoleto(body,"1548222");
+```VB.NET
+Dim body = New RetentativeRequest With {
+    .Year = 2020,
+    .Month = 08,
+    .Day = 01
+}
+Dim result = Await WC.Signature.CreateNewInvoiceBoleto(body, "1548222")
 ```
 #### Criar Regras de Retentativas Automáticas
-```C#
-var body = new RetentativeRequest
-{
-    First_Try = 1,
-    Second_Try = 3,
-    Third_Try = 5,
-    Finally = "cancel"
-};
-var result = await WC.Signature.CreateAutomaticRetentionRules(body);
+```VB.NET
+Dim body = New RetentativeRequest With {
+    .First_Try = 1,
+    .Second_Try = 3,
+    .Third_Try = 5,
+    .[Finally] = "cancel"
+}
+Dim result = Await WC.Signature.CreateAutomaticRetentionRules(body)
 ```
 
 #### Criar Preferência de Notificação
-```C#
-var body = new NotificationRequest
-{
-    Notification = new Notification
-    {
-        Webhook = new Webhook
-        {
-            Url = "http://exemploldeurl.com.br/assinaturas"
+```VB.NET
+Dim body = New NotificationRequest With {
+    .Notification = New Notification With {
+        .Webhook = New Webhook With {
+            .Url = "http://exemploldeurl.com.br/assinaturas"
         },
-        Email = new Email
-        {
-            Merchant = new Merchant
-            {
-                Enabled = true
+        .Email = New Email With {
+            .Merchant = New Merchant With {
+                .Enabled = True
             },
-            Customer = new Customer
-            {
-                Enabled = true
+            .Customer = New Customer With {
+                .Enabled = True
             }
         }
     }
-};
-var result = await WC.Signature.CreateNotificationPreference(body);
+}
+Dim result = Await WC.Signature.CreateNotificationPreference(body)
 ```
 
 ## Convertendo objeto para json

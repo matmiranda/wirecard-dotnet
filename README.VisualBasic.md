@@ -380,567 +380,488 @@ Dim result = Await WC.ClassicAccount.GetPublickey()
 
 ## Conta Transparente
 #### Criar Conta Wirecard Transparente
-```C#
-var body = new TransparentAccountRequest
-{
-    TransparentAccount = true,
-    Type = "MERCHANT",
-    Email = new Email
-    {
-        Address = "teste@hotmail.com"
+```VB.NET
+Dim body = New TransparentAccountRequest With {
+    .TransparentAccount = True,
+    .Type = "MERCHANT",
+    .Email = New Email With {
+        .Address = "teste@hotmail.com"
     },
-    Person = new Person
-    {
-        Name = "PrimeiroNome",
-        LastName = "SegundoNome",
-        TaxDocument = new Taxdocument
-        {
-            Type = "CPF",
-            Number = "123.456.798-91"
+    .Person = New Person With {
+        .Name = "PrimeiroNome",
+        .LastName = "SegundoNome",
+        .TaxDocument = New Taxdocument With {
+            .Type = "CPF",
+            .Number = "123.456.798-91"
         },
-        BirthDate = "2011-01-01",
-        Phone = new Phone
-        {
-            CountryCode = "55",
-            AreaCode = "11",
-            Number = "965213244"
+        .BirthDate = "2011-01-01",
+        .Phone = New Phone With {
+            .CountryCode = "55",
+            .AreaCode = "11",
+            .Number = "965213244"
         },
-        Address = new Address
-        {
-            Street = "Av. Brigadeiro Faria Lima",
-            StreetNumber = "2927",
-            District = "Itaim",
-            ZipCode = "01234000",
-            City = "Osasco",
-            State = "SP",
-            Country = "BRA"
+        .Address = New Address With {
+            .Street = "Av. Brigadeiro Faria Lima",
+            .StreetNumber = "2927",
+            .District = "Itaim",
+            .ZipCode = "01234000",
+            .City = "Osasco",
+            .State = "SP",
+            .Country = "BRA"
         }
     }
-};
-var result = await WC.TransparentAccount.Create(body);
+}
+Dim result = Await WC.TransparentAccount.Create(body)
 ```
 
 ## Clientes
 #### Criar Cliente - (E-COMMERCE)
-```C#
-var body = new CustomerRequest
-{
-    OwnId = "meu_id_customer_002",
-    FullName = "Maria Oliveira",
-    Email = "maria@email.com",
-    BirthDate = "1980-5-10",
-    TaxDocument = new Taxdocument
-    {
-        Type = "CPF",
-        Number = "22288866644"
+```VB.NET
+Dim body = New CustomerRequest With {
+    .OwnId = "meu_id_customer_002",
+    .FullName = "Maria Oliveira",
+    .Email = "maria@email.com",
+    .BirthDate = "1980-5-10",
+    .TaxDocument = New Taxdocument With {
+        .Type = "CPF",
+        .Number = "22288866644"
     },
-    Phone = new Phone
-    {
-        CountryCode = "55",
-        AreaCode = "11",
-        Number = "55552266"
+    .Phone = New Phone With {
+        .CountryCode = "55",
+        .AreaCode = "11",
+        .Number = "55552266"
     },
-    ShippingAddress = new Shippingaddress
-    {
-        City = "São Paulo",
-        Complement = "10",
-        District = "Itaim Bibi",
-        Street = "Avenida Faria Lima",
-        StreetNumber = "500",
-        ZipCode = "01234000",
-        State = "SP",
-        Country = "BRA"
+    .ShippingAddress = New Shippingaddress With {
+        .City = "São Paulo",
+        .Complement = "10",
+        .District = "Itaim Bibi",
+        .Street = "Avenida Faria Lima",
+        .StreetNumber = "500",
+        .ZipCode = "01234000",
+        .State = "SP",
+        .Country = "BRA"
     },
-    FundingInstrument = new Fundinginstrument
-    {
-        Method = "CREDIT_CARD",
-        CreditCard = new Creditcard
-        {
-            ExpirationMonth = "06",
-            ExpirationYear = "22",
-            Number = "6362970000457013",
-            Cvc = "123",
-            Holder = new Holder
-            {
-                FullName = "Maria Oliveira",
-                BirthDate = "1988-12-30",
-                TaxDocument = new Taxdocument
-                {
-                    Type = "CPF",
-                    Number = "33333333333"
+    .FundingInstrument = New Fundinginstrument With {
+        .Method = "CREDIT_CARD",
+        .CreditCard = New Creditcard With {
+            .ExpirationMonth = "06",
+            .ExpirationYear = "22",
+            .Number = "6362970000457013",
+            .Cvc = "123",
+            .Holder = New Holder With {
+                .FullName = "Maria Oliveira",
+                .BirthDate = "1988-12-30",
+                .TaxDocument = New Taxdocument With {
+                    .Type = "CPF",
+                    .Number = "33333333333"
                 },
-                BillingAddress = new Billingaddress
-                {
-                    City = "Rio de Janeiro",
-                    District = "Copacabana",
-                    Street = "Rua Raimundo Corrêa",
-                    StreetNumber = "1200",
-                    ZipCode = "05246200",
-                    State = "SP",
-                    Country = "BRA"
+                .BillingAddress = New Billingaddress With {
+                    .City = "Rio de Janeiro",
+                    .District = "Copacabana",
+                    .Street = "Rua Raimundo Corrêa",
+                    .StreetNumber = "1200",
+                    .ZipCode = "05246200",
+                    .State = "SP",
+                    .Country = "BRA"
                 },
-                Phone = new Phone
-                {
-                    CountryCode = "55",
-                    AreaCode = "11",
-                    Number = "66778899"
+                .Phone = New Phone With {
+                    .CountryCode = "55",
+                    .AreaCode = "11",
+                    .Number = "66778899"
                 }
             }
         }
     }
-};
-var result = await WC.Customer.Create(body);
+}
+Dim result = Await WC.Customer.Create(body)
 ```
 #### Criar Cliente - (MARKETPLACE / PLATAFORMA)
-```C#
- var body = new CustomerRequest
- {
-     OwnId = "meu_id_customer",
-     FullName = "João Silva",
-     Email = "joao@email.com",
-     BirthDate = "1990-10-22",
-     TaxDocument = new Taxdocument
-     {
-         Type = "CPF",
-         Number = "22288866644"
+```VB.NET
+ Dim body = New CustomerRequest With {
+     .OwnId = "meu_id_customer",
+     .FullName = "João Silva",
+     .Email = "joao@email.com",
+     .BirthDate = "1990-10-22",
+     .TaxDocument = New Taxdocument With {
+         .Type = "CPF",
+         .Number = "22288866644"
      },
-     Phone = new Phone
-     {
-         CountryCode = "55",
-         AreaCode = "11",
-         Number = "55552266"
+     .Phone = New Phone With {
+         .CountryCode = "55",
+         .AreaCode = "11",
+         .Number = "55552266"
      },
-     ShippingAddress = new Shippingaddress
-     {
-         City = "São Paulo",
-         Complement = "10",
-         District = "Itaim Bibi",
-         Street = "Avenida Faria Lima",
-         StreetNumber = "500",
-         ZipCode = "01234000",
-         State = "SP",
-         Country = "BRA"
+     .ShippingAddress = New Shippingaddress With {
+         .City = "São Paulo",
+         .Complement = "10",
+         .District = "Itaim Bibi",
+         .Street = "Avenida Faria Lima",
+         .StreetNumber = "500",
+         .ZipCode = "01234000",
+         .State = "SP",
+         .Country = "BRA"
      }
- };
-var result = await WC.Customer.Create(body);
+}
+Dim result = Await WC.Customer.Create(body)
 ```
 
 #### Adicionar Cartão de Crédito
-```C#
-var body = new CustomerRequest
-{
-    Method = "CREDIT_CARD",
-    CreditCard = new Creditcard
-    {
-        ExpirationMonth = "06",
-        ExpirationYear = "2022",
-        Number = "4012001037141112",
-        Cvc = "123",
-        Holder = new Holder
-        {
-            FullName = "João da Silva",
-            BirthDate = "1961-03-01",
-            TaxDocument = new Taxdocument
-            {
-                Type = "CPF",
-                Number = "11111111111"
+```VB.NET
+Dim body = New CustomerRequest With {
+    .Method = "CREDIT_CARD",
+    .CreditCard = New Creditcard With {
+        .ExpirationMonth = "06",
+        .ExpirationYear = "2022",
+        .Number = "4012001037141112",
+        .Cvc = "123",
+        .Holder = New Holder With {
+            .FullName = "João da Silva",
+            .BirthDate = "1961-03-01",
+            .TaxDocument = New Taxdocument With {
+                .Type = "CPF",
+                .Number = "11111111111"
             },
-            Phone = new Phone
-            {
-                CountryCode = "55",
-                AreaCode = "11",
-                Number = "111111111"
+            .Phone = New Phone With {
+                .CountryCode = "55",
+                .AreaCode = "11",
+                .Number = "111111111"
             }
         }
     }
-};
-var result = await WC.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX");
+}
+Dim result = Await WC.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX")
 ```
 
 #### Deletar Cartão de Crédito
-```C#
-var result = await WC.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX")
 ```
 
 #### Consultar Cliente
-```C#
-var result = await WC.Customer.Consult("CUS-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Customer.Consult("CUS-XXXXXXXXXXXX")
 ```
 
 #### Listar Todos os Clientes
-```C#
-var result = await WC.Customer.List();
+```VB.NET
+Dim result = Await WC.Customer.List()
 ```
 
 ## Pedidos
 #### Criar Pedido
-```C#
-var body = new OrderRequest
-{
-    OwnId = "id_pedido",
-    Amount = new Amount
-    {
-        Currency = "BRL",
-        Subtotals = new Subtotals
-        {
-            Shipping = 1000
+```VB.NET
+Dim body = New OrderRequest With {
+    .OwnId = "id_pedido",
+    .Amount = New Amount With {
+        .Currency = "BRL",
+        .Subtotals = New Subtotals With {
+            .Shipping = 1000
         }
     },
-    Items = new List<Item>
-    {
-        new Item
-        {
-            Product = "Descrição do pedido",
-            Category = "VIDEO_GAME_SOFTWARE",
-            Quantity = 1,
-            Detail = "Mais info...",
-            Price = 22000
+    .Items = New List(Of Item) From {
+        New Item With {
+            .Product = "Descrição do pedido",
+            .Category = "VIDEO_GAME_SOFTWARE",
+            .Quantity = 1,
+            .Detail = "Mais info...",
+            .Price = 22000
         }
     },
-    Customer = new Customer
-    {
-        Id = "CUS-7AKU0VORZ2D4"
+    .Customer = New Customer With {
+        .Id = "CUS-7AKU0VORZ2D4"
     },
-    Receivers = new List<Receiver>
-    {
-        new Receiver
-        {
-            Type = "SECONDARY",
-            FeePayor = false,
-            MoipAccount = new Moipaccount
-            {
-                Id = "MPA-E3C8493A06AE"
+    .Receivers = New List(Of Receiver) From {
+        New Receiver With {
+            .Type = "SECONDARY",
+            .FeePayor = False,
+            .MoipAccount = New Moipaccount With {
+                .Id = "MPA-E3C8493A06AE"
             },
-            Amount = new Amount
-            {
-                Fixed = 5000
+            .Amount = New Amount With {
+                .Fixed = 5000
             }
         }
     }
-};
-var result = await WC.Order.Create(body);
+}
+Dim result = Await WC.Order.Create(body)
 ```
 
 #### Consultar Pedido
-```C#
-var result = await WC.Order.Consult("ORD-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Order.Consult("ORD-XXXXXXXXXXXX")
 ```
 
 #### Listar Todos os Pedidos - Sem Filtros
-```C#
-var result = await WC.Order.List();
+```VB.NET
+Dim result = Await WC.Order.List()
 ```
 
 #### Listar Todos os Pedidos - Com Filtros
-```C#
-string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0";
-var result = await WC.Order.ListFilter(filtros);
+```VB.NET
+Dim filtros As String = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0"
+    Dim result = Await WC.Order.ListFilter(filtros)
 ```
  Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
  
  ## Pagamentos
  #### Criar Pagamento - Cartão de Crédito
- ```C#
-var body = new PaymentRequest
-{
-    //informe os campos aqui
-    InstallmentCount = 1,
-    FundingInstrument = new Fundinginstrument
-    {
-        Method = "CREDIT_CARD",
-        CreditCard = new Creditcard
-        {
-            Id = "CRC-XXXXXXXXXXXX",
-            Cvc = "123",
-            Holder = new Holder
-            {
-                FullName = "Jose Portador da Silva",
-                BirthDate = "1988-12-30",
-                TaxDocument = new Taxdocument
-                {
-                    Type = "CPF",
-                    Number = "33333333333"
+ ```VB.NET
+Dim body = New PaymentRequest With {
+    .InstallmentCount = 1,
+    .FundingInstrument = New Fundinginstrument With {
+        .Method = "CREDIT_CARD",
+        .CreditCard = New Creditcard With {
+            .Id = "CRC-XXXXXXXXXXXX",
+            .Cvc = "123",
+            .Holder = New Holder With {
+                .FullName = "Jose Portador da Silva",
+                .BirthDate = "1988-12-30",
+                .TaxDocument = New Taxdocument With {
+                    .Type = "CPF",
+                    .Number = "33333333333"
                 }
             }
         }
     }
-};          
-var result = await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX");
+}
+Dim result = Await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX")
 ```
 
 #### Criar Pagamento - Boleto
 
-```C#
-var body = new PaymentRequest
-{
-    //informe os campos aqui
-    StatementDescriptor = "Minha Loja",
-    FundingInstrument = new Fundinginstrument
-    {
-        Method = "BOLETO",
-        Boleto = new Boleto
-        {
-            ExpirationDate = "2020-06-20", //yyyy-MM-dd
-            InstructionLines = new Instructionlines
-            {
-                First = "Atenção",
-                Second = "fique atento à data de vencimento do boleto.",
-                Third = "Pague em qualquer casa lotérica."
+```VB.NET
+Dim body = New PaymentRequest With {
+    .StatementDescriptor = "Minha Loja",
+    .FundingInstrument = New Fundinginstrument With {
+        .Method = "BOLETO",
+        .Boleto = New Boleto With {
+            .ExpirationDate = "2020-06-20",
+            .InstructionLines = New Instructionlines With {
+                .First = "Atenção",
+                .Second = "fique atento à data de vencimento do boleto.",
+                .Third = "Pague em qualquer casa lotérica."
             }
-        }        
+        }
     }
-};
-var result = await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX");
+}
+Dim result = Await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX")
 ```
 #### Criar Pagamento - Débito Online
 
-```C#
-var body = new PaymentRequest
-{
-    FundingInstrument = new Fundinginstrument
-    {
-        Method = "ONLINE_BANK_DEBIT",
-        OnlineBankDebit = new Onlinebankdebit
-        {
-            BankNumber = "341",
-            ExpirationDate = "2017-10-22"
+```VB.NET
+Dim body = New PaymentRequest With {
+    .FundingInstrument = New Fundinginstrument With {
+        .Method = "ONLINE_BANK_DEBIT",
+        .OnlineBankDebit = New Onlinebankdebit With {
+            .BankNumber = "341",
+            .ExpirationDate = "2017-10-22"
         }
     }
-};
-var result = await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX");
+}
+Dim result = Await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX")
 ```
 
 #### Liberação de Custódia
-```C#
-var result = await WC.Payment.ReleaseCustody("ECW-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Payment.ReleaseCustody("ECW-XXXXXXXXXXXX")
 ```
 
 #### Capturar Pagamento Pré-autorizado
-```C#
-var result = await WC.Payment.CaptureAuthorized("PAY-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Payment.CaptureAuthorized("PAY-XXXXXXXXXXXX")
 ```
 
 #### Cancelar Pagamento Pré-autorizado
-```C#
-var result = await WC.Payment.CancelAuthorized("PAY-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Payment.CancelAuthorized("PAY-XXXXXXXXXXXX")
 ```
 
 #### Consultar Pagamento
-```C#
-var result = await WC.Payment.Consult("PAY-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Payment.Consult("PAY-XXXXXXXXXXXX")
 ```
 
 #### Simular Pagamentos (sandbox)
-```C#
-var result = await WC.Payment.Simulate("PAY-XXXXXXXXXXXX", 26500);
+```VB.NET
+Dim result = Await WC.Payment.Simulate("PAY-XXXXXXXXXXXX", 26500)
 ```
 
 ## Multipedidos
 #### Criar Multipedido
-```C#
-var body = new MultiOrderRequest
-{
-    OwnId = "meu_multiorder_id",
-    Orders = new List<Order>
-    {
-        new Order
-        {
-            OwnId = "pedido_1_id",
-            Amount = new Amount
-            {
-                Currency = "BRL",
-                Subtotals = new Subtotals
-                {
-                    Shipping = 2000
+```VB.NET
+Dim body = New MultiOrderRequest With {
+    .OwnId = "meu_multiorder_id",
+    .Orders = New List(Of Order) From {
+        New Order With {
+            .OwnId = "pedido_1_id",
+            .Amount = New Amount With {
+                .Currency = "BRL",
+                .Subtotals = New Subtotals With {
+                    .Shipping = 2000
                 }
             },
-            Items = new List<Item>
-            {
-                new Item
-                {
-                    Product = "Camisa Verde e Amarelo - Brasil",
-                    Quantity = 1,
-                    Detail = "Seleção Brasileira",
-                    Price = 2000
+            .Items = New List(Of Item) From {
+                New Item With {
+                    .Product = "Camisa Verde e Amarelo - Brasil",
+                    .Quantity = 1,
+                    .Detail = "Seleção Brasileira",
+                    .Price = 2000
                 }
             },
-            Customer = new Customer
-            {
-                OwnId = "customer[1234]",
-                FullName = "Joao Souza",
-                Email = "joao.sousa@email.com",
-                BirthDate = "1988-12-30",
-                TaxDocument = new Taxdocument
-                {
-                    Type = "CPF",
-                    Number = "22222222222"
+            .Customer = New Customer With {
+                .OwnId = "customer[1234]",
+                .FullName = "Joao Souza",
+                .Email = "joao.sousa@email.com",
+                .BirthDate = "1988-12-30",
+                .TaxDocument = New Taxdocument With {
+                    .Type = "CPF",
+                    .Number = "22222222222"
                 },
-                Phone = new Phone
-                {
-                    CountryCode = "55",
-                    AreaCode = "11",
-                    Number = "66778899"
+                .Phone = New Phone With {
+                    .CountryCode = "55",
+                    .AreaCode = "11",
+                    .Number = "66778899"
                 },
-                ShippingAddress = new Shippingaddress
-                {
-                    City = "São Paulo",
-                    Complement = "10",
-                    District = "Itaim Bibi",
-                    Street = "Avenida Faria Lima",
-                    StreetNumber = "500",
-                    ZipCode = "01234000",
-                    State = "SP",
-                    Country = "BRA"
+                .ShippingAddress = New Shippingaddress With {
+                    .City = "São Paulo",
+                    .Complement = "10",
+                    .District = "Itaim Bibi",
+                    .Street = "Avenida Faria Lima",
+                    .StreetNumber = "500",
+                    .ZipCode = "01234000",
+                    .State = "SP",
+                    .Country = "BRA"
                 }
             },
-            Receivers = new List<Receiver>
-            {
-                new Receiver
-                {
-                    MoipAccount = new Moipaccount
-                    {
-                        Id = "MPA-VB5OGTVPCI52"
+            .Receivers = New List(Of Receiver) From {
+                New Receiver With {
+                    .MoipAccount = New Moipaccount With {
+                        .Id = "MPA-VB5OGTVPCI52"
                     },
-                    Type = "PRIMARY"
+                    .Type = "PRIMARY"
                 }
             }
         },
-        new Order
-        {
-            OwnId = "pedido_2_id",
-            Amount = new Amount
-            {
-                Currency = "BRL",
-                Subtotals = new Subtotals
-                {
-                    Shipping = 2000
+        New Order With {
+            .OwnId = "pedido_2_id",
+            .Amount = New Amount With {
+                .Currency = "BRL",
+                .Subtotals = New Subtotals With {
+                    .Shipping = 2000
                 }
             },
-            Items = new List<Item>
-            {
-                new Item
-                {
-                    Product = "Camisa Preta e Vermelha - Alemanha",
-                    Quantity = 1,
-                    Detail = "Camiseta da Copa 2014",
-                    Price = 2000
+            .Items = New List(Of Item) From {
+                New Item With {
+                    .Product = "Camisa Preta e Vermelha - Alemanha",
+                    .Quantity = 1,
+                    .Detail = "Camiseta da Copa 2014",
+                    .Price = 2000
                 }
             },
-            Customer = new Customer
-            {
-                OwnId = "customer[1234]",
-                FullName = "Joao Souza",
-                Email = "joao.sousa@email.com",
-                BirthDate = "1988-12-30",
-                TaxDocument = new Taxdocument
-                {
-                    Type = "CPF",
-                    Number = "22222222222"
+            .Customer = New Customer With {
+                .OwnId = "customer[1234]",
+                .FullName = "Joao Souza",
+                .Email = "joao.sousa@email.com",
+                .BirthDate = "1988-12-30",
+                .TaxDocument = New Taxdocument With {
+                    .Type = "CPF",
+                    .Number = "22222222222"
                 },
-                Phone = new Phone
-                {
-                    CountryCode = "55",
-                    AreaCode = "11",
-                    Number = "66778899"
+                .Phone = New Phone With {
+                    .CountryCode = "55",
+                    .AreaCode = "11",
+                    .Number = "66778899"
                 },
-                ShippingAddress = new Shippingaddress
-                {
-                    City = "São Paulo",
-                    Complement = "10",
-                    District = "Itaim Bibi",
-                    Street = "Avenida Faria Lima",
-                    StreetNumber = "500",
-                    ZipCode = "01234000",
-                    State = "SP",
-                    Country = "BRA"
+                .ShippingAddress = New Shippingaddress With {
+                    .City = "São Paulo",
+                    .Complement = "10",
+                    .District = "Itaim Bibi",
+                    .Street = "Avenida Faria Lima",
+                    .StreetNumber = "500",
+                    .ZipCode = "01234000",
+                    .State = "SP",
+                    .Country = "BRA"
                 }
             },
-            Receivers = new List<Receiver>
-            {
-                new Receiver
-                {
-                    MoipAccount = new Moipaccount
-                    {
-                        Id = "MPA-KQB1QFWS6QNM"
+            .Receivers = New List(Of Receiver) From {
+                New Receiver With {
+                    .MoipAccount = New Moipaccount With {
+                        .Id = "MPA-KQB1QFWS6QNM"
                     },
-                    Type = "SECONDARY",
-                    FeePayor = false,
-                    Amount = new Amount
-                    {
-                        Fixed = 55
+                    .Type = "SECONDARY",
+                    .FeePayor = False,
+                    .Amount = New Amount With {
+                        .Fixed = 55
                     }
                 }
             }
         }
     }
-};            
-var result = await WC.MultiOrder.Create(body);
+}
+Dim result = Await WC.MultiOrder.Create(body)
 ```
 
 #### Consultar Multipedido
-```C#
-var result = await WC.MultiOrder.Consult("MOR-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.MultiOrder.Consult("MOR-XXXXXXXXXXXX")
 ```
 
 ## Multipagamentos
 #### Criar Multipagamento
-```C#
-var body = new MultiPaymentRequest
-{
-    InstallmentCount = 1,
-    FundingInstrument = new Fundinginstrument
-    {
-        Method = "CREDIT_CARD",
-        CreditCard = new Creditcard
-        {
-            Hash = "HhL0...pIkjl2+3Q==",
-            Holder = new Holder
-            {
-                FullName = "",
-                BirthDate = "1988-12-30",
-                TaxDocument = new Taxdocument
-                {
-                    Type = "CPF",
-                    Number = "33333333333"
+```VB.NET
+Dim body = New MultiPaymentRequest With {
+    .InstallmentCount = 1,
+    .FundingInstrument = New Fundinginstrument With {
+        .Method = "CREDIT_CARD",
+        .CreditCard = New Creditcard With {
+            .Hash = "HhL0...pIkjl2+3Q==",
+            .Holder = New Holder With {
+                .FullName = "",
+                .BirthDate = "1988-12-30",
+                .TaxDocument = New Taxdocument With {
+                    .Type = "CPF",
+                    .Number = "33333333333"
                 },
-                Phone = new Phone
-                {
-                    CountryCode  = "55",
-                    AreaCode = "11",
-                    Number = "66778899"
+                .Phone = New Phone With {
+                    .CountryCode = "55",
+                    .AreaCode = "11",
+                    .Number = "66778899"
                 }
             }
         }
     }
-};            
-var result = await WC.MultiPayment.Create(body, "MOR-XXXXXXXXXXXX");
+}
+Dim result = Await WC.MultiPayment.Create(body, "MOR-XXXXXXXXXXXX")
 ```
 #### Consultar Multipagamento
-```C#
-var result = await WC.MultiPayment.Consult("MPY-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.MultiPayment.Consult("MPY-XXXXXXXXXXXX")
 ```
 #### Capturar Multipagamento Pré-autorizado
-```C#
-var result = await WC.MultiPayment.CaptureAuthorized("MPY-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.MultiPayment.CaptureAuthorized("MPY-XXXXXXXXXXXX")
 ```
 #### Cancelar Multipagamento Pré-autorizado
-```C#
-var result = await WC.MultiPayment.CancelAuthorized("MPY-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.MultiPayment.CancelAuthorized("MPY-XXXXXXXXXXXX")
 ```
 #### Liberação de Custódia
-```C#
-var result = await WC.MultiPayment.ReleaseCustody("ECW-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.MultiPayment.ReleaseCustody("ECW-XXXXXXXXXXXX")
 ```
 ## Notificações
 #### Criar Preferência de Notificação para Conta Wirecard
-```C#
-var body = new NotificationRequest
-{
-    Events = new List<string> { "ORDER.*", "PAYMENT.AUTHORIZED", "PAYMENT.CANCELLED" },
-    Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
-    Media = "WEBHOOK"
-};           
-var result = await WC.Notification.CreatAccountWirecard(body);
+```VB.NET
+Dim body = New NotificationRequest With {
+    .Events = New List(Of String) From {
+        "ORDER.*",
+        "PAYMENT.AUTHORIZED",
+        "PAYMENT.CANCELLED"
+    },
+    .Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+    .Media = "WEBHOOK"
+}
+Dim result = Await WC.Notification.CreatAccountWirecard(body)
 ```
 
 #### Criar Preferência de Notificação para App
@@ -948,124 +869,119 @@ Caso não tenha uma URL disponível, você pode usar o **Webhook Tester** para f
 
 Para isso basta acessar o [site](https://webhook.site) e gera uma URL automaticamente.
 
-```C#
-var body = new NotificationRequest
-{
-    Events = new List<string> { "ORDER.*" },
-    Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
-    Media = "WEBHOOK"
-};           
-var result = await WC.Notification.CreateApp(body);
+```VB.NET
+Dim body = New NotificationRequest With {
+    .Events = New List(Of String) From {
+        "ORDER.*"
+    },
+    .Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+    .Media = "WEBHOOK"
+}
+Dim result = Await WC.Notification.CreateApp(body)
 ```
 #### Criar Preferência de Notificação para App com código identificador
-```C#
-var body = new NotificationRequest
-{
-    Events = new List<string> { "ORDER.*" },
-    Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
-    Media = "WEBHOOK"
-};           
-var result = await WC.Notification.CreateApp(body, "APP-3984HG73HE9");
+```VB.NET
+Dim body = New NotificationRequest With {
+    .Events = New List(Of String) From {
+        "ORDER.*"
+    },
+    .Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+    .Media = "WEBHOOK"
+}
+Dim result = Await WC.Notification.CreateApp(body, "APP-3984HG73HE9")
 ```
 #### Consultar Preferência de Notificação
-```C#
-var result = await WC.Notification.Consult("NPR-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.Notification.Consult("NPR-XXXXXXXXXXXX")
 ```
 #### Listar Todas as Preferências de Notificação
-```C#
-var result = await WC.Notification.List();
+```VB.NET
+Dim result = Await WC.Notification.List()
 ```
 #### Remover Preferência de Notificação
-```C#
-var result = await WC.Notification.Remove("NPR-XXXXXXXXXXXX");
-if (result == HttpStatusCode.NoContent)
-{
-    // Caso a Preferência de Notificação tenha sido deletada, você deve receber uma response vazia (NoContent)
-}
+```VB.NET
+Dim result = Await WC.Notification.Remove("NPR-XXXXXXXXXXXX")
+If result = HttpStatusCode.NoContent Then
+'Caso a Preferência de Notificação tenha sido deletada, você deve receber uma response vazia (NoContent)
+End If
 ```
 #### Consultar Webhook Enviado
-```C#
-var result = await WC.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX"); 
+```VB.NET
+Dim result = Await WC.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX")
 ```
 #### Listar Todos os Webhooks Enviados
-```C#
-var result = await WC.Notification.ListWebhooks();
+```VB.NET
+Dim result = Await WC.Notification.ListWebhooks()
 ```
 #### Desserializar WebHook
 Ao configurar suas Preferências de Notificação você deve receber os webhooks em formato JSON e você pode desserializar.
 
-```C#
-var json = "{ \"date\": \"\", \"env\": \"\", ... }";
-var result = Utilities.DeserializeWebHook(json);
+```VB.NET
+Dim json = "{ ""date"": """", ""env"": """", ... }"
+Dim result = Utilities.DeserializeWebHook(json)
 ```
 Veja um exemplo do webhook [aqui](https://gist.githubusercontent.com/matmiranda/61b8fac6159d0a61c1cd52deb0941fd8/raw/c08a41818abd135d56c7608587f353bc0bd99df7/Exemplo%2520WebHook.json).
 
 Para aumentar a segurança da sua aplicação e garantir que apenas a Wirecard pode enviar notificações para o seu sistema, você pode conferir o token enviado no header dos webhooks. Este token é o mesmo que é gerado no momento do cadastro da sua URL:
-```C#
-var token = Request.Headers["Authorization"];
+```VB.NET
+Dim token = Request.Headers("Authorization")
 ```
 
 ## Contas Bancárias
 #### Criar Conta Bancária
-```C#
-var body = new BankAccountRequest
-{
-    bankNumber = "237",
-    agencyNumber = "12345",
-    agencyCheckNumber = "0",
-    accountNumber = "12345678",
-    accountCheckNumber = "7",
-    type = "CHECKING",
-    holder = new Holder
-    {
-        taxDocument = new Taxdocument
-        {
-            type = "CPF",
-            number = "622.134.533-22"
+```VB.NET
+Dim body = New BankAccountRequest With {
+    .bankNumber = "237",
+    .agencyNumber = "12345",
+    .agencyCheckNumber = "0",
+    .accountNumber = "12345678",
+    .accountCheckNumber = "7",
+    .type = "CHECKING",
+    .holder = New Holder With {
+        .taxDocument = New Taxdocument With {
+            .type = "CPF",
+            .number = "622.134.533-22"
         },
-        fullname = "Demo Wirecard"
+        .fullname = "Demo Wirecard"
     }
-};
-string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await WC.BankAccount.Create(body, accesstoken, "MPA-XXXXXXXXXXXX");
+}
+Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+Dim result = Await WC.BankAccount.Create(body, accesstoken, "MPA-XXXXXXXXXXXX")
 ```
 #### Consultar Conta Bancária
-```C#
-string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await WC.BankAccount.Consult(accesstoken, "BKA-XXXXXXXXXXXX");
+```VB.NET
+Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+Dim result = Await WC.BankAccount.Consult(accesstoken, "BKA-XXXXXXXXXXXX")
 ```
 #### Listar Todas Contas Bancárias
-```C#
-string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await WC.BankAccount.List(accesstoken, "MPA-XXXXXXXXXXXX");
+```VB.NET
+Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+Dim result = Await WC.BankAccount.List(accesstoken, "MPA-XXXXXXXXXXXX")
 ```
 #### Deletar Conta Bancária
-```C#
-string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await WC.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX");
+```VB.NET
+Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+Dim result = Await WC.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX")
 ```
 #### Atualizar Conta Bancária
-```C#
-var body = new BankAccountRequest
-{
-    BankNumber = "237",
-    AgencyNumber = "12345",
-    AgencyCheckNumber = "8",
-    AccountNumber = "12345678",
-    AccountCheckNumber = "8",
-    Type = "CHECKING",
-    Holder = new Holder
-    {
-        TaxDocument = new Taxdocument
-        {
-            Type = "CPF",
-            Number = "622.134.533-22"
+```VB.NET
+Dim body = New BankAccountRequest With {
+    .BankNumber = "237",
+    .AgencyNumber = "12345",
+    .AgencyCheckNumber = "8",
+    .AccountNumber = "12345678",
+    .AccountCheckNumber = "8",
+    .Type = "CHECKING",
+    .Holder = New Holder With {
+        .TaxDocument = New Taxdocument With {
+            .Type = "CPF",
+            .Number = "622.134.533-22"
         },
-        FullName = "Nome Completo"
+        .FullName = "Nome Completo"
     }
-};
-string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor
-var result = await WC.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX");
+}
+Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+Dim result = Await WC.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX")
 ```
 ## Saldo Wirecard
 #### Consultar Saldos

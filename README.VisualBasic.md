@@ -225,178 +225,157 @@ End If
 ```
 
 #### Criar Conta Wirecard Clássica (Conta PF)
-```C#
-var body = new ClassicAccountRequest
-{
-    Email = new Email
-    {
-        Address = "fulano@hotmail.com"
+```VB.NET
+Dim body = New ClassicAccountRequest With {
+    .Email = New Email With {
+        .Address = "fulano@hotmail.com"
     },
-    Person = new Person
-    {
-        Name = "Fulano",
-        LastName = "da Silva",
-        TaxDocument = new Taxdocument
-        {
-            Type = "CPF",
-            Number = "123.456.789-91"
+    .Person = New Person With {
+        .Name = "Fulano",
+        .LastName = "da Silva",
+        .TaxDocument = New Taxdocument With {
+            .Type = "CPF",
+            .Number = "123.456.789-91"
         },
-        IdentityDocument = new Identitydocument
-        {
-            Type = "RG",
-            Number = "434322344",
-            Issuer = "SPP",
-            IssueDate = "2000-12-12"
+        .IdentityDocument = New Identitydocument With {
+            .Type = "RG",
+            .Number = "434322344",
+            .Issuer = "SPP",
+            .IssueDate = "2000-12-12"
         },
-        BirthDate = "1990-01-01",
-        Phone = new Phone
-        {
-            CountryCode = "55",
-            AreaCode = "11",
-            Number = "965213244"
+        .BirthDate = "1990-01-01",
+        .Phone = New Phone With {
+            .CountryCode = "55",
+            .AreaCode = "11",
+            .Number = "965213244"
         },
-        Address = new Address
-        {
-            Street = "Av. Brigadeiro Faria Lima",
-            StreetNumber = "2927",
-            District = "Itaim",
-            ZipCode = "01234-000",
-            City = "São Paulo",
-            State = "SP",
-            Country = "BR"
+        .Address = New Address With {
+            .Street = "Av. Brigadeiro Faria Lima",
+            .StreetNumber = "2927",
+            .District = "Itaim",
+            .ZipCode = "01234-000",
+            .City = "São Paulo",
+            .State = "SP",
+            .Country = "BR"
         }
     },
-    Type = "MERCHANT"
-};
-var result = await WC.ClassicAccount.Create(body);
+    .Type = "MERCHANT"
+}
+Dim result = Await WC.ClassicAccount.Create(body)
 ```
 #### Criar Conta Wirecard Clássica (Conta PJ)
-```C#
-var body = new ClassicAccountRequest
-{
-    Email = new Email
-    {
-        Address = "fulano@hotmail.com"
+```VB.NET
+Dim body = New ClassicAccountRequest With {
+    .Email = New Email With {
+        .Address = "fulano@hotmail.com"
     },
-    Person = new Person
-    {
-        Name = "Fulano",
-        LastName = "da Silva",
-        BirthDate = "1990-01-01",
-        TaxDocument = new Taxdocument
-        {
-            Type = "CPF",
-            Number = "123.456.789-91"
+    .Person = New Person With {
+        .Name = "Fulano",
+        .LastName = "da Silva",
+        .BirthDate = "1990-01-01",
+        .TaxDocument = New Taxdocument With {
+            .Type = "CPF",
+            .Number = "123.456.789-91"
         },
-        IdentityDocument = new Identitydocument
-        {
-            Type = "RG",
-            Number = "434322344",
-            Issuer = "SPP",
-            IssueDate = "2000-12-12"
+        .IdentityDocument = New Identitydocument With {
+            .Type = "RG",
+            .Number = "434322344",
+            .Issuer = "SPP",
+            .IssueDate = "2000-12-12"
         },
-        Phone = new Phone
-        {
-            CountryCode = "55",
-            AreaCode = "11",
-            Number = "965213244"
+        .Phone = New Phone With {
+            .CountryCode = "55",
+            .AreaCode = "11",
+            .Number = "965213244"
         },
-        Address = new Address
-        {
-            Street = "Av. Brigadeiro Faria Lima",
-            StreetNumber = "2927",
-            District = "Itaim",
-            ZipCode = "01234-000",
-            City = "São Paulo",
-            State = "SP",
-            Country = "BR"
+        .Address = New Address With {
+            .Street = "Av. Brigadeiro Faria Lima",
+            .StreetNumber = "2927",
+            .District = "Itaim",
+            .ZipCode = "01234-000",
+            .City = "São Paulo",
+            .State = "SP",
+            .Country = "BR"
         }
     },
-    Company = new Company
-    {
-        Name = "Noma da empresa",
-        BusinessName = "Wirecard Pagamentos",
-        OpeningDate = "2011-01-01",
-        TaxDocument = new Taxdocument
-        {
-            Type = "CNPJ",
-            Number = "11.698.147/0001-13"
+    .Company = New Company With {
+        .Name = "Noma da empresa",
+        .BusinessName = "Wirecard Pagamentos",
+        .OpeningDate = "2011-01-01",
+        .TaxDocument = New Taxdocument With {
+            .Type = "CNPJ",
+            .Number = "11.698.147/0001-13"
         },
-        MainActivity = new Mainactivity
-        {
-            Cnae = "82.91-1/00",
-            Description = "Atividades de cobranças e informações cadastrais"
+        .MainActivity = New Mainactivity With {
+            .Cnae = "82.91-1/00",
+            .Description = "Atividades de cobranças e informações cadastrais"
         },
-        Phone = new Phone
-        {
-            CountryCode = "55",
-            AreaCode = "11",
-            Number = "32234455"
+        .Phone = New Phone With {
+            .CountryCode = "55",
+            .AreaCode = "11",
+            .Number = "32234455"
         },
-        Address = new Address
-        {
-            Street = "Av. Brigadeiro Faria Lima",
-            StreetNumber = "2927",
-            District = "Itaim",
-            ZipCode = "01234-000",
-            City = "São Paulo",
-            State = "SP",
-            Country = "BRA"
+        .Address = New Address With {
+            .Street = "Av. Brigadeiro Faria Lima",
+            .StreetNumber = "2927",
+            .District = "Itaim",
+            .ZipCode = "01234-000",
+            .City = "São Paulo",
+            .State = "SP",
+            .Country = "BRA"
         }
     },
-    BusinessSegment = new Businesssegment
-    {
-        Id = 3
+    .BusinessSegment = New Businesssegment With {
+        .Id = 3
     },
-    Type = "MERCHANT"
-};
-var result = await WC.ClassicAccount.Create(body);
+    .Type = "MERCHANT"
+}
+Dim result = Await WC.ClassicAccount.Create(body)
 ```
 
 #### Consultar Conta Wirecard
-```C#
-var result = await WC.ClassicAccount.Consult("MPA-XXXXXXXXXXXX");
+```VB.NET
+Dim result = Await WC.ClassicAccount.Consult("MPA-XXXXXXXXXXXX")
 ```
 
 #### Solicitar Permissões de Acesso ao Usuário
 
 🚩 O código a seguir não consome API, apenas monta o URL. Mais informações clica [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permiss%C3%A3o).
 
-```C#
-string response_type = "code";
-string client_id = "APP-FFFGVQMOK123";
-string redirect_uri = "https://example.com/abc?DEF=あいう\x20えお";
-string scope = "RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES";
-var url = Utilities.RequestUserAccessPermissions(response_type, client_id, redirect_uri, scope);
+```VB.NET
+Dim response_type As String = "code"
+Dim client_id As String = "APP-FFFGVQMOK123"
+Dim redirect_uri As String = "https://example.com/abc?DEF=あいう えお"
+Dim scope As String = "RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES"
+Dim url = Utilities.RequestUserAccessPermissions(response_type, client_id, redirect_uri, scope)
 
-//https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-
-//FFFGVQMOK123&redirect_uri=https://example.com/abc?DEF=%E3%81%82%E3%81%84%E3%81%86%20%
-//E3%81%88%E3%81%8A&scope=RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES
+'https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-
+'FFFGVQMOK123&redirect_uri=https://example.com/abc?DEF=%E3%81%82%E3%81%84%E3%81%86%20%
+'E3%81%88%E3%81%8A&scope=RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES
 ```
 
 Veja [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permiss%C3%A3o) como funciona a permissão.
 
 #### Gerar Access Token
-```C#
-string client_id = "APP-M11STAPPOAU";
-string client_secret = "SplxlOBeZQQYbYS6WxSbIA";
-string redirect_uri = "http://localhost/moip/callback";
-string grant_type = "authorization_code";
-string code = "4d9e0466bc14aad85b894237145b217219e9a825";
-var result = await WC.ClassicAccount.GenerateAccessToken(
-                client_id, client_secret, redirect_uri, grant_type, code);
+```VB.NET
+Dim client_id As String = "APP-M11STAPPOAU"
+Dim client_secret As String = "SplxlOBeZQQYbYS6WxSbIA"
+Dim redirect_uri As String = "http://localhost/moip/callback"
+Dim grant_type As String = "authorization_code"
+Dim code As String = "4d9e0466bc14aad85b894237145b217219e9a825"
+Dim result = Await WC.ClassicAccount.GenerateAccessToken(client_id, client_secret, redirect_uri, grant_type, code)
 ```
 
 #### Atualizar accessToken
-```C#
-string grant_type = "refresh_token";
-string refresh_token = "2381dfbbcbd645268af1dd0e4456bfe1_v2";
-var result = await WC.ClassicAccount.UpdateAccessToken(grant_type, refresh_token);
+```VB.NET
+Dim grant_type As String = "refresh_token"
+Dim refresh_token As String = "2381dfbbcbd645268af1dd0e4456bfe1_v2"
+Dim result = Await WC.ClassicAccount.UpdateAccessToken(grant_type, refresh_token)
 ```
 
 #### Obter chave pública de uma Conta Wirecard
-```C#
-var result = await WC.ClassicAccount.GetPublickey();
+```VB.NET
+Dim result = Await WC.ClassicAccount.GetPublickey()
 ```
 
 ## Conta Transparente

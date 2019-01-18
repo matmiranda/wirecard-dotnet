@@ -195,8 +195,8 @@ Para obter o accesstoken, você precisa criar um [App](https://dev.wirecard.com.
 ## Assíncrona x Síncrona
 Todos os métodos são **assíncronos**, caso você queira executar de forma **síncrona**, veja o exemplo:
 
-```C#
-var result = Task.Run(() => WC.Customer.List()).Result;
+```VB.NET
+Dim result As OrdersResponse = Task.Run(Function() WC.Order.List()).Result
 ```
 
 ## Conta Clássica

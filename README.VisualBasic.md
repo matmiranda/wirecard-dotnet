@@ -183,8 +183,8 @@ Você pode acessá-las em **Minha conta** > **Configurações** > **Chaves de Ac
 ## Autenticando e configurando o ambiente (Marketplace)
 Escolha o "ambiente" você quer executar suas ações e informe seu accesstoken: 
 ```VB.NET
-Imports WirecardCSharp
-Imports WirecardCSharp.Models
+Imports Wirecard
+Imports Wirecard.Models
 
 Private Const AccessToken As String = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
 Private WC As New WirecardClient(Environments.SANDBOX, AccessToken)
@@ -202,28 +202,26 @@ Dim result As OrdersResponse = Task.Run(Function() WC.Order.List()).Result
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Wirecard (email)
 🚩 Essa função funciona somente na conta clássica.
-```C#
-var result = await WC.ClassicAccount.AccountExist("meu_email@email.com");
-if (result == HttpStatusCode.OK)
-{
-    // já existe
-    //HttpStatusCode.OK == 200 (já existe)
-    //HttpStatusCode.BadRequest == 400 (CPF inválido)
-    //HttpStatusCode.NotFound == 404 (Para CPF válido, mas não possui Conta Wirecard)
-}
+```V.NET
+ Dim result = Await WC.ClassicAccount.AccountExist("meu_email@email.com")
+ If result = HttpStatusCode.OK Then
+     ' já existe
+     'HttpStatusCode.OK == 200 (já existe)
+     'HttpStatusCode.BadRequest == 400 (CPF inválido)
+     'HttpStatusCode.NotFound == 404 (Para CPF válido, mas não possui Conta Wirecard)
+ End If
 ```
 
 #### Verificar se usuário já possui Conta Wirecard (documento)
 🚩 Essa função funciona somente na conta clássica.
-```C#
-var result = await WC.ClassicAccount.AccountExist("123.456.789-01");
-if (result == HttpStatusCode.OK)
-{
-    // já existe
-    //HttpStatusCode.OK == 200 (já existe)
-    //HttpStatusCode.BadRequest == 400 (CPF inválido)
-    //HttpStatusCode.NotFound == 404 (Para CPF válido, mas não possui Conta Wirecard)
-}
+```VB.NET
+Dim result = Await WC.ClassicAccount.AccountExist("123.456.789-01")
+If result = HttpStatusCode.OK Then
+    ' já existe
+    'HttpStatusCode.OK == 200 (já existe)
+    'HttpStatusCode.BadRequest == 400 (CPF inválido)
+    'HttpStatusCode.NotFound == 404 (Para CPF válido, mas não possui Conta Wirecard)
+End If
 ```
 
 #### Criar Conta Wirecard Clássica (Conta PF)

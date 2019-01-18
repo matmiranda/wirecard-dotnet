@@ -1458,37 +1458,31 @@ var result = await WC.Signature.CreateNotificationPreference(body);
 
 As vezes você enfrenta um problema e o suporte Wirecard pede o código json para verificar se realmente está no json:
 
-```C#
-using Newtonsoft.Json;
+```VB.NET
+Imports Newtonsoft.Json;
 
-var body = new PaymentRequest
-{
-    //informe os campos aqui
-    DelayCapture = true,
-    InstallmentCount = 1,
-    FundingInstrument = new Fundinginstrument
-    {
-        Method = "CREDIT_CARD",
-        CreditCard = new Creditcard
-        {
-            Id = "CRC-XXXXXXXXXXXX",
-            Cvc = "123",
-            Holder = new Holder
-            {
-                FullName = "Jose Portador da Silva",
-                BirthDate = "1988-12-30",
-                TaxDocument = new Taxdocument
-                {
-                    Type = "CPF",
-                    Number = "33333333333"
+Dim body = New PaymentRequest With {
+    .DelayCapture = True,
+    .InstallmentCount = 1,
+    .FundingInstrument = New Fundinginstrument With {
+        .Method = "CREDIT_CARD",
+        .CreditCard = New Creditcard With {
+            .Id = "CRC-XXXXXXXXXXXX",
+            .Cvc = "123",
+            .Holder = New Holder With {
+                .FullName = "Jose Portador da Silva",
+                .BirthDate = "1988-12-30",
+                .TaxDocument = New Taxdocument With {
+                    .Type = "CPF",
+                    .Number = "33333333333"
                 }
             }
         }
     }
-};
+}
 
-//Aqui você pode obter json e compratilhar para suporte Wirecard
-string json = JsonConvert.SerializeObject(body, Formatting.Indented);
+'Aqui você pode obter json e compratilhar para suporte Wirecard
+Dim json As String = JsonConvert.SerializeObject(body, Formatting.Indented)
 ```
 
 Veja como ficou na variável json:
@@ -1549,18 +1543,15 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 ## Exceção
 #### Obter erros
 Você pode recuperar os atributos `code`, `path`, `description`, `message` e `error`, veja no exemplo abaixo:
-```C#
-using WirecardCSharp.Exception;
+```VB.NET
+Imports Wirecard.Exception
 
-try
-{
-    var result = await WC.Customer.Create(new CustomerRequest());
-}
-catch (WirecardException ex)
-{
-    var t = ex.wirecardError;
-    var t_text = ex.GetExceptionText();
-} 
+Try
+    Dim result = Await WC.Customer.Create(New CustomerRequest())
+Catch ex As WirecardException
+    Dim t = ex.wirecardError
+    Dim t_text = ex.GetExceptionText()
+End Try
 ```
 
 #### Tabela de erros

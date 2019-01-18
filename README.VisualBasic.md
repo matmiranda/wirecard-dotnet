@@ -182,12 +182,12 @@ Você pode acessá-las em **Minha conta** > **Configurações** > **Chaves de Ac
 
 ## Autenticando e configurando o ambiente (Marketplace)
 Escolha o "ambiente" você quer executar suas ações e informe seu accesstoken: 
-```C#
-using WirecardCSharp;
-using WirecardCSharp.Models;
+```VB.NET
+Imports WirecardCSharp
+Imports WirecardCSharp.Models
 
-private const string accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2";
-private WirecardClient WC = new WirecardClient(Environments.SANDBOX, accessToken);
+Private Const AccessToken As String = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
+Private WC As New WirecardClient(Environments.SANDBOX, AccessToken)
 ```
 
 Para obter o accesstoken, você precisa criar um [App](https://dev.wirecard.com.br/reference#1-criar-um-app).

@@ -1,4 +1,4 @@
-*Ler em outras linguagens de programação: [C#](README.md), [F#](README.FSHARP.md).*
+*Ler em outras linguagens de programação: [C#](https://github.com/matmiranda/Wirecard-NET), [F#](README.FSHARP.md).*
 
 ## Índice  
 - [Implementações .NET com suporte](#implementações-net-com-suporte)

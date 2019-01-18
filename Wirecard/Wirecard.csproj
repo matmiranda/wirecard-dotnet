@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.2</TargetFramework>
+    <Version>3.0.4</Version>
+    <Authors>Wirecard, Matheus Miranda</Authors>
+    <Description>Biblioteca para integração dos meios de pagamento do WIRECARD</Description>
+    <Copyright>Copyright © Matheus Miranda</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/matmiranda/Wirecard-NET/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/matmiranda/Wirecard-NET</PackageProjectUrl>
+    <PackageIconUrl>https://res.cloudinary.com/matmiranda/image/upload/v1540226689/Wirecard_icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/matmiranda/Wirecard-NET.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Wirecard</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\Matheus Miranda\source\repos\Wirecard\Wirecard\Wirecard.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,760 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wirecard</name>
+    </assembly>
+    <members>
+        <member name="M:Wirecard.Controllers.BalancesController.Consult">
+            <summary>
+            Consultar Saldos - Consult Balances
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.BankAccountsController.Create(Wirecard.Models.BankAccountRequest,System.String,System.String)">
+            <summary>
+            Criar conta bancária - create bank account
+            </summary>
+            <param name="body"></param>
+            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+            <param name="account_id">Código identificador da conta Wirecard. Exemplo: MPA-3C5358FF2296</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.BankAccountsController.Consult(System.String,System.String)">
+            <summary>
+            Consultar conta bancária - consult bank account
+            </summary>
+            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+            <param name="bank_account_id">Identificador da conta bancária.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.BankAccountsController.List(System.String,System.String)">
+            <summary>
+            Listar conta bancária - bank account list
+            </summary>
+            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+            <param name="account_id">Código identificador da Conta Wirecard. Exemplo: MPA-05E8C79EAAAA</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.BankAccountsController.Delete(System.String,System.String)">
+            <summary>
+            Deletar conta bancária - delete bank account
+            </summary>
+            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+            <param name="account_id">Identificador da conta bancária (BKA-XXXXXXXXXX)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.BankAccountsController.Update(Wirecard.Models.BankAccountRequest,System.String,System.String)">
+            <summary>
+            Atualizar conta bancária - update bank account
+            </summary>
+            <param name="body"></param>
+            <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
+            <param name="bankaccount_id">Identificador da conta bancária (BKA-XXXXXXXXX).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.ClassicAccountsController.AccountExist(System.String)">
+            <summary>
+            Conta Existe - Account Exist
+            </summary>
+            <param name="email_document">email ou documento (cpf/cnpj)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.ClassicAccountsController.Create(Wirecard.Models.ClassicAccountRequest)">
+            <summary>
+            Cria a conta clássica - Create the classic account
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.ClassicAccountsController.Consult(System.String)">
+            <summary>
+            Consulta a conta clássica - Consult Classic Account
+            </summary>
+            <param name="account_id">ID da Conta Wirecard. Exemplo: MPA-3C5358FF2296</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.ClassicAccountsController.GenerateAccessToken(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gera Access Token - Generate Access Token
+            </summary>
+            <param name="client_id">Código identificador do aplicativo que está realizando a solicitação. Exemplo: APP-M11STAPPOAU</param>
+            <param name="client_secret">Chave privada do aplicativo. O atributo secret que foi enviado na criação do seu aplicativo</param>
+            <param name="redirect_uri">URL de redirecionamento do cliente (deve ser a mesma utilizada na ação de solicitação de permissão).</param>
+            <param name="grant_type">Tipo de solicitação desejada. Valores possíveis: authorization_code</param>
+            <param name="code">Código de validação para recuperar o token de acesso. Esse é o code retornado para a URL cadastrada quando o usuário dá autorização de permissão.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.ClassicAccountsController.UpdateAccessToken(System.String,System.String)">
+            <summary>
+            Atualiza access token - Update accessToken
+            </summary>
+            <param name="grant_type">Tipo de solicitação desejada. Valores possíveis: refresh_token</param>
+            <param name="refresh_token">Token para atualizar o token de autenticação</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.ClassicAccountsController.GetPublickey">
+            <summary>
+            Obtem a chave pública - Get public key
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.ConciliationsController.GetSalesFile(System.String)">
+            <summary>
+            Obter Arquivo de Vendas - Get Sales File
+            </summary>
+            <param name="date">Data no formato YYYYMMDD</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.ConciliationsController.GetFinancialFile(System.String)">
+            <summary>
+            Obter Arquivo Financeiro - Get Financial File
+            </summary>
+            <param name="eventsCreatedAt">Data referente à liquidação dos lançamentos financeiros. Formato: YYYY-MM-DD</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.CustomersController.Create(Wirecard.Models.CustomerRequest)">
+            <summary>
+            Criar cliente - Create Client
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.CustomersController.AddCreditCard(Wirecard.Models.CustomerRequest,System.String)">
+            <summary>
+            Adicionar cartão de crédito - Add Credit Card
+            </summary>
+            <param name="body"></param>
+            <param name="customer_id">Código identificador do cliente (exemplo: CUS-8563056295)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.CustomersController.DeleteCreditCard(System.String)">
+            <summary>
+            Deletar cartão de crédito - Delete Credit Card
+            </summary>
+            <param name="creditcard_id">Código identificador do cartão de crédito. Exemplo: CRC-8426482846</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.CustomersController.Consult(System.String)">
+            <summary>
+            Consultar cliente - Consult Customer
+            </summary>
+            <param name="customer_id">Código identificador do cliente que deseja consultar. Exemplo: CUS-1357915397</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.CustomersController.List">
+            <summary>
+            Listar Todos os Clientes - List All Customers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.LaunchesController.Consult(System.String)">
+            <summary>
+            Cosultar lançamento - Consult launch
+            </summary>
+            <param name="entry_id">Id do lançamento (Exemplo: ENT-BH4NJAVN65FB)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.LaunchesController.List">
+            <summary>
+            Listar lançamento - launch list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.LaunchesController.ListFilter(System.String)">
+            <summary>
+            Listar lançamento com filtro - List launch with filter
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.MultiOrdersController.Create(Wirecard.Models.MultiOrderRequest)">
+            <summary>
+            Criar Multipedido - Create Multi Order
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.MultiOrdersController.Consult(System.String)">
+            <summary>
+            Consultar Multi pedido - Consult Multi order
+            </summary>
+            <param name="multiorder_id">Id identificador do multipagamento. Exemplo: MOR-9241K3EFW5DV</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.MultiPaymentsController.Create(Wirecard.Models.MultiPaymentRequest,System.String)">
+            <summary>
+            Criar Multi Pagamento - Create multi payment
+            </summary>
+            <param name="body"></param>
+            <param name="multiorder_id">Código identificador do multipedido. Exemplo: MOR-XXXXXXXX</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.MultiPaymentsController.Consult(System.String)">
+            <summary>
+            Consultar Multi Pagamento - Consult 
+            </summary>
+            <param name="multiorder_id">Id do multipagamento. string(16).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.MultiPaymentsController.CaptureAuthorized(System.String)">
+            <summary>
+            Capturar Multi Pagamento Pré-Autorizado - Capture Multi-Payment Pre-authorized
+            </summary>
+            <param name="multipayment_id">Id identificador do multipagamento.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.MultiPaymentsController.CancelAuthorized(System.String)">
+            <summary>
+            Cancelar Multi Pagamento Pré-autorizado - Cancel Multi Payment Pre-authorized
+            </summary>
+            <param name="multipayment_id">Id identificador do multipagamento</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.MultiPaymentsController.ReleaseCustody(System.String)">
+            <summary>
+            Liberação de Custódia - Release of Custody
+            </summary>
+            <param name="escrow_id">Código identificador da custódia. Exemplo: ECW-87E7UUF9N2EK</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.NotificationsController.CreatAccountWirecard(Wirecard.Models.NotificationRequest)">
+            <summary>
+            Criar Preferência de Notificação para Conta Wirecard - Create Notification Preference for Wirecard Account
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.NotificationsController.CreateApp(Wirecard.Models.NotificationRequest)">
+            <summary>
+            Criar Preferência de Notificação para App - Create Notification Preference for App
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.NotificationsController.CreateApp(Wirecard.Models.NotificationRequest,System.String)">
+            <summary>
+            Criar Preferência de Notificação para App - Create Notification Preference for App
+            </summary>
+            <param name="body"></param>
+            <param name="app_id">Código identificador do App. Exemplo: APP-3984HG73HE92</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.NotificationsController.Consult(System.String)">
+            <summary>
+            Consult Notification Preference - Consultar Preferência de Notificação
+            </summary>
+            <param name="notification_id">Código do identificador da preferência (NPR-DV61EEGGUFCQ)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.NotificationsController.List">
+            <summary>
+            Listar Todas as Preferências de Notificação - List All Notification Preferences
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.NotificationsController.Remove(System.String)">
+            <summary>
+            Remover Preferência de Notificação - Remove Notification Preference
+            </summary>
+            <param name="notification_id">Código identificador da preferência (NPR-98G940NT23JO)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.NotificationsController.ConsultWebhook(System.String)">
+            <summary>
+            Consultar Webhook Enviado - Consult Webhook Submitted
+            </summary>
+            <param name="payment_id">Identificador do pagamento</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.NotificationsController.ListWebhooks">
+            <summary>
+            Listar Todos os Webhooks Enviados - List All Sent Webhooks
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.OrdersController.Create(Wirecard.Models.OrderRequest)">
+            <summary>
+            Criar Pedido - Create Order
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.OrdersController.Consult(System.String)">
+            <summary>
+            Consultar Pedido - Consult Order
+            </summary>
+            <param name="order_id">Código identificador do pedido. Exemplo: ORD-9BAYAVM87YHE</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.OrdersController.List">
+            <summary>
+            Listar Todos os Pedidos - List All Orders
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.OrdersController.ListFilter(System.String)">
+            <summary>
+            Listar Todos os Pedidos com filtro -  List All Filter Orders
+            </summary>
+            <param name="filter">Filtros de busca, mais informações <see href="https://github.com/matmiranda/MoipCSharp#listar-todos-os-pedidos---com-filtros">aqui</see></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.PaymentsController.Create(Wirecard.Models.PaymentRequest,System.String)">
+            <summary>
+            Criar Pagamento - Create Payment
+            </summary>
+            <param name="body"></param>
+            <param name="order_id">Código identificador do pedido. Exemplo: ORD-9BAYAVM87YHE</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.PaymentsController.Consult(System.String)">
+            <summary>
+            Consultar Pagamento - Consult Payment
+            </summary>
+            <param name="payment_id">Código identificador do pagamento que deseja consultar. Exemplo: PAY-HL7QRKFEQNHV</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.PaymentsController.ReleaseCustody(System.String)">
+            <summary>
+            Liberação de Custódia - Release of Custody
+            </summary>
+            <param name="escrow_id">Código identificador da custódia. Exemplo ECW-9OS6FAPR3FD5</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.PaymentsController.CaptureAuthorized(System.String)">
+            <summary>
+             Capturar Pagamento Pré-autorizado - Capture Pre-authorized Payment
+            </summary>
+            <param name="payment_id">Código identificador do pagamento a ser pré-capturado. Exemplo: PAY-U1G2WVBEP19V</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.PaymentsController.CancelAuthorized(System.String)">
+            <summary>
+            Cancelar Pagamento Pré-autorizado - Cancelar Pagamento Pré-autorizado
+            </summary>
+            <param name="payment_id">Código identificador do pagamento pré-autorizado a ser cancelado. Exemplo: Exemplo: PAY-U1G2WVBEP19V</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.PaymentsController.Simulate(System.String,System.Int32)">
+            <summary>
+            Simular pagamentos - Simulate Payments
+            </summary>
+            <param name="payment_id">Código identificador do pagamento que deseja autorizar. Exemplo: PAY-0UBH5IAJ8KHX</param>
+            <param name="valor">Valor a ser autorizado no pagamento. O formato deve incluir centavos e não deve incluir vírgula. Exemplo: Para autorizar pagamento no valor de R$265 você deve setar o valor 26500</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.RefundsController.RefundPayment(Wirecard.Models.RefundRequest,System.String)">
+            <summary>
+            Reembolsar Pagamento - Refund Payment
+            </summary>
+            <param name="body"></param>
+            <param name="payment_id">Código identificador do pagamento a ser reembolsado. Exemplo: PAY-HL7QRKFEQNHV</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.RefundsController.RefundRequestCreditCard(Wirecard.Models.RefundRequest,System.String)">
+            <summary>
+            Reembolsar Pedido via Cartão de Crédito - Refund Request by Credit Card
+            </summary>
+            <param name="body"></param>
+            <param name="order_id">Código identificador do pedido a ser reembolsado. Exemplo: ORD-O5DLMAJZPTHV</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.RefundsController.Consult(System.String)">
+            <summary>
+            Consultar Reembolso - Consult Refund
+            </summary>
+            <param name="refund_id">Id do reembolso em formato de hash string(16).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.RefundsController.ListPayments(System.String)">
+            <summary>
+            Listar Reembolsos do Pagamento - List Payment Refunds
+            </summary>
+            <param name="payment_id">Id do pagamento em formato de hash string(16).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.RefundsController.ListOrders(System.String)">
+            <summary>
+            Listar Reembolsos do Pedido - List Order Reimbursements
+            </summary>
+            <param name="orders_id">Id do pedido em formato de hash. string(16).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.CreatePlan(Wirecard.Models.PlanRequest)">
+            <summary>
+            Criar plano - Create plan
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ListPlans">
+            <summary>
+            Listar Planos - List Plans
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ConsultPlan(System.String)">
+            <summary>
+            Consultar Plano - Consult Plan
+            </summary>
+            <param name="code"> Código do plano </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.EnablePlan(System.String)">
+            <summary>
+            Ativar Plano - Enable Plan
+            </summary>
+            <param name="code"> Código do plano </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.DisablePlan(System.String)">
+            <summary>
+            Desativar Plano - Disable Plan
+            </summary>
+            <param name="code"> Código do plano </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ChangePlan(Wirecard.Models.PlanRequest,System.String)">
+            <summary>
+            Alterar Plano - Change Plan
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do plano </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.CreateSubscriber(Wirecard.Models.SubscriberRequest,System.Boolean)">
+            <summary>
+            Criar Assinante - Create Subscriber
+            </summary>
+            <param name="body"></param>
+            <param name="new_vault">Se new_vault=true, o envio do node credit_card é obrigatório. Utilize isso para criar um assinante com dados de cartão e gerar um cofre para guardar os dados de pagamento com segurança no Moip.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ListSubscribers">
+            <summary>
+            Listar Assinantes - List Subscribers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ConsultSubscriber(System.String)">
+            <summary>
+            Consultar Assinante - Consult Subscriber
+            </summary>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ChangeSubscriber(Wirecard.Models.SubscriberRequest,System.String)">
+            <summary>
+            Alterar Assinante - Change Subscriber
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.UpdateSubscriberCard(Wirecard.Models.SubscriberRequest,System.String)">
+            <summary>
+            Atualizar Cartão do Assinante - Update Subscriber Card
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.CreateSubscriptions(Wirecard.Models.SubscriptionRequest,System.Boolean)">
+            <summary>
+            Criar Assinaturas - Create Subscriptions
+            </summary>
+            <param name="body"></param>
+            <param name="true_or_false">Caso queira adicionar um novo assinante à Assinatura, entre com valor true.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ListAllSubscriptions">
+            <summary>
+            Listar Todas Assinaturas - List All Subscriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ConsultSubscription(System.String)">
+            <summary>
+            Consultar Assinatura - Consult Subscription
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ConsultSubscriptionFilter(System.String)">
+            <summary>
+            Consultar Assinatura com Filtro - Consult Subscription with Filter
+            </summary>
+            <param name="filter">Filtros de busca, mais informações <see href="link de filtros">aqui</see></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.SuspendSubscription(System.String)">
+            <summary>
+            Suspender Assinatura - Suspend Subscription
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ReactivateSignature(System.String)">
+            <summary>
+            Reativar Assinatura - Reactivate Signature
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.CancelSignature(System.String)">
+            <summary>
+            Cancelar Assinatura - Cancel Signature
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ChangeSubscription(Wirecard.Models.SubscriptionRequest,System.String)">
+            <summary>
+            Alterar Assinatura - Change Subscription
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ChangePaymentMethod(Wirecard.Models.SubscriptionRequest,System.String)">
+            <summary>
+            Alterar método de pagamento - Change Payment Method
+            </summary>
+            <param name="body"></param>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ListSignatureInvoices(System.String)">
+            <summary>
+            Listar Faturas de Assinatura - List Signature Invoices
+            </summary>
+            <param name="code"> Código do Assinante </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ConsultInvoice(System.String)">
+            <summary>
+            Consultar Fatura - Consult Invoice
+            </summary>
+            <param name="id"> Id da Cobrança </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ListAllInvoicePayments(System.String)">
+            <summary>
+            Listar todos os pagamentos de fatura - List all invoice payments
+            </summary>
+            <param name="id"> Id da Cobrança </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ConsultSubscriptionPayment(System.String)">
+            <summary>
+            Consultar pagamento de assinatura - Consult subscription payment
+            </summary>
+            <param name="id"> Id do pagamento </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.CreateCoupon(Wirecard.Models.CouponRequest)">
+            <summary>
+            Criar cupom - Create Coupon
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.AssociateCouponForExistingSignature(Wirecard.Models.CouponRequest,System.String)">
+            <summary>
+            Associar Cupom para Assinatura Existente - Associate Coupon For Existing Signature
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.AssociateCouponForNewSignature(Wirecard.Models.CouponRequest,System.String)">
+            <summary>
+            Associar Cupom para Nova Assinatura - Associate Coupon For New Signature
+            </summary>
+            <param name="body"></param>
+            <param name="true_or_false">Caso queira criar um novo Assinante o valor desse ser "true", caso contrário "false".</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ConsultCoupon(System.String)">
+            <summary>
+            Consultar Cupom - Consult Coupon
+            </summary>
+            <param name="code"> Código do Cupom. </param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.ListAllCoupons">
+            <summary>
+            Listar Todos os Cupons - List All Coupons
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.EnableOrDisableCoupon(System.String,System.String)">
+            <summary>
+            Ativar ou Inativar Cupon - Enable or Disable Coupon
+            </summary>
+            <param name="code">Código do Cupom</param>
+            <param name="active_or_inactive">Escolha active para Ativar um Cupom e inactive para desativar</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.DeleteSignatureCoupon(System.String)">
+            <summary>
+            Excluir Cupom de Assinatura - Delete Signature Coupon
+            </summary>
+            <param name="code">Código da Assinatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.RetentiveInvoicePayment(System.String)">
+            <summary>
+            Retentativa pagamento de fatura - Retentive invoice payment
+            </summary>
+            <param name="id">ID da fatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.CreateNewInvoiceBoleto(Wirecard.Models.RetentativeRequest,System.String)">
+            <summary>
+            Criar novo boleto de fatura - Create New Invoice Boleto
+            </summary>
+            <param name="body"></param>
+            <param name="id">ID da fatura</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.CreateAutomaticRetentionRules(Wirecard.Models.RetentativeRequest)">
+            <summary>
+            Criar Regras de Retentativas Automáticas - Create Automatic Retention Rules
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.SignaturesController.CreateNotificationPreference(Wirecard.Models.NotificationRequest)">
+            <summary>
+            Criar Preferência de Notificação - Create Notification Preference
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.TransfersController.Create(Wirecard.Models.TransferRequest,System.String)">
+            <summary>
+            Criar Transferência - Create Transfer
+            </summary>
+            <param name="body"></param>
+            <param name="accesstoken">accesstoken da conta Wirecard</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.TransfersController.Revert(System.String,System.String)">
+            <summary>
+            Reverter Transferência - Revert Transfer
+            </summary>
+            <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
+            <param name="accesstoken">accesstoken da conta Wirecard a qual foi destinatária da transferência</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.TransfersController.Consult(System.String,System.String)">
+            <summary>
+            Consultar Transferência - Consult Transfer
+            </summary>
+            <param name="transfer_id">Código identificador da transferência. Exemplo: TRA-28HRLYNLMUFH</param>
+            <param name="accesstoken">accesstoken da conta Wirecard</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.TransfersController.List">
+            <summary>
+            Listar Todas Transferências - List All Transfers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.TransfersController.ListFilter(System.String)">
+            <summary>
+            Listar Todas Transferências com filtro - List All Transfers with filter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Controllers.TransparentAccountsController.Create(Wirecard.Models.TransparentAccountRequest)">
+            <summary>
+             Cria uma conta transparente - Create a transparent account
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Utilities.DeserializeWebHook(System.String)">
+            <summary> Converte json para objeto - deserialize to a object </summary>
+            <param name="json">Retorno json</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Utilities.GetExceptionText(Wirecard.Exception.WirecardException)">
+            <summary>
+            Obter os erros como texto - Get errors as text
+            </summary>
+            <param name="we">WirecardException</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.Utilities.RequestUserAccessPermissions(System.String,System.String,System.String,System.String)">
+            <summary>
+            Solicita Permissões de Acesso ao Usuário - Request User Access Permissions
+            </summary>
+            <param name="response_type">Define o tipo de resposta a ser obtido. Valores possíveis: code</param>
+            <param name="client_id">Identificador único do aplicativo que será realizada a solicitação. Exemplo: APP-DVLJHW59IKOS</param>
+            <param name="redirect_uri">URI de redirecionamento do cliente. ATENÇÂO: deve ser a mesma url cadastrada ao criar o app.</param>
+            <param name="scope">Permissões que deseja. Valores possíveis: RECEIVE_FUNDS, REFUND, MANAGE_ACCOUNT_INFO, RETRIEVE_FINANCIAL_INFO, TRANSFER_FUNDS, DEFINE_PREFERENCES</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wirecard.WirecardClient.#ctor(Wirecard.Environments,System.String)">
+            <summary>
+            Tipo de negócio: MARKETPLACE
+            </summary>
+            <param name="environments">Escolha um "meio ambiente" você quer executar suas ações</param>
+            <param name="accesstoken">accesstoken</param>
+        </member>
+        <member name="M:Wirecard.WirecardClient.#ctor(Wirecard.Environments,System.String,System.String)">
+            <summary>
+            Tipo de negócio: E-COMMERCE
+            </summary>
+            <param name="environments">Escolha um "meio ambiente" você quer executar suas ações</param>
+            <param name="token">token</param>
+            <param name="key">chave</param>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Customer">
+            <summary> Cliente </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Conciliation">
+            <summary> Conciliação </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.ClassicAccount">
+            <summary> Conta Clássica </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.TransparentAccount">
+            <summary> Conta Transparente </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.BankAccount">
+            <summary> Conta Bancária </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Launch">
+            <summary> Lançamento </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.MultiPayment">
+            <summary> Multi-Pagamento </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.MultiOrder">
+            <summary> Multi-Pedido </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Notification">
+            <summary> Notificação </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Payment">
+            <summary> Pagamento </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Order">
+            <summary> Pedido </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Refund">
+            <summary> Reembolso </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Balance">
+            <summary> Saldos </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Transfer">
+            <summary> Transferência </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient.Signature">
+            <summary> Assinatura </summary>
+        </member>
+        <member name="P:Wirecard.WirecardClient._BusinessType">
+            <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>
+        </member>
+    </members>
+</doc>

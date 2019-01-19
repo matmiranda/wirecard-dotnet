@@ -256,7 +256,7 @@ Dim body = New ClassicAccountRequest With {
             .ZipCode = "01234-000",
             .City = "São Paulo",
             .State = "SP",
-            .Country = "BR"
+            .Country = "BRA"
         }
     },
     .Type = "MERCHANT"

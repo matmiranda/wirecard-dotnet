@@ -297,7 +297,7 @@ var body = new ClassicAccountRequest
             ZipCode = "01234-000",
             City = "São Paulo",
             State = "SP",
-            Country = "BR"
+            Country = "BRA"
         }
     },
     Type = "MERCHANT"

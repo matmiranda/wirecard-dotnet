@@ -227,43 +227,40 @@ if (result = HttpStatusCode.OK) then printfn "Conta existe !"
 ```
 
 #### Criar Conta Wirecard Clássica (Conta PF)
-```VB.NET
-Dim body = New ClassicAccountRequest With {
-    .Email = New Email With {
-        .Address = "fulano@hotmail.com"
-    },
-    .Person = New Person With {
-        .Name = "Fulano",
-        .LastName = "da Silva",
-        .TaxDocument = New Taxdocument With {
-            .Type = "CPF",
-            .Number = "123.456.789-91"
-        },
-        .IdentityDocument = New Identitydocument With {
-            .Type = "RG",
-            .Number = "434322344",
-            .Issuer = "SPP",
-            .IssueDate = "2000-12-12"
-        },
-        .BirthDate = "1990-01-01",
-        .Phone = New Phone With {
-            .CountryCode = "55",
-            .AreaCode = "11",
-            .Number = "965213244"
-        },
-        .Address = New Address With {
-            .Street = "Av. Brigadeiro Faria Lima",
-            .StreetNumber = "2927",
-            .District = "Itaim",
-            .ZipCode = "01234-000",
-            .City = "São Paulo",
-            .State = "SP",
-            .Country = "BR"
-        }
-    },
-    .Type = "MERCHANT"
-}
-Dim result = Await WC.ClassicAccount.Create(body)
+```F#
+let body =
+    ClassicAccountRequest(
+        Email = Email(
+                Address = "fulano@hotmail.com"),
+        Person = Person(
+            Name = "Fulano", 
+            LastName = "da Silva",
+            TaxDocument = Taxdocument(
+                Type = "CPF", 
+                Number = "123.456.789-91"),
+            IdentityDocument = Identitydocument(
+                Type = "RG", 
+                Number = "434322344", 
+                Issuer = "SPP", 
+                IssueDate = "2000-12-12"),
+            BirthDate = "1990-01-01",
+            Phone = Phone(
+                CountryCode = "55", 
+                AreaCode = "11", 
+                Number = "965213244"),
+            Address = Address(
+                Street = "Av. Brigadeiro Faria Lima", 
+                StreetNumber = "2927", 
+                District = "Itaim", 
+                ZipCode = "01234-000", 
+                City = "São Paulo", 
+                State = "SP", 
+                Country = "BR")),
+        Type = "MERCHANT")
+let result = 
+    async { 
+        return! WC.ClassicAccount.Create(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Criar Conta Wirecard Clássica (Conta PJ)
 ```VB.NET

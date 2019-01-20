@@ -1048,49 +1048,60 @@ let result =
 ```
 ## Transferências
 #### Criar Transferência
-```VB.NET
-Dim body = New TransferRequest With {
-    .Amount = 500,
-    .TransferInstrument = New Transferinstrument With {
-        .Method = "",
-        .BankAccount = New Bankaccount With {
-            .Type = "CHECKING",
-            .BankNumber = "001",
-            .AgencyNumber = "1111",
-            .AgencyCheckNumber = "2",
-            .AccountNumber = "9999",
-            .AccountCheckNumber = "8",
-            .Holder = New Holder With {
-                .FullName = "Nome do Portador",
-                .TaxDocument = New Taxdocument With {
-                    .Type = "CPF",
-                    .Number = "22222222222"
-                }
-            }
-        }
-    }
-}
-Dim accessToken As String = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
-Dim result = Await WC.Transfer.Create(body, accessToken)
+```F#
+let body = 
+    TransferRequest(
+        Amount = 500,
+        TransferInstrument = Transferinstrument(
+            Method = "",
+                BankAccount = Bankaccount(
+                    Type = "CHECKING",
+                    BankNumber = "001",
+                    AgencyNumber = "1111",
+                    AgencyCheckNumber = "2",
+                    AccountNumber = "9999",
+                    AccountCheckNumber = "8",
+                    Holder = Holder(
+                        FullName = "Nome do Portador",
+                        TaxDocument = Taxdocument(
+                            Type = "CPF",
+                            Number = "22222222222")))))
+let accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
+let result = 
+    async { 
+        return! WC.Transfer.Create(body, accessToken) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Reverter Transferência
-```VB.NET
-Dim accessToken As String = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
-Dim result = Await WC.Transfer.Revert("TRA-XXXXXXXXXXXX", accessToken)
+```F#
+let accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
+let result = 
+    async { 
+        return! WC.Transfer.Revert("TRA-XXXXXXXXXXXX", accessToken) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Transferência
-```VB.NET
-Dim accessToken As String = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
-Dim result = Await WC.Transfer.Consult("TRA-XXXXXXXXXXXX", accessToken)
+```F#
+let accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx_v2"
+let result = 
+    async { 
+        return! WC.Transfer.Consult("TRA-XXXXXXXXXXXX", accessToken) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todas Transferências
-```VB.NET
-Dim result = Await WC.Transfer.List()
+```F#
+let result = 
+    async { 
+        return! WC.Transfer.List() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todas Transferências com filtros
-```VB.NET
-Dim filtros As String = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0"
-Dim result = Await WC.Transfer.List()
+```F#
+let filtros = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0"
+let result = 
+    async { 
+        return! WC.Transfer.ListFilter() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 ## Reembolsos
 #### Reembolsar Pagamento

@@ -709,122 +709,104 @@ let result =
 
 ## Multipedidos
 #### Criar Multipedido
-```VB.NET
-Dim body = New MultiOrderRequest With {
-    .OwnId = "meu_multiorder_id",
-    .Orders = New List(Of Order) From {
-        New Order With {
-            .OwnId = "pedido_1_id",
-            .Amount = New Amount With {
-                .Currency = "BRL",
-                .Subtotals = New Subtotals With {
-                    .Shipping = 2000
-                }
-            },
-            .Items = New List(Of Item) From {
-                New Item With {
-                    .Product = "Camisa Verde e Amarelo - Brasil",
-                    .Quantity = 1,
-                    .Detail = "Seleção Brasileira",
-                    .Price = 2000
-                }
-            },
-            .Customer = New Customer With {
-                .OwnId = "customer[1234]",
-                .FullName = "Joao Souza",
-                .Email = "joao.sousa@email.com",
-                .BirthDate = "1988-12-30",
-                .TaxDocument = New Taxdocument With {
-                    .Type = "CPF",
-                    .Number = "22222222222"
-                },
-                .Phone = New Phone With {
-                    .CountryCode = "55",
-                    .AreaCode = "11",
-                    .Number = "66778899"
-                },
-                .ShippingAddress = New Shippingaddress With {
-                    .City = "São Paulo",
-                    .Complement = "10",
-                    .District = "Itaim Bibi",
-                    .Street = "Avenida Faria Lima",
-                    .StreetNumber = "500",
-                    .ZipCode = "01234000",
-                    .State = "SP",
-                    .Country = "BRA"
-                }
-            },
-            .Receivers = New List(Of Receiver) From {
-                New Receiver With {
-                    .MoipAccount = New Moipaccount With {
-                        .Id = "MPA-VB5OGTVPCI52"
-                    },
-                    .Type = "PRIMARY"
-                }
-            }
-        },
-        New Order With {
-            .OwnId = "pedido_2_id",
-            .Amount = New Amount With {
-                .Currency = "BRL",
-                .Subtotals = New Subtotals With {
-                    .Shipping = 2000
-                }
-            },
-            .Items = New List(Of Item) From {
-                New Item With {
-                    .Product = "Camisa Preta e Vermelha - Alemanha",
-                    .Quantity = 1,
-                    .Detail = "Camiseta da Copa 2014",
-                    .Price = 2000
-                }
-            },
-            .Customer = New Customer With {
-                .OwnId = "customer[1234]",
-                .FullName = "Joao Souza",
-                .Email = "joao.sousa@email.com",
-                .BirthDate = "1988-12-30",
-                .TaxDocument = New Taxdocument With {
-                    .Type = "CPF",
-                    .Number = "22222222222"
-                },
-                .Phone = New Phone With {
-                    .CountryCode = "55",
-                    .AreaCode = "11",
-                    .Number = "66778899"
-                },
-                .ShippingAddress = New Shippingaddress With {
-                    .City = "São Paulo",
-                    .Complement = "10",
-                    .District = "Itaim Bibi",
-                    .Street = "Avenida Faria Lima",
-                    .StreetNumber = "500",
-                    .ZipCode = "01234000",
-                    .State = "SP",
-                    .Country = "BRA"
-                }
-            },
-            .Receivers = New List(Of Receiver) From {
-                New Receiver With {
-                    .MoipAccount = New Moipaccount With {
-                        .Id = "MPA-KQB1QFWS6QNM"
-                    },
-                    .Type = "SECONDARY",
-                    .FeePayor = False,
-                    .Amount = New Amount With {
-                        .Fixed = 55
-                    }
-                }
-            }
-        }
-    }
-}
-Dim result = Await WC.MultiOrder.Create(body)
+```F#
+let body =
+    MultiOrderRequest(
+        OwnId = "meu_multiorder_id",
+        Orders = ResizeArray<Order>([
+            Order(
+                OwnId = "pedido_1_id",
+                Amount = Amount(
+                    Currency = "BRL",
+                    Subtotals = Subtotals(
+                        Shipping = 2000)),
+                Items = ResizeArray<Item>([
+                    Item(
+                        Product = "Camisa Verde e Amarelo - Brasil",
+                        Quantity = 1,
+                        Detail = "Seleção Brasileira",
+                        Price = 2000
+                    )]),
+                Customer = Customer(
+                    OwnId = "customer[1234]",
+                    FullName = "Joao Souza",
+                    Email = "joao.sousa@email.com",
+                    BirthDate = "1988-12-30",
+                    TaxDocument = Taxdocument(
+                        Type = "CPF",
+                        Number = "22222222222"),
+                    Phone = Phone(
+                        CountryCode = "55",
+                        AreaCode = "11",
+                        Number = "66778899"),
+                    ShippingAddress = Shippingaddress(
+                        City = "São Paulo",
+                        Complement = "10",
+                        District = "Itaim Bibi",
+                        Street = "Avenida Faria Lima",
+                        StreetNumber = "500",
+                        ZipCode = "01234000",
+                        State = "SP",
+                        Country = "BRA")),
+                Receivers = ResizeArray<Receiver>([
+                    Receiver(
+                        MoipAccount = new Moipaccount(
+                            Id = "MPA-VB5OGTVPCI52"),
+                            Type = "PRIMARY")]));
+            Order(
+                OwnId = "pedido_2_id",
+                Amount = Amount(
+                    Currency = "BRL",
+                    Subtotals = Subtotals(
+                        Shipping = 2000)),
+                Items = ResizeArray<Item>([
+                    Item(
+                        Product = "Camisa Preta e Vermelha - Alemanha",
+                        Quantity = 1,
+                        Detail = "Camiseta da Copa 2014",
+                        Price = 2000
+                    )]),
+                Customer = Customer(
+                    OwnId = "customer[1234]",
+                    FullName = "Joao Souza",
+                    Email = "joao.sousa@email.com",
+                    BirthDate = "1988-12-30",
+                    TaxDocument = Taxdocument(
+                        Type = "CPF",
+                        Number = "22222222222"),
+                    Phone = Phone(
+                        CountryCode = "55",
+                        AreaCode = "11",
+                        Number = "66778899"),
+                    ShippingAddress = Shippingaddress(
+                        City = "São Paulo",
+                        Complement = "10",
+                        District = "Itaim Bibi",
+                        Street = "Avenida Faria Lima",
+                        StreetNumber = "500",
+                        ZipCode = "01234000",
+                        State = "SP",
+                        Country = "BRA")),
+                Receivers = ResizeArray<Receiver>([
+                    Receiver(
+                        MoipAccount = new Moipaccount(
+                            Id = "MPA-VB5OGTVPCI52"),
+                            Type = "SECONDARY",
+                            FeePayor = false,
+                            Amount = Amount(
+                                Fixed = 55))]))]))
+let result = 
+    async { 
+        return! WC.MultiOrder.Create(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Consultar Multipedido
-```VB.NET
-Dim result = Await WC.MultiOrder.Consult("MOR-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.MultiOrder.Consult("MOR-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 ## Multipagamentos

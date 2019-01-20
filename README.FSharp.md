@@ -255,7 +255,7 @@ let body =
                 ZipCode = "01234-000", 
                 City = "São Paulo", 
                 State = "SP", 
-                Country = "BR")),
+                Country = "BRA")),
         Type = "MERCHANT")
 let result = 
     async { 
@@ -263,94 +263,87 @@ let result =
     } |> Async.RunSynchronously
 ```
 #### Criar Conta Wirecard Clássica (Conta PJ)
-```VB.NET
-Dim body = New ClassicAccountRequest With {
-    .Email = New Email With {
-        .Address = "fulano@hotmail.com"
-    },
-    .Person = New Person With {
-        .Name = "Fulano",
-        .LastName = "da Silva",
-        .BirthDate = "1990-01-01",
-        .TaxDocument = New Taxdocument With {
-            .Type = "CPF",
-            .Number = "123.456.789-91"
-        },
-        .IdentityDocument = New Identitydocument With {
-            .Type = "RG",
-            .Number = "434322344",
-            .Issuer = "SPP",
-            .IssueDate = "2000-12-12"
-        },
-        .Phone = New Phone With {
-            .CountryCode = "55",
-            .AreaCode = "11",
-            .Number = "965213244"
-        },
-        .Address = New Address With {
-            .Street = "Av. Brigadeiro Faria Lima",
-            .StreetNumber = "2927",
-            .District = "Itaim",
-            .ZipCode = "01234-000",
-            .City = "São Paulo",
-            .State = "SP",
-            .Country = "BR"
-        }
-    },
-    .Company = New Company With {
-        .Name = "Noma da empresa",
-        .BusinessName = "Wirecard Pagamentos",
-        .OpeningDate = "2011-01-01",
-        .TaxDocument = New Taxdocument With {
-            .Type = "CNPJ",
-            .Number = "11.698.147/0001-13"
-        },
-        .MainActivity = New Mainactivity With {
-            .Cnae = "82.91-1/00",
-            .Description = "Atividades de cobranças e informações cadastrais"
-        },
-        .Phone = New Phone With {
-            .CountryCode = "55",
-            .AreaCode = "11",
-            .Number = "32234455"
-        },
-        .Address = New Address With {
-            .Street = "Av. Brigadeiro Faria Lima",
-            .StreetNumber = "2927",
-            .District = "Itaim",
-            .ZipCode = "01234-000",
-            .City = "São Paulo",
-            .State = "SP",
-            .Country = "BRA"
-        }
-    },
-    .BusinessSegment = New Businesssegment With {
-        .Id = 3
-    },
-    .Type = "MERCHANT"
-}
-Dim result = Await WC.ClassicAccount.Create(body)
+```F#
+let body =
+    ClassicAccountRequest(
+        Email = Email(
+                Address = "fulano@hotmail.com"),
+        Person = Person(
+            Name = "Fulano", 
+            LastName = "da Silva",
+            BirthDate = "1990-01-01",
+            TaxDocument = Taxdocument(
+                Type = "CPF", 
+                Number = "123.456.789-91"),
+            IdentityDocument = Identitydocument(
+                Type = "RG", 
+                Number = "434322344", 
+                Issuer = "SPP", 
+                IssueDate = "2000-12-12"),
+            Phone = Phone(
+                CountryCode = "55", 
+                AreaCode = "11", 
+                Number = "965213244"),
+            Address = Address(
+                Street = "Av. Brigadeiro Faria Lima", 
+                StreetNumber = "2927", 
+                District = "Itaim", 
+                ZipCode = "01234-000", 
+                City = "São Paulo", 
+                State = "SP", 
+                Country = "BRA")),
+        Company = Company(
+            Name = "Noma da empresa", 
+            BusinessName = "Wirecard Pagamentos", 
+            OpeningDate = "2011-01-01",
+            TaxDocument = Taxdocument(
+                Type = "CNPJ", 
+                Number = "11.698.147/0001-13"),
+            MainActivity = Mainactivity(
+                Cnae = "82.91-1/00",
+                Description = "Atividades de cobranças e informações cadastrais"),
+            Phone = Phone(
+                CountryCode = "55", 
+                AreaCode = "11", 
+                Number = "32234455"),
+            Address = Address(            
+                Street = "Av. Brigadeiro Faria Lima",
+                StreetNumber = "2927",
+                District = "Itaim",
+                ZipCode = "01234-000",
+                City = "São Paulo",
+                State = "SP",
+                Country = "BRA")),
+        BusinessSegment = Businesssegment(Id = 3),
+        Type = "MERCHANT")
+let result = 
+    async { 
+        return! WC.ClassicAccount.Create(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Consultar Conta Wirecard
-```VB.NET
-Dim result = Await WC.ClassicAccount.Consult("MPA-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.ClassicAccount.Consult("MPA-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Solicitar Permissões de Acesso ao Usuário
 
 🚩 O código a seguir não consome API, apenas monta o URL. Mais informações clica [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permiss%C3%A3o).
 
-```VB.NET
-Dim response_type As String = "code"
-Dim client_id As String = "APP-FFFGVQMOK123"
-Dim redirect_uri As String = "https://example.com/abc?DEF=あいう えお"
-Dim scope As String = "RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES"
-Dim url = Utilities.RequestUserAccessPermissions(response_type, client_id, redirect_uri, scope)
+```F#
+let response_type = "code"
+let client_id = "APP-FFFGVQMOK123"
+let redirect_uri = "https://example.com/abc?DEF=あいう えお"
+let scope = "RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES"
+let url = Utilities.RequestUserAccessPermissions(response_type, client_id, redirect_uri, scope)
 
-'https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-
-'FFFGVQMOK123&redirect_uri=https://example.com/abc?DEF=%E3%81%82%E3%81%84%E3%81%86%20%
-'E3%81%88%E3%81%8A&scope=RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES
+//https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-
+//FFFGVQMOK123&redirect_uri=https://example.com/abc?DEF=%E3%81%82%E3%81%84%E3%81%86%20%
+//E3%81%88%E3%81%8A&scope=RECEIVE_FUNDS,MANAGE_ACCOUNT_INFO,DEFINE_PREFERENCES
 ```
 
 Veja [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permiss%C3%A3o) como funciona a permissão.

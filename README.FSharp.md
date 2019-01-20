@@ -381,171 +381,171 @@ let result =
 
 ## Conta Transparente
 #### Criar Conta Wirecard Transparente
-```VB.NET
-Dim body = New TransparentAccountRequest With {
-    .TransparentAccount = True,
-    .Type = "MERCHANT",
-    .Email = New Email With {
-        .Address = "teste@hotmail.com"
-    },
-    .Person = New Person With {
-        .Name = "PrimeiroNome",
-        .LastName = "SegundoNome",
-        .TaxDocument = New Taxdocument With {
-            .Type = "CPF",
-            .Number = "123.456.798-91"
-        },
-        .BirthDate = "2011-01-01",
-        .Phone = New Phone With {
-            .CountryCode = "55",
-            .AreaCode = "11",
-            .Number = "965213244"
-        },
-        .Address = New Address With {
-            .Street = "Av. Brigadeiro Faria Lima",
-            .StreetNumber = "2927",
-            .District = "Itaim",
-            .ZipCode = "01234000",
-            .City = "Osasco",
-            .State = "SP",
-            .Country = "BRA"
-        }
-    }
-}
-Dim result = Await WC.TransparentAccount.Create(body)
+```F#
+let body =
+    TransparentAccountRequest(
+        TransparentAccount = true,
+        Type = "MERCHANT",
+        Email = Email(
+            Address = "teste@hotmail.com"),
+        Person = Person(
+            Name = "",
+            LastName = "",
+            TaxDocument = Taxdocument(
+                Type = "CPF",
+                Number = "123.456.798-91"),
+            BirthDate = "2011-01-01",
+            Phone = Phone(
+                CountryCode = "55",
+                AreaCode = "11",
+                Number = "965213244"),
+            Address = Address(
+                Street = "Av. Brigadeiro Faria Lima",
+                StreetNumber = "2927",
+                District = "Itaim",
+                ZipCode = "01234000",
+                City = "Osasco",
+                State = "SP",
+                Country = "BRA")))
+let result = 
+    async { 
+        return! WC.TransparentAccount.Create(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 ## Clientes
 #### Criar Cliente - (E-COMMERCE)
-```VB.NET
-Dim body = New CustomerRequest With {
-    .OwnId = "meu_id_customer_002",
-    .FullName = "Maria Oliveira",
-    .Email = "maria@email.com",
-    .BirthDate = "1980-5-10",
-    .TaxDocument = New Taxdocument With {
-        .Type = "CPF",
-        .Number = "22288866644"
-    },
-    .Phone = New Phone With {
-        .CountryCode = "55",
-        .AreaCode = "11",
-        .Number = "55552266"
-    },
-    .ShippingAddress = New Shippingaddress With {
-        .City = "São Paulo",
-        .Complement = "10",
-        .District = "Itaim Bibi",
-        .Street = "Avenida Faria Lima",
-        .StreetNumber = "500",
-        .ZipCode = "01234000",
-        .State = "SP",
-        .Country = "BRA"
-    },
-    .FundingInstrument = New Fundinginstrument With {
-        .Method = "CREDIT_CARD",
-        .CreditCard = New Creditcard With {
-            .ExpirationMonth = "06",
-            .ExpirationYear = "22",
-            .Number = "6362970000457013",
-            .Cvc = "123",
-            .Holder = New Holder With {
-                .FullName = "Maria Oliveira",
-                .BirthDate = "1988-12-30",
-                .TaxDocument = New Taxdocument With {
-                    .Type = "CPF",
-                    .Number = "33333333333"
-                },
-                .BillingAddress = New Billingaddress With {
-                    .City = "Rio de Janeiro",
-                    .District = "Copacabana",
-                    .Street = "Rua Raimundo Corrêa",
-                    .StreetNumber = "1200",
-                    .ZipCode = "05246200",
-                    .State = "SP",
-                    .Country = "BRA"
-                },
-                .Phone = New Phone With {
-                    .CountryCode = "55",
-                    .AreaCode = "11",
-                    .Number = "66778899"
-                }
-            }
-        }
-    }
-}
-Dim result = Await WC.Customer.Create(body)
+```F#
+let body =
+    CustomerRequest(
+        OwnId = "meu_id_customer_002",
+        FullName = "Maria Oliveira",
+        Email = "maria@email.com",
+        BirthDate = "1980-5-10",
+        TaxDocument = Taxdocument(
+            Type = "CPF",
+            Number = "22288866644"),
+        Phone = Phone(    
+            CountryCode = "55",
+            AreaCode = "11",
+            Number = "55552266"),
+        ShippingAddress = Shippingaddress(    
+            City = "São Paulo",
+            Complement = "10",
+            District = "Itaim Bibi",
+            Street = "Avenida Faria Lima",
+            StreetNumber = "500",
+            ZipCode = "01234000",
+            State = "SP",
+            Country = "BRA"),
+        FundingInstrument = Fundinginstrument(
+            Method = "CREDIT_CARD",
+            CreditCard = Creditcard(
+                ExpirationMonth = "06",
+                ExpirationYear = "22",
+                Number = "6362970000457013",
+                Cvc = "123",
+                Holder = Holder(
+                    FullName = "Maria Oliveira",
+                    BirthDate = "1988-12-30",
+                    TaxDocument = Taxdocument(
+                        Type = "CPF",
+                        Number = "33333333333"),
+                    BillingAddress = Billingaddress(
+                        City = "Rio de Janeiro",
+                        District = "Copacabana",
+                        Street = "Rua Raimundo Corrêa",
+                        StreetNumber = "1200",
+                        ZipCode = "05246200",
+                        State = "SP",
+                        Country = "BRA"),
+                    Phone = Phone(
+                        CountryCode = "55",
+                        AreaCode = "11",
+                        Number = "66778899")))))
+let result = 
+    async { 
+        return! WC.Customer.Create(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Criar Cliente - (MARKETPLACE / PLATAFORMA)
-```VB.NET
- Dim body = New CustomerRequest With {
-     .OwnId = "meu_id_customer",
-     .FullName = "João Silva",
-     .Email = "joao@email.com",
-     .BirthDate = "1990-10-22",
-     .TaxDocument = New Taxdocument With {
-         .Type = "CPF",
-         .Number = "22288866644"
-     },
-     .Phone = New Phone With {
-         .CountryCode = "55",
-         .AreaCode = "11",
-         .Number = "55552266"
-     },
-     .ShippingAddress = New Shippingaddress With {
-         .City = "São Paulo",
-         .Complement = "10",
-         .District = "Itaim Bibi",
-         .Street = "Avenida Faria Lima",
-         .StreetNumber = "500",
-         .ZipCode = "01234000",
-         .State = "SP",
-         .Country = "BRA"
-     }
-}
-Dim result = Await WC.Customer.Create(body)
+```F#
+let body =
+    CustomerRequest(
+        OwnId = "meu_id_customer",
+        FullName = "Maria Oliveira",
+        Email = "maria@email.com",
+        BirthDate = "1980-5-10",
+        TaxDocument = Taxdocument(
+            Type = "CPF",
+            Number = "22288866644"),
+        Phone = Phone(    
+            CountryCode = "55",
+            AreaCode = "11",
+            Number = "55552266"),
+        ShippingAddress = Shippingaddress(    
+            City = "São Paulo",
+            Complement = "10",
+            District = "Itaim Bibi",
+            Street = "Avenida Faria Lima",
+            StreetNumber = "500",
+            ZipCode = "01234000",
+            State = "SP",
+            Country = "BRA"))
+let result = 
+    async { 
+        return! WC.Customer.Create(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Adicionar Cartão de Crédito
-```VB.NET
-Dim body = New CustomerRequest With {
-    .Method = "CREDIT_CARD",
-    .CreditCard = New Creditcard With {
-        .ExpirationMonth = "06",
-        .ExpirationYear = "2022",
-        .Number = "4012001037141112",
-        .Cvc = "123",
-        .Holder = New Holder With {
-            .FullName = "João da Silva",
-            .BirthDate = "1961-03-01",
-            .TaxDocument = New Taxdocument With {
-                .Type = "CPF",
-                .Number = "11111111111"
-            },
-            .Phone = New Phone With {
-                .CountryCode = "55",
-                .AreaCode = "11",
-                .Number = "111111111"
-            }
-        }
-    }
-}
-Dim result = Await WC.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX")
+```F#
+let body =
+    CustomerRequest(
+        Method = "CREDIT_CARD",
+        CreditCard = Creditcard(
+            ExpirationMonth = "06",
+            ExpirationYear = "2022",
+            Number = "4012001037141112",
+            Cvc = "123",
+            Holder = Holder(
+                FullName = "João da Silva",
+                BirthDate = "1961-03-01",
+                TaxDocument = Taxdocument(
+                    Type = "CPF",
+                    Number = "11111111111"),
+                Phone = Phone(
+                    CountryCode = "55",
+                    AreaCode = "11",
+                    Number = "111111111"))))
+let result = 
+    async { 
+        return! WC.Customer.AddCreditCard(body, "CUS-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Deletar Cartão de Crédito
-```VB.NET
-Dim result = Await WC.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Customer.DeleteCreditCard("CRC-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Consultar Cliente
-```VB.NET
-Dim result = Await WC.Customer.Consult("CUS-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Customer.Consult("CUS-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Listar Todos os Clientes
-```VB.NET
-Dim result = Await WC.Customer.List()
+```F#
+let result = 
+    async { 
+        return! WC.Customer.List() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 ## Pedidos

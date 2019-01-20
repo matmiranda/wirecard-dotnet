@@ -6,7 +6,6 @@
 - [Instalação](#instalação)
 - [Autenticando e configurando o ambiente (E-Commerce)](#autenticando-e-configurando-o-ambiente-e-commerce)
 - [Autenticando e configurando o ambiente (Marketplace)](#autenticando-e-configurando-o-ambiente-marketplace)
-- [Assíncrona x Síncrona](#assíncrona-x-síncrona)
 - [Conta Clássica](#conta-clássica)
   - [Verificar se usuário já possui Conta Wirecard (email)](#verificar-se-usuário-já-possui-conta-wirecard-email)
   - [Verificar se usuário já possui Conta Wirecard (documento)](#verificar-se-usuário-já-possui-conta-wirecard-documento)
@@ -192,13 +191,6 @@ let private WC = new WirecardClient(Environments.SANDBOX, accessToken)
 ```
 
 Para obter o accesstoken, você precisa criar um [App](https://dev.wirecard.com.br/reference#1-criar-um-app).
-
-## Assíncrona x Síncrona
-Todos os métodos são **assíncronos**, caso você queira executar de forma **síncrona**, veja o exemplo:
-
-```VB.NET
-Dim result As OrdersResponse = Task.Run(Function() WC.Order.List()).Result
-```
 
 ## Conta Clássica
 #### Verificar se usuário já possui Conta Wirecard (email)

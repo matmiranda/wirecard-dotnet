@@ -1100,46 +1100,68 @@ let result =
 let filtros = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0"
 let result = 
     async { 
-        return! WC.Transfer.ListFilter() |> Async.AwaitTask 
+        return! WC.Transfer.ListFilter(filtros) |> Async.AwaitTask 
     } |> Async.RunSynchronously
 ```
 ## Reembolsos
 #### Reembolsar Pagamento
-```VB.NET
-Dim body = New RefundRequest With {
-    .Amount = "2000"
-}
-Dim result = Await WC.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX")
+```F#
+let body =
+    RefundRequest(
+        //caso queira fazer um reembolso parcial é necessário informar o atributo amount na requisição
+        Amount = "2000")
+let result = 
+    async { 
+        return! WC.Refund.RefundPayment(body, "PAY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Reembolsar Pedido via Cartão de Crédito
-```VB.NET
-Dim body = New RefundRequest With {
-    .Amount = "2000"
-}
-Dim result = Await WC.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX")
+```F#
+let body =
+    RefundRequest(
+        Amount = "2000")
+let result = 
+    async { 
+        return! WC.Refund.RefundRequestCreditCard(body, "ORD-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Reembolso
-```VB.NET
-Dim result = Await WC.Refund.Consult("REF-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Refund.Consult("REF-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Reembolsos do Pagamento
-```VB.NET
-Dim result = Await WC.Refund.ListPayments("PAY-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Refund.ListPayments("PAY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Reembolsos do Pedido
-```VB.NET
-Dim result = Await WC.Refund.ListOrders("ORD-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Refund.ListOrders("ORD-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 ## Conciliação
 #### Obter Arquivo de Vendas
-```VB.NET
-Dim result = Await WC.Conciliation.GetSalesFile("20180829")
-'Data no formato YYYYMMDD
+```F#
+let result = 
+    async { 
+        return! WC.Conciliation.GetSalesFile("20180829") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
+//Data no formato YYYYMMDD
 ```
 #### Obter Arquivo Financeiro
-```VB.NET
-Dim result = Await WC.Conciliation.GetFinancialFile("2018-08-29")
-'Data no formato YYYY-MM-DD
+```F#
+let result = 
+    async { 
+        return! WC.Conciliation.GetFinancialFile("2018-08-29") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
+//Data no formato YYYY-MM-DD
 ```
 ## Assinatura
 #### Criar Plano

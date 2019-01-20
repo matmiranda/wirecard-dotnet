@@ -1165,144 +1165,167 @@ let result =
 ```
 ## Assinatura
 #### Criar Plano
-```VB.NET
-Dim body = New PlanRequest With {
-    .Code = "plan103",
-    .Name = "Plano Especial",
-    .Description = "Descrição do Plano Especial",
-    .Amount = 990,
-    .Setup_Fee = 500,
-    .Max_Qty = 1,
-    .Interval = New Interval With {
-        .Length = 1,
-        .Unit = "MONTH"
-    },
-    .Billing_Cycles = 12,
-    .Trial = New Trial With {
-        .Days = 30,
-        .Enabled = True,
-        .Hold_Setup_Fee = True
-    }
-}
-Dim result = Await WC.Signature.CreatePlan(body)
+```F#
+let body = 
+    PlanRequest(
+        Code = "plan103",
+        Name = "Plano Especial",
+        Description = "Descrição do Plano Especial",
+        Amount = 990,
+        Setup_Fee = 500,
+        Max_Qty = 1,
+        Interval = Interval(
+            Length = 1,
+            Unit = "MONTH"),
+        Billing_Cycles = 12,
+        Trial = Trial(
+            Days = 30,
+            Enabled = true,
+            Hold_Setup_Fee = true))
+let result = 
+    async { 
+        return! WC.Signature.CreatePlan(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Planos
-```VB.NET
-Dim result = Await WC.Signature.ListPlans()
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ListPlans() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Plano
-```VB.NET
-Dim result = Await WC.Signature.ConsultPlan("plan101")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ConsultPlan("plan101") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Ativar Plano
-```VB.NET
-Dim result = Await WC.Signature.EnablePlan("plan101")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.EnablePlan("plan101") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Desativar Plano
-```VB.NET
-Dim result = Await WC.Signature.DisablePlan("plan101")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.DisablePlan("plan101") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Alterar Plano
-```VB.NET
-Dim body = New PlanRequest With {
-    .Name = "Plano Especial",
-    .Description = "",
-    .Amount = 1290,
-    .Setup_Fee = 800,
-    .Max_Qty = 1,
-    .Payment_Method = "CREDIT_CARD",
-    .Interval = New Interval With {
-        .Length = 1,
-        .Unit = "MONTH"
-    },
-    .Billing_Cycles = 12,
-    .Trial = New Trial With {
-        .Days = 30,
-        .Enabled = True,
-        .Hold_Setup_Fee = True
-    }
-}
-Dim result = Await WC.Signature.ChangePlan(body, "plan101")
+```F#
+let body = 
+    PlanRequest(
+        Name = "Plano Especial",
+        Description = "",
+        Amount = 1290,
+        Setup_Fee = 800,
+        Max_Qty = 1,
+        Payment_Method = "CREDIT_CARD",
+        Interval = Interval(
+            Length = 1,
+            Unit = "MONTH"),
+        Billing_Cycles = 12,
+        Trial = Trial(
+            Days = 30,
+            Enabled = true,
+            Hold_Setup_Fee = true))
+let result = 
+    async { 
+        return! WC.Signature.ChangePlan(body, "plan101") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Criar Assinante
-```VB.NET
-Dim body = New SubscriberRequest With {
-    .Code = "cliente03",
-    .Email = "nome@exemplo.com.br",
-    .FullName = "Nome Sobrenome",
-    .Cpf = "22222222222",
-    .Phone_Area_Code = "11",
-    .Phone_Number = "934343434",
-    .BirthDate_Day = "26",
-    .BirthDate_Month = "04",
-    .BirthDate_Year = "1980",
-    .Address = New Address With {
-        .Street = "Rua Nome da Rua",
-        .StreetNumber = "100",
-        .Complement = "casa",
-        .District = "Nome do Bairro",
-        .City = "São Paulo",
-        .State = "SP",
-        .Country = "BRA",
-        .ZipCode = "05015010"
-    },
-    .Billing_Info = New Billing_Info With {
-        .Credit_Card = New Credit_Card With {
-            .Holder_Name = "Nome Completo",
-            .Number = "4111111111111111",
-            .Expiration_Month = "06",
-            .Expiration_Year = "22"
-        }
-    }
-}
-Dim result = Await WC.Signature.CreateSubscriber(body, True)
+```F#
+let body = 
+    SubscriberRequest(
+        Code = "cliente03",
+        Email = "nome@exemplo.com.br",
+        FullName = "Nome Sobrenome",
+        Cpf = "22222222222",
+        Phone_Area_Code = "11",
+        Phone_Number = "934343434",
+        BirthDate_Day = "26",
+        BirthDate_Month = "04",
+        BirthDate_Year = "1980",
+        Address = Address(
+            Street = "Rua Nome da Rua",
+            StreetNumber = "100",
+            Complement = "casa",
+            District = "Nome do Bairro",
+            City = "São Paulo",
+            State = "SP",
+            Country = "BRA",
+            ZipCode = "05015010"),
+        Billing_Info = Billing_Info(
+            Credit_Card = Credit_Card(
+                Holder_Name = "Nome Completo",
+                Number = "4111111111111111",
+                Expiration_Month = "06",
+                Expiration_Year = "22")))
+let result = 
+    async { 
+        return! WC.Signature.CreateSubscriber(body, true) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Assinantes
-```VB.NET
-Dim result = Await WC.Signature.ListSubscribers()
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ListSubscribers() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Assinante
-```VB.NET
-Dim result = Await WC.Signature.ConsultSubscriber("cliente01")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ConsultSubscriber("cliente01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Alterar Assinante
-```VB.NET
-Dim body = New SubscriberRequest With {
-    .Code = "cliente01",
-    .Email = "nome@exemplo.com.br",
-    .FullName = "Nome Sobrenome",
-    .Cpf = "22222222222",
-    .Phone_Area_Code = "11",
-    .Phone_Number = "934343434",
-    .BirthDate_Day = "26",
-    .BirthDate_Month = "04",
-    .BirthDate_Year = "1980",
-    .Address = New Address With {
-        .Street = "Rua Nome da Rua1",
-        .StreetNumber = "100",
-        .Complement = "casa",
-        .District = "Nome do Bairro",
-        .City = "São Paulo",
-        .State = "SP",
-        .Country = "BRA",
-        .ZipCode = "05015010"
-    }
-}
-Dim result = Await WC.Signature.ChangeSubscriber(body, "cliente01")
+```F#
+let body = 
+    SubscriberRequest(
+        Code = "cliente01",
+        Email = "nome@exemplo.com.br",
+        FullName = "Nome Sobrenome",
+        Cpf = "22222222222",
+        Phone_Area_Code = "11",
+        Phone_Number = "934343434",
+        BirthDate_Day = "26",
+        BirthDate_Month = "04",
+        BirthDate_Year = "1980",
+        Address = Address(
+            Street = "Rua Nome da Rua1",
+            StreetNumber = "100",
+            Complement = "casa",
+            District = "Nome do Bairro",
+            City = "São Paulo",
+            State = "SP",
+            Country = "BRA",
+            ZipCode = "05015010"))
+let result = 
+    async { 
+        return! WC.Signature.ChangeSubscriber(body, "cliente01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Atualizar Cartão do Assinante
 ```VB.NET
-Dim body = New SubscriberRequest With {
-    .Billing_Info = New Billing_Info With {
-        .Credit_Card = New Credit_Card With {
-            .Holder_Name = "Novo nome222",
-            .Number = "5555666677778884",
-            .Expiration_Month = "12",
-            .Expiration_Year = "20"
-        }
-    }
-}
-Dim result = Await WC.Signature.UpdateSubscriberCard(body, "cliente01")
+let body = 
+    SubscriberRequest(
+        Billing_Info = Billing_Info(
+            Credit_Card = Credit_Card(
+                Holder_Name = "Novo nome222",
+                Number = "5555666677778884",
+                Expiration_Month = "12",
+                Expiration_Year = "20")))
+let result = 
+    async { 
+        return! WC.Signature.UpdateSubscriberCard(body, "cliente01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Criar Assinaturas
 ```VB.NET

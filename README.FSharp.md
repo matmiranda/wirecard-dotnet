@@ -811,60 +811,69 @@ let result =
 
 ## Multipagamentos
 #### Criar Multipagamento
-```VB.NET
-Dim body = New MultiPaymentRequest With {
-    .InstallmentCount = 1,
-    .FundingInstrument = New Fundinginstrument With {
-        .Method = "CREDIT_CARD",
-        .CreditCard = New Creditcard With {
-            .Hash = "HhL0...pIkjl2+3Q==",
-            .Holder = New Holder With {
-                .FullName = "",
-                .BirthDate = "1988-12-30",
-                .TaxDocument = New Taxdocument With {
-                    .Type = "CPF",
-                    .Number = "33333333333"
-                },
-                .Phone = New Phone With {
-                    .CountryCode = "55",
-                    .AreaCode = "11",
-                    .Number = "66778899"
-                }
-            }
-        }
-    }
-}
-Dim result = Await WC.MultiPayment.Create(body, "MOR-XXXXXXXXXXXX")
+```F#
+let body = 
+    MultiPaymentRequest(
+        InstallmentCount = 1,
+        FundingInstrument = Fundinginstrument(
+            Method = "CREDIT_CARD",
+                CreditCard = Creditcard(
+                    Hash = "HhL0...pIkjl2+3Q==",
+                    Holder = Holder(
+                        FullName = "",
+                        BirthDate = "1988-12-30",
+                        TaxDocument = new Taxdocument(
+                            Type = "CPF",
+                            Number = "33333333333"),
+                        Phone = new Phone(
+                            CountryCode  = "55",
+                            AreaCode = "11",
+                            Number = "66778899")))))
+let result = 
+    async { 
+        return! WC.MultiPayment.Create(body, "MOR-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Multipagamento
-```VB.NET
-Dim result = Await WC.MultiPayment.Consult("MPY-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.MultiPayment.Consult("MPY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Capturar Multipagamento Pré-autorizado
-```VB.NET
-Dim result = Await WC.MultiPayment.CaptureAuthorized("MPY-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.MultiPayment.CaptureAuthorized("MPY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Cancelar Multipagamento Pré-autorizado
-```VB.NET
-Dim result = Await WC.MultiPayment.CancelAuthorized("MPY-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.MultiPayment.CancelAuthorized("MPY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Liberação de Custódia
-```VB.NET
-Dim result = Await WC.MultiPayment.ReleaseCustody("ECW-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.MultiPayment.ReleaseCustody |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 ## Notificações
 #### Criar Preferência de Notificação para Conta Wirecard
-```VB.NET
-Dim body = New NotificationRequest With {
-    .Events = New List(Of String) From {
-        "ORDER.*",
-        "PAYMENT.AUTHORIZED",
-        "PAYMENT.CANCELLED"
-    },
-    .Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
-    .Media = "WEBHOOK"
-}
-Dim result = Await WC.Notification.CreatAccountWirecard(body)
+```F#
+let body = 
+    NotificationRequest(
+        Events = ResizeArray<string>(["ORDER.*"; "PAYMENT.AUTHORIZED"; "PAYMENT.CANCELLED"]),
+        Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+        Media = "WEBHOOK")
+let result = 
+    async { 
+        return! WC.Notification.CreatAccountWirecard(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Criar Preferência de Notificação para App
@@ -872,56 +881,72 @@ Caso não tenha uma URL disponível, você pode usar o **Webhook Tester** para f
 
 Para isso basta acessar o [site](https://webhook.site) e gera uma URL automaticamente.
 
-```VB.NET
-Dim body = New NotificationRequest With {
-    .Events = New List(Of String) From {
-        "ORDER.*"
-    },
-    .Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
-    .Media = "WEBHOOK"
-}
-Dim result = Await WC.Notification.CreateApp(body)
+```F#
+let body = 
+    NotificationRequest(
+        Events = ResizeArray<string>(["ORDER.*"]),
+        Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+        Media = "WEBHOOK")
+let result = 
+    async { 
+        return! WC.Notification.CreateApp(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Criar Preferência de Notificação para App com código identificador
-```VB.NET
-Dim body = New NotificationRequest With {
-    .Events = New List(Of String) From {
-        "ORDER.*"
-    },
-    .Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
-    .Media = "WEBHOOK"
-}
-Dim result = Await WC.Notification.CreateApp(body, "APP-3984HG73HE9")
+```F#
+let body = 
+    NotificationRequest(
+        Events = ResizeArray<string>(["ORDER.*"]),
+        Target = "https://webhook.site/a54daf-da54-8d5a-8d5d1-kfa4gahf42",
+        Media = "WEBHOOK")
+let result = 
+    async { 
+        return! WC.Notification.CreateApp(body, "APP-3984HG73HE9") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Preferência de Notificação
-```VB.NET
-Dim result = Await WC.Notification.Consult("NPR-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Notification.Consult("NPR-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todas as Preferências de Notificação
-```VB.NET
-Dim result = Await WC.Notification.List()
+```F#
+let result = 
+    async { 
+        return! WC.Notification.List() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Remover Preferência de Notificação
-```VB.NET
-Dim result = Await WC.Notification.Remove("NPR-XXXXXXXXXXXX")
-If result = HttpStatusCode.NoContent Then
-'Caso a Preferência de Notificação tenha sido deletada, você deve receber uma response vazia (NoContent)
-End If
+```F#
+let result = 
+    async { 
+        return! WC.Notification.Remove("NPR-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
+if  result = HttpStatusCode.NoContent
+    then printfn "Caso a Preferência de Notificação tenha sido deletada, você deve receber uma response vazia (NoContent)"
 ```
 #### Consultar Webhook Enviado
-```VB.NET
-Dim result = Await WC.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todos os Webhooks Enviados
-```VB.NET
-Dim result = Await WC.Notification.ListWebhooks()
+```F#
+let result = 
+    async { 
+        return! WC.Notification.ListWebhooks() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Desserializar WebHook
 Ao configurar suas Preferências de Notificação você deve receber os webhooks em formato JSON e você pode desserializar.
 
-```VB.NET
-Dim json = "{ ""date"": """", ""env"": """", ... }"
-Dim result = Utilities.DeserializeWebHook(json)
+```F#
+let json = "{ \"date\": \"\", \"env\": \"\" }";
+let result = Utilities.DeserializeWebHook(json)
 ```
 Veja um exemplo do webhook [aqui](https://gist.githubusercontent.com/matmiranda/61b8fac6159d0a61c1cd52deb0941fd8/raw/c08a41818abd135d56c7608587f353bc0bd99df7/Exemplo%2520WebHook.json).
 
@@ -932,78 +957,101 @@ Dim token = Request.Headers("Authorization")
 
 ## Contas Bancárias
 #### Criar Conta Bancária
-```VB.NET
-Dim body = New BankAccountRequest With {
-    .bankNumber = "237",
-    .agencyNumber = "12345",
-    .agencyCheckNumber = "0",
-    .accountNumber = "12345678",
-    .accountCheckNumber = "7",
-    .type = "CHECKING",
-    .holder = New Holder With {
-        .taxDocument = New Taxdocument With {
-            .type = "CPF",
-            .number = "622.134.533-22"
-        },
-        .fullname = "Demo Wirecard"
-    }
-}
-Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
-Dim result = Await WC.BankAccount.Create(body, accesstoken, "MPA-XXXXXXXXXXXX")
+```F#
+let body =
+    BankAccountRequest(
+        BankNumber = "237",
+        AgencyNumber = "12345",
+        AgencyCheckNumber = "0",
+        AccountNumber = "12345678",
+        AccountCheckNumber = "7",
+        Type = "CHECKING",
+        Holder = Holder(
+            TaxDocument = new Taxdocument(
+                Type = "CPF",
+                Number = "622.134.533-22"),
+                FullName = "Demo Wirecard"))
+let accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+let result = 
+    async { 
+        return! WC.BankAccount.Create(body, accesstoken, "MPA-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Conta Bancária
-```VB.NET
-Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
-Dim result = Await WC.BankAccount.Consult(accesstoken, "BKA-XXXXXXXXXXXX")
+```F#
+let accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+let result = 
+    async { 
+        return! WC.BankAccount.Consult(accesstoken, "BKA-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todas Contas Bancárias
-```VB.NET
-Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
-Dim result = Await WC.BankAccount.List(accesstoken, "MPA-XXXXXXXXXXXX")
+```F#
+let accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+let result = 
+    async { 
+        return! WC.BankAccount.List(accesstoken, "MPA-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Deletar Conta Bancária
-```VB.NET
-Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
-Dim result = Await WC.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX")
+```F#
+let accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+let result = 
+    async { 
+        return! WC.BankAccount.Delete(accesstoken, "BKA-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Atualizar Conta Bancária
-```VB.NET
-Dim body = New BankAccountRequest With {
-    .BankNumber = "237",
-    .AgencyNumber = "12345",
-    .AgencyCheckNumber = "8",
-    .AccountNumber = "12345678",
-    .AccountCheckNumber = "8",
-    .Type = "CHECKING",
-    .Holder = New Holder With {
-        .TaxDocument = New Taxdocument With {
-            .Type = "CPF",
-            .Number = "622.134.533-22"
-        },
-        .FullName = "Nome Completo"
-    }
-}
-Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
-Dim result = Await WC.BankAccount.Update(body, accesstoken, "BKA-XXXXXXXXXXXX")
+```F#
+let body =
+    BankAccountRequest(
+        BankNumber = "237",
+        AgencyNumber = "12345",
+        AgencyCheckNumber = "8",
+        AccountNumber = "12345678",
+        AccountCheckNumber = "8",
+        Type = "CHECKING",
+        Holder = new Holder(
+            TaxDocument = new Taxdocument(
+                Type = "CPF",
+                Number = "622.134.533-22"),
+                FullName = "Nome Completo"))
+let accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"
+let result = 
+    async { 
+        return! WC.BankAccount.Update(body, accesstoken, "MPA-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 ## Saldo Wirecard
 #### Consultar Saldos
-```VB.NET
-Dim result = Await WC.Balance.Consult()
+```F#
+let result = 
+    async { 
+        return! WC.Balance.Consult() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 ## Lançamentos
 #### Consultar Lançamento
-```VB.NET
-Dim result = Await WC.Launch.Consult("ENT-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Launch.Consult("ENT-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todos Lançamentos
-```VB.NET
-Dim result = Await WC.Launch.List()
+```F#
+let result = 
+    async { 
+        return! WC.Launch.List() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todos Lançamentos com Filtro
-```VB.NET
-Dim filtros As String = "filters=status::in(SETTLED)"
-Dim result = Await WC.Launch.ListFilter(filtros)
+```F#
+let filtros = "filters=status::in(SETTLED)"
+let result = 
+    async { 
+        return! WC.Launch.ListFilter(filtros) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 ## Transferências
 #### Criar Transferência

@@ -32,7 +32,7 @@
 
 *Ler em outras linguagens de programação: [Visual Basic](README.VisualBasic.md), [F#](README.FSharp.md).*
 
-## Índice  
+## Índice - C#
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
 - [Aviso Importante](#aviso-importante)
 - [Instalação](#instalação)

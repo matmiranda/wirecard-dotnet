@@ -349,25 +349,34 @@ let url = Utilities.RequestUserAccessPermissions(response_type, client_id, redir
 Veja [aqui](https://dev.wirecard.com.br/reference#section-como-funciona-a-permiss%C3%A3o) como funciona a permissão.
 
 #### Gerar Access Token
-```VB.NET
-Dim client_id As String = "APP-M11STAPPOAU"
-Dim client_secret As String = "SplxlOBeZQQYbYS6WxSbIA"
-Dim redirect_uri As String = "http://localhost/moip/callback"
-Dim grant_type As String = "authorization_code"
-Dim code As String = "4d9e0466bc14aad85b894237145b217219e9a825"
-Dim result = Await WC.ClassicAccount.GenerateAccessToken(client_id, client_secret, redirect_uri, grant_type, code)
+```F#
+let client_id = "APP-M11STAPPOAU"
+let client_secret = "SplxlOBeZQQYbYS6WxSbIA"
+let redirect_uri = "http://localhost/moip/callback"
+let grant_type = "authorization_code"
+let code = "4d9e0466bc14aad85b894237145b217219e9a825"
+let result = 
+    async { 
+        return! WC.ClassicAccount.GenerateAccessToken(client_id, client_secret, redirect_uri, grant_type, code) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Atualizar accessToken
-```VB.NET
-Dim grant_type As String = "refresh_token"
-Dim refresh_token As String = "2381dfbbcbd645268af1dd0e4456bfe1_v2"
-Dim result = Await WC.ClassicAccount.UpdateAccessToken(grant_type, refresh_token)
+```F#
+let grant_type = "refresh_token"
+let refresh_token = "2381dfbbcbd645268af1dd0e4456bfe1_v2"
+let result = 
+    async { 
+        return! WC.ClassicAccount.UpdateAccessToken(grant_type, refresh_token) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Obter chave pública de uma Conta Wirecard
-```VB.NET
-Dim result = Await WC.ClassicAccount.GetPublickey()
+```F#
+let result = 
+    async { 
+        return! WC.ClassicAccount.GetPublickey() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 ## Conta Transparente

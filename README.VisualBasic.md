@@ -1046,7 +1046,7 @@ Dim result = Await WC.Transfer.List()
 #### Listar Todas Transferências com filtros
 ```VB.NET
 Dim filtros As String = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0"
-Dim result = Await WC.Transfer.List()
+Dim result = Await WC.Transfer.ListFilter(filtros)
 ```
 ## Reembolsos
 #### Reembolsar Pagamento

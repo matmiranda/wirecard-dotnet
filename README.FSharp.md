@@ -552,20 +552,20 @@ let result =
 #### Criar Pedido
 ```F#
 let items = ResizeArray<Item>()
-            items.Add(Item(
-                        Product = "Descrição do pedido", 
-                        Category = "VIDEO_GAME_SOFTWARE", 
-                        Quantity = 1, 
-                        Detail = "Mais info...", 
-                        Price = 2200))
+items.Add(Item(
+            Product = "Descrição do pedido", 
+            Category = "VIDEO_GAME_SOFTWARE", 
+            Quantity = 1, 
+            Detail = "Mais info...", 
+            Price = 2200))
 let receivers = ResizeArray<Receiver>()
-                receivers.Add(Receiver(
-                                Type = "SECONDARY", 
-                                FeePayor = false, 
-                                MoipAccount = Moipaccount(
-                                    Id = "MPA-E3C8493A06AE"),
-                                Amount = Amount(
-                                    Fixed = 5000)))
+receivers.Add(Receiver(
+                Type = "SECONDARY", 
+                FeePayor = false, 
+                MoipAccount = Moipaccount(
+                    Id = "MPA-E3C8493A06AE"),
+                Amount = Amount(
+                    Fixed = 5000)))
 let body = 
     OrderRequest(
         OwnId = "id_pedido",

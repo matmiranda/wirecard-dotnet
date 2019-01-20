@@ -550,57 +550,62 @@ let result =
 
 ## Pedidos
 #### Criar Pedido
-```VB.NET
-Dim body = New OrderRequest With {
-    .OwnId = "id_pedido",
-    .Amount = New Amount With {
-        .Currency = "BRL",
-        .Subtotals = New Subtotals With {
-            .Shipping = 1000
-        }
-    },
-    .Items = New List(Of Item) From {
-        New Item With {
-            .Product = "Descrição do pedido",
-            .Category = "VIDEO_GAME_SOFTWARE",
-            .Quantity = 1,
-            .Detail = "Mais info...",
-            .Price = 22000
-        }
-    },
-    .Customer = New Customer With {
-        .Id = "CUS-7AKU0VORZ2D4"
-    },
-    .Receivers = New List(Of Receiver) From {
-        New Receiver With {
-            .Type = "SECONDARY",
-            .FeePayor = False,
-            .MoipAccount = New Moipaccount With {
-                .Id = "MPA-E3C8493A06AE"
-            },
-            .Amount = New Amount With {
-                .Fixed = 5000
-            }
-        }
-    }
-}
-Dim result = Await WC.Order.Create(body)
+```F#
+let items = ResizeArray<Item>()
+items.Add(Item(
+            Product = "Descrição do pedido", 
+            Category = "VIDEO_GAME_SOFTWARE", 
+            Quantity = 1, 
+            Detail = "Mais info...", 
+            Price = 2200
+let receivers = ResizeArray<Receiver>()
+receivers.Add(Receiver(
+                Type = "SECONDARY", 
+                FeePayor = false, 
+                MoipAccount = Moipaccount(
+                    Id = "MPA-E3C8493A06AE"),
+                Amount = Amount(
+                    Fixed = 5000
+let body = 
+    OrderRequest(
+        OwnId = "id_pedido",
+        Amount = Amount(
+            Currency = "BRL",
+            Subtotals = Subtotals(
+                Shipping = 1000)),
+        Items = items,
+        Customer = Customer(
+            Id = "CUS-7AKU0VORZ2D4"),
+        Receivers = receivers)
+let result = 
+    async { 
+        return! WC.Order.Create(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Consultar Pedido
-```VB.NET
-Dim result = Await WC.Order.Consult("ORD-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Order.Consult("ORD-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Listar Todos os Pedidos - Sem Filtros
-```VB.NET
-Dim result = Await WC.Order.List()
+```F#
+let result = 
+    async { 
+        return! WC.Order.List() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Listar Todos os Pedidos - Com Filtros
-```VB.NET
-Dim filtros As String = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0"
-    Dim result = Await WC.Order.ListFilter(filtros)
+```F#
+let filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0"
+let result = 
+    async { 
+        return! WC.Order.ListFilter(filtros) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
  Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
  

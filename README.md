@@ -1065,20 +1065,20 @@ var token = Request.Headers["Authorization"];
 ```C#
 var body = new BankAccountRequest
 {
-    bankNumber = "237",
-    agencyNumber = "12345",
-    agencyCheckNumber = "0",
-    accountNumber = "12345678",
-    accountCheckNumber = "7",
-    type = "CHECKING",
-    holder = new Holder
+    BankNumber = "237",
+    AgencyNumber = "12345",
+    AgencyCheckNumber = "0",
+    AccountNumber = "12345678",
+    AccountCheckNumber = "7",
+    Type = "CHECKING",
+    Holder = new Holder
     {
-        taxDocument = new Taxdocument
+        TaxDocument = new Taxdocument
         {
-            type = "CPF",
-            number = "622.134.533-22"
+            Type = "CPF",
+            Number = "622.134.533-22"
         },
-        fullname = "Demo Wirecard"
+        FullName = "Demo Wirecard"
     }
 };
 string accesstoken = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"; // accesstoken do recebedor

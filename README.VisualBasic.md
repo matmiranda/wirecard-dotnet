@@ -931,18 +931,18 @@ Dim token = Request.Headers("Authorization")
 #### Criar Conta Bancária
 ```VB.NET
 Dim body = New BankAccountRequest With {
-    .bankNumber = "237",
-    .agencyNumber = "12345",
-    .agencyCheckNumber = "0",
-    .accountNumber = "12345678",
-    .accountCheckNumber = "7",
-    .type = "CHECKING",
-    .holder = New Holder With {
-        .taxDocument = New Taxdocument With {
-            .type = "CPF",
-            .number = "622.134.533-22"
+    .BankNumber = "237",
+    .AgencyNumber = "12345",
+    .AgencyCheckNumber = "0",
+    .AccountNumber = "12345678",
+    .AccountCheckNumber = "7",
+    .Type = "CHECKING",
+    .Holder = New Holder With {
+        .TaxDocument = New Taxdocument With {
+            .Type = "CPF",
+            .Number = "622.134.533-22"
         },
-        .fullname = "Demo Wirecard"
+        .FullName = "Demo Wirecard"
     }
 }
 Dim accesstoken As String = "XXXXXXXXXXXXXXXXXXXXXXXXXXX_v2"

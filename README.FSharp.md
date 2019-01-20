@@ -151,6 +151,7 @@ Pensando em melhorar ainda mais a sua segurança e para atender a padrões inter
 Para isso, adicione o seguinte código no seu projeto:
 
 ```F#
+open System.Net
 ServicePointManager.SecurityProtocol <- SecurityProtocolType.Tls12
 ```
 Para mais informações : [TLS1.2](https://dev.wirecard.com.br/page/atualiza%C3%A7%C3%A3o-do-protocolo-de-seguran%C3%A7a-tls-12).

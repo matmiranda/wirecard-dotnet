@@ -1190,7 +1190,7 @@ var result = await WC.Transfer.List();
 #### Listar Todas Transferências com filtros
 ```C#
 string filtros = "filters=transferInstrument.method::in(MOIP_ACCOUNT)&limit=3&offset=0";
-var result = await WC.Transfer.List();
+var result = await WC.Transfer.ListFilter(filtros);
 ```
 ## Reembolsos
 #### Reembolsar Pagamento

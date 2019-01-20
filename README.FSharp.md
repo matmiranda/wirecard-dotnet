@@ -611,85 +611,100 @@ let result =
  
  ## Pagamentos
  #### Criar Pagamento - Cartão de Crédito
- ```VB.NET
-Dim body = New PaymentRequest With {
-    .InstallmentCount = 1,
-    .FundingInstrument = New Fundinginstrument With {
-        .Method = "CREDIT_CARD",
-        .CreditCard = New Creditcard With {
-            .Id = "CRC-XXXXXXXXXXXX",
-            .Cvc = "123",
-            .Holder = New Holder With {
-                .FullName = "Jose Portador da Silva",
-                .BirthDate = "1988-12-30",
-                .TaxDocument = New Taxdocument With {
-                    .Type = "CPF",
-                    .Number = "33333333333"
-                }
-            }
-        }
-    }
-}
-Dim result = Await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX")
+ ```F#
+let body = 
+    PaymentRequest(
+        InstallmentCount = 1,
+        FundingInstrument = Fundinginstrument(
+            Method = "CREDIT_CARD",
+            CreditCard = Creditcard(
+                Id = "CRC-XXXXXXXXXXXX",
+                Cvc = "123",
+                Holder = Holder(
+                    FullName = "Jose Portador da Silva",
+                    BirthDate = "1988-12-30",
+                    TaxDocument = Taxdocument(
+                        Type = "CPF",
+                        Number = "33333333333")))))
+let result = 
+    async { 
+        return! WC.Payment.Create(body, "ORD-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Criar Pagamento - Boleto
 
-```VB.NET
-Dim body = New PaymentRequest With {
-    .StatementDescriptor = "Minha Loja",
-    .FundingInstrument = New Fundinginstrument With {
-        .Method = "BOLETO",
-        .Boleto = New Boleto With {
-            .ExpirationDate = "2020-06-20",
-            .InstructionLines = New Instructionlines With {
-                .First = "Atenção",
-                .Second = "fique atento à data de vencimento do boleto.",
-                .Third = "Pague em qualquer casa lotérica."
-            }
-        }
-    }
-}
-Dim result = Await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX")
+```F#
+let body = 
+    PaymentRequest(
+        StatementDescriptor = "Minha Loja",
+        FundingInstrument = Fundinginstrument(
+            Method = "BOLETO",
+            Boleto = Boleto(
+                ExpirationDate = "2020-06-20", //yyyy-MM-dd
+                InstructionLines = Instructionlines(
+                    First = "Atenção",
+                    Second = "fique atento à data de vencimento do boleto.",
+                    Third = "Pague em qualquer casa lotérica."))))
+let result = 
+    async { 
+        return! WC.Payment.Create(body, "ORD-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Criar Pagamento - Débito Online
 
-```VB.NET
-Dim body = New PaymentRequest With {
-    .FundingInstrument = New Fundinginstrument With {
-        .Method = "ONLINE_BANK_DEBIT",
-        .OnlineBankDebit = New Onlinebankdebit With {
-            .BankNumber = "341",
-            .ExpirationDate = "2017-10-22"
-        }
-    }
-}
-Dim result = Await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX")
+```F#
+let body = 
+    PaymentRequest(
+        FundingInstrument = Fundinginstrument(
+            Method = "ONLINE_BANK_DEBIT",
+            OnlineBankDebit = Onlinebankdebit(
+                BankNumber = "341",
+                ExpirationDate = "2017-10-22")))
+let result = 
+    async { 
+        return! WC.Payment.Create(body, "ORD-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Liberação de Custódia
-```VB.NET
-Dim result = Await WC.Payment.ReleaseCustody("ECW-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Payment.ReleaseCustody("ECW-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Capturar Pagamento Pré-autorizado
-```VB.NET
-Dim result = Await WC.Payment.CaptureAuthorized("PAY-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Payment.CaptureAuthorized("PAY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Cancelar Pagamento Pré-autorizado
-```VB.NET
-Dim result = Await WC.Payment.CancelAuthorized("PAY-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Payment.CancelAuthorized("PAY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Consultar Pagamento
-```VB.NET
-Dim result = Await WC.Payment.Consult("PAY-XXXXXXXXXXXX")
+```F#
+let result = 
+    async { 
+        return! WC.Payment.Consult("PAY-XXXXXXXXXXXX") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Simular Pagamentos (sandbox)
-```VB.NET
-Dim result = Await WC.Payment.Simulate("PAY-XXXXXXXXXXXX", 26500)
+```F#
+let result = 
+    async { 
+        return! WC.Payment.Simulate("PAY-XXXXXXXXXXXX", 26500) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 ## Multipedidos

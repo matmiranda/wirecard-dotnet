@@ -1,6 +1,6 @@
 *Ler em outras linguagens de programação: [C#](README.md), [F#](README.FSharp.md).*
 
-## Índice  
+## Índice - Visual Basic
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
 - [Aviso Importante](#aviso-importante)
 - [Instalação](#instalação)

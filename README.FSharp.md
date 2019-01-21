@@ -1519,31 +1519,26 @@ Dim result = Await WC.Signature.CreateNotificationPreference(body)
 
 As vezes você enfrenta um problema e o suporte Wirecard pede o código json para verificar se realmente está no json:
 
-```VB.NET
-Imports Newtonsoft.Json;
+```F#
+open Newtonsoft.Json
 
-Dim body = New PaymentRequest With {
-    .DelayCapture = True,
-    .InstallmentCount = 1,
-    .FundingInstrument = New Fundinginstrument With {
-        .Method = "CREDIT_CARD",
-        .CreditCard = New Creditcard With {
-            .Id = "CRC-XXXXXXXXXXXX",
-            .Cvc = "123",
-            .Holder = New Holder With {
-                .FullName = "Jose Portador da Silva",
-                .BirthDate = "1988-12-30",
-                .TaxDocument = New Taxdocument With {
-                    .Type = "CPF",
-                    .Number = "33333333333"
-                }
-            }
-        }
-    }
-}
-
-'Aqui você pode obter json e compratilhar para suporte Wirecard
-Dim json As String = JsonConvert.SerializeObject(body, Formatting.Indented)
+let body = 
+    PaymentRequest(
+        DelayCapture = true,
+        InstallmentCount = 1,
+        FundingInstrument = Fundinginstrument(
+            Method = "CREDIT_CARD",
+            CreditCard = Creditcard(
+                Id = "CRC-XXXXXXXXXXXX",
+                Cvc = "123",
+                Holder = Holder(
+                    FullName = "Jose Portador da Silva",
+                    BirthDate = "1988-12-30",
+                    TaxDocument = Taxdocument(
+                        Type = "CPF",
+                        Number = "33333333333")))))
+ //Aqui você pode obter json e compratilhar para suporte Wirecard
+let json = JsonConvert.SerializeObject(body, Formatting.Indented);
 ```
 
 Veja como ficou na variável json:

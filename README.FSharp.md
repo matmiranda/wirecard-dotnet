@@ -1603,7 +1603,10 @@ Você pode recuperar os atributos `code`, `path`, `description`, `message` e `er
 open Wirecard.Exception
 
 try
-    let result = async { return! WC.Customer.Create(new CustomerRequest()) |> Async.AwaitTask } |> Async.RunSynchronously
+    let result = 
+        async { 
+            return! WC.Customer.Create(new CustomerRequest()) |> Async.AwaitTask 
+        } |> Async.RunSynchronously
     ()
 with
     | :? WirecardException as ex -> 

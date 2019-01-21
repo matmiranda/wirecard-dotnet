@@ -944,8 +944,8 @@ let result = Utilities.DeserializeWebHook(json)
 Veja um exemplo do webhook [aqui](https://gist.githubusercontent.com/matmiranda/61b8fac6159d0a61c1cd52deb0941fd8/raw/c08a41818abd135d56c7608587f353bc0bd99df7/Exemplo%2520WebHook.json).
 
 Para aumentar a segurança da sua aplicação e garantir que apenas a Wirecard pode enviar notificações para o seu sistema, você pode conferir o token enviado no header dos webhooks. Este token é o mesmo que é gerado no momento do cadastro da sua URL:
-```VB.NET
-Dim token = Request.Headers("Authorization")
+```F#
+let token = Request.Headers["Authorization"]
 ```
 
 ## Contas Bancárias

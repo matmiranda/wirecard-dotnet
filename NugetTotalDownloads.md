@@ -5,3 +5,5 @@ Veja as 3 listas abaixo em ordem, criado por mim:
 3. [**Wirecard**](https://www.nuget.org/packages/Wirecard/) (*Atual...*) - **mais de 50 downloads**
 
 Total de downloads:  **4.862 downloads**
+
+Mais detalhes: [O Moip virou Wirecard](https://wirecard.com.br/moip-virou-wirecard)

@@ -1599,15 +1599,17 @@ Você pode também fazer uma busca por pedidos dentro de um intervalo de tempo:
 ## Exceção
 #### Obter erros
 Você pode recuperar os atributos `code`, `path`, `description`, `message` e `error`, veja no exemplo abaixo:
-```VB.NET
-Imports Wirecard.Exception
+```F#
+open Wirecard.Exception
 
-Try
-    Dim result = Await WC.Customer.Create(New CustomerRequest())
-Catch ex As WirecardException
-    Dim t = ex.wirecardError
-    Dim t_text = ex.GetExceptionText()
-End Try
+try
+    let result = async { return! WC.Customer.Create(new CustomerRequest()) |> Async.AwaitTask } |> Async.RunSynchronously
+    ()
+with
+    | :? WirecardException as ex -> 
+        let t = ex.wirecardError
+        let t_text = ex.GetExceptionText()
+        ()
 ```
 
 #### Tabela de erros

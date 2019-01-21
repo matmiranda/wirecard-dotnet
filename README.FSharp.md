@@ -1313,7 +1313,7 @@ let result =
     } |> Async.RunSynchronously
 ```
 #### Atualizar Cartão do Assinante
-```VB.NET
+```F#
 let body = 
     SubscriberRequest(
         Billing_Info = Billing_Info(
@@ -1328,32 +1328,42 @@ let result =
     } |> Async.RunSynchronously
 ```
 #### Criar Assinaturas
-```VB.NET
-Dim body = New SubscriptionRequest With {
-    .Code = "assinatura04",
-    .Amount = "9000",
-    .Plan = New Plan With {
-        .Code = "plan101"
-    },
-    .Payment_Method = "CREDIT_CARD",
-    .Customer = New Customer With {
-        .Code = "cliente01"
-    }
-}
-Dim result = Await WC.Signature.CreateSubscriptions(body, False)
+```F#
+let body = 
+    SubscriptionRequest(
+        Code = "assinatura04",
+        Amount = "9000",
+        Plan = Plan(
+            Code = "plan101"),
+        Payment_Method = "CREDIT_CARD",
+        Customer = Customer(
+            Code = "cliente01"))
+let result = 
+    async { 
+        return! WC.Signature.CreateSubscriptions(body, false) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todas Assinaturas
-```VB.NET
-Dim result = Await WC.Signature.ListAllSubscriptions()
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ListAllSubscriptions() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Assinatura -Sem Filtro
-```VB.NET
-Dim result = Await WC.Signature.ConsultSubscriptionFilter("assinatura01")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ConsultSubscriptionFilter("assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Assinatura - Com Filtro
-```VB.NET
-Dim filter = "q=assinatura01&filters=status::eq(ACTIVE)"
-Dim result = Await WC.Signature.ConsultSubscription(filter)
+```F#
+let filter = "q=assinatura01&filters=status::eq(ACTIVE)"
+let result = 
+    async { 
+        return! WC.Signature.ConsultSubscription(filter) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 Alguns exemplos de como filtrar:
 
@@ -1368,151 +1378,200 @@ Alguns exemplos de como filtrar:
 9. Filtrar assinaturas por valor (``` filters=amount::bt(100,100000) ```)
 10. Pesquisar Assinatura (``` q=diego nunes&limit=10&offset=0 ```)
 #### Suspender Assinatura
-```VB.NET
-Dim result = Await WC.Signature.SuspendSubscription("assinatura01")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.SuspendSubscription("assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Reativar Assinatura
-```VB.NET
-Dim result = Await WC.Signature.ReactivateSignature("assinatura01")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ReactivateSignature("assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Cancelar Assinatura
-```VB.NET
-Dim result = Await WC.Signature.CancelSignature("assinatura01")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.CancelSignature("assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Alterar Assinatura
-```VB.NET
-Dim body = New SubscriptionRequest With {
-    .Plan = New Plan With {
-        .Code = "plan101"
-    },
-    .Amount = "9990",
-    .Next_Invoice_Date = New Next_Invoice_Date With {
-        .Day = 15,
-        .Month = 12,
-        .Year = 2018
-    }
-}
-Dim result = Await WC.Signature.ChangeSubscription(body, "assinatura01")
+```F#
+let body =
+    SubscriptionRequest(
+        Plan = Plan(
+            Code = "plan101"),
+        Amount = "9990",
+        Next_Invoice_Date = Next_Invoice_Date(
+            Day = 15,
+            Month = 12,
+            Year = 2018))
+let result = 
+    async { 
+        return! WC.Signature.ChangeSubscription(body, "assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Alterar método de pagamento
-```VB.NET
-Dim body = New SubscriptionRequest With {
-    .Payment_Method = "BOLETO"
-}
-Dim result = Await WC.Signature.ChangePaymentMethod(body, "assinatura01")
+```F#
+let body =
+    SubscriptionRequest(
+        Payment_Method = "BOLETO")
+let result = 
+    async { 
+        return! WC.Signature.ChangePaymentMethod(body, "assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todas as Faturas de Uma Assinatura
-```VB.NET
-Dim result = Await WC.Signature.ListSignatureInvoices("assinatura01")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ListSignatureInvoices("assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Fatura
-```VB.NET
-Dim result = Await WC.Signature.ConsultInvoice("10865746")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ConsultInvoice("10865746") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar todos os pagamentos de fatura
-```VB.NET
-Dim result = Await WC.Signature.ListAllInvoicePayments("10865746")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ListAllInvoicePayments("10865746") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar pagamento de assinatura
-```VB.NET
-Dim result = Await WC.Signature.ConsultSubscriptionPayment("PAY-123456789012")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ConsultSubscriptionPayment("PAY-123456789012") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Criar Cupom
-```VB.NET
-Dim body = New CouponRequest With {
-    .Code = "coupon-0002",
-    .Name = "Coupon name",
-    .Description = "My new coupon",
-    .Discount = New Discount With {
-        .Value = 1000,
-        .Type = "percent"
-    },
-    .Status = "active",
-    .Duration = New Duration With {
-        .Type = "repeating",
-        .Occurrences = 12
-    },
-    .Max_Redemptions = 100,
-    .Expiration_Date = New Expiration_Date With {
-        .Year = 2020,
-        .Month = 08,
-        .Day = 01
-    }
-}
-Dim result = Await WC.Signature.CreateCoupon(body)
+```F#
+let body = 
+    CouponRequest(
+        Code = "coupon-0002",
+        Name = "Coupon name",
+        Description = "My new coupon",
+        Discount = Discount(
+            Value = 1000,
+            Type = "percent"),
+        Status = "active",
+        Duration = Duration(
+            Type = "repeating",
+            Occurrences = 12),
+        Max_Redemptions = 100,
+        Expiration_Date = Expiration_Date(
+            Year = 2020,
+            Month = 08,
+            Day = 01))
+let result = 
+    async { 
+        return! WC.Signature.CreateCoupon(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Associar Cupom para Assinatura
-```VB.NET
-Dim body = New CouponRequest With {
-    .Coupon = New Coupon With {
-        .Code = "coupon-0001"
-    }
-}
-Dim result = Await WC.Signature.AssociateCouponForExistingSignature(body, "assinatura01")
+```F#
+let body = 
+    CouponRequest(
+        Coupon = Coupon(
+            Code = "coupon-0001"))
+let result = 
+    async { 
+        return! WC.Signature.AssociateCouponForExistingSignature(body, "assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Associar Cupom para Nova Assinatura
-```VB.NET
-Dim body = New CouponRequest()
-Dim result = Await WC.Signature.AssociateCouponForExistingSignature(body, "true")
+```F#
+let body = CouponRequest()
+let result = 
+    async { 
+        return! WC.Signature.AssociateCouponForExistingSignature(body, "true") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Consultar Cupom
-```VB.NET
-Dim result = Await WC.Signature.ConsultCoupon("coupon-0001")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ConsultCoupon("coupon-0001") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Listar Todos os Cupons
-```VB.NET
-Dim result = Await WC.Signature.ListAllCoupons()
+```F#
+let result = 
+    async { 
+        return! WC.Signature.ListAllCoupons() |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Ativar e Inativar Cupons
-```VB.NET
-Dim result = Await WC.Signature.EnableOrDisableCoupon("coupon-0001", "inactive")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.EnableOrDisableCoupon("coupon-0001", "inactive") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Excluir Cupom de uma Assinatura
-```VB.NET
-Dim result = Await WC.Signature.DeleteSignatureCoupon("assinatura01")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.DeleteSignatureCoupon("assinatura01") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Retentativa de pagamento de uma fatura
-```VB.NET
-Dim result = Await WC.Signature.RetentiveInvoicePayment("1548222")
+```F#
+let result = 
+    async { 
+        return! WC.Signature.RetentiveInvoicePayment("1548222") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Gerar um novo boleto para uma fatura
-```VB.NET
-Dim body = New RetentativeRequest With {
-    .Year = 2020,
-    .Month = 08,
-    .Day = 01
-}
-Dim result = Await WC.Signature.CreateNewInvoiceBoleto(body, "1548222")
+```F#
+let body = 
+    RetentativeRequest(
+        Year = 2020,
+        Month = 08,
+        Day = 01)
+let result = 
+    async { 
+        return! WC.Signature.CreateNewInvoiceBoleto(body,"1548222") |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 #### Criar Regras de Retentativas Automáticas
-```VB.NET
-Dim body = New RetentativeRequest With {
-    .First_Try = 1,
-    .Second_Try = 3,
-    .Third_Try = 5,
-    .[Finally] = "cancel"
-}
-Dim result = Await WC.Signature.CreateAutomaticRetentionRules(body)
+```F#
+let body = 
+    RetentativeRequest(
+        First_Try = 1,
+        Second_Try = 3,
+        Third_Try = 5,
+        Finally = "cancel")
+let result = 
+    async { 
+        return! WC.Signature.CreateAutomaticRetentionRules(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 #### Criar Preferência de Notificação
-```VB.NET
-Dim body = New NotificationRequest With {
-    .Notification = New Notification With {
-        .Webhook = New Webhook With {
-            .Url = "http://exemploldeurl.com.br/assinaturas"
-        },
-        .Email = New Email With {
-            .Merchant = New Merchant With {
-                .Enabled = True
-            },
-            .Customer = New Customer With {
-                .Enabled = True
-            }
-        }
-    }
-}
-Dim result = Await WC.Signature.CreateNotificationPreference(body)
+```F#
+let body = 
+    NotificationRequest(
+        Notification = Notification(
+            Webhook = Webhook(
+                Url = "http://exemploldeurl.com.br/assinaturas"),
+            Email = Email(
+                Merchant = Merchant(
+                    Enabled = true),
+                Customer = Customer(
+                    Enabled = true))))
+let result = 
+    async { 
+        return! WC.Signature.CreateNotificationPreference(body) |> Async.AwaitTask 
+    } |> Async.RunSynchronously
 ```
 
 ## Convertendo objeto para json

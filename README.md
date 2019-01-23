@@ -20,7 +20,7 @@
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
             alt="MIT"></a>
     <a href="https://www.nuget.org/packages/Wirecard">
-        <img src="https://img.shields.io/badge/Nuget-v3.0.4-blue.svg"
+        <img src="https://img.shields.io/badge/Nuget-v3.0.5-blue.svg"
             alt="NuGet"></a>
       <a href="https://www.nuget.org/stats/packages/Wirecard?groupby=Version">
         <img src="https://img.shields.io/badge/Statistics-155.svg"

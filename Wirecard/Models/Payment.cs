@@ -40,5 +40,7 @@ namespace Wirecard.Models
         public Payment_Method Payment_Method { get; set; }
         [JsonProperty("creation_date", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Creation_Date Creation_Date { get; set; }
+        [JsonProperty("cancellationDetails", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Cancellationdetails CancellationDetails { get; set; }
     }
 }

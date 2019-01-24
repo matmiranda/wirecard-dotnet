@@ -26,7 +26,7 @@
         <img src="https://img.shields.io/badge/Statistics-155.svg"
             alt="Statistics"></a>
       <a href="https://github.com/matmiranda/Wirecard-NET/blob/master/NugetTotalDownloads.md">
-            <img src="https://img.shields.io/badge/Download-4k-red.svg"
+            <img src="https://img.shields.io/badge/Download-5k-red.svg"
             alt="Download"></a>
 </p>
 

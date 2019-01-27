@@ -79,6 +79,8 @@ namespace Wirecard
         public BankAccountsController BankAccount => BankAccountsController.Instance;
         /// <summary> Lançamento </summary>
         public LaunchesController Launch => LaunchesController.Instance;
+        /// <summary> Extrato </summary>
+        public ExtractsController Extract => ExtractsController.Instance;
         /// <summary> Multi-Pagamento </summary>
         public MultiPaymentsController MultiPayment => MultiPaymentsController.Instance;
         /// <summary> Multi-Pedido </summary>

@@ -10,6 +10,8 @@ namespace Wirecard.Models
         public string Id { get; set; }
         [JsonProperty("external_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string External_Id { get; set; }
+        [JsonProperty("reschedule", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public object[] Reschedule { get; set; }
         [JsonProperty("scheduledFor", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public DateTime ScheduledFor { get; set; }
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)]

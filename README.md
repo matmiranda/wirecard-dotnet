@@ -160,7 +160,9 @@
   - [Criar Regras de Retentativas Automáticas](#criar-regras-de-retentativas-automáticas)
   - [Criar Preferência de Notificação](#criar-preferência-de-notificação)
 - [Convertendo objeto para json](#convertendo-objeto-para-json)
-- [Tabela - Filtros de busca](#tabela---filtros-de-busca)
+- [Tabela](#tabela)
+  - [Tipos de Lançamentos](#tipos-de-lançamentos)
+  - [Filtros de busca](#filtros-de-busca)
 - [Exceção](#exceção)
   - [Obter erros](#obter-erros)
 - [Licença](#licença)
@@ -696,7 +698,7 @@ var result = await WC.Order.List();
 string filtros = "q=josesilva&filters=status::in(PAID,WAITING)|paymentMethod::in(CREDIT_CARD,BOLETO)|value::bt(5000,10000)&limit=3&offset=0";
 var result = await WC.Order.ListFilter(filtros);
 ```
- Veja a tabela filtros de busca [aqui](#tabela---filtros-de-busca).
+ Veja a tabela filtros de busca [aqui](#filtros-de-busca).
  
  ## Pagamentos
  #### Criar Pagamento - Cartão de Crédito
@@ -1755,7 +1757,7 @@ Veja como ficou na variável json:
 | 65 | BILL_PAYMENT_CANCELLED | Devoluo de pagamento de contas |
 
 
-## Tabela - Filtros de busca
+## Filtros de busca
 
 | Nome  | Tipo | Descrição |
 | ------------- | ------------- | ------------- |

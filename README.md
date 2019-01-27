@@ -20,7 +20,7 @@
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
             alt="MIT"></a>
     <a href="https://www.nuget.org/packages/Wirecard">
-        <img src="https://img.shields.io/badge/Nuget-v3.0.5-blue.svg"
+        <img src="https://img.shields.io/badge/Nuget-v3.0.6-blue.svg"
             alt="NuGet"></a>
       <a href="https://www.nuget.org/stats/packages/Wirecard?groupby=Version">
         <img src="https://img.shields.io/badge/Statistics-155.svg"
@@ -103,6 +103,11 @@
   - [Consultar Lançamento](#consultar-lançamento)
   - [Listar Todos Lançamentos](#listar-todos-lançamentos)
   - [Listar Todos Lançamentos com Filtro](#listar-todos-lançamentos-com-filtro)
+- [Extratos](#extratos)
+  - [Listar Extrato](#listar-extrato)
+  - [Detalhes do Extrato](#detalhes-do-extrato)
+  - [Listar Extrato Futuro](#listar-extrato-futuro)
+  - [Detalhes do Extrato Futuro](#detalhes-do-extrato-futuro)
 - [Transferências](#transferências)
   - [Criar Transferência](#criar-transferência)
   - [Reverter Transferência](#reverter-transferência)
@@ -1140,6 +1145,23 @@ var result = await WC.Launch.List();
 ```C#
 string filtros = "filters=status::in(SETTLED)";
 var result = await WC.Launch.ListFilter(filtros);
+```
+## Extratos
+#### Listar Extrato
+```C#
+var result = await WC.Extract.List("2019-01-15", "2019-01-01");
+```
+#### Detalhes do Extrato
+```C#
+var result = await WC.Extract.Detail("1", "2018-10-04");
+```
+#### Listar Extrato Futuro
+```C#
+var result = await WC.Extract.ListFuture("2018-01-01", "2018-01-15");
+```
+#### Detalhes do Extrato Futuro
+```C#
+var result = await WC.Extract.DetailFuture("1", "2018-12-18");
 ```
 ## Transferências
 #### Criar Transferência

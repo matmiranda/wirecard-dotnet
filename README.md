@@ -1163,6 +1163,7 @@ var result = await WC.Extract.ListFuture("2018-01-01", "2018-01-15");
 ```C#
 var result = await WC.Extract.DetailFuture("1", "2018-12-18");
 ```
+Tipo do extrato, disponível na tabela de (tipos de lançamentos)[#tipos-de-lançamentos]
 ## Transferências
 #### Criar Transferência
 ```C#
@@ -1682,6 +1683,77 @@ Veja como ficou na variável json:
   }
 }
 ```
+## Tabela
+#### Tipos de Lançamentos
+
+| Id  | Tipo | Descrição |
+| ------------- | ------------- | ------------- |
+| 1 | CREDIT_CARD | Recebíveis de cartão de crédito |
+| 2 | CREDIT_CARD_INSTALLMENT | Recebíveis de cartão de crédito com parcelamento |
+| 3 | DEBIT_CARD | Recebíveis de cartão de débito |
+| 4 | BOLETO | Recebíveis de boleto |
+| 5 | BANK_FINANCING | Recebíveis de financiamento bancário |
+| 6 | BANK_DEBIT | Recebíveis de débito bancário |
+| 7 | MOIP_WALLET | Recebíveis de pagamento usando conta Moip |
+| 8 | COMMISSION | Recebíveis como recebedor secundário |
+| 9 | COMMISSION_INSTALLMENT | Recebíveis como recebedor secundário com parcelamento |
+| 10 | TRANSFER_TO_MOIP_ACCOUNT_RECEIVED | Transferências entre contas Moip |
+| 11 | TRANSFER_TO_BANK_ACCOUNT_CANCELLED | Devolucao de transferencia para conta bancaria |
+| 12 | DEPOSIT | Deposito |
+| 13 | AMOUNT_UNBLOCKED | Liberacao de bloqueio de saldo |
+| 14 | TRANSFER_TO_BANK_ACCOUNT | Transferencia para conta bancaria |
+| 15 | TRANSFER_TO_MOIP_ACCOUNT_PAID | Transferencia entre contas Moip realizada |
+| 16 | PAYMENT_REVERSE | Estornos de pagamento |
+| 17 | PAYMENT_INSTALLMENT_REVERSE | Estornos de parcelas de pagamento |
+| 18 | COMMISSION_REVERSE | Estornos de comissão de pagamento |
+| 19 | COMMISSION_INSTALLMENT_REVERSE | Estornos de comissão da parcela |
+| 20 | PAYMENT_REFUND | Reembolsos de pagamento |
+| 21 | PAYMENT_INSTALLMENT_REFUND | Reembolsos de parcelas de pagamento |
+| 22 | PAYMENT_PARCIAL_REFUND | Reembolsos parciais |
+| 23 | PAYMENT_PARCIAL_INSTALLMENT_REFUND | Reembolsos parciais de parcelas de pagamento |
+| 24 | COMMISSION_REFUND | Reembolsos de comissões de pagamento |
+| 25 | COMMISSION_INSTALLMENT_REFUND | Reembolsos de comissões de parcelas de pagamento |
+| 26 | MOIP_WALLET_PAYMENT | Pagamento realizado |
+| 27 | PRE_PAYMENT_FEE | Taxas de antecipação de recebí­veis |
+| 28 | PENALTY | Multa |
+| 29 | MOIP_RECURRING_CHARGE | Assinatura Moip |
+| 30 | AMOUNT_BLOCKED | Bloqueio de saldo |
+| 31 | MOIP_FINANCIAL_ADJUSTEMENT | Ajuste financeiro do Moip |
+| 32 | REFUND_REVOKE | Cancelamento do Reembolso do Pagamento |
+| 33 | PAYMENT_PARCIAL_REFUND_REVOKE | Cancelamento do Reembolso parcial do Pagamento |
+| 34 | PAYMENT_PARCIAL_INSTALLMENT_REFUND_REVOKE | Cancelamento do Reembolso parcial do Pagamento |
+| 35 | COMMISSION_REFUND_REVOKE | Cancelamento do Reembolso da Comissao do Pagamento |
+| 36 | COMMISSION_INSTALLMENT_REFUND_REVOKE | Cancelamento do Reembolso da Comissao do Pagamento |
+| 37 | REMITTANCE_CREDIT | Recebí­veis de pagamento de remessa |
+| 38 | REMITTANCE_DEBIT | Pagamento de remessa |
+| 39 | BALANCE_ADJUSTMENT | Conciliacao entre plataformas |
+| 40 | JUDICIAL_DEBIT | Débito Juridico |
+| 41 | TRANSFER_TO_MOIP_ACCOUNT_PAID_REVERTED | Transferencia entre contas revertida |
+| 42 | TRANSFER_TO_MOIP_ACCOUNT_RECEIVED_REVERTED | Transferencia entre contas revertida |
+| 43 | REMAINING_CREDIT_REFUND | Credito Remanescente de Reembolso |
+| 44 | DEBIT_COMPENSATORY_REFUND | Debito Compensatorio de Reembolso |
+| 45 | MAINTENANCE_FEE | Taxa de manutencao - conta inativa |
+| 46 | ESCROW_BLOCKED | Bloqueio de custódia |
+| 47 | ESCROW_UNBLOCKED | Desbloqueio de custódia |
+| 48 | BILL_PAYMENT | Pagamento de contas |
+| 49 | CARD_PURCHASE | Compra no cartão |
+| 50 | CARD_PURCHASE_REVERSAL | Reversão de compra no cartão |
+| 51 | CARD_WITHDRAWAL | Saque no cartão |
+| 52 | CARD_WITHDRAWAL_REVERSAL | Reversão de saque no cartão |
+| 53 | CARD_PREPURCHASE | Pré-compra no cartão |
+| 54 | CARD_PREPURCHASE_REVERSAL | Reversão de pré-compra no cartão |
+| 55 | CARD_PREPURCHASE_INCREMENT | Incremento de pré-compra no cartão |
+| 56 | CARD_PREPURCHASE_INCREMENT_REVERSAL | Reversão de incremento de pré-compra |
+| 57 | CARD_PREPURCHASE_COMPLETE | Finalização de pré-compra |
+| 58 | CARD_REFUND | Reembolso de compra no cartão |
+| 59 | CARD_REFUND_REVERSAL | Reversão de reembolso de compra no cartão |
+| 60 | CARD_CHARGEBACK | Chargeback de compra no cartão |
+| 61 | CARD_CHARGEBACK_REVERSAL | Reversão de chargeback de compra no cartão |
+| 62 | CARD_ISSUED | Taxa de emissão do cartão |
+| 63 | CARD_P2PCREDIT | Crédito de P2P |
+| 64 | CARD_P2PCREDIT_REVERSAL | Reversão de crédito P2P |
+| 65 | BILL_PAYMENT_CANCELLED | Devoluo de pagamento de contas |
+
 
 ## Tabela - Filtros de busca
 

@@ -1165,7 +1165,7 @@ var result = await WC.Extract.ListFuture("2018-01-01", "2018-01-15");
 ```C#
 var result = await WC.Extract.DetailFuture("1", "2018-12-18");
 ```
-Tipo do extrato, disponível na tabela de (tipos de lançamentos)[#tipos-de-lançamentos]
+Tipo do extrato, disponível na tabela de [tipos de lançamentos](#tipos-de-lançamentos)
 ## Transferências
 #### Criar Transferência
 ```C#

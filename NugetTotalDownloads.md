@@ -1,8 +1,10 @@
-Veja as 3 listas abaixo em ordem, criado por mim:
+Veja a tabela abaixo:
 
-1. [**MoipCSharp**](https://www.nuget.org/packages/MoipCSharp/) (*Onde tudo começou...*) - **3.459 downloads**
-2. [**WirecardCSharp**](https://www.nuget.org/packages/WirecardCSharp/) (*Moip virou Wirecard...*) - **1.781 downloads**
-3. [**Wirecard**](https://www.nuget.org/packages/Wirecard/) (*Atual...*) - **mais de 134 downloads**
+| Nome                                                            | Downloads     | Descrição                      | Status|
+| --------------------------------------------------------------- |--------------:| -------------------------------| ------|
+| [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/)        | _3.459_       | Onde tudo começou...           | ❌    |
+| [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/)| _1.781_       | Quando a Moip virou Wirecard...| ❌    |
+| [Wirecard](https://www.nuget.org/packages/Wirecard/)            | _134_         | Projeto atual                  | ✔️    |
 
 Total de downloads:  **5.374 downloads**
 

@@ -68,7 +68,7 @@ namespace Wirecard
             }
         }
 
-        public static void Rename(this JToken token, string newName)
+        internal static void Rename(this JToken token, string newName)
         {
             if (token == null) throw new ArgumentNullException("token", "Cannot rename a null token");
 

@@ -41,17 +41,15 @@ namespace Wirecard
                     HttpClient.DefaultRequestHeaders.Clear();
                     HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
                     HttpClient.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
-                    if (Accesstoken != string.Empty && Base64 == string.Empty)
+                    string uri = SelectedEnvironment ==
+                        Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
+                    if (BusinessType == "MARKETPLACE")
                     {
-                        string uri = SelectedEnvironment == 
-                            Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
                         HttpClient.BaseAddress = new Uri(uri);
                         HttpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {Accesstoken}");
                     }
                     else
                     {
-                        string uri = SelectedEnvironment ==
-                            Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
                         HttpClient.BaseAddress = new Uri(uri);
                         HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {Base64}");
                     }

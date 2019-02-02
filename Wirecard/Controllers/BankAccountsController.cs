@@ -10,26 +10,8 @@ using System.Collections.Generic;
 namespace Wirecard.Controllers
 {
     //Contas Bancárias  - Bank Accounts
-    public partial class BankAccountsController : BaseController
-    {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static BankAccountsController instance = null;
-        internal static BankAccountsController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new BankAccountsController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
+    public partial class BankAccountsController
+    {        
         /// <summary>
         /// Criar conta bancária - create bank account
         /// </summary>
@@ -39,13 +21,13 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<BankAccountResponse> Create(BankAccountRequest body, string accesstoken, string account_id)
         {
-            HttpClient httpClient = ClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/accounts/{account_id}/bankaccounts", stringContent);
             httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -69,12 +51,12 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<BankAccountResponse> Consult(string accesstoken, string bank_account_id)
         {
-            HttpClient httpClient = ClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             HttpResponseMessage response = await httpClient.GetAsync($"v2/bankaccounts/{bank_account_id}");
             httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -98,12 +80,12 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<List<BankAccountResponse>> List(string accesstoken, string account_id)
         {
-            HttpClient httpClient = ClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}/bankaccounts");
             httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -127,12 +109,12 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<HttpStatusCode> Delete(string accesstoken, string account_id)
         {
-            HttpClient httpClient = ClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}/bankaccounts");
             httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -150,13 +132,13 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<BankAccountResponse> Update(BankAccountRequest body, string accesstoken, string bankaccount_id)
         {
-            HttpClient httpClient = ClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PutAsync($"v2/bankaccounts/{bankaccount_id}", stringContent);
             httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

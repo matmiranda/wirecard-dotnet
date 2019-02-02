@@ -8,27 +8,8 @@ using Wirecard.Exception;
 namespace Wirecard.Controllers
 {
     //Contas Transparentes - Transparent Accounts
-    public partial class TransparentAccountsController : BaseController
-    {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static TransparentAccountsController instance = null;
-        internal static TransparentAccountsController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new TransparentAccountsController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
+    public partial class TransparentAccountsController
+    {        
         /// <summary>
         ///  Cria uma conta transparente - Create a transparent account
         /// </summary>
@@ -37,7 +18,7 @@ namespace Wirecard.Controllers
         public async Task<TransparentAccountResponse> Create(TransparentAccountRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync("v2/accounts", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

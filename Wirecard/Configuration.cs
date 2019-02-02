@@ -5,45 +5,55 @@ namespace Wirecard
 {
     internal class BaseAddress
     {
-        internal const string SANDBOX = "https://sandbox.moip.com.br/"; //teste
-        internal const string PRODUCTION = "https://api.moip.com.br/";  //produção
+        internal const string SANDBOX = "https://sandbox.moip.com.br/";
+        internal const string PRODUCTION = "https://api.moip.com.br/";
     }
     public enum Environments
     {
         SANDBOX,
         PRODUCTION,
     }
-    internal class _HttpClient
+    internal class Http_Client
     {
-        internal static HttpClient httpClient = null;
-        internal static HttpClient httpClient_Connect = null; // para base https://connect-sandbox.moip.com.br
-        internal static string accesstoken = string.Empty; //marketplace
-        internal static string base64 = string.Empty; //e-commerce
+        // HttpClient para base https://sandbox.moip.com.br/ ou https://api.moip.com.br/
+        // HttpClient_Connect para base https://connect-sandbox.moip.com.br ou https://connect.moip.com.br/
+        // accesstoken para MarketPlace
+        // base64 para E-Commerce
+        // BusinessType: tipo de negócio escolhido (MARKETPLACE ou E-COMMERCE)
+        // SelectedEnvironment: Ambiente Selecionado (SANDBOX ou PRODUCTION)
+        // Client() == HttpClient
+        // Client_Connect == HttpClient_Connect
+        // GetVersion(): para obter a versão do pacote Wirecard, definir a versão manualmente 
+
+        internal static HttpClient HttpClient = null;
+        internal static HttpClient HttpClient_Connect = null;
+        internal static string Accesstoken = string.Empty;
+        internal static string Base64 = string.Empty;
         internal static string BusinessType = null;
         internal static Environments SelectedEnvironment;
         internal static HttpClient Client()
         {
-            if (httpClient == null)
+            if (HttpClient == null)
             {
                 try
                 {
-                    httpClient = new HttpClient();
-                    httpClient.DefaultRequestHeaders.Clear();
-                    httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-                    httpClient.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
-                    if (accesstoken != string.Empty && base64 == string.Empty)
+                    HttpClient = new HttpClient();
+                    HttpClient.DefaultRequestHeaders.Clear();
+                    HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+                    HttpClient.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
+                    if (Accesstoken != string.Empty && Base64 == string.Empty)
                     {
                         string uri = SelectedEnvironment == 
                             Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
-                        httpClient.BaseAddress = new Uri(uri);
-                        httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accesstoken}");
+                        HttpClient.BaseAddress = new Uri(uri);
+                        HttpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {Accesstoken}");
                     }
                     else
                     {
                         string uri = SelectedEnvironment ==
                             Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
-                        httpClient.BaseAddress = new Uri(uri);
-                        httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {base64}");
+                        HttpClient.BaseAddress = new Uri(uri);
+                        HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {Base64}");
                     }
                 }
                 catch (System.Exception ex)
@@ -51,34 +61,34 @@ namespace Wirecard
                     throw ex;
                 }
             }
-            return httpClient;
+            return HttpClient;
         }
         internal static HttpClient Client_Connect()
         {
-            if (httpClient_Connect == null)
+            if (HttpClient_Connect == null)
             {
                 try
                 {
-                    httpClient_Connect = new HttpClient();
-                    httpClient_Connect.DefaultRequestHeaders.Clear();
-                    httpClient_Connect.DefaultRequestHeaders.Add("Accept", "application/json");
-                    httpClient_Connect.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
+                    HttpClient_Connect = new HttpClient();
+                    HttpClient_Connect.DefaultRequestHeaders.Clear();
+                    HttpClient_Connect.DefaultRequestHeaders.Add("Accept", "application/json");
+                    HttpClient_Connect.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
                     if (SelectedEnvironment == Environments.SANDBOX)
                     {
-                        httpClient_Connect.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
+                        HttpClient_Connect.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
                     }
                     else
                     {
-                        httpClient_Connect.BaseAddress = new Uri("https://connect.moip.com.br/");
+                        HttpClient_Connect.BaseAddress = new Uri("https://connect.moip.com.br/");
                     }
-                    httpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Bearer {accesstoken}");
+                    HttpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Bearer {Accesstoken}");
                 }
                 catch (System.Exception ex)
                 {
                     throw ex;
                 }
             }
-            return httpClient_Connect;
+            return HttpClient_Connect;
         }
 
         internal static string GetVersion()
@@ -87,7 +97,7 @@ namespace Wirecard
             //return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
             //for .NET Standard 1.2 - write the version number manually.
-            return "3.0.6";
+            return "3.0.7";
         }
     }
 }

@@ -1,41 +1,22 @@
 ﻿using Newtonsoft.Json;
 using System.Net.Http;
 using Wirecard.Models;
-using System.Threading.Tasks;
 using Wirecard.Exception;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace Wirecard.Controllers
 {
     //Saldos - Balances
-    public partial class BalancesController : BaseController
+    public partial class BalancesController
     {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static BalancesController instance = null;
-        internal static BalancesController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new BalancesController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
         /// <summary>
         /// Consultar Saldos - Consult Balances
         /// </summary>
         /// <returns></returns>
         public async Task<List<BalanceResponse>> Consult()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("v2/balances");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("v2/balances");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

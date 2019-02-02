@@ -11,27 +11,8 @@ using System.Collections.Generic;
 namespace Wirecard.Controllers
 {
     //Contas Clássicas - Classic Accounts
-    public partial class ClassicAccountsController : BaseController
+    public partial class ClassicAccountsController
     {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static ClassicAccountsController instance = null;
-        internal static ClassicAccountsController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new ClassicAccountsController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
         /// <summary>
         /// Conta Existe - Account Exist
         /// </summary>
@@ -39,7 +20,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<HttpStatusCode> AccountExist(string email_document)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/exists?{(email_document.Contains("@") ? "email" : "tax_document")}={email_document}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/accounts/exists?{(email_document.Contains("@") ? "email" : "tax_document")}={email_document}");
             return response.StatusCode;
         }
         /// <summary>
@@ -50,7 +31,7 @@ namespace Wirecard.Controllers
         public async Task<ClassAccountResponse> Create(ClassicAccountRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync("v2/accounts", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync("v2/accounts", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -73,7 +54,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<ClassAccountResponse> Consult(string account_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/accounts/{account_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/accounts/{account_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -109,7 +90,7 @@ namespace Wirecard.Controllers
                 { "code", code },
             };
             FormUrlEncodedContent encodedContent = new FormUrlEncodedContent(@params);
-            HttpClient httpClient = ConnectClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient_Connect;
             HttpResponseMessage response = await httpClient.PostAsync($"oauth/token", encodedContent);
             if (!response.IsSuccessStatusCode)
             {
@@ -140,7 +121,7 @@ namespace Wirecard.Controllers
                 { "refresh_token", refresh_token }
             };
             FormUrlEncodedContent encodedContent = new FormUrlEncodedContent(@params);
-            HttpClient httpClient = ConnectClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient_Connect;
             HttpResponseMessage response = await httpClient.PostAsync($"oauth/token", encodedContent);
             if (!response.IsSuccessStatusCode)
             {
@@ -163,7 +144,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<PublicKeyAccountWirecardResponse> GetPublickey()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("v2/keys");
+            HttpResponseMessage response = await Http_Client.HttpClient_Connect.GetAsync("v2/keys");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

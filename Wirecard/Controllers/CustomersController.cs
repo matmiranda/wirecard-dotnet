@@ -11,27 +11,8 @@ using System.Collections.Generic;
 namespace Wirecard.Controllers
 {
     //Clientes - Customers
-    public partial class CustomersController : BaseController
-    {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static CustomersController instance = null;
-        internal static CustomersController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new CustomersController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
+    public partial class CustomersController
+    {       
         /// <summary>
         /// Criar cliente - Create Client
         /// </summary>
@@ -40,7 +21,7 @@ namespace Wirecard.Controllers
         public async Task<CustomerResponse> Create(CustomerRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/customers", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/customers", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -65,7 +46,7 @@ namespace Wirecard.Controllers
         public async Task<CustomerResponse> AddCreditCard(CustomerRequest body, string customer_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/customers/{customer_id}/fundinginstruments", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/customers/{customer_id}/fundinginstruments", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -88,7 +69,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<HttpStatusCode> DeleteCreditCard(string creditcard_id)
         {
-            HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/fundinginstruments/{creditcard_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.DeleteAsync($"v2/fundinginstruments/{creditcard_id}");
             return response.StatusCode;
         }
         /// <summary>
@@ -98,7 +79,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<CustomerResponse> Consult(string customer_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/{customer_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/customers/{customer_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -120,7 +101,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<List<CustomerResponse>> List()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/customers/");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/customers/");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

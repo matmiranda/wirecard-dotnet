@@ -8,27 +8,8 @@ using Wirecard.Exception;
 namespace Wirecard.Controllers
 {
     //Multi Pagamentos - Multi Payments
-    public partial class MultiPaymentsController : BaseController
+    public partial class MultiPaymentsController
     {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static MultiPaymentsController instance = null;
-        internal static MultiPaymentsController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new MultiPaymentsController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
         /// <summary>
         /// Criar Multi Pagamento - Create multi payment
         /// </summary>
@@ -38,7 +19,7 @@ namespace Wirecard.Controllers
         public async Task<MultiPaymentResponse> Create(MultiPaymentRequest body, string multiorder_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/multiorders/{multiorder_id}/multipayments", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/multiorders/{multiorder_id}/multipayments", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -61,7 +42,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<MultiPaymentResponse> Consult(string multiorder_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/multipayments/{multiorder_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/multipayments/{multiorder_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -84,7 +65,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<MultiPaymentResponse> CaptureAuthorized(string multipayment_id)
         {
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/multipayments/{multipayment_id}/capture", null);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/multipayments/{multipayment_id}/capture", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -107,7 +88,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<MultiPaymentResponse> CancelAuthorized(string multipayment_id)
         {
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/multipayments/{multipayment_id}/void", null);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/multipayments/{multipayment_id}/void", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -130,7 +111,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<MultiPaymentResponse> ReleaseCustody(string escrow_id)
         {
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/escrows/{escrow_id}/release", null);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/escrows/{escrow_id}/release", null);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

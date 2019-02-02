@@ -12,27 +12,8 @@ using System.Text.RegularExpressions;
 namespace Wirecard.Controllers
 {
     //Notificações - Notifications
-    public partial class NotificationsController : BaseController
+    public partial class NotificationsController
     {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static NotificationsController instance = null;
-        internal static NotificationsController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new NotificationsController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
         /// <summary>
         /// Criar Preferência de Notificação para Conta Wirecard - Create Notification Preference for Wirecard Account
         /// </summary>
@@ -41,7 +22,7 @@ namespace Wirecard.Controllers
         public async Task<NotificationResponse> CreatAccountWirecard(NotificationRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync("v2/preferences/notifications", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync("v2/preferences/notifications", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -65,7 +46,7 @@ namespace Wirecard.Controllers
         public async Task<NotificationResponse> CreateApp(NotificationRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync("v2/preferences/notifications", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync("v2/preferences/notifications", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -96,7 +77,7 @@ namespace Wirecard.Controllers
                 throw new ArgumentException("app_id invalid");
             }
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/preferences/{app_id}/notifications", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -119,7 +100,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<NotificationResponse> Consult(string notification_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/preferences/notifications/{notification_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/preferences/notifications/{notification_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -141,7 +122,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<List<NotificationResponse>> List()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("v2/preferences/notifications");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("v2/preferences/notifications");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -164,7 +145,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<HttpStatusCode> Remove(string notification_id)
         {
-            HttpResponseMessage response = await ClientInstance.DeleteAsync($"v2/preferences/notifications/{notification_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.DeleteAsync($"v2/preferences/notifications/{notification_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -180,7 +161,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<WebhooksResponse> ConsultWebhook(string payment_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/webhooks?resourceId={payment_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/webhooks?resourceId={payment_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -202,7 +183,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<WebhooksResponse> ListWebhooks()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("v2/webhooks");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("v2/webhooks");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

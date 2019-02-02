@@ -2,33 +2,14 @@
 using Newtonsoft.Json;
 using System.Net.Http;
 using Wirecard.Models;
-using System.Threading.Tasks;
 using Wirecard.Exception;
+using System.Threading.Tasks;
 
 namespace Wirecard.Controllers
 {
     //Transferências - Transfers
-    public partial class TransfersController : BaseController
-    {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static TransfersController instance = null;
-        internal static TransfersController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new TransfersController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
+    public partial class TransfersController
+    {        
         /// <summary>
         /// Criar Transferência - Create Transfer
         /// </summary>
@@ -37,13 +18,13 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<TransferResponse> Create(TransferRequest body, string accesstoken)
         {
-            HttpClient httpClient = ClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("v2/transfers", stringContent);
             httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -67,13 +48,13 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<TransferResponse> Revert(string transfer_id, string accesstoken)
         {
-            HttpClient httpClient = ClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             StringContent stringContent = new StringContent(string.Empty, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/transfers/{transfer_id}/reverse", stringContent);
             httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -97,12 +78,12 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<TransferResponse> Consult(string transfer_id, string accesstoken)
         {
-            HttpClient httpClient = ClientInstance;
+            HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             HttpResponseMessage response = await httpClient.GetAsync($"v2/transfers/{transfer_id}");
             httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _HttpClient.accesstoken);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -124,7 +105,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<TransfersResponse> List()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/transfers");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/transfers");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -146,7 +127,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<TransfersResponse> ListFilter(string filter)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/transfers?{filter}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/transfers?{filter}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

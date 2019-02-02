@@ -2,34 +2,15 @@
 using Newtonsoft.Json;
 using System.Net.Http;
 using Wirecard.Models;
-using System.Threading.Tasks;
 using Wirecard.Exception;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace Wirecard.Controllers
 {
     //Reembolsos - Refunds
-    public partial class RefundsController : BaseController
+    public partial class RefundsController
     {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static RefundsController instance = null;
-        internal static RefundsController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new RefundsController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
         /// <summary>
         /// Reembolsar Pagamento - Refund Payment
         /// </summary>
@@ -39,7 +20,7 @@ namespace Wirecard.Controllers
         public async Task<RefundResponse> RefundPayment(RefundRequest body, string payment_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/payments/{payment_id}/refunds", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/payments/{payment_id}/refunds", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -64,7 +45,7 @@ namespace Wirecard.Controllers
         public async Task<RefundResponse> RefundRequestCreditCard(RefundRequest body, string order_id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"v2/orders/{order_id}/refunds", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"v2/orders/{order_id}/refunds", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -87,7 +68,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<RefundResponse> Consult(string refund_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/refunds/{refund_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/refunds/{refund_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -110,7 +91,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<List<RefundResponse>> ListPayments(string payment_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/payments/{payment_id}/refunds");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/payments/{payment_id}/refunds");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -133,7 +114,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<List<RefundResponse>> ListOrders(string orders_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/orders/{orders_id}/refunds");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/orders/{orders_id}/refunds");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

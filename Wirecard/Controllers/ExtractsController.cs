@@ -3,32 +3,12 @@ using System.Net.Http;
 using Wirecard.Models;
 using System.Threading.Tasks;
 using Wirecard.Exception;
-using System.Collections.Generic;
 
 namespace Wirecard.Controllers
 {
     //Extratos - Extracts
-    public partial class ExtractsController : BaseController
-    {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static ExtractsController instance = null;
-        internal static ExtractsController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new ExtractsController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
+    public partial class ExtractsController
+    {      
         /// <summary>
         /// Listar Extrato - List Extract
         /// </summary>
@@ -37,7 +17,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<ExtractResponse> List(string begin, string end)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/statements?begin={begin}&end={end}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/statements?begin={begin}&end={end}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -61,7 +41,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<ExtractResponse> Detail(string type, string date)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/statements/details?type={type}&date={date}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/statements/details?type={type}&date={date}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -85,7 +65,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<ExtractResponse> ListFuture(string begin, string end)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/futurestatements?begin={begin}&end={end}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/futurestatements?begin={begin}&end={end}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -109,7 +89,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<ExtractResponse> DetailFuture(string type, string date)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/futurestatements/details?type={type}&date={date}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/futurestatements/details?type={type}&date={date}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

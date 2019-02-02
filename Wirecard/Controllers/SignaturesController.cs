@@ -2,35 +2,16 @@
 using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
-using Newtonsoft.Json.Linq;
 using Wirecard.Models;
-using System.Threading.Tasks;
 using Wirecard.Exception;
+using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace Wirecard.Controllers
 {
     //Assinatura - Signature
-    public partial class SignaturesController : BaseController
-    {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static SignaturesController instance = null;
-        internal static SignaturesController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new SignaturesController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
+    public partial class SignaturesController
+    {        
         /// <summary>
         /// Criar plano - Create plan
         /// </summary>
@@ -38,7 +19,7 @@ namespace Wirecard.Controllers
         public async Task<PlanResponse> CreatePlan(PlanRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"assinaturas/v1/plans", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"assinaturas/v1/plans", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -60,7 +41,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<PlansResponse> ListPlans()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("assinaturas/v1/plans");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("assinaturas/v1/plans");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -83,7 +64,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<PlanResponse> ConsultPlan(string code)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/plans/{code}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/plans/{code}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -107,7 +88,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> EnablePlan(string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/plans/{code}/activate", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/plans/{code}/activate", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -124,7 +105,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> DisablePlan(string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/plans/{code}/inactivate", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/plans/{code}/inactivate", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -142,7 +123,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> ChangePlan(PlanRequest body, string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/plans/{code}", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/plans/{code}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -174,7 +155,7 @@ namespace Wirecard.Controllers
                 throw ex;
             }            
             StringContent stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"assinaturas/v1/customers?new_vault={new_vault}", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"assinaturas/v1/customers?new_vault={new_vault}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -196,7 +177,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<SubscribersResponse> ListSubscribers()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("assinaturas/v1/customers");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("assinaturas/v1/customers");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -219,7 +200,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<SubscriberResponse> ConsultSubscriber(string code)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/customers/{code}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/customers/{code}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -262,7 +243,7 @@ namespace Wirecard.Controllers
                 throw ex;
             }
             StringContent stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/customers/{code}", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/customers/{code}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -291,7 +272,7 @@ namespace Wirecard.Controllers
                 throw ex;
             }
             StringContent stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/customers/{code}/billing_infos", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/customers/{code}/billing_infos", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -338,7 +319,7 @@ namespace Wirecard.Controllers
                 throw ex;
             }
             StringContent stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"assinaturas/v1/subscriptions?new_customer={true_or_false}", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"assinaturas/v1/subscriptions?new_customer={true_or_false}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -360,7 +341,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<SubscriptionsResponse> ListAllSubscriptions()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("assinaturas/v1/subscriptions");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("assinaturas/v1/subscriptions");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -383,7 +364,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<SubscriptionResponse> ConsultSubscription(string code)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/subscriptions/{code}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/subscriptions/{code}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -406,7 +387,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<SubscriptionsResponse> ConsultSubscriptionFilter(string filter)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/subscriptions?{filter}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/subscriptions?{filter}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -430,7 +411,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> SuspendSubscription(string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/subscriptions/{code}/suspend", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/subscriptions/{code}/suspend", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -447,7 +428,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> ReactivateSignature(string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/subscriptions/{code}/activate", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/subscriptions/{code}/activate", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -464,7 +445,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> CancelSignature(string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/subscriptions/{code}/cancel", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/subscriptions/{code}/cancel", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -482,7 +463,7 @@ namespace Wirecard.Controllers
         public async Task<SubscriptionResponse> ChangeSubscription(SubscriptionRequest body, string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/subscriptions/{code}", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/subscriptions/{code}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -507,7 +488,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> ChangePaymentMethod(SubscriptionRequest body, string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/subscriptions/{code}/change_payment_method", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/subscriptions/{code}/change_payment_method", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -523,7 +504,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<InvoicesResponse> ListSignatureInvoices(string code)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/subscriptions/{code}/invoices");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/subscriptions/{code}/invoices");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -546,7 +527,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<InvoiceResponse> ConsultInvoice(string id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/invoices/{id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/invoices/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -569,7 +550,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<PaymentsResponse> ListAllInvoicePayments(string id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/invoices/{id}/payments");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/invoices/{id}/payments");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -592,7 +573,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<PaymentsResponse> ConsultSubscriptionPayment(string id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/payments/{id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/payments/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -615,7 +596,7 @@ namespace Wirecard.Controllers
         public async Task<CouponResponse> CreateCoupon(CouponRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync("assinaturas/v1/coupons", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync("assinaturas/v1/coupons", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -638,7 +619,7 @@ namespace Wirecard.Controllers
         public async Task<CouponResponse> AssociateCouponForExistingSignature(CouponRequest body, string code)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/subscriptions/{code}", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/subscriptions/{code}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -685,7 +666,7 @@ namespace Wirecard.Controllers
                 throw ex;
             }
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"assinaturas/v1/subscriptions?new_customer={true_or_false}", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"assinaturas/v1/subscriptions?new_customer={true_or_false}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -708,7 +689,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<CouponResponse> ConsultCoupon(string code)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"assinaturas/v1/coupons/{code}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/coupons/{code}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -730,7 +711,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<CouponsResponse> ListAllCoupons()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("assinaturas/v1/coupons");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("assinaturas/v1/coupons");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -755,7 +736,7 @@ namespace Wirecard.Controllers
         public async Task<CouponResponse> EnableOrDisableCoupon(string code, string active_or_inactive)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(null), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PutAsync($"assinaturas/v1/coupons/{code}/{active_or_inactive}", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PutAsync($"assinaturas/v1/coupons/{code}/{active_or_inactive}", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -778,11 +759,11 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<CouponResponse> DeleteSignatureCoupon(string code)
         {
-            HttpRequestMessage httpRequest = new HttpRequestMessage(HttpMethod.Delete, ClientInstance.BaseAddress + $"assinaturas/v1/subscriptions/{code}/coupon")
+            HttpRequestMessage httpRequest = new HttpRequestMessage(HttpMethod.Delete, Http_Client.HttpClient.BaseAddress + $"assinaturas/v1/subscriptions/{code}/coupon")
             {
                 Content = new StringContent(string.Empty, Encoding.UTF8, "application/json")
             };
-            HttpResponseMessage response = await ClientInstance.SendAsync(httpRequest);
+            HttpResponseMessage response = await Http_Client.HttpClient.SendAsync(httpRequest);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -806,7 +787,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> RetentiveInvoicePayment(string id)
         {
             StringContent stringContent = new StringContent(null, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"assinaturas/v1/invoices/{id}/retry", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"assinaturas/v1/invoices/{id}/retry", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -824,7 +805,7 @@ namespace Wirecard.Controllers
         public async Task<RetentativeResponse> CreateNewInvoiceBoleto(RetentativeRequest body, string id)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"assinaturas/v1/invoices/{id}/boletos", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"assinaturas/v1/invoices/{id}/boletos", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -848,7 +829,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> CreateAutomaticRetentionRules(RetentativeRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync($"assinaturas/v1/users/preferences/retry", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync($"assinaturas/v1/users/preferences/retry", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -865,7 +846,7 @@ namespace Wirecard.Controllers
         public async Task<HttpStatusCode> CreateNotificationPreference(NotificationRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync("assinaturas/v1/users/preferences", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync("assinaturas/v1/users/preferences", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

@@ -7,27 +7,8 @@ using Wirecard.Exception;
 namespace Wirecard.Controllers
 {
     //Conciliações - Conciliations
-    public partial class ConciliationsController : BaseController
-    {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static ConciliationsController instance = null;
-        internal static ConciliationsController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new ConciliationsController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
+    public partial class ConciliationsController
+    {       
         /// <summary>
         /// Obter Arquivo de Vendas - Get Sales File
         /// </summary>
@@ -35,7 +16,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<SalesFileResponse> GetSalesFile(string date)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/reconciliations/sales/{date}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/reconciliations/sales/{date}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -58,7 +39,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<string> GetFinancialFile(string eventsCreatedAt)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/reconciliations/financials?eventsCreatedAt={eventsCreatedAt}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/reconciliations/financials?eventsCreatedAt={eventsCreatedAt}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

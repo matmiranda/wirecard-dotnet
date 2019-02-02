@@ -8,27 +8,8 @@ using Wirecard.Exception;
 namespace Wirecard.Controllers
 {
     //Multi Pedidos - Multi Orders
-    public partial class MultiOrdersController : BaseController
+    public partial class MultiOrdersController
     {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static MultiOrdersController instance = null;
-        internal static MultiOrdersController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new MultiOrdersController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
         /// <summary>
         /// Criar Multipedido - Create Multi Order
         /// </summary>
@@ -37,7 +18,7 @@ namespace Wirecard.Controllers
         public async Task<MultiOrderResponse> Create(MultiOrderRequest body)
         {
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await ClientInstance.PostAsync("v2/multiorders", stringContent);
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync("v2/multiorders", stringContent);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -60,7 +41,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<MultiOrderResponse> Consult(string multiorder_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/multiorders/{multiorder_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/multiorders/{multiorder_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

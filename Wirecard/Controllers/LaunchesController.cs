@@ -8,27 +8,8 @@ using System.Collections.Generic;
 namespace Wirecard.Controllers
 {
     //Lançamentos - Launches
-    public partial class LaunchesController : BaseController
-    {
-        #region Singleton Pattern
-        private static readonly object syncObject = new object();
-        private static LaunchesController instance = null;
-        internal static LaunchesController Instance
-        {
-            get
-            {
-                lock (syncObject)
-                {
-                    if (null == instance)
-                    {
-                        instance = new LaunchesController();
-                    }
-                }
-                return instance;
-            }
-        }
-        #endregion Singleton Pattern
-
+    public partial class LaunchesController
+    {        
         /// <summary>
         /// Cosultar lançamento - Consult launch
         /// </summary>
@@ -36,7 +17,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<LaunchResponse> Consult(string entry_id)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/entries/{entry_id}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/entries/{entry_id}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -58,7 +39,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<List<LaunchesResponse>> List()
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync("v2/entries");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("v2/entries");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -81,7 +62,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<List<LaunchesResponse>> ListFilter(string filter)
         {
-            HttpResponseMessage response = await ClientInstance.GetAsync($"v2/entries?{filter}");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"v2/entries?{filter}");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

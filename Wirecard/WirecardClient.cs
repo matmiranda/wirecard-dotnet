@@ -14,11 +14,10 @@ namespace Wirecard
         /// <param name="accesstoken">accesstoken</param>
         public WirecardClient(Environments environments, string accesstoken)
         {
-            if (!string.IsNullOrEmpty(_HttpClient.BusinessType))
+            if (!string.IsNullOrEmpty(Http_Client.BusinessType))
             {
-                if (_HttpClient.BusinessType != "MARKETPLACE")
+                if (Http_Client.BusinessType != "MARKETPLACE")
                 {
-                    string newLine = Environment.NewLine;
                     throw new ArgumentException("Business type already defined: E-COMMERCE.");
                 }
             }
@@ -28,12 +27,18 @@ namespace Wirecard
             {
                 throw new ArgumentException("accesstoken invalid");
             }            
-            //_HttpClient.uri = environments == Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
-            _HttpClient.SelectedEnvironment = environments;
-            _HttpClient.accesstoken = accesstoken;
-            _HttpClient.BusinessType = "MARKETPLACE";
+            Http_Client.SelectedEnvironment = environments;
+            Http_Client.Accesstoken = accesstoken;
+            Http_Client.BusinessType = "MARKETPLACE";
+            if (Http_Client.HttpClient == null)
+            {
+                Http_Client.Client();
+            }
+            if (Http_Client.HttpClient_Connect == null)
+            {
+                Http_Client.Client_Connect();
+            }
         }
-
         /// <summary>
         /// Tipo de negócio: E-COMMERCE
         /// </summary>
@@ -42,11 +47,10 @@ namespace Wirecard
         /// <param name="key">chave</param>
         public WirecardClient(Environments environments, string token, string key)
         {
-            if (!string.IsNullOrEmpty(_HttpClient.BusinessType))
+            if (!string.IsNullOrEmpty(Http_Client.BusinessType))
             {
-                if (_HttpClient.BusinessType != "E-COMMERCE")
+                if (Http_Client.BusinessType != "E-COMMERCE")
                 {
-                    string newLine = Environment.NewLine;
                     throw new ArgumentException("Business type already defined: MARKETPLACE.");
                 }
             }
@@ -62,44 +66,47 @@ namespace Wirecard
             {
                 throw new ArgumentException("base64 invalid");
             }
-            //_HttpClient.uri = environments == Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
-            _HttpClient.SelectedEnvironment = environments;
-            _HttpClient.base64 = base64;
-            _HttpClient.BusinessType = "E-COMMERCE";
+            Http_Client.SelectedEnvironment = environments;
+            Http_Client.Base64 = base64;
+            Http_Client.BusinessType = "E-COMMERCE";
+            if (Http_Client.HttpClient == null)
+            {
+                Http_Client.Client();
+            }
         }
         /// <summary> Cliente </summary>
-        public CustomersController Customer => CustomersController.Instance;
+        public CustomersController Customer => new CustomersController();
         /// <summary> Conciliação </summary>
-        public ConciliationsController Conciliation => ConciliationsController.Instance;
+        public ConciliationsController Conciliation => new ConciliationsController();
         /// <summary> Conta Clássica </summary>
-        public ClassicAccountsController ClassicAccount => ClassicAccountsController.Instance;
+        public ClassicAccountsController ClassicAccount => new ClassicAccountsController();
         /// <summary> Conta Transparente </summary>
-        public TransparentAccountsController TransparentAccount => TransparentAccountsController.Instance;
+        public TransparentAccountsController TransparentAccount => new TransparentAccountsController();
         /// <summary> Conta Bancária </summary>
-        public BankAccountsController BankAccount => BankAccountsController.Instance;
+        public BankAccountsController BankAccount => new BankAccountsController();
         /// <summary> Lançamento </summary>
-        public LaunchesController Launch => LaunchesController.Instance;
+        public LaunchesController Launch => new LaunchesController();
         /// <summary> Extrato </summary>
-        public ExtractsController Extract => ExtractsController.Instance;
+        public ExtractsController Extract => new ExtractsController();
         /// <summary> Multi-Pagamento </summary>
-        public MultiPaymentsController MultiPayment => MultiPaymentsController.Instance;
+        public MultiPaymentsController MultiPayment => new MultiPaymentsController();
         /// <summary> Multi-Pedido </summary>
-        public MultiOrdersController MultiOrder => MultiOrdersController.Instance;
+        public MultiOrdersController MultiOrder => new MultiOrdersController();
         /// <summary> Notificação </summary>
-        public NotificationsController Notification => NotificationsController.Instance;
+        public NotificationsController Notification => new NotificationsController();
         /// <summary> Pagamento </summary>
-        public PaymentsController Payment => PaymentsController.Instance;
+        public PaymentsController Payment => new PaymentsController();
         /// <summary> Pedido </summary>
-        public OrdersController Order => OrdersController.Instance;
+        public OrdersController Order => new OrdersController();
         /// <summary> Reembolso </summary>
-        public RefundsController Refund => RefundsController.Instance;
+        public RefundsController Refund => new RefundsController();
         /// <summary> Saldos </summary>
-        public BalancesController Balance => BalancesController.Instance;
+        public BalancesController Balance => new BalancesController();
         /// <summary> Transferência </summary>
-        public TransfersController Transfer => TransfersController.Instance;
+        public TransfersController Transfer => new TransfersController();
         /// <summary> Assinatura </summary>
-        public SignaturesController Signature => SignaturesController.Instance;
+        public SignaturesController Signature => new SignaturesController();
         /// <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>
-        public string _BusinessType => _HttpClient.BusinessType;
+        public string _BusinessType => Http_Client.BusinessType;
     }
 }

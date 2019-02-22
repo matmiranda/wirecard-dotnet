@@ -6,6 +6,7 @@ namespace Wirecard.Models
     {
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Currency { get; set; }
+        [JsonProperty("subtotals", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Subtotals Subtotals { get; set; }
         [JsonProperty("fixed", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Fixed { get; set; }

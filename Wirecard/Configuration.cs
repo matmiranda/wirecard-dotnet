@@ -95,7 +95,7 @@ namespace Wirecard
             //return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
             //for .NET Standard 1.2 - write the version number manually.
-            return "3.0.7";
+            return "3.0.8";
         }
     }
 }

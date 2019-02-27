@@ -759,6 +759,7 @@ var body = new PaymentRequest
     }
 };
 var result = await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX");
+var link = result._Links.Payboleto.PrintHref; // <--- obter o link para impressão
 ```
 #### Criar Pagamento - Débito Online
 

@@ -199,5 +199,28 @@ namespace Wirecard.Controllers
                 throw ex;
             }
         }
+        /// <summary>
+        /// Reenviar webhook - Resend WebHook
+        /// </summary>
+        /// <returns></returns>
+        public async Task<NotificationResponse> ResendWebhook(NotificationRequest body)
+        {
+            StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await Http_Client.HttpClient.PostAsync("v2/webhooks", stringContent);
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                WirecardException.WirecardError wirecardException = WirecardException.DeserializeObject(content);
+                throw new WirecardException(wirecardException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<NotificationResponse>(await response.Content.ReadAsStringAsync());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

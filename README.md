@@ -96,6 +96,7 @@
   - [Remover Preferência de Notificação](#remover-preferência-de-notificação)
   - [Consultar Webhook Enviado](#consultar-webhook-enviado)
   - [Listar Todos os Webhooks Enviados](#listar-todos-os-webhooks-enviados)
+  - [Reenviar Webhook](#reenviar-webhook)
   - [Desserializar WebHook](#desserializar-webhook)
 - [Contas Bancárias](#contas-bancárias)
   - [Criar Conta Bancária](#criar-conta-bancária)

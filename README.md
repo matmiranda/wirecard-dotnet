@@ -20,17 +20,23 @@
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
             alt="MIT"></a>
     <a href="https://www.nuget.org/packages/Wirecard">
-        <img src="https://img.shields.io/badge/Nuget-v3.0.7-blue.svg"
+        <img src="https://img.shields.io/badge/Nuget-v3.0.8-blue.svg"
             alt="NuGet"></a>
       <a href="https://www.nuget.org/stats/packages/Wirecard?groupby=Version">
         <img src="https://img.shields.io/badge/Statistics-155.svg"
             alt="Statistics"></a>
       <a href="https://github.com/matmiranda/Wirecard-NET/blob/master/NugetTotalDownloads.md">
-            <img src="https://img.shields.io/badge/Download-5k-red.svg"
+            <img src="https://img.shields.io/badge/Download-7k-red.svg"
             alt="Download"></a>
 </p>
 
 *Ler em outras linguagens de programação: [Visual Basic](README.VisualBasic.md), [F#](README.FSharp.md).*
+
+| Biblioteca                                                     | Descrição                      | Status            |
+| --------------------------------------------------------------- | -------------------------------| ----------------- |
+| [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/)        | Onde tudo começou...           | ❌ Descontinuado |
+| [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/)| Quando a Moip virou Wirecard...| ❌ Descontinuado |
+| [Wirecard](https://www.nuget.org/packages/Wirecard/)            | Projeto atual                  | ✔️ Atual         |
 
 ## Índice - C#
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
@@ -753,6 +759,7 @@ var body = new PaymentRequest
     }
 };
 var result = await WC.Payment.Create(body, "ORD-XXXXXXXXXXXX");
+var link = result._Links.Payboleto.PrintHref; // <--- obter o link para impressão
 ```
 #### Criar Pagamento - Débito Online
 

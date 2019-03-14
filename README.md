@@ -20,7 +20,7 @@
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
             alt="MIT"></a>
     <a href="https://www.nuget.org/packages/Wirecard">
-        <img src="https://img.shields.io/badge/Nuget-v3.0.8-blue.svg"
+        <img src="https://img.shields.io/badge/Nuget-v3.0.9-blue.svg"
             alt="NuGet"></a>
       <a href="https://www.nuget.org/stats/packages/Wirecard?groupby=Version">
         <img src="https://img.shields.io/badge/Statistics-155.svg"
@@ -96,6 +96,7 @@
   - [Remover Preferência de Notificação](#remover-preferência-de-notificação)
   - [Consultar Webhook Enviado](#consultar-webhook-enviado)
   - [Listar Todos os Webhooks Enviados](#listar-todos-os-webhooks-enviados)
+  - [Reenviar Webhook](#reenviar-webhook)
   - [Desserializar WebHook](#desserializar-webhook)
 - [Contas Bancárias](#contas-bancárias)
   - [Criar Conta Bancária](#criar-conta-bancária)
@@ -1059,6 +1060,15 @@ var result = await WC.Notification.ConsultWebhook("PAY-XXXXXXXXXXXX");
 #### Listar Todos os Webhooks Enviados
 ```C#
 var result = await WC.Notification.ListWebhooks();
+```
+#### Reenviar Webhook
+```C#
+var body = new NotificationRequest
+{
+    ResourceId = "PAY-XJM2SF6IS7FU",
+    Event = "PAYMENT.AUTHORIZED"
+};
+var result = await WC.Notification.ResendWebhook(body);
 ```
 #### Desserializar WebHook
 Ao configurar suas Preferências de Notificação você deve receber os webhooks em formato JSON e você pode desserializar.

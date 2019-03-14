@@ -24,5 +24,7 @@ namespace Wirecard.Models
         public Checkout Checkout { get; set; }
         [JsonProperty("payBoleto", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Payboleto Payboleto { get; set; }
+        [JsonProperty("payOnlineBankDebitItau", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Payonlinebankdebititau PayOnlineBankDebitItau { get; set; }
     }
 }

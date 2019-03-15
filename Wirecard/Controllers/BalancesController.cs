@@ -32,5 +32,33 @@ namespace Wirecard.Controllers
                 throw ex;
             }
         }
+        /// <summary>
+        /// Consultar Saldos  - Consult Balances
+        /// </summary>
+        /// <param name="accesstoken">AccessToken</param>
+        /// <returns></returns>
+        public async Task<List<BalanceResponse>> Consult(string accesstoken)
+        {
+            HttpClient httpClient = Http_Client.HttpClient;
+            httpClient.DefaultRequestHeaders.Remove("Authorization");
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("v2/balances");
+            httpClient.DefaultRequestHeaders.Remove("Authorization");
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
+            if (!response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                WirecardException.WirecardError wirecardException = WirecardException.DeserializeObject(content);
+                throw new WirecardException(wirecardException, "HTTP Response Not Success", content, (int)response.StatusCode);
+            }
+            try
+            {
+                return JsonConvert.DeserializeObject<List<BalanceResponse>>(await response.Content.ReadAsStringAsync());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

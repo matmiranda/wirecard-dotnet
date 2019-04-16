@@ -105,14 +105,14 @@ namespace Wirecard.Controllers
         /// Deletar conta bancária - delete bank account
         /// </summary>
         /// <param name="accesstoken">accesstoken da conta que receberá a conta bancária</param>
-        /// <param name="account_id">Identificador da conta bancária (BKA-XXXXXXXXXX)</param>
+        /// <param name="bankaccount_id">Identificador da conta bancária(BKA-XXXXXXXXXX)</param>
         /// <returns></returns>
-        public async Task<HttpStatusCode> Delete(string accesstoken, string account_id)
+        public async Task<HttpStatusCode> Delete(string accesstoken, string bankaccount_id)
         {
             HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
-            HttpResponseMessage response = await httpClient.GetAsync($"v2/accounts/{account_id}/bankaccounts");
+            HttpResponseMessage response = await httpClient.DeleteAsync($"v2/bankaccounts/{bankaccount_id}");
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)

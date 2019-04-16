@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://dev.wirecard.com.br/v2.0/">
-    <img src="https://res.cloudinary.com/matmiranda/image/upload/v1547763491/Wirecard%20%2B%20.NET.jpg" alt="Wirecard logo" width=400>
+    <img src="https://raw.githubusercontent.com/matmiranda/Wirecard-NET/master/Images/Wirecard%20%2B%20.NET.jpg" alt="Wirecard logo" width=400>
   </a>
 </p>
 <p align="center">
@@ -20,13 +20,13 @@
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
             alt="MIT"></a>
     <a href="https://www.nuget.org/packages/Wirecard">
-        <img src="https://img.shields.io/badge/Nuget-v3.1.0-blue.svg"
+        <img src="https://img.shields.io/badge/Nuget-v3.1.1-blue.svg"
             alt="NuGet"></a>
       <a href="https://www.nuget.org/stats/packages/Wirecard?groupby=Version">
         <img src="https://img.shields.io/badge/Statistics-155.svg"
             alt="Statistics"></a>
       <a href="https://github.com/matmiranda/Wirecard-NET/blob/master/NugetTotalDownloads.md">
-            <img src="https://img.shields.io/badge/Download-7k-red.svg"
+            <img src="https://img.shields.io/badge/Download-8k-red.svg"
             alt="Download"></a>
 </p>
 

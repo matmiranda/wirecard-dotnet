@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Wirecard.Models
 {
-    public class Payment
+    public class PaymentSignature
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Id { get; set; }
@@ -15,7 +15,7 @@ namespace Wirecard.Models
         [JsonProperty("fundingInstrument", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Fundinginstrument FundingInstrument { get; set; }
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Status { get; set; }
+        public Status Status { get; set; }
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Amount Amount { get; set; }
         [JsonProperty("fees", DefaultValueHandling = DefaultValueHandling.Ignore)]

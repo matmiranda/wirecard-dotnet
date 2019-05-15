@@ -548,7 +548,7 @@ namespace Wirecard.Controllers
         /// </summary>
         /// <param name="id"> Id da Cobrança </param>
         /// <returns></returns>
-        public async Task<PaymentsResponse> ListAllInvoicePayments(string id)
+        public async Task<PaymentsSignatureResponse> ListAllInvoicePayments(string id)
         {
             HttpResponseMessage response = await Http_Client.HttpClient.GetAsync($"assinaturas/v1/invoices/{id}/payments");
             if (!response.IsSuccessStatusCode)
@@ -559,7 +559,7 @@ namespace Wirecard.Controllers
             }
             try
             {
-                return JsonConvert.DeserializeObject<PaymentsResponse>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<PaymentsSignatureResponse>(await response.Content.ReadAsStringAsync());
             }
             catch (System.Exception ex)
             {

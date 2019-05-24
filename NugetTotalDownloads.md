@@ -6,6 +6,6 @@ Veja a tabela abaixo:
 | [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/)| _2.753_       | Quando a Moip virou Wirecard...| ❌ Descontinuado |
 | [Wirecard](https://www.nuget.org/packages/Wirecard/)            | _856_         | Projeto atual                  | ✔️ Atual         |
 
-Total de downloads:  **8.182 downloads**
+Total de downloads:  **9.600 downloads**
 
 Mais detalhes: [O Moip virou Wirecard](https://wirecard.com.br/moip-virou-wirecard)

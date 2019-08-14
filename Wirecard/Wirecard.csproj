@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.2</TargetFramework>
-    <Version>3.1.3</Version>
+    <Version>3.1.4</Version>
     <Authors>Wirecard, Matheus Miranda</Authors>
     <Description>Biblioteca para integração dos meios de pagamento do WIRECARD</Description>
     <Copyright>Copyright © Matheus Miranda</Copyright>
@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/matmiranda/Wirecard-NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Wirecard</PackageTags>
-    <PackageReleaseNotes>Listar todos os pagamentos de fatura foi corrigido.</PackageReleaseNotes>
+    <PackageReleaseNotes>Método ClassicAccountsController.GetPublickey() foi corrigido.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

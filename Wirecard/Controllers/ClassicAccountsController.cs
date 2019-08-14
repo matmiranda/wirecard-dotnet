@@ -144,7 +144,7 @@ namespace Wirecard.Controllers
         /// <returns></returns>
         public async Task<PublicKeyAccountWirecardResponse> GetPublickey()
         {
-            HttpResponseMessage response = await Http_Client.HttpClient_Connect.GetAsync("v2/keys");
+            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("v2/keys");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

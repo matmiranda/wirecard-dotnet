@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard1.2</TargetFramework>
@@ -12,7 +12,9 @@
     <RepositoryUrl>https://github.com/matmiranda/Wirecard-NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Wirecard</PackageTags>
-    <PackageReleaseNotes>Método ClassicAccountsController.GetPublickey() foi corrigido.</PackageReleaseNotes>
+    <PackageReleaseNotes>Novo método de obter chave pública do recebedor.</PackageReleaseNotes>
+    <AssemblyVersion>3.1.5.0</AssemblyVersion>
+    <FileVersion>3.1.5.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

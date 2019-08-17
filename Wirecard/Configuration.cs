@@ -111,16 +111,8 @@ namespace Wirecard
             {
                 try
                 {
-                    if (BusinessType == "MARKETPLACE")
-                    {
-                        HttpClient.DefaultRequestHeaders.Remove("Authorization");
-                        HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
-                    }
-                    else
-                    {
-                        HttpClient.DefaultRequestHeaders.Remove("Authorization");
-                        HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {Base64}");
-                    }
+                    HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                    HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
                 }
                 catch (System.Exception ex)
                 {

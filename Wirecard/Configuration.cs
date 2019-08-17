@@ -102,7 +102,7 @@ namespace Wirecard
         internal static void ChangeAccessToken(string accesstoken)
         {
             if (string.IsNullOrEmpty(accesstoken))
-                throw new ArgumentException("Token cannot be null");
+                throw new ArgumentException("accesstoken cannot be null");
             var regex = new Regex(@"^[a-zA-Z0-9]{32}_v2$");
             var match = regex.Match(accesstoken);
             if (!match.Success)

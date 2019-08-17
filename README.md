@@ -1703,6 +1703,13 @@ Veja como ficou na variável json:
   }
 }
 ```
+
+## Alterando accesstoken
+
+```C#
+WC.ChangeAccessToken("new access token here");
+```
+
 ## Tabela
 #### Tipos de Lançamentos
 

@@ -5,14 +5,17 @@ namespace Wirecard.Test
 {
     class WirecardTest
     {
+        private const string accessToken = "00000000000000000000000000000000_v2";
+        private readonly WirecardClient WC = new WirecardClient(Environments.SANDBOX, accessToken);
+
         [Test]
         public void TesteComAccessTokenDiferente()
         {
-            var instancia1 = new WirecardClient(Environments.SANDBOX, "123");
-            var instancia2 = new WirecardClient(Environments.SANDBOX, "456");
+            var result1 = WC.ClassicAccount.GetPublickey().Result.keys.BasicAuth.Token;
 
-            var result1 = instancia1.ClassicAccount.GetPublickey().Result.keys.BasicAuth.Token;
-            var result2 = instancia2.ClassicAccount.GetPublickey().Result.keys.BasicAuth.Token;
+            WC.ChangeAccessToken("11111111111111111111111111111111_v2");
+
+            var result2 = WC.ClassicAccount.GetPublickey().Result.keys.BasicAuth.Token;
         }
     }
 }

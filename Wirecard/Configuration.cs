@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace Wirecard
 {
@@ -95,7 +96,37 @@ namespace Wirecard
             //return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
             //for .NET Standard 1.2 - write the version number manually.
-            return "3.1.4";
+            return "3.1.5";
+        }
+
+        internal static void ChangeAccessToken(string accesstoken)
+        {
+            if (string.IsNullOrEmpty(accesstoken))
+                throw new ArgumentException("Token cannot be null");
+            var regex = new Regex(@"^[a-zA-Z0-9]{32}_v2$");
+            var match = regex.Match(accesstoken);
+            if (!match.Success)
+                throw new ArgumentException("accesstoken invalid");
+            if (HttpClient != null)
+            {
+                try
+                {
+                    if (BusinessType == "MARKETPLACE")
+                    {
+                        HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                        HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
+                    }
+                    else
+                    {
+                        HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                        HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {Base64}");
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    throw ex;
+                }
+            }
         }
     }
 }

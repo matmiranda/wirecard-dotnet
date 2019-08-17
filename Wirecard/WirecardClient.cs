@@ -21,12 +21,10 @@ namespace Wirecard
                     throw new ArgumentException("Business type already defined: E-COMMERCE.");
                 }
             }
-            Regex regex = new Regex(@"^[a-zA-Z0-9]{32}_v2$");
-            Match match = regex.Match(accesstoken);
+            var regex = new Regex(@"^[a-zA-Z0-9]{32}_v2$");
+            var match = regex.Match(accesstoken);
             if (!match.Success)
-            {
-                throw new ArgumentException("accesstoken invalid");
-            }            
+                throw new ArgumentException("accesstoken invalid");        
             Http_Client.SelectedEnvironment = environments;
             Http_Client.Accesstoken = accesstoken;
             Http_Client.BusinessType = "MARKETPLACE";
@@ -48,16 +46,12 @@ namespace Wirecard
         public WirecardClient(Environments environments, string token, string key)
         {
             if (!string.IsNullOrEmpty(Http_Client.BusinessType))
-            {
                 if (Http_Client.BusinessType != "E-COMMERCE")
-                {
                     throw new ArgumentException("Business type already defined: MARKETPLACE.");
-                }
-            }
-            byte[] TextByte = Encoding.UTF8.GetBytes($"{token}:{key}");
-            string base64 = Convert.ToBase64String(TextByte);
-            Regex regex = new Regex(@"^[a-zA-Z0-9]{98}==$");
-            Match match = regex.Match(base64);
+            var TextByte = Encoding.UTF8.GetBytes($"{token}:{key}");
+            var base64 = Convert.ToBase64String(TextByte);
+            var regex = new Regex(@"^[a-zA-Z0-9]{98}==$");
+            var match = regex.Match(base64);
             if (token.Length != 32 || key.Length != 40)
             {
                 throw new ArgumentException("(token or key) invalid");
@@ -108,5 +102,10 @@ namespace Wirecard
         public SignaturesController Signature => new SignaturesController();
         /// <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>
         public string _BusinessType => Http_Client.BusinessType;
+        /// <summary>
+        /// Altera AccessToken
+        /// </summary>
+        /// <param name="accesstoken"></param>
+        public void ChangeAccessToken(string accesstoken) => Http_Client.ChangeAccessToken(accesstoken);
     }
 }

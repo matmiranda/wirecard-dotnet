@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/matmiranda/Wirecard-NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Wirecard</PackageTags>
-    <PackageReleaseNotes>Novo método de obter chave pública do recebedor.</PackageReleaseNotes>
+    <PackageReleaseNotes>Novo método de alterar ChangeAccessToken.</PackageReleaseNotes>
     <AssemblyVersion>3.1.5.0</AssemblyVersion>
     <FileVersion>3.1.5.0</FileVersion>
   </PropertyGroup>

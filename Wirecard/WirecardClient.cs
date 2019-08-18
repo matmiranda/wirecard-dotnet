@@ -15,12 +15,8 @@ namespace Wirecard
         public WirecardClient(Environments environments, string accesstoken)
         {
             if (!string.IsNullOrEmpty(Http_Client.BusinessType))
-            {
                 if (Http_Client.BusinessType != "MARKETPLACE")
-                {
                     throw new ArgumentException("Business type already defined: E-COMMERCE.");
-                }
-            }
             var regex = new Regex(@"^[a-zA-Z0-9]{32}_v2$");
             var match = regex.Match(accesstoken);
             if (!match.Success)
@@ -102,10 +98,9 @@ namespace Wirecard
         public SignaturesController Signature => new SignaturesController();
         /// <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>
         public string _BusinessType => Http_Client.BusinessType;
-        /// <summary>
-        /// Altera AccessToken
-        /// </summary>
-        /// <param name="accesstoken"></param>
+        /// <summary>Altera AccessToken - MarketPlace</summary>
         public void ChangeAccessToken(string accesstoken) => Http_Client.ChangeAccessToken(accesstoken);
+        /// <summary>Altera Token - E-Commerce</summary>
+        public void ChangeToken(string token, string key) => Http_Client.ChangeToken(token, key);
     }
 }

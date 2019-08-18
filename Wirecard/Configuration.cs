@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Wirecard
@@ -119,6 +120,29 @@ namespace Wirecard
                     throw ex;
                 }
             }
+        }
+        internal static void ChangeToken(string token, string key)
+        {
+            if (string.IsNullOrEmpty(token))
+                throw new ArgumentException("accesstoken cannot be null");
+            var textByte = Encoding.UTF8.GetBytes($"{token}:{key}");
+            var base64 = Convert.ToBase64String(textByte);
+            var regex = new Regex(@"^[a-zA-Z0-9]{98}==$");
+            var match = regex.Match(base64);
+            if (token.Length != 32 || key.Length != 40)
+                throw new ArgumentException("(token or key) invalid");
+            if (!match.Success)
+                throw new ArgumentException("base64 invalid");
+            if (HttpClient != null)
+                try
+                {
+                    HttpClient.DefaultRequestHeaders.Remove("Authorization");
+                    HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {base64}");
+                }
+                catch (System.Exception ex)
+                {
+                    throw ex;
+                }
         }
     }
 }

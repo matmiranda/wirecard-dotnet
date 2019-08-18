@@ -156,10 +156,77 @@ namespace Wirecard.Test
                 return;
             }
             Assert.Fail();
-        }
-
+        }        
         [Test]
-        public async Task TesteComAccessTokenDiferente()
+        public async Task TesteConsultarPagamento()
+        {
+            if (WC._BusinessType == "E-COMMERCE")
+            {
+                var pagamento = await WC.Payment.Consult("PAY-MSQUROQ5UID7");
+                Assert.IsTrue(pagamento.StatementDescriptor == "MyStore");
+                return;
+            }
+            if (WC._BusinessType == "MARKETPLACE")
+            {
+                var pagamento = await WC.Payment.Consult("PAY-MSQUROQ5UID7");
+                Assert.IsTrue(pagamento.StatementDescriptor == "MyStore");
+                return;
+            }
+            Assert.Fail();
+        }
+        [Test]
+        public async Task TesteConsultarSaldo()
+        {
+            if (WC._BusinessType == "E-COMMERCE")
+            {
+                var saldos = await WC.Balance.Consult();
+                Assert.IsTrue(saldos.Count > 0);
+                return;
+            }
+            if (WC._BusinessType == "MARKETPLACE")
+            {
+                var saldos = await WC.Balance.Consult();
+                Assert.IsTrue(saldos.Count > 0);
+                return;
+            }
+            Assert.Fail();
+        }        
+        [Test]
+        public async Task TesteConsultarLancamento()
+        {
+            if (WC._BusinessType == "E-COMMERCE")
+            {
+                var lancamento = await WC.Launch.Consult("ENT-OTHGP4RC24L4");
+                Assert.IsTrue(lancamento.EventId == "PAY-MSQUROQ5UID7");
+                return;
+            }
+            if (WC._BusinessType == "MARKETPLACE")
+            {
+                var lancamento = await WC.Launch.Consult("ENT-OTHGP4RC24L4");
+                Assert.IsTrue(lancamento.EventId == "PAY-MSQUROQ5UID7");
+                return;
+            }
+            Assert.Fail();
+        }
+        [Test]
+        public async Task TesteListarLancamentos()
+        {
+            if (WC._BusinessType == "E-COMMERCE")
+            {
+                var lancamentos = await WC.Launch.List();
+                Assert.IsTrue(lancamentos.Count > 0);
+                return;
+            }
+            if (WC._BusinessType == "MARKETPLACE")
+            {
+                var lancamentos = await WC.Launch.List();
+                Assert.IsTrue(lancamentos.Count > 0);
+                return;
+            }
+            Assert.Fail();
+        }
+        [Test]
+        public void TesteComAccessTokenDiferente()
         {
             //var result1 = await WC.ClassicAccount.GetPublickey();
             //var token1 = result1.keys.BasicAuth.Token;

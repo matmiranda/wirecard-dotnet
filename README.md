@@ -26,8 +26,8 @@
         <img src="https://img.shields.io/badge/Statistics-155.svg"
             alt="Statistics"></a>
       <a href="https://github.com/matmiranda/Wirecard-NET/blob/master/NugetTotalDownloads.md">
-            <img src="https://img.shields.io/badge/Download-10k-red.svg"
-            alt="Download"></a>
+            <img src="https://img.shields.io/badge/Download-12k-red.svg"
+            alt="Downloads"></a>
 </p>
 
 *Ler em outras linguagens de programação: [Visual Basic](README.VisualBasic.md), [F#](README.FSharp.md).*

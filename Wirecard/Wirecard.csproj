@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.2</TargetFramework>
-    <Version>3.1.5</Version>
+    <Version>3.1.6</Version>
     <Authors>Wirecard, Matheus Miranda</Authors>
     <Description>Biblioteca para integração dos meios de pagamento do WIRECARD</Description>
     <Copyright>Copyright © Matheus Miranda</Copyright>
@@ -12,9 +12,9 @@
     <RepositoryUrl>https://github.com/matmiranda/Wirecard-NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Wirecard</PackageTags>
-    <PackageReleaseNotes>Novo método de alterar ChangeAccessToken.</PackageReleaseNotes>
-    <AssemblyVersion>3.1.5.0</AssemblyVersion>
-    <FileVersion>3.1.5.0</FileVersion>
+    <PackageReleaseNotes>Corrigido</PackageReleaseNotes>
+    <AssemblyVersion>3.1.6.0</AssemblyVersion>
+    <FileVersion>3.1.6.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

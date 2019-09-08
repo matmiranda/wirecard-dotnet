@@ -20,5 +20,7 @@ namespace Wirecard.Models
         public Best_Invoice_Date Best_Invoice_Date { get; set; }
         [JsonProperty("next_invoice_date", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Next_Invoice_Date Next_Invoice_Date { get; set; }
+        [JsonProperty("coupon", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Coupon Coupon { get; set; }
     }
 }

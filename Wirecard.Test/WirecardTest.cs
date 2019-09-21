@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System.Threading.Tasks;
 using Wirecard.Exception;
+using Wirecard.Models;
 
 namespace Wirecard.Test
 {
@@ -11,6 +12,20 @@ namespace Wirecard.Test
         private const string key = "BQ3OHLHBLDALQATLAPHVM4F2FLSUTUTH4ZLEKBJH";
         //private readonly WirecardClient WC = new WirecardClient(Environments.SANDBOX, accessToken); // <---marketplace
         private readonly WirecardClient WC = new WirecardClient(Environments.SANDBOX, token, key); //<-- e-commerce
+
+        [Test]
+        public async Task Teste()
+        {
+            var body = new CouponRequest
+            {
+                Coupon = new Coupon
+                {
+                    Code = "coupon-0001"
+                }
+            };
+            var resulta = await WC.Signature.ConsultCoupon("coupon-0001");
+            var result = await WC.Signature.AssociateCouponForExistingSignature(body, "assinatura01");
+        }
 
         [Test]
         public async Task TesteListarTodosClientes()
@@ -226,15 +241,10 @@ namespace Wirecard.Test
             Assert.Fail();
         }
         [Test]
-        public void TesteComAccessTokenDiferente()
+        public void TesteWebHookReturn()
         {
-            //var result1 = await WC.ClassicAccount.GetPublickey();
-            //var token1 = result1.keys.BasicAuth.Token;
-
-            //WC.ChangeAccessToken("11111111111111111111111111111111_v2");
-
-            //var result2 = await WC.ClassicAccount.GetPublickey();
-            //var token2 = result2.keys.BasicAuth.Token;
+            var json = "{  \r\n  \"date\":\"22/05/2018 16:05:09\",\r\n  \"env\":\"sandbox\",\r\n  \"event\":\"plan.inactivated\",\r\n  \"resource\":{  \r\n     \"code\":\"plan101\"\r\n  }\r\n}";
+            var response = Utilities.DeserializeWebHook(json);
         }
     }
 }

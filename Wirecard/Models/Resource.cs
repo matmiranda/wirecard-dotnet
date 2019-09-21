@@ -42,5 +42,7 @@ namespace Wirecard.Models
         public DateTime UpdatedAt { get; set; }
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Status { get; set; }
+        [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Code { get; set; }
     }
 }

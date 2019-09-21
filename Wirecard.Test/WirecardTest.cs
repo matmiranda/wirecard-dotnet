@@ -245,6 +245,7 @@ namespace Wirecard.Test
         {
             var json = "{  \r\n  \"date\":\"22/05/2018 16:05:09\",\r\n  \"env\":\"sandbox\",\r\n  \"event\":\"plan.inactivated\",\r\n  \"resource\":{  \r\n     \"code\":\"plan101\"\r\n  }\r\n}";
             var response = Utilities.DeserializeWebHook(json);
+            Assert.AreEqual(response.Resource.Code, "plan101");
         }
     }
 }

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.2</TargetFramework>
-    <Version>3.1.6</Version>
+    <Version>3.1.7</Version>
     <Authors>Wirecard, Matheus Miranda</Authors>
     <Description>Biblioteca para integração dos meios de pagamento do WIRECARD</Description>
     <Copyright>Copyright © Matheus Miranda</Copyright>
@@ -13,8 +13,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Wirecard</PackageTags>
     <PackageReleaseNotes>Corrigido: #26; #27;</PackageReleaseNotes>
-    <AssemblyVersion>3.1.6.0</AssemblyVersion>
-    <FileVersion>3.1.6.0</FileVersion>
+    <AssemblyVersion>3.1.7.0</AssemblyVersion>
+    <FileVersion>3.1.7.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

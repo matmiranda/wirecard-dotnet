@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/matmiranda/Wirecard-NET.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Wirecard</PackageTags>
-    <PackageReleaseNotes>Corrigido: #26; #27;</PackageReleaseNotes>
+    <PackageReleaseNotes>Nova propriedade "Escrow" para pagamento com custódia.</PackageReleaseNotes>
     <AssemblyVersion>3.1.7.0</AssemblyVersion>
     <FileVersion>3.1.7.0</FileVersion>
   </PropertyGroup>

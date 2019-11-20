@@ -16,5 +16,7 @@ namespace Wirecard.Models
         public Device Device { get; set; }
         [JsonProperty("fingerprint", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Fingerprint { get; set; }
+        [JsonProperty("escrow", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Escrow Escrow { get; set; }
     }
 }

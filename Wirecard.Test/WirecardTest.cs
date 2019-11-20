@@ -26,7 +26,6 @@ namespace Wirecard.Test
             var resulta = await WC.Signature.ConsultCoupon("coupon-0001");
             var result = await WC.Signature.AssociateCouponForExistingSignature(body, "assinatura01");
         }
-
         [Test]
         public async Task TesteListarTodosClientes()
         {

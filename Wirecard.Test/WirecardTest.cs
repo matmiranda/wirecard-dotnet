@@ -246,5 +246,49 @@ namespace Wirecard.Test
             var response = Utilities.DeserializeWebHook(json);
             Assert.AreEqual(response.Resource.Code, "plan101");
         }
+        [Test]
+        public async Task TesteCriarPagamentoBoleto()
+        {
+            var body = new PaymentRequest
+            {
+                //informe os campos aqui
+                StatementDescriptor = "Minha Loja",
+                FundingInstrument = new Fundinginstrument
+                {
+                    Method = "BOLETO",
+                    Boleto = new Boleto
+                    {
+                        ExpirationDate = "2020-09-20", //yyyy-MM-dd
+                        InstructionLines = new Instructionlines
+                        {
+                            First = "Atenção",
+                            Second = "fique atento à data de vencimento do boleto.",
+                            Third = "Pague em qualquer casa lotérica."
+                        }
+                    }
+                }
+            };
+            if (WC._BusinessType == "E-COMMERCE")
+            {
+                try
+                {
+                    var boleto = await WC.Payment.Create(body, "ORD-RESZNAA6SPBC");
+                    //Assert.IsTrue(saldos.Count > 0);
+                    return;
+                }
+                catch (System.Exception ex)
+                {
+
+                    throw;
+                }
+            }
+            if (WC._BusinessType == "MARKETPLACE")
+            {
+                var boleto = await WC.Payment.Create(body, "ORD-RESZNAA6SPBC");
+                //Assert.IsTrue(saldos.Count > 0);
+                return;
+            }
+            Assert.Fail();
+        }
     }
 }

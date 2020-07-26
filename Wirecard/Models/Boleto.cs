@@ -12,7 +12,5 @@ namespace Wirecard.Models
         public string LogoUri { get; set; }
         [JsonProperty("lineCode", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string LineCode { get; set; }
-        [JsonProperty("holder", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Holder Holder { get; set; }
     }
 }

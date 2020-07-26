@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Wirecard.Exception;
 using Wirecard.Models;
@@ -174,19 +175,8 @@ namespace Wirecard.Test
         [Test]
         public async Task TesteConsultarPagamento()
         {
-            if (WC._BusinessType == "E-COMMERCE")
-            {
-                var pagamento = await WC.Payment.Consult("PAY-MSQUROQ5UID7");
-                Assert.IsTrue(pagamento.StatementDescriptor == "MyStore");
-                return;
-            }
-            if (WC._BusinessType == "MARKETPLACE")
-            {
-                var pagamento = await WC.Payment.Consult("PAY-MSQUROQ5UID7");
-                Assert.IsTrue(pagamento.StatementDescriptor == "MyStore");
-                return;
-            }
-            Assert.Fail();
+            var pagamento = await WC.Payment.Consult("PAY-MSQUROQ5UID7");
+            Assert.IsTrue(pagamento.StatementDescriptor == "MyStore");
         }
         [Test]
         public async Task TesteConsultarSaldo()
@@ -268,27 +258,69 @@ namespace Wirecard.Test
                     }
                 }
             };
+            var boleto = await WC.Payment.Create(body, "ORD-RESZNAA6SPBC");
+            //Assert.IsTrue();
+        }
+        [Test]
+        public async Task TesteListarTodasAssinaturas()
+        {
             if (WC._BusinessType == "E-COMMERCE")
             {
-                try
-                {
-                    var boleto = await WC.Payment.Create(body, "ORD-RESZNAA6SPBC");
-                    //Assert.IsTrue(saldos.Count > 0);
-                    return;
-                }
-                catch (System.Exception ex)
-                {
-
-                    throw;
-                }
+                var result = await WC.Signature.ListAllSubscriptions();
+                //Assert.IsTrue(result.Count > 0);
+                return;
             }
             if (WC._BusinessType == "MARKETPLACE")
             {
-                var boleto = await WC.Payment.Create(body, "ORD-RESZNAA6SPBC");
-                //Assert.IsTrue(saldos.Count > 0);
+                var clientes = await WC.Customer.List();
+                Assert.IsTrue(clientes.Count > 0);
                 return;
             }
             Assert.Fail();
+        }
+        [Test]
+        public async Task TesteCriarPlano()
+        {
+            var body = new PlanRequest
+            {
+                Code = "plan103",
+                Name = "Plano Especial",
+                Description = "Descrição do Plano Especial",
+                Amount = 990,
+                Setup_Fee = 500,
+                Max_Qty = 1,
+                Interval = new Interval
+                {
+                    Length = 1,
+                    Unit = "MONTH"
+                },
+                Billing_Cycles = 12,
+                Trial = new Trial
+                {
+                    Days = 30,
+                    Enabled = true,
+                    Hold_Setup_Fee = true
+                }
+            };
+            var result = await WC.Signature.CreatePlan(body);
+        }
+        [Test]
+        public async Task TesteListarPlanos()
+        {
+            var result = await WC.Signature.ListPlans();
+            Assert.IsTrue(result.Plans.Count > 0);
+        }
+        [Test]
+        public async Task TesteConsultarPlano()
+        {
+            var result = await WC.Signature.ConsultPlan("plan103");
+            Assert.Pass();
+        }
+        [Test]
+        public async Task TesteListarAssinantes()
+        {
+            var result = await WC.Signature.ListSubscribers();
+            Assert.IsTrue(result.Customers.Count > 0);
         }
     }
 }

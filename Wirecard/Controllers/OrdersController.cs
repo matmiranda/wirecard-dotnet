@@ -10,6 +10,11 @@ namespace Wirecard.Controllers
     //Pedidos - Orders
     public partial class OrdersController
     {
+        private readonly Http_Client Http_Client;
+        public OrdersController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Criar Pedido - Create Order
         /// </summary>

@@ -14,6 +14,11 @@ namespace Wirecard.Controllers
     //Notificações - Notifications
     public partial class NotificationsController
     {
+        private readonly Http_Client Http_Client;
+        public NotificationsController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Criar Preferência de Notificação para Conta Wirecard - Create Notification Preference for Wirecard Account
         /// </summary>

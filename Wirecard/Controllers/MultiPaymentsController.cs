@@ -10,6 +10,11 @@ namespace Wirecard.Controllers
     //Multi Pagamentos - Multi Payments
     public partial class MultiPaymentsController
     {
+        private readonly Http_Client Http_Client;
+        public MultiPaymentsController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Criar Multi Pagamento - Create multi payment
         /// </summary>

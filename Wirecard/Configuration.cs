@@ -15,8 +15,18 @@ namespace Wirecard
         SANDBOX,
         PRODUCTION,
     }
-    internal class Http_Client
+    public class Http_Client
     {
+        public readonly string Accesstoken;
+        public readonly string BusinessType;
+        public readonly Environments SelectedEnvironment;
+        public Http_Client(Environments selectedEnvironment, string accesstoken, string businessType)
+        {
+            Accesstoken = accesstoken;
+            SelectedEnvironment = selectedEnvironment;
+            BusinessType = businessType;
+        }
+
         // HttpClient para base https://sandbox.moip.com.br/ ou https://api.moip.com.br/
         // HttpClient_Connect para base https://connect-sandbox.moip.com.br ou https://connect.moip.com.br/
         // accesstoken para MarketPlace
@@ -27,24 +37,17 @@ namespace Wirecard
         // Client_Connect == HttpClient_Connect
         // GetVersion(): para obter a versão do pacote Wirecard, definir a versão manualmente 
 
-        internal static HttpClient HttpClient = null;
-        internal static HttpClient HttpClient_Connect = null;
-        internal static string Accesstoken = string.Empty;
-        internal static string Base64 = string.Empty;
-        internal static string BusinessType = null;
-        internal static Environments SelectedEnvironment;
-        internal static HttpClient Client()
+        public HttpClient HttpClient
         {
-            if (HttpClient == null)
+            get
             {
                 try
                 {
-                    HttpClient = new HttpClient();
+                    HttpClient HttpClient = new HttpClient();
                     HttpClient.DefaultRequestHeaders.Clear();
                     HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
                     HttpClient.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
-                    string uri = SelectedEnvironment ==
-                        Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
+                    string uri = SelectedEnvironment == Environments.SANDBOX ? BaseAddress.SANDBOX : BaseAddress.PRODUCTION;
                     if (BusinessType == "MARKETPLACE")
                     {
                         HttpClient.BaseAddress = new Uri(uri);
@@ -53,23 +56,23 @@ namespace Wirecard
                     else
                     {
                         HttpClient.BaseAddress = new Uri(uri);
-                        HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {Base64}");
+                        HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {Accesstoken}");
                     }
+                    return HttpClient;
                 }
                 catch (System.Exception ex)
                 {
                     throw ex;
                 }
             }
-            return HttpClient;
         }
-        internal static HttpClient Client_Connect()
+        public HttpClient HttpClient_Connect
         {
-            if (HttpClient_Connect == null)
+            get
             {
                 try
                 {
-                    HttpClient_Connect = new HttpClient();
+                    HttpClient HttpClient_Connect = new HttpClient();
                     HttpClient_Connect.DefaultRequestHeaders.Clear();
                     HttpClient_Connect.DefaultRequestHeaders.Add("Accept", "application/json");
                     HttpClient_Connect.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
@@ -82,67 +85,21 @@ namespace Wirecard
                         HttpClient_Connect.BaseAddress = new Uri("https://connect.moip.com.br/");
                     }
                     HttpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Bearer {Accesstoken}");
+                    return HttpClient_Connect;
                 }
                 catch (System.Exception ex)
                 {
                     throw ex;
                 }
             }
-            return HttpClient_Connect;
         }
-
-        internal static string GetVersion()
+        public string GetVersion()
         {
             //for .NET Standard 2.0
             //return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
 
             //for .NET Standard 1.2 - write the version number manually.
-            return "3.1.8";
-        }
-
-        internal static void ChangeAccessToken(string accesstoken)
-        {
-            if (string.IsNullOrEmpty(accesstoken))
-                throw new ArgumentException("accesstoken cannot be null");
-            var regex = new Regex(@"^[a-zA-Z0-9]{32}_v2$");
-            var match = regex.Match(accesstoken);
-            if (!match.Success)
-                throw new ArgumentException("accesstoken invalid");
-            if (HttpClient != null)
-            {
-                try
-                {
-                    HttpClient.DefaultRequestHeaders.Remove("Authorization");
-                    HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
-                }
-                catch (System.Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
-        internal static void ChangeToken(string token, string key)
-        {
-            if (string.IsNullOrEmpty(token))
-                throw new ArgumentException("accesstoken cannot be null");
-            var textByte = Encoding.UTF8.GetBytes($"{token}:{key}");
-            var base64 = Convert.ToBase64String(textByte);
-            var regex = new Regex(@"^[a-zA-Z0-9]{98}==$");
-            var match = regex.Match(base64);
-            if (token.Length != 32 || key.Length != 40)
-                throw new ArgumentException("(token or key) invalid");
-            if (!match.Success)
-                throw new ArgumentException("base64 invalid");
-            if (HttpClient != null)
-                try
-                {
-                    HttpClient.DefaultRequestHeaders.Remove("Authorization");
-                    HttpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {base64}");
-                }
-                catch (System.Exception ex)
-                {
-                    throw ex;
-                }
+            return "3.1.9";
         }
     }
 }

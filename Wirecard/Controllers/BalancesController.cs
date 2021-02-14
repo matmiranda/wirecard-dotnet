@@ -10,6 +10,11 @@ namespace Wirecard.Controllers
     //Saldos - Balances
     public partial class BalancesController
     {
+        private readonly Http_Client Http_Client;
+        public BalancesController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Consultar Saldos - Consult Balances
         /// </summary>
@@ -42,9 +47,7 @@ namespace Wirecard.Controllers
             HttpClient httpClient = Http_Client.HttpClient;
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
-            HttpResponseMessage response = await Http_Client.HttpClient.GetAsync("v2/balances");
-            httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
+            HttpResponseMessage response = await httpClient.GetAsync("v2/balances");
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

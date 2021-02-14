@@ -9,7 +9,12 @@ namespace Wirecard.Controllers
 {
     //Transferências - Transfers
     public partial class TransfersController
-    {        
+    {
+        private readonly Http_Client Http_Client;
+        public TransfersController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Criar Transferência - Create Transfer
         /// </summary>
@@ -23,8 +28,6 @@ namespace Wirecard.Controllers
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             StringContent stringContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync("v2/transfers", stringContent);
-            httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -53,8 +56,6 @@ namespace Wirecard.Controllers
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             StringContent stringContent = new StringContent(string.Empty, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.PostAsync($"v2/transfers/{transfer_id}/reverse", stringContent);
-            httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -82,8 +83,6 @@ namespace Wirecard.Controllers
             httpClient.DefaultRequestHeaders.Remove("Authorization");
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accesstoken);
             HttpResponseMessage response = await httpClient.GetAsync($"v2/transfers/{transfer_id}");
-            httpClient.DefaultRequestHeaders.Remove("Authorization");
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Http_Client.Accesstoken);
             if (!response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();

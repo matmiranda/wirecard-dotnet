@@ -8,7 +8,12 @@ namespace Wirecard.Controllers
 {
     //Conciliações - Conciliations
     public partial class ConciliationsController
-    {       
+    {
+        private readonly Http_Client Http_Client;
+        public ConciliationsController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Obter Arquivo de Vendas - Get Sales File
         /// </summary>

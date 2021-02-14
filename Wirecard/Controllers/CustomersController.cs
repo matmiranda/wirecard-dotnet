@@ -12,7 +12,12 @@ namespace Wirecard.Controllers
 {
     //Clientes - Customers
     public partial class CustomersController
-    {       
+    {
+        private readonly Http_Client Http_Client;
+        public CustomersController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Criar cliente - Create Client
         /// </summary>

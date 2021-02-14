@@ -11,7 +11,12 @@ namespace Wirecard.Controllers
 {
     //Assinatura - Signature
     public partial class SignaturesController
-    {        
+    {
+        private readonly Http_Client Http_Client;
+        public SignaturesController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Criar plano - Create plan
         /// </summary>

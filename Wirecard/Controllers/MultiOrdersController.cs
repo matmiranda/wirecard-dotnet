@@ -10,6 +10,11 @@ namespace Wirecard.Controllers
     //Multi Pedidos - Multi Orders
     public partial class MultiOrdersController
     {
+        private readonly Http_Client Http_Client;
+        public MultiOrdersController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Criar Multipedido - Create Multi Order
         /// </summary>

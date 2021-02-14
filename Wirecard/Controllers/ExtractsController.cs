@@ -8,7 +8,12 @@ namespace Wirecard.Controllers
 {
     //Extratos - Extracts
     public partial class ExtractsController
-    {      
+    {
+        private readonly Http_Client Http_Client;
+        public ExtractsController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Listar Extrato - List Extract
         /// </summary>

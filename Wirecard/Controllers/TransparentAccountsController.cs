@@ -9,7 +9,12 @@ namespace Wirecard.Controllers
 {
     //Contas Transparentes - Transparent Accounts
     public partial class TransparentAccountsController
-    {        
+    {
+        private readonly Http_Client Http_Client;
+        public TransparentAccountsController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         ///  Cria uma conta transparente - Create a transparent account
         /// </summary>

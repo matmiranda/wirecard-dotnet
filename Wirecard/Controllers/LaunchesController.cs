@@ -9,7 +9,12 @@ namespace Wirecard.Controllers
 {
     //Lançamentos - Launches
     public partial class LaunchesController
-    {        
+    {
+        private readonly Http_Client Http_Client;
+        public LaunchesController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Cosultar lançamento - Consult launch
         /// </summary>

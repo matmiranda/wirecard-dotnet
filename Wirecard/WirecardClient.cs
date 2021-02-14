@@ -7,6 +7,8 @@ namespace Wirecard
 {
     public partial class WirecardClient
     {
+        public readonly Http_Client _httpClient;
+
         /// <summary>
         /// Tipo de negócio: MARKETPLACE
         /// </summary>
@@ -14,24 +16,12 @@ namespace Wirecard
         /// <param name="accesstoken">accesstoken</param>
         public WirecardClient(Environments environments, string accesstoken)
         {
-            if (!string.IsNullOrEmpty(Http_Client.BusinessType))
-                if (Http_Client.BusinessType != "MARKETPLACE")
-                    throw new ArgumentException("Business type already defined: E-COMMERCE.");
             var regex = new Regex(@"^[a-zA-Z0-9]{32}_v2$");
             var match = regex.Match(accesstoken);
             if (!match.Success)
-                throw new ArgumentException("accesstoken invalid");        
-            Http_Client.SelectedEnvironment = environments;
-            Http_Client.Accesstoken = accesstoken;
-            Http_Client.BusinessType = "MARKETPLACE";
-            if (Http_Client.HttpClient == null)
-            {
-                Http_Client.Client();
-            }
-            if (Http_Client.HttpClient_Connect == null)
-            {
-                Http_Client.Client_Connect();
-            }
+                throw new ArgumentException("accesstoken invalid");
+
+            _httpClient = new Http_Client(environments, accesstoken, "MARKETPLACE");
         }
         /// <summary>
         /// Tipo de negócio: E-COMMERCE
@@ -41,9 +31,6 @@ namespace Wirecard
         /// <param name="key">chave</param>
         public WirecardClient(Environments environments, string token, string key)
         {
-            if (!string.IsNullOrEmpty(Http_Client.BusinessType))
-                if (Http_Client.BusinessType != "E-COMMERCE")
-                    throw new ArgumentException("Business type already defined: MARKETPLACE.");
             var TextByte = Encoding.UTF8.GetBytes($"{token}:{key}");
             var base64 = Convert.ToBase64String(TextByte);
             var regex = new Regex(@"^[a-zA-Z0-9]{98}==$");
@@ -56,51 +43,42 @@ namespace Wirecard
             {
                 throw new ArgumentException("base64 invalid");
             }
-            Http_Client.SelectedEnvironment = environments;
-            Http_Client.Base64 = base64;
-            Http_Client.BusinessType = "E-COMMERCE";
-            if (Http_Client.HttpClient == null)
-            {
-                Http_Client.Client();
-            }
+
+            _httpClient = new Http_Client(environments, base64, "E-COMMERCE");
         }
         /// <summary> Cliente </summary>
-        public CustomersController Customer => new CustomersController();
+        public CustomersController Customer => new CustomersController(_httpClient);
         /// <summary> Conciliação </summary>
-        public ConciliationsController Conciliation => new ConciliationsController();
+        public ConciliationsController Conciliation => new ConciliationsController(_httpClient);
         /// <summary> Conta Clássica </summary>
-        public ClassicAccountsController ClassicAccount => new ClassicAccountsController();
+        public ClassicAccountsController ClassicAccount => new ClassicAccountsController(_httpClient);
         /// <summary> Conta Transparente </summary>
-        public TransparentAccountsController TransparentAccount => new TransparentAccountsController();
+        public TransparentAccountsController TransparentAccount => new TransparentAccountsController(_httpClient);
         /// <summary> Conta Bancária </summary>
-        public BankAccountsController BankAccount => new BankAccountsController();
+        public BankAccountsController BankAccount => new BankAccountsController(_httpClient);
         /// <summary> Lançamento </summary>
-        public LaunchesController Launch => new LaunchesController();
+        public LaunchesController Launch => new LaunchesController(_httpClient);
         /// <summary> Extrato </summary>
-        public ExtractsController Extract => new ExtractsController();
+        public ExtractsController Extract => new ExtractsController(_httpClient);
         /// <summary> Multi-Pagamento </summary>
-        public MultiPaymentsController MultiPayment => new MultiPaymentsController();
+        public MultiPaymentsController MultiPayment => new MultiPaymentsController(_httpClient);
         /// <summary> Multi-Pedido </summary>
-        public MultiOrdersController MultiOrder => new MultiOrdersController();
+        public MultiOrdersController MultiOrder => new MultiOrdersController(_httpClient);
         /// <summary> Notificação </summary>
-        public NotificationsController Notification => new NotificationsController();
+        public NotificationsController Notification => new NotificationsController(_httpClient);
         /// <summary> Pagamento </summary>
-        public PaymentsController Payment => new PaymentsController();
+        public PaymentsController Payment => new PaymentsController(_httpClient);
         /// <summary> Pedido </summary>
-        public OrdersController Order => new OrdersController();
+        public OrdersController Order => new OrdersController(_httpClient);
         /// <summary> Reembolso </summary>
-        public RefundsController Refund => new RefundsController();
+        public RefundsController Refund => new RefundsController(_httpClient);
         /// <summary> Saldos </summary>
-        public BalancesController Balance => new BalancesController();
+        public BalancesController Balance => new BalancesController(_httpClient);
         /// <summary> Transferência </summary>
-        public TransfersController Transfer => new TransfersController();
+        public TransfersController Transfer => new TransfersController(_httpClient);
         /// <summary> Assinatura </summary>
-        public SignaturesController Signature => new SignaturesController();
+        public SignaturesController Signature => new SignaturesController(_httpClient);
         /// <summary>Obtem o tipo de negócio: Valores possíveis: E-COMMERCE, MARKETPLACE </summary>
-        public string _BusinessType => Http_Client.BusinessType;
-        /// <summary>Altera AccessToken - MarketPlace</summary>
-        public void ChangeAccessToken(string accesstoken) => Http_Client.ChangeAccessToken(accesstoken);
-        /// <summary>Altera Token - E-Commerce</summary>
-        public void ChangeToken(string token, string key) => Http_Client.ChangeToken(token, key);
+        public string _BusinessType => _httpClient.BusinessType;
     }
 }

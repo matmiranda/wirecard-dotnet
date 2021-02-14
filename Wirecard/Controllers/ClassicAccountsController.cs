@@ -13,6 +13,11 @@ namespace Wirecard.Controllers
     //Contas Clássicas - Classic Accounts
     public partial class ClassicAccountsController
     {
+        private readonly Http_Client Http_Client;
+        public ClassicAccountsController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Conta Existe - Account Exist
         /// </summary>

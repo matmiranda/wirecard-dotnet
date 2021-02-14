@@ -11,6 +11,11 @@ namespace Wirecard.Controllers
     //Reembolsos - Refunds
     public partial class RefundsController
     {
+        private readonly Http_Client Http_Client;
+        public RefundsController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Reembolsar Pagamento - Refund Payment
         /// </summary>

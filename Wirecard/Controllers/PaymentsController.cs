@@ -12,6 +12,11 @@ namespace Wirecard.Controllers
     //Pagamentos - Payments
     public partial class PaymentsController
     {
+        private readonly Http_Client Http_Client;
+        public PaymentsController(Http_Client _httpClient)
+        {
+            Http_Client = _httpClient;
+        }
         /// <summary>
         /// Criar Pagamento - Create Payment
         /// </summary>

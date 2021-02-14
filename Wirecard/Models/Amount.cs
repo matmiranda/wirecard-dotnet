@@ -11,7 +11,7 @@ namespace Wirecard.Models
         [JsonProperty("fixed", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Fixed { get; set; }
         [JsonProperty("percentual", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Percentual { get; set; }
+        public float Percentual { get; set; }
         [JsonProperty("paid", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Paid { get; set; }
         [JsonProperty("total", DefaultValueHandling = DefaultValueHandling.Ignore)]

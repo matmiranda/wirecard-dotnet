@@ -91,6 +91,64 @@ namespace Wirecard.Test
             Assert.Fail();
         }
         [Test]
+        public async Task TesteCriarPedido()
+        {
+            var body = new OrderRequest
+            {
+                OwnId = "id_pedido",
+                Amount = new Amount
+                {
+                    Currency = "BRL",
+                    Subtotals = new Subtotals
+                    {
+                        Shipping = 1000
+                    }
+                },
+                Items = new List<Item>
+                {
+                    new Item
+                    {
+                        Product = "Descrição do pedido",
+                        Category = "VIDEO_GAME_SOFTWARE",
+                        Quantity = 1,
+                        Detail = "Mais info...",
+                        Price = 22000
+                    }
+                },
+                Customer = new Customer
+                {
+                    Id = "CUS-36RKG1BL8ISM"
+                },
+                Receivers = new List<Receiver>
+                {
+                    new Receiver
+                    {
+                        Type = "SECONDARY",
+                        FeePayor = false,
+                        MoipAccount = new Moipaccount
+                        {
+                            Id = "MPA-E3C8493A06AE"
+                        },
+                        Amount = new Amount
+                        {
+                            Fixed = 5000,
+                            Percentual = 10.3f
+                        }
+                    }
+                }
+            };
+            try
+            {
+                var result = await WC.Order.Create(body);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+        [Test]
         public async Task TesteConsultarPedido()
         {
             if (WC._BusinessType == "E-COMMERCE")

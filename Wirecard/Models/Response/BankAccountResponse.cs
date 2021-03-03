@@ -12,7 +12,7 @@ namespace Wirecard.Models
         [JsonProperty("holder", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Holder Holder { get; set; }
         [JsonProperty("accountNumber", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int AccountNumber { get; set; }
+        public string AccountNumber { get; set; }
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Status { get; set; }
         [JsonProperty("createdAt", DefaultValueHandling = DefaultValueHandling.Ignore)]

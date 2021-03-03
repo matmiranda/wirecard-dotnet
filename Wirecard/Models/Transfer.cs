@@ -16,6 +16,8 @@ namespace Wirecard.Models
         public string Id { get; set; }
         [JsonProperty("transferInstrument", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Transferinstrument TransferInstrument { get; set; }
+        [JsonProperty("cancellationDetails", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Cancellationdetails CancellationDetails { get; set; }
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Status { get; set; }
         [JsonProperty("createdAt", DefaultValueHandling = DefaultValueHandling.Ignore)]

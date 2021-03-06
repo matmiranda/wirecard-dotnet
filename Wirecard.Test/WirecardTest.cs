@@ -137,16 +137,7 @@ namespace Wirecard.Test
                     }
                 }
             };
-            try
-            {
-                var result = await WC.Order.Create(body);
-            }
-            catch (System.Exception ex)
-            {
-
-                throw;
-            }
-
+            var result = await WC.Order.Create(body);
         }
         [Test]
         public async Task TesteConsultarPedido()

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://dev.wirecard.com.br/v2.0/">
-    <img src="https://raw.githubusercontent.com/matmiranda/Wirecard-NET/master/Images/Wirecard%20%2B%20.NET.jpg" alt="Wirecard logo" width=400>
+    <img src="https://github.com/matmiranda/Wirecard-NET/blob/master/Images/moip%20by%20pagseguro.png?raw=true" alt="Wirecard logo" width=400>
   </a>
 </p>
 <p align="center">

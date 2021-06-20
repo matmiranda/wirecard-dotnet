@@ -36,7 +36,7 @@
 | --------------------------------------------------------------- | -------------------------------| ----------------- |
 | [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/)        | Onde tudo começou...           | ❌ Descontinuado |
 | [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/)| Quando a Moip virou Wirecard...| ❌ Descontinuado |
-| [Wirecard](https://www.nuget.org/packages/Wirecard/)            | Projeto atual                  | ✔️ Atual         |
+| [Wirecard](https://www.nuget.org/packages/Wirecard/)            | Projeto atual by PagSeguro     | ✔️ Atual         |
 
 ## Índice - C#
 - [Implementações .NET com suporte](#implementações-net-com-suporte)

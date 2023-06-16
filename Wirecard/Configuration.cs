@@ -8,7 +8,7 @@ namespace Wirecard
     internal class BaseAddress
     {
         internal const string SANDBOX = "https://sandbox.api.pagseguro.com/";
-        internal const string PRODUCTION  = "https://api.api.pagseguro.com/";
+        internal const string PRODUCTION      = "https://api.pagseguro.com/";
     }
     public enum Environments
     {
@@ -28,7 +28,7 @@ namespace Wirecard
         }
 
         // HttpClient para base https://sandbox.api.pagseguro.com/ ou https://api.api.pagseguro.com/
-        // HttpClient_Connect para base https://connect-sandbox.api.pagseguro.com ou https://connect.api.pagseguro.com/
+        // HttpClient_Connect para base https://connect.sandbox.api.pagseguro.com ou https://connect.api.pagseguro.com/
         // accesstoken para MarketPlace
         // base64 para E-Commerce
         // BusinessType: tipo de negócio escolhido (MARKETPLACE ou E-COMMERCE)
@@ -78,7 +78,7 @@ namespace Wirecard
                     HttpClient_Connect.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
                     if (SelectedEnvironment == Environments.SANDBOX)
                     {
-                        HttpClient_Connect.BaseAddress = new Uri("https://connect-sandbox.api.pagseguro.com/");
+                        HttpClient_Connect.BaseAddress = new Uri("https://connect.sandbox.api.pagseguro.com/");
                     }
                     else
                     {

@@ -7,8 +7,8 @@ namespace Wirecard
 {
     internal class BaseAddress
     {
-        internal const string SANDBOX = "https://sandbox.moip.com.br/";
-        internal const string PRODUCTION = "https://api.moip.com.br/";
+        internal const string SANDBOX = "https://sandbox.api.pagseguro.com/";
+        internal const string PRODUCTION  = "https://api.api.pagseguro.com/";
     }
     public enum Environments
     {
@@ -27,8 +27,8 @@ namespace Wirecard
             BusinessType = businessType;
         }
 
-        // HttpClient para base https://sandbox.moip.com.br/ ou https://api.moip.com.br/
-        // HttpClient_Connect para base https://connect-sandbox.moip.com.br ou https://connect.moip.com.br/
+        // HttpClient para base https://sandbox.api.pagseguro.com/ ou https://api.api.pagseguro.com/
+        // HttpClient_Connect para base https://connect-sandbox.api.pagseguro.com ou https://connect.api.pagseguro.com/
         // accesstoken para MarketPlace
         // base64 para E-Commerce
         // BusinessType: tipo de negócio escolhido (MARKETPLACE ou E-COMMERCE)
@@ -78,11 +78,11 @@ namespace Wirecard
                     HttpClient_Connect.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
                     if (SelectedEnvironment == Environments.SANDBOX)
                     {
-                        HttpClient_Connect.BaseAddress = new Uri("https://connect-sandbox.moip.com.br/");
+                        HttpClient_Connect.BaseAddress = new Uri("https://connect-sandbox.api.pagseguro.com/");
                     }
                     else
                     {
-                        HttpClient_Connect.BaseAddress = new Uri("https://connect.moip.com.br/");
+                        HttpClient_Connect.BaseAddress = new Uri("https://connect.api.pagseguro.com/");
                     }
                     HttpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Bearer {Accesstoken}");
                     return HttpClient_Connect;

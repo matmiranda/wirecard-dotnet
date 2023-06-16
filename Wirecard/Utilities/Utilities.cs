@@ -59,8 +59,21 @@ namespace Wirecard
         {
             try
             {
-                string _params = $"oauth/authorize?response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}";
-                return new Uri(new Uri("https://connect-sandbox.moip.com.br/"), _params).AbsoluteUri;
+                string _params = $"oauth2/authorize?response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}";
+                return new Uri(new Uri("https://connect.sandbox.pagseguro.uol.com.br/"), _params).AbsoluteUri;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static string RequestUserAccessPermissions(string response_type, string client_id, string redirect_uri, string scope, string state)
+        {
+            try
+            {
+                string _params = $"oauth2/authorize?response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}&state={state}";
+                return new Uri(new Uri("https://connect.sandbox.pagseguro.uol.com.br/"), _params).AbsoluteUri;
             }
             catch (System.Exception ex)
             {

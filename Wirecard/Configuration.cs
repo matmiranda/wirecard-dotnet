@@ -27,8 +27,8 @@ namespace Wirecard
             BusinessType = businessType;
         }
 
-        // HttpClient para base https://sandbox.api.pagseguro.com/ ou https://api.api.pagseguro.com/
-        // HttpClient_Connect para base https://connect.sandbox.api.pagseguro.com ou https://connect.api.pagseguro.com/
+        // HttpClient para base https://sandbox.api.pagseguro.com/ ou https://api.pagseguro.com/
+        // HttpClient_Connect para base https://connect.sandbox.pagseguro.uol.com.br ou https://connect.pagseguro.uol.com.br/
         // accesstoken para MarketPlace
         // base64 para E-Commerce
         // BusinessType: tipo de negócio escolhido (MARKETPLACE ou E-COMMERCE)
@@ -78,11 +78,11 @@ namespace Wirecard
                     HttpClient_Connect.DefaultRequestHeaders.Add("User-Agent", $"Wirecard{GetVersion()}");
                     if (SelectedEnvironment == Environments.SANDBOX)
                     {
-                        HttpClient_Connect.BaseAddress = new Uri("https://connect.sandbox.api.pagseguro.com/");
+                        HttpClient_Connect.BaseAddress = new Uri("https://connect.sandbox.pagseguro.uol.com.br/");
                     }
                     else
                     {
-                        HttpClient_Connect.BaseAddress = new Uri("https://connect.api.pagseguro.com/");
+                        HttpClient_Connect.BaseAddress = new Uri("https://connect.pagseguro.uol.com.br/");
                     }
                     HttpClient_Connect.DefaultRequestHeaders.Add("Authorization", $"Bearer {Accesstoken}");
                     return HttpClient_Connect;

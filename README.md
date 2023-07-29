@@ -1,6 +1,14 @@
+`DEPRECATED` # Wirecard-NET
+
+> A credenciadora de cartões PagSeguro, do grupo Uol, anunciou a compra da Wirecard Brazil, subsidiária da empresa de pagamentos alemã envolvida em um escândalo de fraude contábil.
+
+Mais detalhes: https://exame.com/negocios/pagseguro-compra-wirecard-brazil/
+
+Criamos outra bilioteca pagbank-dotnet a partir daqui: https://github.com/matmiranda/pagbank-dotnet
+
 <p align="center">
   <a href="https://dev.wirecard.com.br/v2.0/">
-    <img src="https://github.com/matmiranda/Wirecard-NET/blob/master/Images/moip%20by%20pagseguro.png?raw=true" alt="Wirecard logo" width=400>
+    <img src="https://github.com/matmiranda/Wirecard-NET/blob/master/Images/Wirecard%20%2B%20.NET.jpg?raw=true" alt="Wirecard logo" width=400>
   </a>
 </p>
 <p align="center">

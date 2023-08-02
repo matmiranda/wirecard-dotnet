@@ -41,10 +41,10 @@ Criamos outra bilioteca pagbank-dotnet a partir daqui: https://github.com/matmir
 *Ler em outras linguagens de programação: [Visual Basic](README.VisualBasic.md), [F#](README.FSharp.md).*
 
 | Biblioteca                                                     | Descrição                      | Status            |
-| --------------------------------------------------------------- | -------------------------------| ----------------- |
+| --------------------------------------------------------------- | -------------------------------| -----------------|
 | [MoipCSharp](https://www.nuget.org/packages/MoipCSharp/)        | Onde tudo começou...           | ❌ Descontinuado |
 | [WirecardCSharp](https://www.nuget.org/packages/WirecardCSharp/)| Quando a Moip virou Wirecard...| ❌ Descontinuado |
-| [Wirecard](https://www.nuget.org/packages/Wirecard/)            | Projeto atual by PagSeguro     | ✔️ Atual         |
+| [Wirecard](https://www.nuget.org/packages/Wirecard/)            | Projeto atual by Wirecard      | ❌ Descontinuado |
 
 ## Índice - C#
 - [Implementações .NET com suporte](#implementações-net-com-suporte)
